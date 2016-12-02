@@ -9,6 +9,7 @@
 <link href='' rel='icon' type='image/x-icon'/>	<!-- сгенерировать фавиконы для всех устройств --> 
 <link type='text/css' rel='stylesheet' href='libs/css/bootstrap.css' />  <!-- локальное подключение для запуска на апаче -->
 <link type='text/css' rel='stylesheet' href='css/style.css' />
+<link type='text/css' rel='stylesheet' href='css/article.css' />
 <link type='text/css' rel='stylesheet' href='css/font-awesome.css' />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -67,57 +68,56 @@
 	
 <div class='container-fluid'>
 
-<!-- отдельный блок статьи-->
+<!-- Вывод массива всех статей из бд-->
+
+<?php foreach ($articles as $a): ?>  
+    <!-- отдельный блок статьи-->
     <div class='grid-item col-md-3'>                           
-<div class='image-wrap'>
-<img alt='#0' src='#0'/>
-</div>
+        <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
+            <img alt="#0" src="img/test_image.jpg">
+            <div class='post-author'>
+
+                <div class='image-thumb'>
+                    <img alt='#0' title='#0' src='img/author_icon.jpg'/>
+                    <cite> <?php echo $a['date'] ?> </cite>  <!-- Вывод автора статьи, необходимо добавить в бд, пока выводится дата добавления -->
+                </div>
+
+            </div>
+        </div>
+        <div class='post-body'>
+
+            <div class='post-title'>
+             <h2><a href='#0'> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
+
+            </div>
+
+            <div class='post-entry'>
+             <p> <?php echo articles_intro($a['content']) ?></p> <!-- Вывод текста, первые 100 символов по дефолту -->
+            </div>
 
 
-<div class='post-body'>
- 
-<div class='post-author'>
-   
-   <div class='image-thumb'>
-   <img alt='#0' title='#0' src='#0'/>
-   </div>
-   <div class='name-author'>
-   <cite>Балабол Балаболов</cite>
-   </div>
+            <div class='postfooter clearfix'>
+             <div class='socialpost'>
+              <div class='icons clearfix'>
+               <a href='#0'><i class='fa fa-facebook'></i><div class='texts'>Facebook</div></a>
+               <a href='#0'><i class='fa fa-vk'></i><div class='texts'>VK</div></a>
+               <a href='#0'><i class='fa fa-twitter'></i><div class='texts'>Twitter</div></a>
+               </div>
+            </div>
+            <a href='#0'><div class='read'>Читать </div></a>
+            </div>
 
-</div>
-
-<div class='post-title'>
-<h2><a href='#0'>Статья о хорошем</a></h2>
-</div>
-
-<div class='post-entry'>
-<p>Сюда мы вставим php скрипт с выводом текста...</p>
-</div>
+            <div class='linker clearfix'>
+             <i class='fa fa-comment'></i>
+              48 Comments
+             <button type="button" class="btn btn-info col-md-offset-4">Выразить мнение</button>
+            </div>
 
 
-<div class='postfooter clearfix'>
- <div class='socialpost'>
-  <div class='icons clearfix'>
-   <a href='#0'><i class='fa fa-facebook'></i><div class='texts'>Facebook</div></a>
-   <a href='#0'><i class='fa fa-vk'></i><div class='texts'>VK</div></a>
-   <a href='#0'><i class='fa fa-twitter'></i><div class='texts'>Twitter</div></a>
-   </div>
-</div>
-<a href='#0'><div class='read'>Читать </div></a>
-</div>
-
-<div class='linker clearfix'>
-<i class='fa fa-comment'></i>
-48 Comments
-<button type="button" class="btn btn-info col-md-offset-4">Выразить мнение</button>
-</div>
-
-
-</div>
-</div>   <!-- grid-item col-md-3 -->  
-<!-- отдельный блок статьи-->
-
+        </div>
+    </div>   <!-- grid-item col-md-3 -->  
+    <!-- отдельный блок статьи-->
+<?php endforeach ?>
 
 
 
