@@ -109,9 +109,10 @@
 
             <div class='linker clearfix'>
              <i class='fa fa-comment'></i>
-              48 Comments
-             <button type="button" class="btn btn-info col-md-offset-4">Выразить мнение</button>
+              <span>48 Comments</span>
+              <a href="#0"><img src="img/author_icon.jpg" class="pull-right"></a>
             </div>
+            
 
 
         </div>
