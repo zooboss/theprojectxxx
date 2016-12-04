@@ -374,6 +374,80 @@
   margin-right: 5px;
   color: #aaa;
 }
-   /* Вывод записей
+/* Вывод записей
       ----------------------------------------------- */
 
+/*Каркас галереи и картинок*/	  
+#gallery {
+width: 100%;
+}
+
+.article-wrap{
+display: inline-block;
+overflow: hidden;
+width: 30%;
+margin-left: 3%;
+}
+
+.image-wrap {
+display:block;
+width:100%;
+position: relative;
+}
+
+.image-wrap  img{
+width:100%;
+height: 100%;
+}	
+
+.image-thumb {
+padding-top: 6px;
+padding-left: 10px; 
+}
+
+.image-thumb > img {
+width: 7%;
+border-radius: 50%;
+border: 1px solid black;
+}  
+
+.image-wrap .post-author {
+width: 100%;
+position: absolute;
+bottom: 0px;
+min-height: 44px;
+background: white;
+opacity: 0.6;
+    
+}
+/*Каркас галереи и картинок*/
+
+
+
+	  
+   /* мобильная версия
+      ----------------------------------------------- */
+ @media only screen and (max-width:491px) {
+.article-wrap{
+display: block;
+width: 97%;
+margin: 2%;
+}
+ 
+ }
+ 
+      @media only screen and (max-width:769px) {
+.article-wrap{
+width: 40%;
+margin-left: 5%;
+}
+ 	 
+	 }
+        
+      @media only screen and (max-width:660px) {
+
+ 
+      }
+
+
+ 

@@ -6,13 +6,13 @@
 
 <title>      </title> <!-- Придумать название -->
 
-<link href='' rel='icon' type='image/x-icon'/>	<!-- сгенерировать фавиконы для всех устройств --> 
+<link href='#0' rel='icon' type='image/x-icon'/>	<!-- сгенерировать фавиконы для всех устройств --> 
 <link type='text/css' rel='stylesheet' href='libs/css/bootstrap.css' />  <!-- локальное подключение для запуска на апаче -->
 <link type='text/css' rel='stylesheet' href='css/style.css' />
-<link type='text/css' rel='stylesheet' href='css/article.css' />
+
 <link type='text/css' rel='stylesheet' href='css/font-awesome.css' />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
     
@@ -57,22 +57,23 @@
 
 <header>
 
-<div class="col-md-6 col-md-offset-3">   
+<div class="col-md-12">   
 
-<h1> Название нашего сайта для СЕО, можно скрыть </h1>   
+<h1 class="text-center"> Название нашего сайта для СЕО, можно скрыть </h1>   
 
 </div>
 
 </header>      
     
+
+
 	
-<div class='container-fluid'>
+<div id='gallery'>
 
 <!-- Вывод массива всех статей из бд-->
-
 <?php foreach ($articles as $a): ?>  
     <!-- отдельный блок статьи-->
-    <div class='grid-item col-md-3'>                           
+    <div class='article-wrap' >                           
         <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
             <img alt="#0" src="img/test_image.jpg">
             <div class='post-author'>
