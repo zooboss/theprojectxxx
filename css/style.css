@@ -122,8 +122,65 @@
         margin-left: 20px;
         margin-right: 20px;
       }
+	  
+	  
+	 
+/* стили меню для мобильной версии */
+#mySidenav  {
+display: none;
+top: 0;
+right: 0;
+height: 100%;
+width: 100%;
+}
+#top-hidden-menu{
+width: 300px;
+}
+
+.sidenav a {
+    display: block;
+    font-size: 2.5em;
+	font: inherit;
+	background: #2e3233;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    color: #ffffff;
+	border-bottom: 2px solid #3a3f40;
+	text-decoration: none;
+	transition: 0.3s;
+	z-index: 9999;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+#menu-trigger{
+font-size:30px;
+width: 30%;
+cursor:pointer;
+color: #ffffff;
+}
+
+#menu-close-trigger{
+display: none;
+font-size:30px;
+cursor:pointer;
+width: 30%;
+color: #ffffff;
+}
+/* стили меню для мобильной версии */
 
 
+
+
+	  
+	  
+	  
+	  
+	  
+	  
 	  /* _________Шапка сайта__________ */
   
   
@@ -374,6 +431,101 @@
   margin-right: 5px;
   color: #aaa;
 }
-   /* Вывод записей
+/* Вывод записей
       ----------------------------------------------- */
 
+/*Каркас галереи и картинок*/	  
+#galery {
+width: 100%;
+}
+
+.article-wrap{
+display: inline-block;
+overflow: hidden;
+width: 30%;
+margin-left: 3%;
+}
+
+.image-wrap {
+display:block;
+width:100%;
+position: relative;
+}
+
+.image-wrap  img{
+width:100%;
+height: 100%;
+}	
+
+.image-thumb {
+padding-top: 6px;
+padding-left: 10px; 
+}
+
+.image-thumb > img {
+width: 7%;
+border-radius: 50%;
+border: 1px solid black;
+}  
+
+.image-wrap .post-author {
+width: 100%;
+position: absolute;
+bottom: 0px;
+min-height: 44px;
+background: white;
+opacity: 0.6;
+    
+}
+/*Каркас галереи и картинок*/
+
+
+
+	  
+   /* мобильная версия
+      ----------------------------------------------- */
+ @media only screen and (max-width:491px) {
+.article-wrap{
+display: block;
+width: 95%;
+margin: auto;
+}
+
+.navlist{
+display: none;}
+ }
+ 
+@media only screen and (max-width:767px) {
+.article-wrap{
+display: block;
+width: 85%;
+margin: auto;
+}
+.navlist{
+display: none;}
+}
+  
+  
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+.article-wrap{
+width: 40%;
+margin-left: 5%;
+margin-right: 2%;
+}
+ 	 
+	 }
+	 
+@media only screen and (min-width: 1170px) {
+  #menu-trigger {
+    display: none;  
+  }
+}
+
+	  
+   /* мобильная версия
+      ----------------------------------------------- */	 
+        
+ 
+
+
+ 
