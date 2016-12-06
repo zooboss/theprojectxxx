@@ -122,8 +122,65 @@
         margin-left: 20px;
         margin-right: 20px;
       }
+	  
+	  
+	 
+/* стили меню для мобильной версии */
+#mySidenav  {
+display: none;
+top: 0;
+right: 0;
+height: 100%;
+width: 100%;
+}
+#top-hidden-menu{
+width: 300px;
+}
+
+.sidenav a {
+    display: block;
+    font-size: 2.5em;
+	font: inherit;
+	background: #2e3233;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    color: #ffffff;
+	border-bottom: 2px solid #3a3f40;
+	text-decoration: none;
+	transition: 0.3s;
+	z-index: 9999;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+#menu-trigger{
+font-size:30px;
+width: 30%;
+cursor:pointer;
+color: #ffffff;
+}
+
+#menu-close-trigger{
+display: none;
+font-size:30px;
+cursor:pointer;
+width: 30%;
+color: #ffffff;
+}
+/* стили меню для мобильной версии */
 
 
+
+
+	  
+	  
+	  
+	  
+	  
+	  
 	  /* _________Шапка сайта__________ */
   
   
@@ -378,7 +435,7 @@
       ----------------------------------------------- */
 
 /*Каркас галереи и картинок*/	  
-#gallery {
+#galery {
 width: 100%;
 }
 
@@ -433,6 +490,9 @@ display: block;
 width: 95%;
 margin: auto;
 }
+
+.navlist{
+display: none;}
  }
  
 @media only screen and (max-width:767px) {
@@ -441,6 +501,8 @@ display: block;
 width: 85%;
 margin: auto;
 }
+.navlist{
+display: none;}
 }
   
   
@@ -452,6 +514,16 @@ margin-right: 2%;
 }
  	 
 	 }
+	 
+@media only screen and (min-width: 1170px) {
+  #menu-trigger {
+    display: none;  
+  }
+}
+
+	  
+   /* мобильная версия
+      ----------------------------------------------- */	 
         
  
 

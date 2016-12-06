@@ -9,9 +9,10 @@
 <link href='#0' rel='icon' type='image/x-icon'/>	<!-- сгенерировать фавиконы для всех устройств --> 
 <link type='text/css' rel='stylesheet' href='libs/css/bootstrap.css' />  <!-- локальное подключение для запуска на апаче -->
 <link type='text/css' rel='stylesheet' href='css/style.css' />
-
 <link type='text/css' rel='stylesheet' href='css/font-awesome.css' />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -31,6 +32,41 @@
           <li><a href='#0'>Contact Us</a></li>
     </ul>
 </div>
+
+<!-- Меню для планшетов и мобильных  -->
+
+<div id="top-hidden-menu">
+<span id='menu-trigger'>&#9776;</span>
+<span  id="menu-close-trigger">&#10005;</span>
+</div>
+
+<div id="mySidenav" class="sidenav">
+  <a href="#">Раздел 1</a>
+  <a href="#">Раздел 2</a>
+  <a href="#">Раздел 3</a>
+  <a href="#">Раздел 4</a>
+</div>
+
+<script>
+$('#menu-trigger').click(function() {
+		$('#mySidenav').animate({"left": "+=200px", "opacity": "show"}, "slow");
+        $('#menu-trigger').hide();
+		$('#menu-close-trigger').show();
+		$(".article-wrap").css({opacity:"0.3", backgroundColor:"#000" });
+		$("#galery").css({opacity:"0.3", backgroundColor:"#000" });
+	}
+);
+$('#menu-close-trigger').click(function() {
+		$('#mySidenav').hide('slow');
+        $('#menu-close-trigger').hide();
+		$('#menu-trigger').show();
+		$(".article-wrap").css({opacity:"1", backgroundColor:"#fff" });
+		$("#galery").css({opacity:"1", backgroundColor:"#fff" });
+	}
+);
+</script>
+
+<!-- Меню для планшетов и мобильных  -->
 
 <div class='search-box'>
 <span class='icon-search'>
@@ -55,6 +91,10 @@
 
 </div>
 
+
+
+
+
 <header>
 
 <div class="col-md-12">   
@@ -68,7 +108,7 @@
 
 
 	
-<div id='gallery'>
+<div id='galery'>
 
 <!-- Вывод массива всех статей из бд-->
 <?php foreach ($articles as $a): ?>  
@@ -117,7 +157,7 @@
 
 
         </div>
-    </div>   <!-- grid-item col-md-3 -->  
+    </div>   <!-- article wrap -->  
     <!-- отдельный блок статьи-->
 <?php endforeach ?>
 
@@ -125,7 +165,7 @@
 
 
                
-</div>   <!-- col-md-9-->
+</div>   <!-- galery -->
 
 
 
@@ -136,6 +176,7 @@
 	
 	
 	
+
 	
 	</body>
 </html>
