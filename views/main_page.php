@@ -10,8 +10,9 @@
 <link type='text/css' rel='stylesheet' href='libs/css/bootstrap.css' />  <!-- локальное подключение для запуска на апаче -->
 <link type='text/css' rel='stylesheet' href='css/style.css' />
 <link type='text/css' rel='stylesheet' href='css/font-awesome.css' />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<link type='text/css' rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type='text/javascript' src="js/main.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -47,46 +48,28 @@
   <a href="#">Раздел 4</a>
 </div>
 
-<script>
-$('#menu-trigger').click(function() {
-		$('#mySidenav').animate({"left": "+=200px", "opacity": "show"}, "slow");
-        $('#menu-trigger').hide();
-		$('#menu-close-trigger').show();
-		$(".article-wrap").css({opacity:"0.3", backgroundColor:"#000" });
-		$("#galery").css({opacity:"0.3", backgroundColor:"#000" });
-	}
-);
-$('#menu-close-trigger').click(function() {
-		$('#mySidenav').hide('slow');
-        $('#menu-close-trigger').hide();
-		$('#menu-trigger').show();
-		$(".article-wrap").css({opacity:"1", backgroundColor:"#fff" });
-		$("#galery").css({opacity:"1", backgroundColor:"#fff" });
-	}
-);
-</script>
 
 <!-- Меню для планшетов и мобильных  -->
 
 <div class='search-box'>
-<span class='icon-search'>
-<i class='fa fa-search'></i>
-</span>
-<form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
-<input name='q' type='search' value='Search and hit enter'/>
-</form>
+    <span class='icon-search'>
+        <i class='fa fa-search'></i>
+    </span>
+    <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
+    <input name='q' type='search' value='Search and hit enter'/>
+    </form>
 </div>
 
 <!-- подобрать иконки -->
 <div class='share-box'>
-<a class='social-facebook' href='#' target='_blank'><i class='fa fa-facebook'></i></a>
-<a class='social-twitter' href='#' target='_blank'><i class='fa fa-twitter'></i></a>
-<a class='social-gplus' href='#' target='_blank'><i class='fa fa-google-plus'></i></a>
-<a class='social-linkedin' href='#' target='_blank'><i class='fa fa-linkedin'></i></a>
-<a class='social-pinterest' href='#' target='_blank'><i class='fa fa-pinterest'></i></a>
-<a class='social-youtube' href='#' target='_blank'><i class='fa fa-youtube'></i></a>
-<a class='social-vimeo' href='#' target='_blank'><i class='fa fa-vimeo-square'></i></a>
-<a class='social-instagram' href='#' target='_blank'><i class='fa fa-instagram'></i></a>
+    <a class='social-facebook' href='#' target='_blank'><i class='fa fa-facebook'></i></a>
+    <a class='social-twitter' href='#' target='_blank'><i class='fa fa-twitter'></i></a>
+    <a class='social-gplus' href='#' target='_blank'><i class='fa fa-google-plus'></i></a>
+    <a class='social-linkedin' href='#' target='_blank'><i class='fa fa-linkedin'></i></a>
+    <a class='social-pinterest' href='#' target='_blank'><i class='fa fa-pinterest'></i></a>
+    <a class='social-youtube' href='#' target='_blank'><i class='fa fa-youtube'></i></a>
+    <a class='social-vimeo' href='#' target='_blank'><i class='fa fa-vimeo-square'></i></a>
+    <a class='social-instagram' href='#' target='_blank'><i class='fa fa-instagram'></i></a>
 </div>
 
 </div>
@@ -96,13 +79,9 @@ $('#menu-close-trigger').click(function() {
 
 
 <header>
-
-<div class="col-md-12">   
-
-<h1 class="text-center"> Название нашего сайта для СЕО, можно скрыть </h1>   
-
-</div>
-
+    <div class="col-md-12">   
+    <h1 class="text-center"> Название нашего сайта для СЕО, можно скрыть </h1>   
+    </div>
 </header>      
     
 
