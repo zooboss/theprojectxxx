@@ -28,9 +28,9 @@
 
     <div class='navlist'>
         <ul>
-          <li class='selected'><a href='#0'>Главная</a></li>
+            <li class='selected'><a href='#0'>Главная</a></li>
             <li><a href='#0'>About</a></li>
-              <li><a href='#0'>Contact Us</a></li>
+            <li><a href='#0'>Contact Us</a></li>
         </ul>
     </div>
 
@@ -38,7 +38,7 @@
 
     <div id="top-hidden-menu">
         <span id='menu-trigger'>&#9776;</span>
-        <span  id="menu-close-trigger">&#10005;</span>
+        <span id="menu-close-trigger">&#10005;</span>
     </div>
 
     <div id="mySidenav" class="sidenav">
@@ -56,7 +56,7 @@
             <i class='fa fa-search'></i>
         </span>
         <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
-        <input name='q' type='search' value='Search and hit enter'/>
+        <input name='q' type='search' placeholder='Search and hit enter'/>
         </form>
     </div>
 
