@@ -109,8 +109,8 @@
 
                     </div>
                 </div>
+                
                 <div class='post-body'>
-
                     <div class='post-title'>
                         <h2><a href='#0'> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
                     </div>
@@ -121,7 +121,7 @@
 
                     <div class='postfooter clearfix'>
                        <i class='fa fa-comment linker'></i>
-                        <span class='linker'>48 Комментариев</span>
+                        <a class='linker' href='#0' >48 Комментариев</a>
                         <!-- Социалки для превью статьи
                             <div class='socialpost'>
                                <div class='icons clearfix'>
