@@ -18,7 +18,7 @@
       .top-navigation .search-box {
         position: absolute;
         top: 50%;
-        right: -12px;
+        right: 0px;
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
