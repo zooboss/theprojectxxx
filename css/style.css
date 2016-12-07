@@ -491,12 +491,12 @@ margin-right: 2%;
 /* Анимация блока статьи */
 
 .articleImageAnimate {
-    width: 600px;
-    height: 303px;
-    background: rgba(166, 245, 25, .5);
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, .1);
     display: inline-block;
     position: absolute;
-    right: 350px;
+    right: 500px;
     top: 0;
     -moz-transform: skew(-45deg);
     -webkit-transform: skew(-45deg);
@@ -508,8 +508,7 @@ margin-right: 2%;
 }
 
 .article-wrap:hover .articleImageAnimate {
-    transform: skew(-45deg) translate(700px);
-    
+    transform: skew(-45deg) translate(850px);
 }
 
 .articleCathegoryAnimate {
