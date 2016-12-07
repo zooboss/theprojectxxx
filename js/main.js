@@ -7,7 +7,7 @@ $( document ).ready(function() {
             $('#menu-trigger').hide();
             $('#menu-close-trigger').show();
             $(".article-wrap").css({opacity:"0.3", backgroundColor:"#000" });
-            $("#galery").css({opacity:"0.3", backgroundColor:"#000" });
+            $(".articlesGallery").css({opacity:"0.3", backgroundColor:"#000" });
         }
     );
     $('#menu-close-trigger').click(function() {
@@ -15,7 +15,7 @@ $( document ).ready(function() {
             $('#menu-close-trigger').hide();
             $('#menu-trigger').show();
             $(".article-wrap").css({opacity:"1", backgroundColor:"#fff" });
-            $("#galery").css({opacity:"1", backgroundColor:"#fff" });
+            $(".articlesGallery").css({opacity:"1", backgroundColor:"#fff" });
         }
     );
     
