@@ -106,8 +106,11 @@
                                 <span><?php echo "{$a['date']}"; ?> </span>
                             </cite>  <!-- Вывод автора статьи, необходимо добавить в бд, пока выводится дата добавления -->
                         </div>
-
                     </div>
+                    <div class = "articleImageAnimate"></div>
+                    <div class = "articleCathegoryAnimate"></div>
+                    <div class = "articleCommentsAnimate"></div>
+                    <div class = "articleDateAnimate"></div>
                 </div>
                 
                 <div class='post-body'>

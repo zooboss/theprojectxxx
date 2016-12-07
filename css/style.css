@@ -433,10 +433,13 @@ margin-right: 2%;
 
 .image-wrap {
     position: relative;
+    overflow: hidden;
 }
 
 .image-wrap > img{
     width: 100%;
+    position: relative;
+    z-index: -10;
     
 }	
 
@@ -468,7 +471,7 @@ margin-right: 2%;
     position: absolute;
     bottom: 0px;
     width: 100%;
-    z-index: 2;
+    
     
 }
 .image-wrap .post-author::before {
@@ -480,10 +483,73 @@ margin-right: 2%;
     background: white;
     opacity: 0.6;
     
-    z-index: -1;
+   z-index: -9;
     
 }
-/*Каркас галереи и картинок*/
+/* Каркас галереи и картинок*/
+
+/* Анимация блока статьи */
+
+.articleImageAnimate {
+    width: 600px;
+    height: 303px;
+    background: rgba(166, 245, 25, .5);
+    display: inline-block;
+    position: absolute;
+    right: 350px;
+    top: 0;
+    -moz-transform: skew(-45deg);
+    -webkit-transform: skew(-45deg);
+    -webkit-transition: all .6s ease-in-out;
+    -moz-transition: all .6s ease-in-out;
+    -ms-transition: all .6s ease-in-out;
+    -o-transition: all .6s ease-in-out;
+    transition: all .6s ease-in-out;
+}
+
+.article-wrap:hover .articleImageAnimate {
+    transform: skew(-45deg) translate(700px);
+    
+}
+
+.articleCathegoryAnimate {
+    
+}
+
+.articleCommentsAnimate {
+    
+}
+
+.articleDateAnimate {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
      /* оформление статьи */
 
