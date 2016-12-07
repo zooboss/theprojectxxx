@@ -88,12 +88,13 @@
 
 	
 <section class='container-fluid articlesGallery'>
+    
      <div class='row'>
     <!-- Вывод массива всех статей из бд-->
         <?php foreach ($articles as $a): ?>  
             <!-- отдельный блок статьи-->
         
-            <div class='col-md-4 col-sm-6 col-xs-12 article-wrap' >                           
+            <div class='col-md-4 col-sm-6  article-wrap' >                           
                 <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
                     <img alt="#0" src="img/test_image2.png">
                     <div class='post-author'>
@@ -111,36 +112,30 @@
                 <div class='post-body'>
 
                     <div class='post-title'>
-                     <h2><a href='#0'> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
-
+                        <h2><a href='#0'> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
                     </div>
 
                     <div class='post-entry'>
                      <p> <?php echo articles_intro($a['content']) ?></p> <!-- Вывод текста, первые 100 символов по дефолту -->
                     </div>
 
-
                     <div class='postfooter clearfix'>
-                     <div class='socialpost'>
-                      <div class='icons clearfix'>
-                       <a href='#0'><i class='fa fa-facebook'></i><div class='texts'>Facebook</div></a>
-                       <a href='#0'><i class='fa fa-vk'></i><div class='texts'>VK</div></a>
-                       <a href='#0'><i class='fa fa-twitter'></i><div class='texts'>Twitter</div></a>
-                       </div>
+                       <i class='fa fa-comment linker'></i>
+                        <span class='linker'>48 Комментариев</span>
+                        <!-- Социалки для превью статьи
+                            <div class='socialpost'>
+                               <div class='icons clearfix'>
+                                <a href='#0'><i class='fa fa-facebook'></i><div class='texts'>Facebook</div></a>
+                                <a href='#0'><i class='fa fa-vk'></i><div class='texts'>VK</div></a>
+                                <a href='#0'><i class='fa fa-twitter'></i><div class='texts'>Twitter</div></a>
+                                </div>
+                               
+                            </div>
+                        --> 
+                        <a href='#0'><div class='read'>Читать </div></a>
                     </div>
-                    <a href='#0'><div class='read'>Читать </div></a>
-                    </div>
-
-                    <div class='linker clearfix'>
-                     <i class='fa fa-comment'></i>
-                      <span>48 Comments</span>
-                      <a href="#0"><img src="img/author_icon.jpg" class="pull-right"></a>
-                    </div>
-
-
-
                 </div>
-            </div>   <!-- article wrap -->  
+            </div>   
         
         <!-- отдельный блок статьи-->
         <?php endforeach ?>
