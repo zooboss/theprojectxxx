@@ -26,51 +26,51 @@
 
 <div class='top-navigation'>
 
-<div class='navlist'>
-    <ul>
-      <li class='selected'><a href='#0'>Главная</a></li>
-        <li><a href='#0'>About</a></li>
-          <li><a href='#0'>Contact Us</a></li>
-    </ul>
-</div>
+    <div class='navlist'>
+        <ul>
+          <li class='selected'><a href='#0'>Главная</a></li>
+            <li><a href='#0'>About</a></li>
+              <li><a href='#0'>Contact Us</a></li>
+        </ul>
+    </div>
 
-<!-- Меню для планшетов и мобильных  -->
+    <!-- Меню для планшетов и мобильных  -->
 
-<div id="top-hidden-menu">
-<span id='menu-trigger'>&#9776;</span>
-<span  id="menu-close-trigger">&#10005;</span>
-</div>
+    <div id="top-hidden-menu">
+        <span id='menu-trigger'>&#9776;</span>
+        <span  id="menu-close-trigger">&#10005;</span>
+    </div>
 
-<div id="mySidenav" class="sidenav">
-  <a href="#">Раздел 1</a>
-  <a href="#">Раздел 2</a>
-  <a href="#">Раздел 3</a>
-  <a href="#">Раздел 4</a>
-</div>
+    <div id="mySidenav" class="sidenav">
+      <a href="#">Раздел 1</a>
+      <a href="#">Раздел 2</a>
+      <a href="#">Раздел 3</a>
+      <a href="#">Раздел 4</a>
+    </div>
 
 
-<!-- Меню для планшетов и мобильных  -->
+    <!-- Меню для планшетов и мобильных  -->
 
-<div class='search-box'>
-    <span class='icon-search'>
-        <i class='fa fa-search'></i>
-    </span>
-    <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
-    <input name='q' type='search' value='Search and hit enter'/>
-    </form>
-</div>
+    <div class='search-box'>
+        <span class='icon-search'>
+            <i class='fa fa-search'></i>
+        </span>
+        <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
+        <input name='q' type='search' value='Search and hit enter'/>
+        </form>
+    </div>
 
-<!-- подобрать иконки -->
-<div class='share-box'>
-    <a class='social-facebook' href='#' target='_blank'><i class='fa fa-facebook'></i></a>
-    <a class='social-twitter' href='#' target='_blank'><i class='fa fa-twitter'></i></a>
-    <a class='social-gplus' href='#' target='_blank'><i class='fa fa-google-plus'></i></a>
-    <a class='social-linkedin' href='#' target='_blank'><i class='fa fa-linkedin'></i></a>
-    <a class='social-pinterest' href='#' target='_blank'><i class='fa fa-pinterest'></i></a>
-    <a class='social-youtube' href='#' target='_blank'><i class='fa fa-youtube'></i></a>
-    <a class='social-vimeo' href='#' target='_blank'><i class='fa fa-vimeo-square'></i></a>
-    <a class='social-instagram' href='#' target='_blank'><i class='fa fa-instagram'></i></a>
-</div>
+    <!-- подобрать иконки -->
+    <div class='share-box'>
+        <a class='social-facebook' href='#' target='_blank'><i class='fa fa-facebook'></i></a>
+        <a class='social-twitter' href='#' target='_blank'><i class='fa fa-twitter'></i></a>
+        <a class='social-gplus' href='#' target='_blank'><i class='fa fa-google-plus'></i></a>
+        <a class='social-linkedin' href='#' target='_blank'><i class='fa fa-linkedin'></i></a>
+        <a class='social-pinterest' href='#' target='_blank'><i class='fa fa-pinterest'></i></a>
+        <a class='social-youtube' href='#' target='_blank'><i class='fa fa-youtube'></i></a>
+        <a class='social-vimeo' href='#' target='_blank'><i class='fa fa-vimeo-square'></i></a>
+        <a class='social-instagram' href='#' target='_blank'><i class='fa fa-instagram'></i></a>
+    </div>
 
 </div>
 
