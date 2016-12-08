@@ -96,7 +96,7 @@
         
             <div class='col-md-4 col-sm-6  article-wrap' >                           
                 <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
-                    <img alt="#0" src="img/test_image2.png">
+                    <img alt="#0" src="img/test_image.jpg">
                     <div class='post-author'>
 
                         <div class='image-thumb'>
@@ -109,7 +109,10 @@
                     </div>
                     <div class = "articleImageAnimate"></div>
                     <div class = "articleCathegoryAnimate"> <a href='#0'>политика</a></div>
-                    <!--<div class = "articleCommentsAnimate"> 48 комментариев</div>
+                    <div class = "articleCommentsAnimate"> 
+                        <a href='#0'><i class='fa fa-comment'></i></a> 
+                        <a href='#0'>48</a>
+                    </div>
                     <!--<div class = "articleDateAnimate"> <?=$a['date']?> </div> -->
                 </div>
                 
