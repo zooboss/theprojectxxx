@@ -519,25 +519,26 @@ margin-right: 2%;
     display: inline-block;
     position: absolute;
     top: -40px;
-    padding: 4px 8px;
+    
     background-color: #e15d5d;
     margin-left: 10px;
-        
-    
+            
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
     letter-spacing: 0.02em;
-    
-    
+        
 }
 
 .articleCathegoryAnimate a, .articleCathegoryAnimate a:hover, .articleCathegoryAnimate a:visited, .articleCathegoryAnimate a:active{
     text-decoration: none;
     font-weight: bold;
     color: white;
+    
+    display: block;
+    padding: 4px 8px;
 }
 
 .article-wrap:hover .articleCathegoryAnimate {
