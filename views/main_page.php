@@ -113,7 +113,10 @@
                         <a href='#0'><i class='fa fa-comment'></i></a> 
                         <a href='#0'>48</a>
                     </div>
-                    <!--<div class = "articleDateAnimate"> <?=$a['date']?> </div> -->
+                    <div class = "articleDateAnimate"> 
+                        <p>2016</p> 
+                        <p>дек/08</p>
+                    </div>
                 </div>
                 
                 <div class='post-body'>

@@ -553,7 +553,7 @@ margin-right: 2%;
 .articleCommentsAnimate {
     display: inline-block;
     position: absolute;
-    width: 60px;
+    width: 70px;
     top: 120px;
     right: -80px;
     box-shadow: 0px 0px 1px black;
@@ -609,11 +609,73 @@ margin-right: 2%;
     color: dimgray;
     border-color: dimgray;
 }
+
 .articleDateAnimate {
+    display: inline-block;
+    position: absolute;
+    width: 70px;
+    top: 30px;
+    right: -120px;
+    box-shadow: 0px 0px 1px black;
+    padding: 0px 10px;
     
+                        
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
 }
 
+.articleDateAnimate::before {
+    content: " ";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: black;
+    opacity: 0.2;
+        
+   z-index: -9;
+}
 
+.articleDateAnimate p {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    
+    display: block;
+    padding: 4px 8px;
+    text-align: center;
+    text-transform: uppercase;
+    
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.articleDateAnimate p:first-child {
+    border-bottom: 2px solid white;
+    font-size: 16px;
+}
+.articleDateAnimate p:last-child {
+    
+    font-size: 11px;
+}
+
+.article-wrap:hover .articleDateAnimate{
+    transform: translateX(-140px);
+}
+
+.articleCommentsAnimate:hover p{
+    color: dimgray;
+    border-color: dimgray;
+}
 
 
 
