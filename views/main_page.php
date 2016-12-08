@@ -108,8 +108,8 @@
                         </div>
                     </div>
                     <div class = "articleImageAnimate"></div>
-                    <div class = "articleCathegoryAnimate"> <a>политика </a></div>
-                    <div class = "articleCommentsAnimate"> 48 комментариев</div>
+                    <div class = "articleCathegoryAnimate"> <a href='#0'>политика</a></div>
+                    <!--<div class = "articleCommentsAnimate"> 48 комментариев</div>
                     <!--<div class = "articleDateAnimate"> <?=$a['date']?> </div> -->
                 </div>
                 

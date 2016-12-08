@@ -522,9 +522,8 @@ margin-right: 2%;
     padding: 4px 8px;
     background-color: #e15d5d;
     margin-left: 10px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+        
+    
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
@@ -532,7 +531,13 @@ margin-right: 2%;
     transition: all 0.3s ease;
     letter-spacing: 0.02em;
     
-    z-index: 10px;
+    
+}
+
+.articleCathegoryAnimate a, .articleCathegoryAnimate a:hover, .articleCathegoryAnimate a:visited, .articleCathegoryAnimate a:active{
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
 }
 
 .article-wrap:hover .articleCathegoryAnimate {
