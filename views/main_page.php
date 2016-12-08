@@ -108,9 +108,9 @@
                         </div>
                     </div>
                     <div class = "articleImageAnimate"></div>
-                    <div class = "articleCathegoryAnimate"></div>
-                    <div class = "articleCommentsAnimate"></div>
-                    <div class = "articleDateAnimate"></div>
+                    <div class = "articleCathegoryAnimate"> <a>политика </a></div>
+                    <div class = "articleCommentsAnimate"> 48 комментариев</div>
+                    <!--<div class = "articleDateAnimate"> <?=$a['date']?> </div> -->
                 </div>
                 
                 <div class='post-body'>
