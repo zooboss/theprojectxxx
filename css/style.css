@@ -532,7 +532,7 @@ margin-right: 2%;
         
 }
 
-.articleCathegoryAnimate a, .articleCathegoryAnimate a:hover, .articleCathegoryAnimate a:visited, .articleCathegoryAnimate a:active{
+.articleCathegoryAnimate a, .articleCathegoryAnimate a:hover, .articleCathegoryAnimate a:visited, .articleCathegoryAnimate a:active, .articleCathegoryAnimate a:link{
     text-decoration: none;
     font-weight: bold;
     color: white;
@@ -580,7 +580,7 @@ margin-right: 2%;
    z-index: -9;
 }
 
-.articleCommentsAnimate a, .articleCommentsAnimate a:hover, .articleCommentsAnimate a:visited, .articleCommentsAnimate a:active{
+.articleCommentsAnimate a, .articleCommentsAnimate a:visited, .articleCommentsAnimate a:active, .articleCommentsAnimate a:link{
     text-decoration: none;
     font-weight: bold;
     color: white;
@@ -588,6 +588,12 @@ margin-right: 2%;
     display: block;
     padding: 4px 8px;
     text-align: center;
+    
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .articleCommentsAnimate a:first-child {
@@ -599,6 +605,10 @@ margin-right: 2%;
     transform: translateX(-100px);
 }
 
+.articleCommentsAnimate:hover a{
+    color: dimgray;
+    border-color: dimgray;
+}
 .articleDateAnimate {
     
 }
