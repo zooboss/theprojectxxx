@@ -14,8 +14,8 @@ $( document ).ready(function() {
             $('#mySidenav').hide('slow');
             $('#menu-close-trigger').hide();
             $('#menu-trigger').show();
-            $(".article-wrap").css({opacity:"1", backgroundColor:"#fff" });
-            $(".articlesGallery").css({opacity:"1", backgroundColor:"#fff" });
+            $(".article-wrap").css({opacity:"1", backgroundColor:"transparent" });
+            $(".articlesGallery").css({opacity:"1", backgroundColor:"transparent" });
         }
     );
     
