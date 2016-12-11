@@ -677,6 +677,34 @@ margin-right: 2%;
     border-color: dimgray;
 }
 
+/*  НИЖНЕЕ МЕНЮ */
+
+.bottomMenu {
+    background: #444;
+}
+
+.bottomMenu ul {
+    list-style: none;
+}
+
+.bottomMenu a{
+    text-decoration: none;
+    color: #aaa;
+}
+
+.socialBottom a{
+    font-size: 20px;
+    padding: 10px;
+}
+
+.searchBottom {
+    margin-top: 20px;
+}
+
+.searchBottom input[type='search'] {
+    width: 80%;
+    height: 30px;
+}
 
 
 
@@ -698,10 +726,5 @@ margin-right: 2%;
 
 
 
-
-
-
-
-     /* оформление статьи */
 
 

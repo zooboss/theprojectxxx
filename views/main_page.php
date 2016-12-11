@@ -56,20 +56,20 @@
             <i class='fa fa-search'></i>
         </span>
         <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
-        <input name='q' type='search' placeholder='Search and hit enter'/>
+            <input name='q' type='search' placeholder='Search and hit enter'/>
         </form>
     </div>
 
     <!-- подобрать иконки -->
     <div class='share-box'>
-        <a class='social-facebook' href='#' target='_blank'><i class='fa fa-facebook'></i></a>
-        <a class='social-twitter' href='#' target='_blank'><i class='fa fa-twitter'></i></a>
-        <a class='social-gplus' href='#' target='_blank'><i class='fa fa-google-plus'></i></a>
-        <a class='social-linkedin' href='#' target='_blank'><i class='fa fa-linkedin'></i></a>
-        <a class='social-pinterest' href='#' target='_blank'><i class='fa fa-pinterest'></i></a>
-        <a class='social-youtube' href='#' target='_blank'><i class='fa fa-youtube'></i></a>
-        <a class='social-vimeo' href='#' target='_blank'><i class='fa fa-vimeo-square'></i></a>
-        <a class='social-instagram' href='#' target='_blank'><i class='fa fa-instagram'></i></a>
+        <a class='social-facebook' href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
+        <a class='social-twitter' href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
+        <a class='social-gplus' href='#0' target='_blank'><i class='fa fa-google-plus'></i></a>
+        <a class='social-linkedin' href='#0' target='_blank'><i class='fa fa-linkedin'></i></a>
+        <a class='social-pinterest' href='#0' target='_blank'><i class='fa fa-pinterest'></i></a>
+        <a class='social-youtube' href='#0' target='_blank'><i class='fa fa-youtube'></i></a>
+        <a class='social-vimeo' href='#0' target='_blank'><i class='fa fa-vimeo-square'></i></a>
+        <a class='social-instagram' href='#0' target='_blank'><i class='fa fa-instagram'></i></a>
     </div>
 
 </div>
@@ -149,22 +149,47 @@
         <!-- отдельный блок статьи-->
         <?php endforeach ?>
     </div>
-
-
-
-               
 </section>   <!-- galery -->
 
+        <!-- BOTTOM MENU -->
 
+<section class = "bottomMenu container-fluid">
+    <div class = "row">
+        <div class = "col-md-4 col-sm-4">
+            <ul>
+                <li><a href = "#0">Главная</a></li>
+                <li><a href = "#0">О проекте</a></li>
+                <li><a href = "#0">Контакты</a></li>
+            </ul>
+        </div>
+        <div class = "col-md-4 col-sm-4">
+            <ul>
+                <li><a href = "#0">Раздел 1</a></li>
+                <li><a href = "#0">Раздел 2</a></li>
+                <li><a href = "#0">Раздел 3</a></li>
+                <li><a href = "#0">Раздел 4</a></li>
+            </ul>
+        </div>
+        <div class = "col-md-4 col-sm-4">
+            <div class = "socialBottom">
+                <a class='social-facebook' href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
+                <a class='social-twitter' href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
+                <a class='social-gplus' href='#0' target='_blank'><i class='fa fa-google-plus'></i></a>
+                <a class='social-linkedin' href='#0' target='_blank'><i class='fa fa-linkedin'></i></a>
+                <a class='social-pinterest' href='#0' target='_blank'><i class='fa fa-pinterest'></i></a>
+                <a class='social-youtube' href='#0' target='_blank'><i class='fa fa-youtube'></i></a>
+                <a class='social-vimeo' href='#0' target='_blank'><i class='fa fa-vimeo-square'></i></a>
+                <a class='social-instagram' href='#0' target='_blank'><i class='fa fa-instagram'></i></a>
+            </div>
+            
+            <div class = "searchBottom">
+                <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
+                    <input name='q' type='search' placeholder='Search and hit enter'/>
+                </form>
+            </div>
+            
+        </div>
+</section>
 
-	
-	
-	
-	
-	
-	
-	
-
-	
 	</body>
 </html>
