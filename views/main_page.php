@@ -96,7 +96,7 @@
         
             <div class='col-md-4 col-sm-6  article-wrap' >                           
                 <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
-                    <img alt="#0" src="img/test_image.jpg">
+                    <img alt="#0" src="img/test_image3.jpg">
                     <div class='post-author'>
 
                         <div class='image-thumb'>
@@ -209,12 +209,10 @@
    
 <footer>
    <div class = "container">
-           
-        
-            <div class = "copyright text-right">
-                SiteName done by SiteName Studio &copy; 2016. Все права защищены.
-            </div>
-        
+                   
+        <div class = "copyright text-right">
+            SiteName done by SiteName Studio &copy; 2016. Все права защищены.
+        </div>
         
     </div>
 </footer>
