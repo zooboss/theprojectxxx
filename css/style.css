@@ -687,6 +687,11 @@ margin-right: 2%;
     list-style: none;
 }
 
+.bottomMenu li {
+    border-bottom: 1px solid grey;
+    padding: 5px 10px;
+}
+
 .bottomMenu a{
     text-decoration: none;
     color: #aaa;
@@ -699,10 +704,6 @@ margin-right: 2%;
 
 .socialBottom {
     
-}
-.socialBottom a{
-    font-size: 2em;
-    padding: 10px;
 }
 
 .searchBottom {

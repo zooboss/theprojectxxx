@@ -154,41 +154,53 @@
         <!-- BOTTOM MENU -->
 
 <section class = "bottomMenu container-fluid">
-    <div class = "row">
-        <div class = "col-md-4 col-sm-4 col-xs-6">
+    <div class = "container">
+        <div class = "col-md-2 col-sm-2 col-xs-6">
             <ul>
+                <li>Название сайта</li>
                 <li><a href = "#0">Главная</a></li>
                 <li><a href = "#0">О проекте</a></li>
                 <li><a href = "#0">Контакты</a></li>
+                <li><a href = "#0">Реклама</a></li>
             </ul>
         </div>
-        <div class = "col-md-4 col-sm-4 col-xs-6">
+        <div class = "col-md-2 col-sm-2 col-xs-6">
             <ul>
-                <li><a href = "#0">Раздел 1</a></li>
-                <li><a href = "#0">Раздел 2</a></li>
-                <li><a href = "#0">Раздел 3</a></li>
-                <li><a href = "#0">Раздел 4</a></li>
+                <li>Рубрики</li>
+                <li><a href = "#0">Внутренняя политика</a></li>
+                <li><a href = "#0">Внешняя политика</a></li>
+                <li><a href = "#0">Экономика</a></li>
+                <li><a href = "#0">История России</a></li>
+                <li><a href = "#0">Всемирная история</a></li>
             </ul>
         </div>
-        <div class = "col-md-4 col-sm-4">
-            <div class = "socialBottom">
-                <a class='social-facebook' href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
-                <a class='social-twitter' href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
-                <a class='social-gplus' href='#0' target='_blank'><i class='fa fa-google-plus'></i></a>
-                <a class='social-linkedin' href='#0' target='_blank'><i class='fa fa-linkedin'></i></a>
-                <a class='social-pinterest' href='#0' target='_blank'><i class='fa fa-pinterest'></i></a>
-                <a class='social-youtube' href='#0' target='_blank'><i class='fa fa-youtube'></i></a>
-                <a class='social-vimeo' href='#0' target='_blank'><i class='fa fa-vimeo-square'></i></a>
-                <a class='social-instagram' href='#0' target='_blank'><i class='fa fa-instagram'></i></a>
-            </div>
-            
+        
+        <div class = "col-md-3 col-sm-3 col-xs-6">
+            <ul class = "socialBottom">
+                <li>Мы в соцсетях</li>
+                <li><a class='social-facebook' href='#0' target='_blank'>Facebook <i class='fa fa-facebook'></i></a></li>
+                <li><a class='social-twitter' href='#0' target='_blank'>Twitter <i class='fa fa-twitter'></i></a></li>
+                <li><a class='social-twitter' href='#0' target='_blank'>Вконтакте <i class='fa fa-twitter'></i></a></li>
+            </ul>
+        </div>
+        
+        <div class = "col-md-3 col-sm-3 col-xs-6">
+            <ul class = "socialBottom">
+                <li> 1</li>
+                <li><a class='social-facebook' href='#0' target='_blank'>Facebook <i class='fa fa-facebook'></i></a></li>
+                <li><a class='social-twitter' href='#0' target='_blank'>Twitter <i class='fa fa-twitter'></i></a></li>
+                <li><a class='social-twitter' href='#0' target='_blank'>Вконтакте <i class='fa fa-twitter'></i></a></li>
+            </ul>
+        </div>
+        
+        <div class = "col-md-2 col-sm-2 col-xs-12">
             <div class = "searchBottom">
                 <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
                     <input name='q' type='search' placeholder='Search and hit enter'/>
                 </form>
             </div>
-            
         </div>
+        
 </section>
     
 <!-- Footer -->
