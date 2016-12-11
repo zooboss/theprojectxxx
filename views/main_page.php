@@ -9,8 +9,8 @@
 <link href='#0' rel='icon' type='image/x-icon'/>	<!-- сгенерировать фавиконы для всех устройств --> 
 <link type='text/css' rel='stylesheet' href='libs/css/bootstrap.css' />  <!-- локальное подключение для запуска на апаче -->
 <link type='text/css' rel='stylesheet' href='css/style.css' />
-<link type='text/css' rel='stylesheet' href='css/font-awesome.css' />
 <link type='text/css' rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link type='text/css' rel='stylesheet' href='libs/css/font-awesome.css' />
 <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type='text/javascript' src="js/main.js"></script>
 
@@ -28,10 +28,12 @@
 
     <div class='navlist'>
         <ul>
+               <img src = "img/logo.jpg" class = "logo">
             <li class='selected'><a href='#0'>Главная</a></li>
             <li><a href='#0'>About</a></li>
             <li><a href='#0'>Contact Us</a></li>
         </ul>
+                        
     </div>
 
     <!-- Меню для планшетов и мобильных  -->
@@ -59,23 +61,19 @@
             <input name='q' type='search' placeholder='Search and hit enter'/>
         </form>
     </div>
-
+    
     <!-- подобрать иконки -->
     <div class='share-box'>
-        <a class='social-facebook' href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
-        <a class='social-twitter' href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
-        <a class='social-gplus' href='#0' target='_blank'><i class='fa fa-google-plus'></i></a>
-        <a class='social-linkedin' href='#0' target='_blank'><i class='fa fa-linkedin'></i></a>
-        <a class='social-pinterest' href='#0' target='_blank'><i class='fa fa-pinterest'></i></a>
-        <a class='social-youtube' href='#0' target='_blank'><i class='fa fa-youtube'></i></a>
-        <a class='social-vimeo' href='#0' target='_blank'><i class='fa fa-vimeo-square'></i></a>
-        <a class='social-instagram' href='#0' target='_blank'><i class='fa fa-instagram'></i></a>
+        <a href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
+        <a href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
+        <a href='#0' target='_blank'><i class='fa fa-vk'></i></a>
+        <a href='#0' target='_blank'><i class='fa fa-odnoklassniki'></i></a>
+        <a href='#0' target='_blank'><i class='fa fa-telegram'></i></a>
+        <a href='#0' target='_blank'><i class='fa fa-rss'></i></a>
+        
     </div>
 
 </div>
-
-
-
 
 
 <header>
@@ -177,18 +175,18 @@
         <div class = "col-md-2 col-sm-2 col-xs-6">
             <ul>
                 <li>Мы в соцсетях</li>
-                <li><a class='social-facebook' href='#0' target='_blank'>Facebook <i class='fa fa-facebook'></i></a></li>
-                <li><a class='social-twitter' href='#0' target='_blank'>Twitter <i class='fa fa-twitter'></i></a></li>
-                <li><a class='social-twitter' href='#0' target='_blank'>Вконтакте <i class='fa fa-twitter'></i></a></li>
+                <li><a href='#0' target='_blank'><i class='fa fa-facebook-square'> Facebook </i></a></li>
+                <li><a href='#0' target='_blank'><i class='fa fa-twitter-square'> Twitter </i></a></li>
+                <li><a href='#0' target='_blank'><i class='fa fa-vk'></i> Вконтакте </a></li>
             </ul>
         </div>
         
         <div class = "col-md-2 col-sm-2 col-xs-6">
             <ul>
                 <li> &nbsp; </li>
-                <li><a class='social-facebook' href='#0' target='_blank'>Одноклассники <i class='fa fa-facebook'></i></a></li>
-                <li><a class='social-twitter' href='#0' target='_blank'>Telegramm <i class='fa fa-twitter'></i></a></li>
-                <li><a class='social-twitter' href='#0' target='_blank'>RSS <i class='fa fa-twitter'></i></a></li>
+                <li><a href='#0' target='_blank'><i class='fa fa-odnoklassniki-square'></i> Одноклассники </a></li>
+                <li><a href='#0' target='_blank'><i class='fa fa-telegram'></i> Telegramm </a></li>
+                <li><a href='#0' target='_blank'><i class='fa fa-rss'></i> RSS </a></li>
             </ul>
         </div>
         

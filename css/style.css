@@ -124,7 +124,12 @@
       }
 	  
 	  
-	 
+.logo {
+    display: inline-block;
+   
+    margin-bottom: 4px;
+}
+
 /* стили меню для мобильной версии */
 #mySidenav  {
 display: none;
