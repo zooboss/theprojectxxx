@@ -1,3 +1,18 @@
+<?php
+session_start();
+require_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/registration.php");
+$user_home = new USER();
+
+if(!$user_home->is_logged_in())
+{
+	$user_home->redirect('index.php');
+}
+
+$stmt = $user_home->runQuery("SELECT * FROM users WHERE userID=:uid");
+$stmt->execute(array(":uid"=>$_SESSION['userSession']));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
 
 <html>
@@ -19,7 +34,11 @@
 </head>
     
 <body>   
-
+<?php echo $row['userEmail']; ?>
+<?php echo $row['userEmail']; ?>
+<?php echo $row['userEmail']; ?>
+<?php echo $row['userEmail']; ?>
+<a tabindex="-1" href="logout.php">Выйти</a>
 <div itemscope='itemscope' itemtype='http://schema.org/Blog' class="invisible">  <!-- Прописать в css display: none -->
 <meta content='' itemprop='name'/>    <!-- Придумать название это тег для микроразметки и поисковиков -->
 </div>
@@ -86,6 +105,7 @@
     
 
 
+  
 	
 <section class='container-fluid articlesGallery'>
     
