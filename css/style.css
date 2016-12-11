@@ -692,8 +692,16 @@ margin-right: 2%;
     color: #aaa;
 }
 
+.bottomMenu a:hover, .bottomMenu a:active, .bottomMenu a:link{
+    text-decoration: none;
+    color: grey;
+}
+
+.socialBottom {
+    
+}
 .socialBottom a{
-    font-size: 20px;
+    font-size: 2em;
     padding: 10px;
 }
 
@@ -707,7 +715,24 @@ margin-right: 2%;
 }
 
 
+/*                  FOOTER */
 
+footer {
+    background: #444;
+    border-top: 2px solid grey;
+    
+}
+
+.logoFooter {
+    width: 90%;
+    height: 60px;
+    background: #aaa;
+}
+
+.copyright {
+    font-size: 18px;
+    color: #aaa;
+}
 
 
 

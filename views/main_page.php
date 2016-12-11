@@ -155,14 +155,14 @@
 
 <section class = "bottomMenu container-fluid">
     <div class = "row">
-        <div class = "col-md-4 col-sm-4">
+        <div class = "col-md-4 col-sm-4 col-xs-6">
             <ul>
                 <li><a href = "#0">Главная</a></li>
                 <li><a href = "#0">О проекте</a></li>
                 <li><a href = "#0">Контакты</a></li>
             </ul>
         </div>
-        <div class = "col-md-4 col-sm-4">
+        <div class = "col-md-4 col-sm-4 col-xs-6">
             <ul>
                 <li><a href = "#0">Раздел 1</a></li>
                 <li><a href = "#0">Раздел 2</a></li>
@@ -190,6 +190,30 @@
             
         </div>
 </section>
+    
+<!-- Footer -->
+   
+<footer class = "container-fluid">
+   <div class = "row">
+       <div class = "col-md-4 col-sm-6">
+            <div class = "logoFooter">
 
-	</body>
+            </div>
+        </div>
+        
+        <div class = "col-md-4">
+            
+        </div>
+        
+        <div class = "col-md-4 col-sm-6">
+            <div class = "copyright">
+                SiteName done by SiteName Studio &copy; 2016
+            </div>
+        </div>
+        
+    </div>
+</footer>
+    
+
+</body>
 </html>
