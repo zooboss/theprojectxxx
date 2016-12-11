@@ -15,7 +15,7 @@ if(isset($_POST['btn-login']))
 	
 	if($user_login->login($email,$upass)) 
 	{
-		$user_login->redirect('/views/main_page.php');
+		$user_login->redirect('views/main_page.php');
 	}
 }
 require_once(dirname(__FILE__)."/models/database.php");
@@ -27,7 +27,7 @@ $articles = articles_all($link);
 
 
 ?>
-  <body id="login">
+  <div id="login">
     <div class="container">
 		<?php 
 		if(isset($_GET['inactive']))
@@ -64,4 +64,4 @@ $articles = articles_all($link);
     </div> <!-- /container -->
     <script src="bootstrap/js/jquery-1.9.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-  </body>
+  </div>

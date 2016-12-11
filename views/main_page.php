@@ -38,7 +38,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <?php echo $row['userEmail']; ?>
 <?php echo $row['userEmail']; ?>
 <?php echo $row['userEmail']; ?>
-<a tabindex="-1" href="logout.php">Выйти</a>
+<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  <!--Исправить путь -->
 <div itemscope='itemscope' itemtype='http://schema.org/Blog' class="invisible">  <!-- Прописать в css display: none -->
 <meta content='' itemprop='name'/>    <!-- Придумать название это тег для микроразметки и поисковиков -->
 </div>
