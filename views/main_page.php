@@ -131,7 +131,7 @@
  <?php }   // быдлокод конец
  elseif($user_login->is_logged_in()!="")
  {
- echo '<h1>Вы вошли как' . $row['userEmail'] . ', но кого это ебет?</h1>';
+ echo '<h1>Вы вошли как ' . $row['userName'] . ', но кого это ебет?</h1>';
  echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
  }  ?>   <!-- Быдлокод конец -->
  
