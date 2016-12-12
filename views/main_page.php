@@ -1,18 +1,4 @@
-<?php
-session_start();
-require_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/registration.php");
-$user_home = new USER();
 
-if(!$user_home->is_logged_in())
-{
-	$user_home->redirect('index.php');
-}
-
-$stmt = $user_home->runQuery("SELECT * FROM users WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['userSession']));
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-?>
 <!DOCTYPE html>
 
 <html>
@@ -34,11 +20,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 </head>
     
 <body>   
-<?php echo $row['userEmail']; ?>
-<?php echo $row['userEmail']; ?>
-<?php echo $row['userEmail']; ?>
-<?php echo $row['userEmail']; ?>
-<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  <!--Исправить путь -->
+
+
+
+
 <div itemscope='itemscope' itemtype='http://schema.org/Blog' class="invisible">  <!-- Прописать в css display: none -->
 <meta content='' itemprop='name'/>    <!-- Придумать название это тег для микроразметки и поисковиков -->
 </div>
@@ -102,9 +87,55 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     <h1 class="text-center"> Название нашего сайта для СЕО, можно скрыть </h1>   
     </div>
 </header>      
-    
 
 
+<?php if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
+ 
+<div id="login">
+    <div class="container">
+	
+		<?php 
+		if(isset($_GET['inactive']))
+		{
+			?>
+            <div class='alert alert-error'>
+				<button class='close' data-dismiss='alert'>&times;</button>
+				Не активирован
+			</div>
+            <?php
+		}
+		?>
+        <form class="form-signin" method="post">
+        <?php
+        if(isset($_GET['error']))
+		{
+			?>
+            <div class='alert alert-success'>
+				<button class='close' data-dismiss='alert'>&times;</button>
+				<strong>Неправильный логин или пароль</strong> 
+			</div>
+            <?php
+		}
+		?>
+        <h2 class="form-signin-heading">Войти.</h2><hr />
+        <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
+        <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
+     	<hr />
+        <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
+        <a href="models/registration/signup.php" style="float:right;" class="btn btn-large">Регистрация</a><hr />
+        <a href="models/registration/fpass.php">Забыли пароль ? </a>
+      </form>
+
+    </div> <!-- /container -->
+  </div>
+ <?php }   // быдлокод конец
+ elseif($user_login->is_logged_in()!="")
+ {
+ echo '<h1>Вы вошли как' . $row['userEmail'] . ', но кого это ебет?</h1>';
+ echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
+ }  ?>   <!-- Быдлокод конец -->
+ 
+  
   
 	
 <section class='container-fluid articlesGallery'>
