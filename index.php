@@ -9,12 +9,15 @@ if(isset($_POST['btn-login']))
 {
 	$email = trim($_POST['txtemail']);
 	$upass = trim($_POST['txtupass']);
-}
+	$user_login->login($email,$upass);
+}// отправка формы регистрации
 
+if($user_login->is_logged_in()!="")
+{
 $stmt = $user_login->runQuery("SELECT * FROM users WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
+}// если авторизован, то выбираем из базы через PDO, можно убрать условие, но будет вылезать ошибка.
 require_once(dirname(__FILE__)."/models/database.php");
 $link = db_connect();
 

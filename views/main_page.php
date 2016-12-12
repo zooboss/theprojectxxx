@@ -92,7 +92,7 @@
 <?php if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
  
 <div id="login">
-    <div class="container">
+    <div class="container"> 
 	
 		<?php 
 		if(isset($_GET['inactive']))
