@@ -1,18 +1,18 @@
 <?php
 session_start();
-require_once 'class.user.php';
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/registration.php");
 $user = new USER();
 
 if($user->is_logged_in()!="")
 {
-	$user->redirect('home.php');
+	$user->redirect('index.php');
 }
 
 if(isset($_POST['btn-submit']))
 {
 	$email = $_POST['txtemail'];
 	
-	$stmt = $user->runQuery("SELECT userID FROM tbl_users WHERE userEmail=:email LIMIT 1");
+	$stmt = $user->runQuery("SELECT userID FROM users WHERE userEmail=:email LIMIT 1");
 	$stmt->execute(array(":email"=>$email));
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);	
 	if($stmt->rowCount() == 1)
@@ -20,7 +20,7 @@ if(isset($_POST['btn-submit']))
 		$id = base64_encode($row['userID']);
 		$code = md5(uniqid(rand()));
 		
-		$stmt = $user->runQuery("UPDATE tbl_users SET tokenCode=:token WHERE userEmail=:email");
+		$stmt = $user->runQuery("UPDATE users SET tokenCode=:token WHERE userEmail=:email");
 		$stmt->execute(array(":token"=>$code,"email"=>$email));
 		
 		$message= "

@@ -26,17 +26,22 @@ class USER
 		return $stmt;
 	}
 	
-	public function register($uname,$email,$upass,$code)
+	//Регистрация
+	public function register($uname,$email,$upass,$code,$gender)
 	{
 		try
-		{							
+		{			  		
 			$password = md5($upass);
-			$stmt = $this->conn->prepare("INSERT INTO users(userName,userEmail,userPass,tokenCode) 
-			                                             VALUES(:user_name, :user_mail, :user_pass, :active_code)");
+			$registration_date = date("d.m.Y.H.i.s");
+			$stmt = $this->conn->prepare("INSERT INTO users(userName,userEmail,userPass,tokenCode,datereg,sex) 
+			                                             VALUES(:user_name, :user_mail, :user_pass, :active_code, :reg_date, :user_sex)");
 			$stmt->bindparam(":user_name",$uname);
 			$stmt->bindparam(":user_mail",$email);
 			$stmt->bindparam(":user_pass",$password);
 			$stmt->bindparam(":active_code",$code);
+			$stmt->bindparam(":reg_date",$registration_date);
+			$stmt->bindparam(":user_sex",$gender);
+			
 			$stmt->execute();	
 			return $stmt;
 		}
@@ -46,6 +51,7 @@ class USER
 		}
 	}
 	
+	// Вход в систему
 	public function login($email,$upass)
 	{
 		try
@@ -87,7 +93,7 @@ class USER
 		}
 	}
 	
-	
+	// Проверка авторизации
 	public function is_logged_in()
 	{
 		if(isset($_SESSION['userSession']))
@@ -96,17 +102,20 @@ class USER
 		}
 	}
 	
+	//Перенаправление
 	public function redirect($url)
 	{
 		header("Location: $url");
 	}
 	
+	// Выход из системы
 	public function logout()
 	{
 		session_destroy();
 		$_SESSION['userSession'] = false;
 	}
 	
+	// Отправка почты
 	function send_mail($email,$message,$subject)
 	{						
 		require_once('registration/class.phpmailer.php');

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -87,7 +86,6 @@
     <h1 class="text-center"> Название нашего сайта для СЕО, можно скрыть </h1>   
     </div>
 </header>      
-
 
 <?php if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
  

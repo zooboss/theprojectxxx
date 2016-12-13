@@ -15,6 +15,11 @@ if(isset($_POST['btn-signup']))
 	$uname = trim($_POST['txtuname']);
 	$email = trim($_POST['txtemail']);
 	$upass = trim($_POST['txtpass']);
+	if (isset($_POST['gender']))
+	{
+	$gender = trim($_POST['gender']);
+	}
+	else $gender = 'Не указан';
 	$code = md5(uniqid(rand()));
 	
 	$stmt = $reg_user->runQuery("SELECT * FROM users WHERE userEmail=:email_id");
@@ -32,7 +37,7 @@ if(isset($_POST['btn-signup']))
 	}
 	else
 	{
-		if($reg_user->register($uname,$email,$upass,$code))
+		if($reg_user->register($uname,$email,$upass,$code,$gender))
 		{			
 			$id = $reg_user->lasdID();		
 			$key = base64_encode($id);
@@ -54,7 +59,7 @@ if(isset($_POST['btn-signup']))
 			$msg = "
 					<div class='alert alert-success'>
 						<button class='close' data-dismiss='alert'>&times;</button>
-						<strong>Success!</strong>  We've sent an email to $email.
+						<strong>Success!</strong>  We've sent an email to $email $gender.
                     Please click on the confirmation link in the email to create your account. 
 			  		</div>
 					";
@@ -88,6 +93,10 @@ if(isset($_POST['btn-signup']))
         <input type="text" class="input-block-level" placeholder="Username" name="txtuname" required />
         <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
         <input type="password" class="input-block-level" placeholder="Password" name="txtpass" required />
+		 <input type="radio" name="gender" value="Мужской">мужской
+  <input type="radio" name="gender" value="Женский"> женский
+  <!-- и т.д. -->
+</datalist>
      	<hr />
         <button class="btn btn-large btn-primary" type="submit" name="btn-signup">Sign Up</button>
         <a href="index.php" style="float:right;" class="btn btn-large">Sign In</a>

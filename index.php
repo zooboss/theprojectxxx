@@ -3,10 +3,11 @@ session_start();
 require_once("/models/registration.php"); 
 $user_login = new USER();
 
-
+  $ip = $_SERVER["REMOTE_ADDR"];
  
 if(isset($_POST['btn-login']))
-{
+{   
+    $ip_sent = ($_POST[$ip]);
 	$email = trim($_POST['txtemail']);
 	$upass = trim($_POST['txtupass']);
 	$user_login->login($email,$upass);
@@ -26,5 +27,7 @@ $articles = articles_all($link);
 
 include(dirname(__FILE__) . "/views/main_page.php");
 
+echo $_SERVER["REMOTE_ADDR"];
+echo date("d.m.Y");
 ?>
   
