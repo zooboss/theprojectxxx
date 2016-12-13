@@ -8,7 +8,7 @@ class Database
     private $password = "";
 	private $charset = "UTF8";
     public $conn;
-     
+      
     public function dbConnection()
 	{
      
