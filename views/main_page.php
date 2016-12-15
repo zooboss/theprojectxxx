@@ -30,11 +30,13 @@
 <div class='top-navigation'>
 
     <div class='navlist'>
+       <img src = "img/logo.jpg" class = "logo">
         <ul>
-               <img src = "img/logo.jpg" class = "logo">
-            <li class='selected'><a href='#0'>Главная</a></li>
-            <li><a href='#0'>About</a></li>
-            <li><a href='#0'>Contact Us</a></li>
+            
+            <li class='selected'><a href='#0'>Политика</a></li>
+            <li><a href='#0'>Экономика</a></li>
+            <li><a href='#0'>История России</a></li>
+            <li><a href='#0'>Всемирная история</a></li>
         </ul>
                         
     </div>
@@ -79,51 +81,54 @@
 </div>
 
 
-<header>
-    <div class="col-md-12">   
-    <h1 class="text-center"> Название нашего сайта для СЕО, можно скрыть </h1>   
-    </div>
-</header>      
 
 <?php if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
- 
-<div id="login">
-    <div class="container"> 
-	
-		<?php 
-		if(isset($_GET['inactive']))
-		{
-			?>
-            <div class='alert alert-error'>
-				<button class='close' data-dismiss='alert'>&times;</button>
-				Не активирован
-			</div>
-            <?php
-		}
-		?>
-        <form class="form-signin" method="post">
-        <?php
-        if(isset($_GET['error']))
-		{
-			?>
-            <div class='alert alert-success'>
-				<button class='close' data-dismiss='alert'>&times;</button>
-				<strong>Неправильный логин или пароль</strong> 
-			</div>
-            <?php
-		}
-		?>
-        <h2 class="form-signin-heading">Войти.</h2><hr />
-        <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
-        <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
-     	<hr />
-        <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
-        <a href="models/registration/signup.php" style="float:right;" class="btn btn-large">Регистрация</a><hr />
-        <a href="models/registration/fpass.php">Забыли пароль ? </a>
-      </form>
 
-    </div> <!-- /container -->
-  </div>
+ 
+<section id="login" class = "loginBlock container-fluid">
+    <div class = "col-md-9 col-sm-6 text-center"><h1>Название сайта</h1></div>
+    <div class = "col-md-3 col-sm-6 text-right">
+        <div class = "loginSocial"> 
+            <a href = "#0"><div class = "loginSocialLink"></div></a>
+            <a href = "#0"><div class = "loginSocialLink"></div></a>
+            <a href = "#0"><div class = "loginSocialLink"></div></a>
+        </div>
+        <div class = "loginStandart">
+            <?php 
+            if(isset($_GET['inactive']))
+            {
+                ?>
+                <div class='alert alert-error'>
+                    <button class='close' data-dismiss='alert'>&times;</button>
+                    Не активирован
+                </div>
+                <?php
+            }
+            ?>
+            <form class="form-signin" method="post">
+            <?php
+            if(isset($_GET['error']))
+            {
+                ?>
+                <div class='alert alert-success'>
+                    <button class='close' data-dismiss='alert'>&times;</button>
+                    <strong>Неправильный логин или пароль</strong> 
+                </div>
+                <?php
+            }
+            ?>
+
+            <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
+            <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
+            <hr />
+            <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
+            <a href="models/registration/signup.php" style="float:right;" class="btn btn-large">Регистрация</a><hr />
+            <a href="models/registration/fpass.php">Забыли пароль ? </a>
+          </form>
+      </div>
+      
+    </div>
+</section>
  <?php }   // быдлокод конец
  elseif($user_login->is_logged_in()!="")
  {
