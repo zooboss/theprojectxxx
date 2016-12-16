@@ -86,8 +86,8 @@
 
  
 <section id="login" class = "loginBlock container-fluid">
-    <div class = "col-md-9 col-sm-6 text-center"><h1>Название сайта</h1></div>
-    <div class = "col-md-3 col-sm-6 text-right">
+    <div class = "col-md-10 col-sm-6 text-center"><h1>Название сайта</h1></div>
+    <div class = "col-md-2 col-sm-6 text-right">
         <div class = "loginSocial"> 
             <a href = "#0"><div class = "loginSocialLink"></div></a>
             <a href = "#0"><div class = "loginSocialLink"></div></a>
@@ -106,24 +106,24 @@
             }
             ?>
             <form class="form-signin" method="post">
-            <?php
-            if(isset($_GET['error']))
-            {
-                ?>
-                <div class='alert alert-success'>
-                    <button class='close' data-dismiss='alert'>&times;</button>
-                    <strong>Неправильный логин или пароль</strong> 
-                </div>
                 <?php
-            }
-            ?>
+                if(isset($_GET['error']))
+                {
+                    ?>
+                    <div class='alert alert-success'>
+                        <button class='close' data-dismiss='alert'>&times;</button>
+                        <strong>Неправильный логин или пароль</strong> 
+                    </div>
+                    <?php
+                }
+                ?>
 
-            <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
-            <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
-            <hr />
-            <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
-            <a href="models/registration/signup.php" style="float:right;" class="btn btn-large">Регистрация</a><hr />
-            <a href="models/registration/fpass.php">Забыли пароль ? </a>
+                <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
+                <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
+                <hr />
+                <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
+                <a href="models/registration/signup.php" class="btn btn-large">Регистрация</a><hr />
+                <a href="models/registration/fpass.php">Забыли пароль ? </a>
           </form>
       </div>
       
