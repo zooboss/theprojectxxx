@@ -28,6 +28,5 @@ $articles = articles_all($link);
 include(dirname(__FILE__) . "/views/main_page.php");
 
 echo $_SERVER["REMOTE_ADDR"];
-echo date("d.m.Y");
 ?>
   
