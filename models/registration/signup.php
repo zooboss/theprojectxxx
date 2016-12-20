@@ -75,19 +75,24 @@ if(isset($_POST['btn-signup']))
 <html>
   <head>
     <title>Signup | Coding Cage</title>
-    <!-- Bootstrap -->
+   
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     <link href="assets/styles.css" rel="stylesheet" media="screen">
-     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<link rel="stylesheet" href="pickmeup.css" type="text/css" />
+<script type="text/javascript" src="pickmeup.js"></script>
+<script type="text/javascript" src="demo.js"></script>
+<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
-  <body id="login">
+ 
+
+
+
+
+  <body >
+
     <div class="container">
-				<?php if(isset($msg)) echo $msg;  ?>
+		Дата рождения: <input type="datetime" id='date' value="">
       <form class="form-signin" method="post">
         <h2 class="form-signin-heading">Sign Up</h2><hr />
         <input type="text" class="input-block-level" placeholder="Username" name="txtuname" required />
@@ -95,15 +100,21 @@ if(isset($_POST['btn-signup']))
         <input type="password" class="input-block-level" placeholder="Password" name="txtpass" required />
 		 <input type="radio" name="gender" value="Мужской">мужской
   <input type="radio" name="gender" value="Женский"> женский
+  		
+  
+  
   <!-- и т.д. -->
 </datalist>
      	<hr />
         <button class="btn btn-large btn-primary" type="submit" name="btn-signup">Sign Up</button>
         <a href="index.php" style="float:right;" class="btn btn-large">Sign In</a>
       </form>
+	  
+	  
+	  
 
     </div> <!-- /container -->
-    <script src="vendors/jquery-1.9.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+	
+
   </body>
 </html>
