@@ -27,6 +27,7 @@ if(isset($_POST['btn-signup']))
 	$birth_date = ($_POST['birthdate']);
 	}
 	
+	
 	$code = md5(uniqid(rand()));
 	
 	$stmt = $reg_user->runQuery("SELECT * FROM users WHERE userEmail=:email_id");
@@ -94,8 +95,7 @@ if(isset($_POST['btn-signup']))
 
 
   <body >
-	<?php if(isset($msg)) echo $msg; 
-echo date('d.m.y');	?>
+	<?php if(isset($msg)) echo $msg;?>
     <div class="container">
       <form class="form-signin" method="post">
         <h2 class="form-signin-heading">Sign Up</h2><hr />
@@ -104,7 +104,7 @@ echo date('d.m.y');	?>
         <input type="password" class="input-block-level" placeholder="Password" name="txtpass" required />
 	    <input type="radio" name="gender" value="Мужской"/>мужской
         <input type="radio" name="gender" value="Женский"/> женский
-  	Дата рождения: <input type="datetime" name='birthdate' id='date' value='' />
+  	Дата рождения(гггг.мм.дд): <input type="datetime" name='birthdate' id='date' value='' />
   		
   
   
