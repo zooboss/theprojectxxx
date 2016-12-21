@@ -27,20 +27,21 @@ class USER
 	}
 	
 	//Регистрация
-	public function register($uname,$email,$upass,$code,$gender)
+	public function register($uname,$email,$upass,$code,$gender,$birth_date)
 	{
 		try
 		{			  		
 			$password = md5($upass);
 			$registration_date = date("d.m.Y.H.i.s");
-			$stmt = $this->conn->prepare("INSERT INTO users(userName,userEmail,userPass,tokenCode,datereg,sex) 
-			                                             VALUES(:user_name, :user_mail, :user_pass, :active_code, :reg_date, :user_sex)");
+			$stmt = $this->conn->prepare("INSERT INTO users(userName,userEmail,userPass,tokenCode,datereg,sex,birthday) 
+			                                             VALUES(:user_name, :user_mail, :user_pass, :active_code, :reg_date, :user_sex, :birth)");
 			$stmt->bindparam(":user_name",$uname);
 			$stmt->bindparam(":user_mail",$email);
 			$stmt->bindparam(":user_pass",$password);
 			$stmt->bindparam(":active_code",$code);
 			$stmt->bindparam(":reg_date",$registration_date);
 			$stmt->bindparam(":user_sex",$gender);
+			$stmt->bindparam(":birth",$birth_date);
 			
 			$stmt->execute();	
 			return $stmt;
