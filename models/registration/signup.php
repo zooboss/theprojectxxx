@@ -20,12 +20,44 @@ if(isset($_POST['btn-signup']))
 	{
 	$gender = trim($_POST['gender']);
 	}
-	else $gender = 'Не указан';
+	else 
+	{
+	$gender = 'Не указан';
+	}
 	
 	if (isset($_POST['birthdate']))
 	{
 	$birth_date = ($_POST['birthdate']);
 	}
+	
+	if (isset($_POST['name']))
+	{
+	$name = ($_POST['name']);
+	}
+	else 
+	{
+	$name = 'Не указано';
+	}
+	
+	if (isset($_POST['surname']))
+	{
+	$surname = ($_POST['surname']);
+	}
+	else 
+	{
+	$surname = 'Не указана';
+	} 
+	
+	if (isset($_POST['patronymic']))
+	{
+	$patronymic = ($_POST['patronymic']);
+	}
+	else 
+	{
+	$patronymic = 'Не указано' ;
+	}
+	
+	
 	
 		//* начало условия, если отправлен номер*// 
 	if (isset($_POST['phone_number']))
@@ -118,7 +150,10 @@ function phoneBlocks($number){
 
 $phone_send = phone($phone_number); 
 	}
-elseif (!isset($_POST['phone_number'])) {} $phone_send = 'Не указан';
+elseif (!isset($_POST['phone_number'])) 
+{
+$phone_send = 'Не указан';
+} 
 	
 	//* конец условия, если отправлен номер*// 
 	
@@ -138,7 +173,7 @@ elseif (!isset($_POST['phone_number'])) {} $phone_send = 'Не указан';
 	}
 	else
 	{
-		if($reg_user->register($uname,$email,$upass,$code,$gender,$birth_date,$phone_send))
+		if($reg_user->register($uname,$email,$upass,$code,$gender,$birth_date,$phone_send,$name,$surname,$patronymic))
 		{			
 			$id = $reg_user->lasdID();		
 			$key = base64_encode($id);
@@ -199,6 +234,9 @@ elseif (!isset($_POST['phone_number'])) {} $phone_send = 'Не указан';
         <input type="radio" name="gender" value="Женский"/> женский
   	Дата рождения(гггг.мм.дд): <input type="datetime" name='birthdate' id='date' value='' />
 		Номер телефона (полный с кодом страны)<input type="phone" name='phone_number'  value='' />
+		<input type="text" class="input-block-level" placeholder="Фамилия" name="name" />
+		<input type="text" class="input-block-level" placeholder="Имя" name="surname"  />
+		<input type="text" class="input-block-level" placeholder="Отчество" name="patronymic"  />
   		
   
   
