@@ -214,36 +214,195 @@ $phone_send = 'Не указан';
 
 <link rel="stylesheet" href="/theprojectxxx/libs/css/pickmeup.css" type="text/css" />	
 <script type="text/javascript" src="/theprojectxxx/libs/js/pickmeup.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<style>
+.inputRed{
+border:1px solid #ff4040;
+background: #ffcece;
+}
+.inputGreen{
+border:1px solid #83c954;
+background: #e8ffce;
+}
 
-
+</style>
   </head>
  
 
 
+<script type="text/javascript">
 
+var login,
+	email,
+	password,
+	password2,
+	loginStat,
+	emailStat,
+	passwordStat,
+	password2Stat;
+
+$(function() {
+	//Логин
+	$("#login").change(function(){
+		login = $("#login").val();
+		var expLogin = /^[a-zA-Z0-9_]+$/g;
+		var resLogin = login.search(expLogin);
+		if(resLogin == -1){
+			$("#login").next().hide().text("Неверный логин").css("color","red").fadeIn(400);
+			$("#login").removeClass().addClass("inputRed");
+			loginStat = 0;
+			buttonOnAndOff();
+		}else{
+			$.ajax({
+			url: "testLoginEmail.php",
+			type: "GET",
+			data: "login=" + login,
+			cache: false,
+			success: function(response){
+				if(response == "no"){
+					$("#login").next().hide().text("Логин занят").css("color","red").fadeIn(400);
+					$("#login").removeClass().addClass("inputRed");					
+				}else{					
+					$("#login").removeClass().addClass("inputGreen");
+					$("#login").next().text("");
+				}			
+				
+			}
+		});
+			loginStat = 1;
+			buttonOnAndOff();
+		}
+		
+	});
+	$("#login").keyup(function(){
+		$("#login").removeClass();
+		$("#login").next().text("");
+	});
+	
+	// Email
+	$("#email").change(function(){
+		email = $("#email").val();
+		var expEmail = /[-0-9a-z_]+@[-0-9a-z_]+\.[a-z]{2,6}/i;
+		var resEmail = email.search(expEmail);
+		if(resEmail == -1){
+			$("#email").next().hide().text("Неверный формат Email").css("color","red").fadeIn(400);
+			$("#email").removeClass().addClass("inputRed");
+			emailStat = 0;
+			buttonOnAndOff();
+		}else{
+			
+			$.ajax({
+			url: "testingLoginEmail.php",
+			type: "GET",
+			data: "email=" + email,
+			cache: false,			
+			success: function(response){
+				if(response == "no"){
+					$("#email").next().hide().text("Email Занят").css("color","red").fadeIn(400);
+					$("#email").removeClass().addClass("inputRed");					
+				}else{					
+					$("#email").removeClass().addClass("inputGreen");
+					$("#email").next().text("");
+				}					
+			}
+		});
+			emailStat = 1;
+			buttonOnAndOff();
+		}
+		
+	});	
+	$("#email").keyup(function(){
+		$("#email").removeClass();
+		$("#email").next().text("");
+	});	
+	
+	
+	//Пароль
+	$("#password").change(function(){
+		password = $("#password").val();
+		if(password.length < 6){
+			$("#password").next().hide().text("Слишком короткий пароль").css("color","red").fadeIn(400);
+			$("#password").removeClass().addClass("inputRed");
+			passwordStat = 0;
+			buttonOnAndOff();
+		}else{
+			$("#password").removeClass().addClass("inputGreen");
+			$("#password").next().text("");
+			passwordStat = 1;
+			buttonOnAndOff();
+		}		
+	});
+	$("#password").keyup(function(){
+		$("#password").removeClass();
+		$("#password").next().text("");
+	});
+	
+	//Проверка пароля
+	$("#password2").change(function(){
+		if(password2 != password){
+			$("#password2").next().hide().text("Пароли не совпадают").css("color","red").fadeIn(400);
+			$("#password2").removeClass().addClass("inputRed");
+			password2Stat = 0;
+			buttonOnAndOff();
+		}else{
+			$("#password2").removeClass().addClass("inputGreen");
+			$("#password2").next().text("");
+		}		
+	});
+	$("#password2").keyup(function(){
+		password2 = $("#password2").val();
+		if(password2 == password){
+			password2Stat = 1;
+			buttonOnAndOff();
+		}else{
+			password2Stat = 0;
+			buttonOnAndOff();
+		}
+	});
+	
+	function buttonOnAndOff(){
+		if(emailStat == 1 && passwordStat == 1 && password2Stat == 1 && loginStat == 1){
+			$("#submit").removeAttr("disabled");
+		}else{
+			$("#submit").attr("disabled","disabled");
+		}
+	
+	}
+	
+});
+</script>
 
   <body >
 	<?php if(isset($msg)) echo $msg;?>
-    <div class="container">
-      <form class="form-signin" method="post">
+
+      <form  method="post">
         <h2 class="form-signin-heading">Sign Up</h2><hr />
-        <input type="text" class="input-block-level" placeholder="Логин" name="txtuname" required />
-        <input type="email" class="input-block-level" placeholder="Адрес электронной почты" name="txtemail" required />
-        <input type="password" class="input-block-level" placeholder="Пароль" name="txtpass" required />
-	    <input type="radio" name="gender" value="Мужской"/>мужской
-        <input type="radio" name="gender" value="Женский"/> женский
-  	Дата рождения(гггг.мм.дд): <input type="datetime" name='birthdate' id='date' value='' />
-		Номер телефона (полный с кодом страны)<input type="phone" name='phone_number'  value='' />
-		<input type="text" class="input-block-level" placeholder="Фамилия" name="name" />
-		<input type="text" class="input-block-level" placeholder="Имя" name="surname"  />
-		<input type="text" class="input-block-level" placeholder="Отчество" name="patronymic"  />
+		<label><font color='red'>*</font> Ваш Логин:<br></label>
+        <input type="text" class="input-block-level" id='login' placeholder="Логин" name="txtuname" required /> <span></span> <br> 
+		
+		<label><font color='red'>*</font> Ваш E-mail:<br></label>
+        <input type="email" class="input-block-level" id='email' placeholder="Адрес электронной почты" name="txtemail" required /> <span></span> <br>
+        
+		<label><font color='red'>*</font> Ваш пароль:<br></label>
+		<input type="password" class="input-block-level" id='password' placeholder="Пароль" name="txtpass" required /> <span></span> <br>
+		
+		<label><font color='red'>*</font> Подтвердите пароль:<br></label>
+		<input type="password" class="input-block-level" id='password2' placeholder="Проверка пароля" name="txtpass_check" required /> <span></span>  <br>
+	    
+		<input type="radio" name="gender" value="Мужской"/>мужской
+        <input type="radio" name="gender" value="Женский"/> женский <br>
+  	Дата рождения(гггг.мм.дд): <input type="datetime" name='birthdate' id='date' value='' /> 
+		Номер телефона (полный с кодом страны)<input type="phone" name='phone_number'  value='' /> <br>
+		<input type="text" class="input-block-level" placeholder="Фамилия" name="name" /> <br>
+		<input type="text" class="input-block-level" placeholder="Имя" name="surname"  /> <br>
+		<input type="text" class="input-block-level" placeholder="Отчество" name="patronymic"  /> 
   		
   
   
   <!-- и т.д. -->
 </datalist>
      	<hr />
-        <button class="btn btn-large btn-primary" type="submit" name="btn-signup">Sign Up</button>
+       <input type="submit" name="submit" value="Зарегистрироваться" id="submit" disabled>
         <a href="index.php" style="float:right;" class="btn btn-large">Sign In</a>
       </form>
 	  
@@ -255,9 +414,13 @@ addEventListener('DOMContentLoaded', function () {
 	});
 });
 </script>
+
+
+<!--Проверка пароля, логина и всего остального -->
+
 	  
 
-    </div> <!-- /container -->
+
 	
 <?php
 
