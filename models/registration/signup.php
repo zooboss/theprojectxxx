@@ -2,7 +2,9 @@
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/theprojectxxx/models/registration.php';
 
+
 $reg_user = new USER();
+
 
 if($reg_user->is_logged_in()!="")
 {
@@ -57,7 +59,7 @@ if(isset($_POST['btn-signup']))
 	$patronymic = 'Не указано' ;
 	}
 	
-	
+	 
 	
 		//* начало условия, если отправлен номер*// 
 	if (isset($_POST['phone_number']))
@@ -206,6 +208,7 @@ $phone_send = 'Не указан';
 		}		
 	}
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -245,7 +248,7 @@ $(function() {
 	//Логин
 	$("#login").change(function(){
 		login = $("#login").val();
-		var expLogin = /^[a-zA-Z0-9_]+$/g;
+		var expLogin = /^[а-яА-ЯёЁa-zA-Z0-9]+$/g;
 		var resLogin = login.search(expLogin);
 		if(resLogin == -1){
 			$("#login").next().hide().text("Неверный логин").css("color","red").fadeIn(400);
@@ -292,7 +295,7 @@ $(function() {
 		}else{
 			
 			$.ajax({
-			url: "testingLoginEmail.php",
+			url: "testLoginEmail.php",
 			type: "GET",
 			data: "email=" + email,
 			cache: false,			
@@ -422,8 +425,6 @@ addEventListener('DOMContentLoaded', function () {
 
 
 	
-<?php
 
-?> 
   </body>
 </html>

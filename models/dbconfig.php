@@ -9,6 +9,7 @@ class Database
 	private $charset = "UTF8";
     public $conn;
       
+	  
     public function dbConnection()
 	{
      
@@ -16,14 +17,24 @@ class Database
         try
 		{
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name .";charset=". $this->charset, $this->username, $this->password);
-			$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);	
+			$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);	//заменить на PDO::ERRMODE_SILENT //
         }
 		catch(PDOException $exception)
 		{
             echo "Connection error: " . $exception->getMessage();
+		
         }
          
         return $this->conn;
     }
+	
+	
+	
 }
-?>
+
+?>public function getList() {
+        $query = $this->prepare("SELECT userID, userName, userEmail FROM users");
+        $query->execute();
+		$result = $query->fetchAll();
+print_r($result);
+    }
