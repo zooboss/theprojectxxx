@@ -384,7 +384,7 @@ $(function() {
         <input type="text" class="input-block-level" id='login' placeholder="Логин" name="txtuname" required /> <span></span> <br> 
 		
 		<label><font color='red'>*</font> Ваш E-mail:<br></label>
-        <input type="email" class="input-block-level" id='email' placeholder="Адрес электронной почты" name="txtemail" required /> <span></span> <br>
+        <input type="text" class="input-block-level" id='email' placeholder="Адрес электронной почты" name="txtemail" required /> <span></span> <br>
         
 		<label><font color='red'>*</font> Ваш пароль:<br></label>
 		<input type="password" class="input-block-level" id='password' placeholder="Пароль" name="txtpass" required /> <span></span> <br>
@@ -396,8 +396,8 @@ $(function() {
         <input type="radio" name="gender" value="Женский"/> женский <br>
   	Дата рождения(гггг.мм.дд): <input type="datetime" name='birthdate' id='date' value='' /> 
 		Номер телефона (полный с кодом страны)<input type="phone" name='phone_number'  value='' /> <br>
-		<input type="text" class="input-block-level" placeholder="Фамилия" name="name" /> <br>
-		<input type="text" class="input-block-level" placeholder="Имя" name="surname"  /> <br>
+		<input type="text" class="input-block-level" placeholder="Имя" name="name" /> <br>
+		<input type="text" class="input-block-level" placeholder="Фамилия" name="surname"  /> <br>
 		<input type="text" class="input-block-level" placeholder="Отчество" name="patronymic"  /> 
   		
   
@@ -405,7 +405,7 @@ $(function() {
   <!-- и т.д. -->
 </datalist>
      	<hr />
-       <input type="submit" name="submit" value="Зарегистрироваться" id="submit" disabled>
+       <input type="submit" name="btn-signup" value="Зарегистрироваться" id="submit" disabled>
         <a href="index.php" style="float:right;" class="btn btn-large">Sign In</a>
       </form>
 	  

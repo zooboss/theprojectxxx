@@ -32,9 +32,4 @@ class Database
 	
 }
 
-?>public function getList() {
-        $query = $this->prepare("SELECT userID, userName, userEmail FROM users");
-        $query->execute();
-		$result = $query->fetchAll();
-print_r($result);
-    }
+?>

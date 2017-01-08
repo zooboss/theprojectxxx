@@ -1,7 +1,4 @@
 <?php
-
-
-
 if(isset($_GET['email'])){
 	$email = $_GET['email'];
 	try {
@@ -23,13 +20,14 @@ echo "yes";
 
 
 if(isset($_GET['login'])){
+$username = $_GET['login'];
 try {
-    $handler = new PDO('mysql:host=localhost;dbname=blog','root', '');
+    $handler = new PDO('mysql:host=localhost;dbname=blog;charset=utf8','root', '');
     $handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e){
     exit($e->getMessage());
 }
-$username = $_GET['login'];
+
 $sthandler = $handler->prepare("SELECT userName FROM users WHERE userName = :name");
 $sthandler->bindParam(':name', $username);
 $sthandler->execute();
@@ -40,6 +38,4 @@ else{
 echo "yes";
 }
 }
-
-
 ?>
