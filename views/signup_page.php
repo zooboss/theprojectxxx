@@ -9,11 +9,11 @@
     <title>Signup | Coding Cage</title>
 
     <link rel="stylesheet" href="/theprojectxxx/libs/css/pickmeup.css" type="text/css" />	
-    <link type='text/css' rel='stylesheet' href='css/style.css' />
+    <link type='text/css' rel='stylesheet' href='/theprojectxxx/css/style.css' />
     <script type="text/javascript" src="/theprojectxxx/libs/js/pickmeup.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type='text/javascript' src="js/signup.js"></script>
-
+    <script type='text/javascript' src="/theprojectxxx/js/signup.js"></script>
+    
 </head>
  
 <script type="text/javascript">

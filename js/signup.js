@@ -1,5 +1,3 @@
-
-
 var login,
 	email,
 	password,
@@ -10,13 +8,13 @@ var login,
 	password2Stat;
 
 $(function() {
-	//Логин
+	//Р›РѕРіРёРЅ
 	$("#login").change(function(){
 		login = $("#login").val();
-		var expLogin = /^[а-яА-ЯёЁa-zA-Z0-9]+$/g;
+		var expLogin = /^[Р°-СЏРђ-РЇС‘РЃa-zA-Z0-9]+$/g;
 		var resLogin = login.search(expLogin);
 		if(resLogin == -1){
-			$("#login").next().hide().text("Неверный логин").css("color","red").fadeIn(400);
+			$("#login").next().hide().text("РќРµРІРµСЂРЅС‹Р№ Р»РѕРіРёРЅ").css("color","red").fadeIn(400);
 			$("#login").removeClass().addClass("inputRed");
 			loginStat = 0;
 			buttonOnAndOff();
@@ -28,7 +26,7 @@ $(function() {
 			cache: false,
 			success: function(response){
 				if(response == "no"){
-					$("#login").next().hide().text("Логин занят").css("color","red").fadeIn(400);
+					$("#login").next().hide().text("Р›РѕРіРёРЅ Р·Р°РЅСЏС‚").css("color","red").fadeIn(400);
 					$("#login").removeClass().addClass("inputRed");					
 				}else{					
 					$("#login").removeClass().addClass("inputGreen");
@@ -53,7 +51,7 @@ $(function() {
 		var expEmail = /[-0-9a-z_]+@[-0-9a-z_]+\.[a-z]{2,6}/i;
 		var resEmail = email.search(expEmail);
 		if(resEmail == -1){
-			$("#email").next().hide().text("Неверный формат Email").css("color","red").fadeIn(400);
+			$("#email").next().hide().text("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ Email").css("color","red").fadeIn(400);
 			$("#email").removeClass().addClass("inputRed");
 			emailStat = 0;
 			buttonOnAndOff();
@@ -66,7 +64,7 @@ $(function() {
 			cache: false,			
 			success: function(response){
 				if(response == "no"){
-					$("#email").next().hide().text("Email Занят").css("color","red").fadeIn(400);
+					$("#email").next().hide().text("Email Р—Р°РЅСЏС‚").css("color","red").fadeIn(400);
 					$("#email").removeClass().addClass("inputRed");					
 				}else{					
 					$("#email").removeClass().addClass("inputGreen");
@@ -85,11 +83,11 @@ $(function() {
 	});	
 	
 	
-	//Пароль
+	//РџР°СЂРѕР»СЊ
 	$("#password").change(function(){
 		password = $("#password").val();
 		if(password.length < 6){
-			$("#password").next().hide().text("Слишком короткий пароль").css("color","red").fadeIn(400);
+			$("#password").next().hide().text("РЎР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёР№ РїР°СЂРѕР»СЊ").css("color","red").fadeIn(400);
 			$("#password").removeClass().addClass("inputRed");
 			passwordStat = 0;
 			buttonOnAndOff();
@@ -105,10 +103,10 @@ $(function() {
 		$("#password").next().text("");
 	});
 	
-	//Проверка пароля
+	//РџСЂРѕРІРµСЂРєР° РїР°СЂРѕР»СЏ
 	$("#password2").change(function(){
 		if(password2 != password){
-			$("#password2").next().hide().text("Пароли не совпадают").css("color","red").fadeIn(400);
+			$("#password2").next().hide().text("РџР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚").css("color","red").fadeIn(400);
 			$("#password2").removeClass().addClass("inputRed");
 			password2Stat = 0;
 			buttonOnAndOff();
