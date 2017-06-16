@@ -122,7 +122,7 @@
                 <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
                 <hr />
                 <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
-                <a href="models/registration/signup.php" class="btn btn-large">Регистрация</a><hr />
+                <a href="views/signup_page.php" class="btn btn-large">Регистрация</a><hr />
                 <a href="models/registration/fpass.php">Забыли пароль ? </a>
           </form>
       </div>
