@@ -126,7 +126,7 @@
 			--></div>
 
 			<div>
-		      	<input type="submit" value="Отправить">
+		      	<input type="submit" name="btn-signup" value="Отправить" >
 		    </div>
 		</fieldset>
 	</form>
