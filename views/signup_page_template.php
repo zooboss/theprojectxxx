@@ -15,33 +15,39 @@
 <body>
 	<form class="cd-form floating-labels">
 		<fieldset>
-			<legend>Account Info</legend>
+			<legend>Регистрация</legend>
 
 			<div class="error-message">
-				<p>Please enter a valid email address</p>
+				<p>Пожалуйста, введите правильный email адрес</p>
 			</div>
 
 			<div class="icon">
-				<label class="cd-label" for="cd-name">Name</label>
+				<label class="cd-label" for="cd-name">Логин</label>
 				<input class="user" type="text" name="cd-name" id="cd-name" required>
 		    </div> 
-
+		    
 		    <div class="icon">
-		    	<label class="cd-label" for="cd-company">Company</label>
-				<input class="company" type="text" name="cd-company" id="cd-company">
-		    </div> 
-
-		    <div class="icon">
-		    	<label class="cd-label" for="cd-email">Email</label>
+		    	<label class="cd-label" for="cd-email">Адрес email</label>
 				<input class="email error" type="email" name="cd-email" id="cd-email" required>
 		    </div>
+		    
+		    <div class="icon">
+		    	<label class="cd-label" for="cd-company">Пароль</label>
+				<input class="company" type="text" name="cd-company" id="cd-company" required>
+		    </div> 
+		    
+		    <div class="icon">
+		    	<label class="cd-label" for="cd-company">Подтвердите пароль</label>
+				<input class="company" type="text" name="cd-company" id="cd-company" required>
+		    </div> 
+		    
 		</fieldset>
 
 		<fieldset>
-			<legend>Project Info</legend>
+			<legend>Личные данные</legend>
 
-			<div>
-				<h4>Budget</h4>
+			<!--<div>
+				<h4>Ваш пол</h4>
 
 				<p class="cd-select icon">
 					<select class="budget">
@@ -51,30 +57,43 @@
 						<option value="3">&gt; $10000</option>
 					</select>
 				</p>
-			</div> 
+			--></div> 
 
 			<div>
-				<h4>Project type</h4>
+				<h4>Ваш пол</h4>
 
 				<ul class="cd-form-list">
 					<li>
 						<input type="radio" name="radio-button" id="cd-radio-1" checked>
-						<label for="cd-radio-1">Choice 1</label>
+						<label for="cd-radio-1">Мужской</label>
 					</li>
 						
 					<li>
 						<input type="radio" name="radio-button" id="cd-radio-2">
-						<label for="cd-radio-2">Choice 2</label>
+						<label for="cd-radio-2">Женский</label>
 					</li>
-
-					<li>
-						<input type="radio" name="radio-button" id="cd-radio-3">
-						<label for="cd-radio-3">Choice 3</label>
-					</li>
+					
 				</ul>
 			</div>
+			<div class="icon">
+		    	<label class="cd-label" for="cd-company">Номер телефона</label>
+				<input class="company" type="text" name="cd-company" id="cd-company">
+		    </div> 
+		    
+		    <div class="icon">
+				<label class="cd-label" for="cd-name">Имя</label>
+				<input class="user" type="text" name="cd-name" id="cd-name" >
+		    </div> 
+		    <div class="icon">
+				<label class="cd-label" for="cd-name">Фамилия</label>
+				<input class="user" type="text" name="cd-name" id="cd-name" >
+		    </div> 
+		    <div class="icon">
+				<label class="cd-label" for="cd-name">Отчество</label>
+				<input class="user" type="text" name="cd-name" id="cd-name" >
+		    </div> 
 
-			<div>
+			<!--<div>
 				<h4>Features</h4>
 
 				<ul class="cd-form-list">
@@ -98,10 +117,10 @@
 			<div class="icon">
 				<label class="cd-label" for="cd-textarea">Project description</label>
       			<textarea class="message" name="cd-textarea" id="cd-textarea" required></textarea>
-			</div>
+			--></div>
 
 			<div>
-		      	<input type="submit" value="Send Message">
+		      	<input type="submit" value="Отправить">
 		    </div>
 		</fieldset>
 	</form>
