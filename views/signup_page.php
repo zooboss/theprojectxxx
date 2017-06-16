@@ -47,7 +47,7 @@
   		
        	<hr />
        <input type="submit" name="btn-signup" value="Зарегистрироваться" id="submit" disabled>
-        <a href="index.php" style="float:right;" class="btn btn-large">Sign In</a>
+        <!--<a href="index.php" style="float:right;" class="btn btn-large">Sign In</a>-->
       </form>
 	  
 <script type='text/javascript'>
