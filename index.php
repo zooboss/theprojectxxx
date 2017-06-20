@@ -1,4 +1,7 @@
 <?php
+if (!empty($_POST["txtemail"])) {
+  header("Location: ".$_SERVER["REQUEST_URI"]);
+  } //для безопасности: предотвращает вход в систему через кнопку "назад" в сочетании с F5
 session_start();
 require_once("/models/registration.php"); 
 $user_login = new USER();
@@ -25,8 +28,16 @@ $link = db_connect();
 require_once(dirname(__FILE__) . "/models/functions.php");
 $articles = articles_all($link);
 
-include(dirname(__FILE__) . "/views/main_page.php");
 
+
+if (isset($_GET['userID'])) 
+{
+include(dirname(__FILE__) . "/views/user-profile.php");
+}
+else 
+{
+include(dirname(__FILE__) . "/views/main_page.php");
+}
 echo $_SERVER["REMOTE_ADDR"];
 ?>
   
