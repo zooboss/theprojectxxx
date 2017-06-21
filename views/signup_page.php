@@ -1,5 +1,5 @@
 <?php
-    include(dirname(__FILE__) . "/../models/registration/signup.php");
+    require_once(dirname(__FILE__) . "/../models/registration/signup.php");
 
 ?>
 

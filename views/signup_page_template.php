@@ -1,3 +1,9 @@
+<?php
+    require_once(dirname(__FILE__) . "/../models/registration/signup.php");
+
+?>
+
+
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -23,7 +29,7 @@
 
 			<div class="icon">
 				<label class="cd-label" for="cd-name">Логин</label>
-				<input class="user" type="text" name="cd-name" id="login" name="txtuname" required>
+				<input class="user" type="text"  id="login" name="txtuname" required>
 		    </div> 
 		    
 		    <div class="icon">
@@ -33,12 +39,12 @@
 		    
 		    <div class="icon">
 		    	<label class="cd-label" for="cd-company">Пароль</label>
-				<input class="company" type="text" id='password' name="txtpass" required> <!-- type="text" -->
+				<input class="company" type="password" id='password' name="txtpass" required> <!-- type="text" -->
 		    </div> 
 		    
 		    <div class="icon">
 		    	<label class="cd-label" for="cd-company">Подтвердите пароль</label>
-				<input class="company" type="text" id='password2' name="txtpass_check" required> <!-- type="text" -->
+				<input class="company" type="password" id='password2' name="txtpass_check" required> <!-- type="text" -->
 		    </div> 
 		    
 		</fieldset>

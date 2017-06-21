@@ -69,6 +69,7 @@ Form
 }
 .cd-form input[type="text"],
 .cd-form input[type="email"],
+.cd-form input[type="password"],
 .cd-form textarea,
 .cd-form select,
 .cd-form legend {
@@ -82,6 +83,7 @@ Form
 }
 .cd-form input[type="text"],
 .cd-form input[type="email"],
+.cd-form input[type="password"],
 .cd-form textarea,
 .cd-form select {
   /* general style for input elements */
@@ -93,6 +95,7 @@ Form
 }
 .cd-form input[type="text"]:focus,
 .cd-form input[type="email"]:focus,
+.cd-form input[type="password"]:focus,
 .cd-form textarea:focus,
 .cd-form select:focus {
   outline: none;
@@ -292,6 +295,7 @@ Form
   }
   .cd-form input[type="text"],
   .cd-form input[type="email"],
+  .cd-form input[type="password"],
   .cd-form textarea,
   .cd-form select {
     padding: 16px;
