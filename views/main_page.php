@@ -148,7 +148,7 @@
         
             <div class='col-md-4 col-sm-6  article-wrap' >                           
                 <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
-                    <img alt="#0" src="img/test_image3.jpg">
+                    <img alt="#0" src="img/test_image4.jpg">
                     <div class='post-author'>
 
                         <div class='image-thumb'>
