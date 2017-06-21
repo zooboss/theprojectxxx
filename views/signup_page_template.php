@@ -14,7 +14,9 @@
 
 	<link rel="stylesheet" href="/theprojectxxx/css/reset_template.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="/theprojectxxx/css/signup_template.css"> <!-- Resource style -->
-	<script src="/theprojectxxx/js/signup_template.js"></script> <!-- Modernizr -->
+	<script src="/theprojectxxx/libs/js/modernizr.js"></script> <!-- Modernizr -->
+    <script src="/theprojectxxx/libs/js/jquery-2.1.1.js"></script> <!-- JQuery -->
+    <script src="/theprojectxxx/js/main_template.js"></script>
   	
 	<title>Contact Form | CodyHouse</title>
 </head>
@@ -132,11 +134,10 @@
 			--></div>
 
 			<div>
-		      	<input type="submit" name="btn-signup" value="Отправить" >
+		      	<input type="submit" name="btn-signup" value="Отправить" id="submit" disabled>
 		    </div>
 		</fieldset>
 	</form>
-<script src="/theprojectxxx/libs/js/jquery-2.1.1.js"></script>
-<script src="/theprojectxxx/js/main_template.js"></script> <!-- Resource jQuery -->
+
 </body>
 </html>
