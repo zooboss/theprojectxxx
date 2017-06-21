@@ -28,22 +28,22 @@
 			--></div>
 
 			<div class="icon">
-				<label class="cd-label" for="cd-name">Логин</label>
+				<label class="cd-label" for="txtuname">Логин</label>
 				<input class="user" type="text"  id="login" name="txtuname" required>
 		    </div> 
 		    
 		    <div class="icon">
-		    	<label class="cd-label" for="cd-email">Адрес email</label>
+		    	<label class="cd-label" for="txtemail">Адрес email</label>
 				<input class="email error" type="email" id='email' name="txtemail" required>
 		    </div>
 		    
 		    <div class="icon">
-		    	<label class="cd-label" for="cd-company">Пароль</label>
+		    	<label class="cd-label" for="txtpass">Пароль</label>
 				<input class="company" type="password" id='password' name="txtpass" required> <!-- type="text" -->
 		    </div> 
 		    
 		    <div class="icon">
-		    	<label class="cd-label" for="cd-company">Подтвердите пароль</label>
+		    	<label class="cd-label" for="txtpass_check">Подтвердите пароль</label>
 				<input class="company" type="password" id='password2' name="txtpass_check" required> <!-- type="text" -->
 		    </div> 
 		    
@@ -71,37 +71,37 @@
 				<ul class="cd-form-list">
 					<li>
 						<input type="radio" name="gender" value="Мужской" checked>
-						<label for="cd-radio-1">Мужской</label>
+						<label for="gender">Мужской</label>
 					</li>
 						
 					<li>
 						<input type="radio" name="gender" value="Женский">
-						<label for="cd-radio-2">Женский</label>
+						<label for="gender">Женский</label>
 					</li>
 					
 				</ul>
 			</div>
 			
             <div class="icon">
-				<label class="cd-label" for="cd-name">Дата рождения</label>
+				<label class="cd-label" for="birthdate">Дата рождения</label>
 				<input class="user" type="text" name='birthdate' id='date' value='' >  <!-- type="datetime" -->
 		    </div> 
             
             <div class="icon">
-		    	<label class="cd-label" for="cd-company">Номер телефона</label>
+		    	<label class="cd-label" for="phone_number">Номер телефона</label>
 				<input class="company" type="text" name='phone_number'  value='' id="cd-company"> <!-- type="phone" -->
 		    </div> 
 		    
 		    <div class="icon">
-				<label class="cd-label" for="cd-name">Имя</label>
+				<label class="cd-label" for="name">Имя</label>
 				<input class="user" type="text" name="name" id="cd-name" >
 		    </div> 
 		    <div class="icon">
-				<label class="cd-label" for="cd-name">Фамилия</label>
+				<label class="cd-label" for="surname">Фамилия</label>
 				<input class="user" type="text" name="surname" id="cd-name" >
 		    </div> 
 		    <div class="icon">
-				<label class="cd-label" for="cd-name">Отчество</label>
+				<label class="cd-label" for="patronymic">Отчество</label>
 				<input class="user" type="text" name="patronymic" id="cd-name" >
 		    </div> 
 
