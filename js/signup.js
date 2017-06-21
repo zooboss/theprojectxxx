@@ -1,3 +1,29 @@
+//Плавающие названия полей регистрации
+
+jQuery(document).ready(function($){
+	if( $('.floating-labels').length > 0 ) floatLabels();
+
+	function floatLabels() {
+		var inputFields = $('.floating-labels .cd-label').next();
+		inputFields.each(function(){
+			var singleInput = $(this);
+			//check if user is filling one of the form fields 
+			checkVal(singleInput);
+			singleInput.on('change keyup', function(){
+				checkVal(singleInput);	
+			});
+		});
+	}
+
+	function checkVal(inputField) {
+		( inputField.val() == '' ) ? inputField.prev('.cd-label').removeClass('float') : inputField.prev('.cd-label').addClass('float');
+	}
+});
+
+
+//Функционал проверки данных регистрации
+
+jQuery(document).ready(function($){
 var login,
 	email,
 	password,
@@ -10,7 +36,7 @@ var login,
 $(function() {
 	//Логин
 	$("#login").change(function(){
-		login = $("#login").val();
+        login = $("#login").val();
 		var expLogin = /^[а-яА-ЯёЁa-zA-Z0-9]+$/g;
 		var resLogin = login.search(expLogin);
 		if(resLogin == -1){
@@ -20,7 +46,7 @@ $(function() {
 			buttonOnAndOff();
 		}else{
 			$.ajax({
-			url: "testLoginEmail.php",
+			url: "../models/registration/testLoginEmail.php",
 			type: "GET",
 			data: "login=" + login,
 			cache: false,
@@ -37,6 +63,7 @@ $(function() {
 		});
 			loginStat = 1;
 			buttonOnAndOff();
+            console.log("buttononoff_event");
 		}
 		
 	});
@@ -58,7 +85,7 @@ $(function() {
 		}else{
 			
 			$.ajax({
-			url: "testLoginEmail.php",
+			url: "../models/registration/testLoginEmail.php",
 			type: "GET",
 			data: "email=" + email,
 			cache: false,			
@@ -127,12 +154,14 @@ $(function() {
 	});
 	
 	function buttonOnAndOff(){
-		if(emailStat == 1 && passwordStat == 1 && password2Stat == 1 && loginStat == 1){
-			$("#submit").removeAttr("disabled");
+        console.log(emailStat, passwordStat, password2Stat, loginStat);
+        if(emailStat == 1 && passwordStat == 1 && password2Stat == 1 && loginStat == 1){
+			$("#submit").removeAttr("disabled").removeClass().addClass("btnEnabled");
 		}else{
-			$("#submit").attr("disabled","disabled");
+			$("#submit").attr("disabled","disabled").removeClass().addClass("btnDisabled");
 		}
 	
 	}
 	
+});
 });
