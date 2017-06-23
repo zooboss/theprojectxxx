@@ -32,7 +32,7 @@ class USER
 		try
 		{			  		
 			$password = md5($upass);
-			$registration_date = date("d.m.Y.H.i.s");
+			$registration_date = date("Y.m.d.H.i.s");
 			$stmt = $this->conn->prepare("INSERT INTO users(userName,userEmail,userPass,tokenCode,datereg,sex,birthday,phone,Name,Surname,Patronymic) 
 			                                             VALUES(:user_name, :user_mail, :user_pass, :active_code, :reg_date, :user_sex, :birth, :phone_number, :real_name, :real_surname, :real_patronymic)");
 			$stmt->bindparam(":user_name",$uname);
