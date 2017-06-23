@@ -431,7 +431,7 @@ background: #e8ffce;
     color: red;
     position: absolute !important;
     opacity: 1;
-    transition: all 2s;
+    transition: all 1s;
     
 }
 .warning_disabled {
