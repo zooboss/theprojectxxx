@@ -40,8 +40,9 @@ $(function() {
 		var expLogin = /^[а-яА-ЯёЁa-zA-Z0-9]+$/g;
 		var resLogin = login.search(expLogin);
 		if(resLogin == -1){
-			$("#login").next().hide().text("Неверный логин").css("color","red").fadeIn(400);
-			$("#login").removeClass().addClass("inputRed");
+			/*$("#login").next().hide().text("Неверный логин").css("color","red").fadeIn(400);
+			$("#login").removeClass().addClass("inputRed");*/
+            $("#login_warning").removeClass("warning_disabled");
 			loginStat = 0;
 			buttonOnAndOff();
 		}else{
@@ -52,11 +53,13 @@ $(function() {
 			cache: false,
 			success: function(response){
 				if(response == "no"){
-					$("#login").next().hide().text("Логин занят").css("color","red").fadeIn(400);
-					$("#login").removeClass().addClass("inputRed");					
+					/*$("#login").next().hide().text("Логин занят").css("color","red").fadeIn(400);
+					$("#login").removeClass().addClass("inputRed");*/	
+                    $("#login_warning").removeClass("warning_disabled");
 				}else{					
-					$("#login").removeClass().addClass("inputGreen");
-					$("#login").next().text("");
+					/*$("#login").removeClass().addClass("inputGreen");
+					$("#login").next().text("");*/
+                    $("#login_warning").addClass("warning_disabled");
 				}			
 				
 			}
@@ -68,8 +71,11 @@ $(function() {
 		
 	});
 	$("#login").keyup(function(){
+        /*
 		$("#login").removeClass();
 		$("#login").next().text("");
+        */
+        $("#login_warning").addClass("warning_disabled");
 	});
 	
 	// Email
@@ -99,7 +105,7 @@ $(function() {
 				}					
 			}
 		});
-			emailStat = 1;
+			emailStat = 0;
 			buttonOnAndOff();
 		}
 		

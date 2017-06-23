@@ -32,6 +32,7 @@
 			<div class="icon">
 				<label class="cd-label" for="login">Логин</label>
 				<input class="user" type="text"  id="login" name="txtuname" required>
+                <div class="warning warning_disabled" id="login_warning">всё неправильно</div>
 		    </div> 
 		    
 		    <div class="icon">

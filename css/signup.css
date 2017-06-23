@@ -423,3 +423,18 @@ background: #e8ffce;
 .btnDisabled {
     background: grey;
 }
+
+.warning {
+    margin: 0px !important;
+    padding-left: 10px;
+    padding-top: 2px;
+    color: red;
+    position: absolute !important;
+    opacity: 1;
+    transition: all 2s;
+    
+}
+.warning_disabled {
+    visibility: hidden;
+    opacity: 0;
+}
