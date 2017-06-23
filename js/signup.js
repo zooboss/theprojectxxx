@@ -98,15 +98,19 @@ $(function() {
 			success: function(response){
 				if(response == "no"){
 					$("#email").next().hide().text("Email Занят").css("color","red").fadeIn(400);
-					$("#email").removeClass().addClass("inputRed");					
+					$("#email").removeClass().addClass("inputRed");		
+                    emailStat = 0;
+                    buttonOnAndOff();
 				}else{					
 					$("#email").removeClass().addClass("inputGreen");
 					$("#email").next().text("");
+                    emailStat = 1;
+                    buttonOnAndOff();
 				}					
-			}
-		});
-			emailStat = 0;
-			buttonOnAndOff();
+			}    
+		      });
+			
+			
 		}
 		
 	});	
