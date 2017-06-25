@@ -45,8 +45,8 @@
                 }
                 ?>
 
-                <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
-                <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
+                <input type="text" placeholder="Логин" name="uname" required />
+                <input type="password"  placeholder="Пароль" name="txtupass" required />
                 <hr />
                 <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
                 <a href="views/signup_page.php" class="btn btn-large">Регистрация</a><hr />
@@ -59,12 +59,12 @@
  <?php }   // быдлокод конец
  elseif($user_login->is_logged_in()!="")
  {  // Быдлокод начало
- echo '<h1>Вы вошли как ' . $row['userName'] . ', но кого это ебет?</h1>';
+ echo '<h1>Вы вошли как ' . $row['PublicUserName'] . ', но кого это ебет?</h1>';
  echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
   ?>   
    <div class='alert alert-success'>
                      <h3>Моя страница</h3>
-                     <a href=' <?php echo 'user-'.$row['userID'].'.html'?>' ><?php echo $row['userName'] ?></a>
+                     <a href=' <?php echo 'user-'.$row['userID'].'.html'?>' ><?php echo $row['PublicUserName'] ?></a>
 					 
                     </div>
  

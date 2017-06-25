@@ -1,22 +1,24 @@
 <?php
-session_start();
-require_once(dirname(__FILE__)."/../../models/registration.php");
-
 
 $reg_user = new USER();
 
 
 if($reg_user->is_logged_in()!="")
 {
-	$reg_user->redirect('home.php');
+	$reg_user->redirect('/theprojectxxx/index.php');   //Пути 
 }
 
 
 if(isset($_POST['btn-signup']))
 {
 	$uname = trim($_POST['txtuname']);
+	$ulogin = trim($_POST['txtunamepublic']);
 	$email = trim($_POST['txtemail']);
 	$upass = trim($_POST['txtpass']);
+	$ip = $_SERVER["REMOTE_ADDR"];
+	$ip_1 = ip2long($ip); //long2ip($ip_1) для вывода числа из БД;
+	// для поиска по диапиазону SELECT .... WHERE ip BETWEEN INET_ATON('148.100.0.0') AND INET_ATON('158.255.255.255')
+
 	
 	if (isset($_POST['gender']))
 	{
@@ -66,7 +68,7 @@ if(isset($_POST['btn-signup']))
 	{
 	$phone_number = ($_POST['phone_number']);
 	
-	require_once ('phone_definder.php');
+	require_once ( $_SERVER['DOCUMENT_ROOT'] .'/theprojectxxx/models/registration/phone_definder.php');
 function phone($phone = '', $convert = true, $trim = true)
 {
     global $phoneCodes; // только для примера! При реализации избавиться от глобальной переменной.
@@ -164,49 +166,34 @@ $phone_send = 'Не указан';
 	$stmt->execute(array(":email_id"=>$email));
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 	
-	if($stmt->rowCount() > 0)
-	{
-		$msg = "
-		      <div class='alert alert-error'>
-				<button class='close' data-dismiss='alert'>&times;</button>
-					<strong>Sorry !</strong>  email allready exists , Please Try another one
-			  </div>
-			  ";
-	}
-	else
-	{
-		if($reg_user->register($uname,$email,$upass,$code,$gender,$birth_date,$phone_send,$name,$surname,$patronymic))
+
+		if($reg_user->register($uname,$ulogin,$email,$upass,$code,$ip_1,$gender,$birth_date,$phone_send,$name,$surname,$patronymic))
 		{			
 			$id = $reg_user->lasdID();		
 			$key = base64_encode($id);
 			$id = $key;
 			
 			$message = "					
-						Hello $uname,
+						Здравствуйте, $ulogin.
+						<br /><br /> 
+						Добро пожаловать!<br/>
+						Для подтверждения регистрации перейдите по ссылке<br/>
 						<br /><br />
-						Welcome to Coding Cage!<br/>
-						To complete your registration  please , just click following link<br/>
+						<a href='http://localhost/x/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>  
 						<br /><br />
-						<a href='http://localhost/x/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
-						<br /><br />
-						Thanks,";
+						Спасибо,";
 						
-			$subject = "Confirm Registration";
+			$subject = "Подтверждение регистрации";  //тема письма //поменять адрес ссылки
 						
 			$reg_user->send_mail($email,$message,$subject);	
-			$msg = "
-					<div class='alert alert-success'>
-						<button class='close' data-dismiss='alert'>&times;</button>
-						<strong>Success!</strong>  We've sent an email to $email $birth_date $gender $phone_send .
-                    Please click on the confirmation link in the email to create your account. 
-			  		</div>
-					";
+			$msg = "12321321321321321321";
+			header("Location: http://localhost/theprojectxxx/views/signup_page.php?email=$email");
+							
 		}
 		else
 		{
-			echo "sorry , Query could no execute...";
+			echo "Что-то пошло не так";
 		}		
 	}
-}
 
 ?>
