@@ -8,19 +8,19 @@ if($reg_user->is_logged_in()!="")
 	$reg_user->redirect('/theprojectxxx/index.php');   //Пути 
 }
 
- 
-if(isset($_POST['btn-signup']))  
-{ 
+
+if(isset($_POST['btn-signup']))
+{
 	$uname = trim($_POST['txtuname']);
 	$ulogin = trim($_POST['txtunamepublic']);
 	$email = trim($_POST['txtemail']);
 	$upass = trim($_POST['txtpass']);
 	$ip = $_SERVER["REMOTE_ADDR"];
-	$ip_1 = ip2long($ip); //long2ip($ip_1) для вывода числа из БД; dssda
+	$ip_1 = ip2long($ip); //long2ip($ip_1) для вывода числа из БД;
 	// для поиска по диапиазону SELECT .... WHERE ip BETWEEN INET_ATON('148.100.0.0') AND INET_ATON('158.255.255.255')
 
 	
-	if (!empty($_POST['gender']))
+	if (isset($_POST['gender']))
 	{
 	$gender = trim($_POST['gender']);
 	}
@@ -29,16 +29,12 @@ if(isset($_POST['btn-signup']))
 	$gender = 'Не указан';
 	}
 	
-	if (!empty($_POST['birthdate']))
+	if (isset($_POST['birthdate']))
 	{
 	$birth_date = ($_POST['birthdate']);
 	}
-	else 
-	{
-	$birth_date = '0';
-	}
 	
-	if (!empty($_POST['name']))
+	if (isset($_POST['name']))
 	{
 	$name = ($_POST['name']);
 	}
@@ -47,7 +43,7 @@ if(isset($_POST['btn-signup']))
 	$name = 'Не указано';
 	}
 	
-	if (!empty($_POST['surname']))
+	if (isset($_POST['surname']))
 	{
 	$surname = ($_POST['surname']);
 	}
@@ -56,7 +52,7 @@ if(isset($_POST['btn-signup']))
 	$surname = 'Не указана';
 	} 
 	
-	if (!empty($_POST['patronymic']))
+	if (isset($_POST['patronymic']))
 	{
 	$patronymic = ($_POST['patronymic']);
 	}
@@ -68,7 +64,7 @@ if(isset($_POST['btn-signup']))
 	 
 	
 		//* начало условия, если отправлен номер*// 
-	if (!empty($_POST['phone_number']))
+	if (isset($_POST['phone_number']))
 	{
 	$phone_number = ($_POST['phone_number']);
 	
@@ -158,7 +154,7 @@ function phoneBlocks($number){
 
 $phone_send = phone($phone_number); 
 	}
-else 
+elseif (!isset($_POST['phone_number'])) 
 {
 $phone_send = 'Не указан';
 } 

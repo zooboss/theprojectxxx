@@ -128,13 +128,13 @@ $salt_encrypt = GenSalt(); //генерация соли
 	
 	// Проверка авторизации
 	public function is_logged_in()
-	{ 
+	{
 		if(isset($_SESSION['userSession']))
 		{
 			return true;
 		}
 	}
-	 
+	
 	//Перенаправление
 	public function redirect($url)
 	{
