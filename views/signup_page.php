@@ -21,7 +21,7 @@
     <script src="/theprojectxxx/libs/js/jquery-2.1.1.js"></script> <!-- JQuery -->
     <script src="/theprojectxxx/js/signup.js"></script>
   	
-	<title>Contact Form | CodyHouse</title>
+	<title>Registration Form</title>
 </head>
     
 <body>   
@@ -65,7 +65,7 @@ $email = ($_GET['email']);
 		    
 		    <div class="icon">
 		    	<label class="cd-label" for="email">Адрес email</label>
-				<input class="email error" type="email" id='email' name="txtemail" required>
+				<input class="email" type="email" id='email' name="txtemail" required>
                 <div class="warning warning_disabled" id="email_warning">Адрес почты занят или введен некорректно</div>
 		    </div>
 		    
