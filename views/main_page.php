@@ -80,7 +80,8 @@
         
             <div class='col-md-4 col-sm-6  article-wrap' >                           
                 <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
-                    <img alt="#0" src="img/test_image4.jpg">
+                    <img alt="#0" src="img/test_image4.jpg"> 
+                   
                     <div class='post-author'>
 
                         <div class='image-thumb'>
@@ -93,10 +94,12 @@
                     </div>
                     <div class = "articleImageAnimate"></div>
                     <div class = "articleCathegoryAnimate"> <a href='#0'>политика</a></div>
+                   
                     <div class = "articleCommentsAnimate"> 
-                        <a href='#0'><i class='fa fa-comment'></i></a> 
-                        <a href='#0'>48</a>
+                        <a href="index.php?id=<?=$a['id']?>#comments"><i class='fa fa-comment'></i></a> 
+                        <a href="index.php?id=<?=$a['id']?>#comments">48</a>
                     </div>
+                   
                     <div class = "articleDateAnimate"> 
                         <p>2016</p> 
                         <p>дек/08</p>
@@ -105,7 +108,7 @@
                 
                 <div class='post-body'>
                     <div class='post-title'>
-                        <h2><a href='#0'> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
+                        <h2><a href="index.php?id=<?=$a['id']?>"> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
                     </div>
 
                     <div class='post-entry'>
@@ -125,7 +128,7 @@
                                
                             </div>
                         --> 
-                        <a href='#0'><div class='read'>Читать </div></a>
+                        <a href="index.php?id=<?=$a['id']?>"><div class='read'>Читать </div></a>
                     </div>
                 </div>
             </div>   

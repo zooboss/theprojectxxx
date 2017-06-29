@@ -29,11 +29,24 @@ $articles = articles_all($link);
 
 if (isset($_GET['userID'])) 
 {
-include(dirname(__FILE__) . "/views/user-profile.php");
+    include(dirname(__FILE__) . "/views/user-profile.php");
 }
 else 
 {
-include(dirname(__FILE__) . "/views/main_page.php");
+    //Вывод страницы статьи при получении её id по ссылке с главной страницы
+    
+    if (isset($_GET['id'])){
+        $article = articles_get($link, $_GET['id']);
+        include(dirname(__FILE__) . "/views/article_page.php");
+    }
+    
+    //В противном случае вывод главной страницы
+    
+    else
+    {
+    include(dirname(__FILE__) . "/views/main_page.php");
+    }
+
 }
 
 ?>
