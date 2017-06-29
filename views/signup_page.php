@@ -58,7 +58,7 @@ $email = ($_GET['email']);
 		    </div> 
 			
 				<div class="icon">
-				<label class="cd-label" for="login_public">Логин для чата</label>
+				<label class="cd-label" for="login_public">Публичный никнейм</label>
 				<input class="user" type="text"  id="login_public" name="txtunamepublic" required>
                 <div class="warning warning_disabled" id="login_public_warning">Логин занят или используются недопустимые символы</div>
 		    </div> 

@@ -50,7 +50,7 @@
                 <hr />
                 <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
                 <a href="views/signup_page.php" class="btn btn-large">Регистрация</a><hr />
-                <a href="models/registration/fpass.php">Забыли пароль ? </a>
+                <a href="views/forgot_pass_page.php">Забыли пароль ? </a>
           </form>
       </div>
       
