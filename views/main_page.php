@@ -19,6 +19,7 @@
             <a href = "#0"><div class = "loginSocialLink"></div></a>
             <a href = "#0"><div class = "loginSocialLink"></div></a>
             <a href = "#0"><div class = "loginSocialLink"></div></a>
+            <a href = "#0"><div class = "loginSocialLink"></div></a>
         </div>
         <div class = "loginStandart">
             <?php 
