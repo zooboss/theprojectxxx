@@ -54,28 +54,31 @@ $email = ($_GET['email']);
 			<div class="icon">
 				<label class="cd-label" for="login">Логин</label>
 				<input class="user" type="text"  id="login" name="txtuname" required>
-                <div class="warning warning_disabled" id="login_warning">всё неправильно</div>
+                <div class="warning warning_disabled" id="login_warning">Логин занят или используются недопустимые символы</div>
 		    </div> 
 			
 				<div class="icon">
-				<label class="cd-label" for="login">Логин для чата</label>
+				<label class="cd-label" for="login_public">Логин для чата</label>
 				<input class="user" type="text"  id="login_public" name="txtunamepublic" required>
-                <div class="warning warning_disabled" id="login_warning">всё неправильно</div>
+                <div class="warning warning_disabled" id="login_public_warning">Логин занят или используются недопустимые символы</div>
 		    </div> 
 		    
 		    <div class="icon">
 		    	<label class="cd-label" for="email">Адрес email</label>
 				<input class="email error" type="email" id='email' name="txtemail" required>
+                <div class="warning warning_disabled" id="email_warning">Адрес почты занят или введен некорректно</div>
 		    </div>
 		    
 		    <div class="icon">
 		    	<label class="cd-label" for="password">Пароль</label>
 				<input class="company" type="password" id='password' name="txtpass" required> <!-- type="text" -->
+                <div class="warning warning_disabled" id="password_warning">Слишком короткий пароль</div>
 		    </div> 
 		    
 		    <div class="icon">
 		    	<label class="cd-label" for="password2">Подтвердите пароль</label>
 				<input class="company" type="password" id='password2' name="txtpass_check" required> <!-- type="text" -->
+                <div class="warning warning_disabled" id="password2_warning">Пароли не совпадают</div>
 		    </div> 
 		    
 		</fieldset>

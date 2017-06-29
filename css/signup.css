@@ -48,6 +48,7 @@ Form
   margin-bottom: 20px;
   font-size: 2rem;
   border-bottom: 1px solid #ecf0f1;
+  font-weight: bold;
 }
 .cd-form div {
   /* form element wrapper */
@@ -428,11 +429,13 @@ background: #e8ffce;
     margin: 0px !important;
     padding-left: 10px;
     padding-top: 2px;
+    right: 2%;
     color: red;
     position: absolute !important;
     opacity: 1;
     transition: all 1s;
-    
+    font-family: "Open Sans", sans-serif !important;
+        
 }
 .warning_disabled {
     visibility: hidden;

@@ -84,9 +84,12 @@ $(function() {
 		var expEmail = /[-0-9a-z_]+@[-0-9a-z_]+\.[a-z]{2,6}/i;
 		var resEmail = email.search(expEmail);
 		if(resEmail == -1){
-			$("#email").next().hide().text("Неверный формат Email").css("color","red").fadeIn(400);
+			/*
+            $("#email").next().hide().text("Неверный формат Email").css("color","red").fadeIn(400);
 			$("#email").removeClass().addClass("inputRed");
-			emailStat = 0;
+            */
+            $("#email_warning").removeClass("warning_disabled");
+            emailStat = 0;
 			buttonOnAndOff();
 		}else{
 			
@@ -97,13 +100,19 @@ $(function() {
 			cache: false,			
 			success: function(response){
 				if(response == "no"){
-					$("#email").next().hide().text("Email Занят").css("color","red").fadeIn(400);
-					$("#email").removeClass().addClass("inputRed");		
+					/*
+                    $("#email").next().hide().text("Email Занят").css("color","red").fadeIn(400);
+					$("#email").removeClass().addClass("inputRed");
+                    */
+                    $("#email_warning").removeClass("warning_disabled");
                     emailStat = 0;
                     buttonOnAndOff();
 				}else{					
-					$("#email").removeClass().addClass("inputGreen");
+					/*
+                    $("#email").removeClass().addClass("inputGreen");
 					$("#email").next().text("");
+                    */
+                    $("#email_warning").addClass("warning_disabled");
                     emailStat = 1;
                     buttonOnAndOff();
 				}					
@@ -115,8 +124,11 @@ $(function() {
 		
 	});	
 	$("#email").keyup(function(){
+        /*
 		$("#email").removeClass();
 		$("#email").next().text("");
+        */
+        $("#email_warning").addClass("warning_disabled");
 	});	
 	
 	
@@ -124,32 +136,48 @@ $(function() {
 	$("#password").change(function(){
 		password = $("#password").val();
 		if(password.length < 6){
+            /*
 			$("#password").next().hide().text("Слишком короткий пароль").css("color","red").fadeIn(400);
 			$("#password").removeClass().addClass("inputRed");
+            */
+            $("#password_warning").removeClass("warning_disabled");
 			passwordStat = 0;
 			buttonOnAndOff();
 		}else{
+            /*
 			$("#password").removeClass().addClass("inputGreen");
 			$("#password").next().text("");
+            */
+            $("#password_warning").addClass("warning_disabled");
 			passwordStat = 1;
 			buttonOnAndOff();
 		}		
 	});
 	$("#password").keyup(function(){
+        /*
 		$("#password").removeClass();
 		$("#password").next().text("");
+        */
+        $("#password_warning").addClass("warning_disabled");
+        
 	});
 	
 	//Проверка пароля
 	$("#password2").change(function(){
 		if(password2 != password){
+            /*
 			$("#password2").next().hide().text("Пароли не совпадают").css("color","red").fadeIn(400);
 			$("#password2").removeClass().addClass("inputRed");
+            */
+            $("#password2_warning").removeClass("warning_disabled");
 			password2Stat = 0;
 			buttonOnAndOff();
 		}else{
+            /*
 			$("#password2").removeClass().addClass("inputGreen");
 			$("#password2").next().text("");
+            */
+            $("#password2_warning").addClass("warning_disabled");
 		}		
 	});
 	$("#password2").keyup(function(){
