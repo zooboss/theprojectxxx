@@ -11,7 +11,6 @@ if($user->is_logged_in()!="")
 if(isset($_POST['btn-submit']))
 {
 	$email = $_POST['txtemail'];
-	
 	$stmt = $user->runQuery("SELECT userID FROM users WHERE userEmail=:email LIMIT 1");
 	$stmt->execute(array(":email"=>$email));
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);	
@@ -24,31 +23,31 @@ if(isset($_POST['btn-submit']))
 		$stmt->execute(array(":token"=>$code,"email"=>$email));
 		
 		$message= "
-				   Hello , $email
+				   Здравствуйте, $email
 				   <br /><br />
-				   We got requested to reset your password, if you do this then just click the following link to reset your password, if not just ignore                   this email,
+				   Мы получили запрос на сброс пароля для вашей учетной записи
+				   Если Вы отправляли запрос на восстановление пароля, перейдите по ссылке, если нет - просто проигнорируйте письмо.                  
 				   <br /><br />
-				   Click Following Link To Reset Your Password 
+				   Перейдите по ссылке для сброса пароля
 				   <br /><br />
-				   <a href='http://localhost/x/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
+				   <a href='http://localhost/models/registration/resetpass.php?id=$id&code=$code'>перейдите по ссылке для сброса пароля</a>
 				   <br /><br />
-				   thank you :)
+				   Спасибо :)
 				   ";
-		$subject = "Password Reset";
+		$subject = "Восстановление пароля";
 		
 		$user->send_mail($email,$message,$subject);
 		
 		$msg = "<div class='alert alert-success'>
 					<button class='close' data-dismiss='alert'>&times;</button>
-					We've sent an email to $email.
-                    Please click on the password reset link in the email to generate new password. 
+					Мы отправили письмо с инструкциями на $email.
 			  	</div>";
 	}
 	else
 	{
 		$msg = "<div class='alert alert-danger'>
 					<button class='close' data-dismiss='alert'>&times;</button>
-					<strong>Sorry!</strong>  this email not found. 
+					<strong>Извините!</strong>  пользователь не найден
 			    </div>";
 	}
 }
