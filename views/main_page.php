@@ -47,6 +47,7 @@
 
                 <input type="text" placeholder="Логин" name="uname" required />
                 <input type="password"  placeholder="Пароль" name="txtupass" required />
+                Запомнить меня <input name='remember' type='checkbox' value='1'>
                 <hr />
                 <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
                 <a href="views/signup_page.php" class="btn btn-large">Регистрация</a><hr />

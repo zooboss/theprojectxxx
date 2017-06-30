@@ -81,9 +81,69 @@ $salt_encrypt = GenSalt(); //генерация соли
 
 	}
 	
+	
+	
+	
 	// Вход в систему 
 	public function login($uname,$upass,$remember)
 	{
+	//Проверяем, что была нажата галочка 'Запомнить меня':
+	
+	try
+		{
+	
+	if ( !empty($remember) and $remember == 1 ) 
+						{
+										
+	function GenCookie ($length=12) {
+     $chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP";
+     $length = intval($length);
+     $size=strlen($chars)-1;
+     $Cookie = "";
+     while($length--) $Cookie.=$chars[rand(0,$size)];
+     return $Cookie;
+		}
+//Сформируем случайную строку для куки (используем функцию GenCookie):
+	$key = GenCookie(); 
+
+//Пишем куки (имя куки, значение, время жизни - сейчас+месяц)
+	setcookie('uname', $uname, time()+60*60*24*30); //логин
+	setcookie('key', $key, time()+60*60*24*30); //случайная строка
+								
+		$sql = "UPDATE users SET cookie = :user_cookie
+				WHERE userName= :user_name";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->bindParam(':user_name', $uname); 
+	    $stmt->bindParam(':user_cookie', $key);       
+		$stmt->execute();	
+			return $stmt;
+		}
+	
+
+	
+	
+	if ( !empty($_COOKIE['uname']) and !empty($_COOKIE['key']) ) {
+			//Пишем логин и ключ из КУК в переменные (для удобства работы):
+
+$login = $_COOKIE['uname']; 
+$key = $_COOKIE['key']; //ключ из кук (аналог пароля, в базе поле cookie)
+
+
+$query = "SELECT * FROM users WHERE userName= :user_name AND cookie=:user_cookie";
+$stmt = $this->conn->prepare($query);
+$stmt->execute(array(":user_name"=>$login, ":user_cookie"=>$key));
+$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+
+//запускаем сессию
+$_SESSION['userSession'] = $userRow['userID'];
+return true;
+}
+
+}
+catch(PDOException $ex)
+		{
+echo $ex->getMessage();
+		}
 		try
 		{
 			$stmt = $this->conn->prepare("SELECT * FROM users WHERE userName=:userName_id");
@@ -98,8 +158,11 @@ $salt_encrypt = GenSalt(); //генерация соли
 					if($userRow['userPass']==hash("sha256", hash("sha256",$upass).$userRow['salt']))
 			
 					{
+					
+		
 						$_SESSION['userSession'] = $userRow['userID'];
 						return true;
+ 					
 						
 					}
 					else

@@ -1,15 +1,18 @@
 <?php
+
 if (!empty($_POST["txtemail"])) {
   header("Location: ".$_SERVER["REQUEST_URI"]);
   } //для безопасности: предотвращает вход в систему через кнопку "назад" в сочетании с F5
 session_start();
 require_once("/models/registration.php"); 
+
 $user_login = new USER();
- 
+
 if(isset($_POST['btn-login'])) // отправка формы на вход
 {   
 	$uname = trim($_POST['uname']);
 	$upass = trim($_POST['txtupass']);
+	$remember = $_POST['remember'];
 	$user_login->login($uname,$upass,$remember);
 }// отправка формы на вход
 
