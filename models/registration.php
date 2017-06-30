@@ -84,8 +84,6 @@ $salt_encrypt = GenSalt(); //генерация соли
 	// Вход в систему 
 	public function login($uname,$upass,$remember)
 	{
-		try
-		{
 			$stmt = $this->conn->prepare("SELECT * FROM users WHERE userName=:userName_id");
 			$stmt->execute(array(":userName_id"=>$uname));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -98,6 +96,36 @@ $salt_encrypt = GenSalt(); //генерация соли
 					if($userRow['userPass']==hash("sha256", hash("sha256",$upass).$userRow['salt']))
 			
 					{
+					
+					if ( !empty($remember) and $remember == 1 ) //если нажата кнопка "запомнить"
+						{
+										
+	function GenCookie ($length=24) 
+	{
+     $chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP";
+     $length = intval($length);
+     $size=strlen($chars)-1;
+     $Cookie = "";
+     while($length--) $Cookie.=$chars[rand(0,$size)];
+     return $Cookie;
+	}
+//Сформируем случайную строку для куки (используем функцию GenCookie):
+	$key = GenCookie(); 
+
+//Пишем куки (имя куки, значение, время жизни - сейчас+месяц)
+	setcookie('username', $uname, time()+60*60*24*30, '/'); //почта
+	setcookie('key', $key, time()+60*60*24*30,  '/' ); //кука
+								
+		$sql = "UPDATE users SET cookie = :user_cookie
+				WHERE userName= :user_name";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->bindParam(':user_name', $uname); 
+	    $stmt->bindParam(':user_cookie', $key);       
+		$stmt->execute();	
+
+		$_SESSION['userSession'] = $userRow['userID'];
+		return true;
+		}
 						$_SESSION['userSession'] = $userRow['userID'];
 						return true;
 						
@@ -120,12 +148,36 @@ $salt_encrypt = GenSalt(); //генерация соли
 				exit;
 			}		
 		}
-		catch(PDOException $ex)
-		{
-			echo $ex->getMessage();
-		}
-	}
 	
+
+	
+	
+	public function Cookie_login($uname,$key)
+	{
+			$stmt = $this->conn->prepare("SELECT * FROM users WHERE userName=:user_name");
+			$stmt->execute(array("user_name"=>$uname));
+			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+			
+			if($stmt->rowCount() == 1)
+			{ 
+				if($userRow['userStatus']=="Y")
+				{
+	
+					if($userRow['cookie']==$key)
+			
+					{
+							
+						$_SESSION['userSession'] = $userRow['userID'];
+						return true;
+						
+					}
+					
+				}
+				
+			}
+				
+	
+	}
 	// Проверка авторизации
 	public function is_logged_in()
 	{

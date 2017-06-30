@@ -4,12 +4,36 @@ if (!empty($_POST["txtemail"])) {
   } //для безопасности: предотвращает вход в систему через кнопку "назад" в сочетании с F5
 session_start();
 require_once("/models/registration.php"); 
+
+
+    
+
 $user_login = new USER();
+
+
+/// Куки
+if ( isset($_COOKIE['username']) )
+{
+echo "Login".$_COOKIE['username']."<br>";
+}
+
+if ( isset($_COOKIE['key']) )
+{
+echo "key". $_COOKIE['key']."<br>";
+}
  
-if(isset($_POST['btn-login'])) // отправка формы на вход
+if ( isset($_COOKIE['username']) and isset($_COOKIE['key']) ) {	  //проверка на кукисы
+$uname = $_COOKIE['username']; //логин из кукисов
+$key = $_COOKIE['key']; //ключ из кук (аналог пароля, в базе поле cookie)				
+$user_login->Cookie_login($uname, $key );
+}
+ /// Куки конец 
+
+ if(isset($_POST['btn-login'])) // отправка формы на вход
 {   
 	$uname = trim($_POST['uname']);
 	$upass = trim($_POST['txtupass']);
+	$remember = ($_POST['remember']);
 	$user_login->login($uname,$upass,$remember);
 }// отправка формы на вход
 

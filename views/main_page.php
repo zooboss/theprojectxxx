@@ -50,8 +50,13 @@
                 <input type="password"  placeholder="Пароль" name="txtupass" required />
                 <hr />
                 <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
+				<input name="remember" type='checkbox' value='1'>
+				Запомнить меня
                 <a href="views/signup_page.php" class="btn btn-large">Регистрация</a><hr />
                 <a href="views/forgot_pass_page.php">Забыли пароль ? </a>
+		
+				
+			
           </form>
       </div>
       

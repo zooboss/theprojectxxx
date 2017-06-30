@@ -10,7 +10,9 @@ if(!$user->is_logged_in())
 
 if($user->is_logged_in()!="")
 {
-	$user->logout();	
+	$user->logout();
+    setcookie('username', $uname, time()-3600, '/'); //Логин Пути!
+    setcookie('key', $key, time()-3600,  '/');	//Кука Пути!
 	$user->redirect('http://localhost/theprojectxxx');    //Пути сменить!//
 }
 ?>
