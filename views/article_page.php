@@ -34,8 +34,15 @@ $stmt->execute([$_GET['id']]);
 foreach ($stmt as $row)
 {
 //выводим комменты
-    echo 'Автор высера:'.$row['author']. "<br>" ;
-    echo $row['content'] . "<br>";
+?>
+
+<p>Автор:<?php echo $row['author']; ?> </p>
+<p>Комментарий:<?php echo $row['content']; ?> </p> 
+<p>Дата:<?php echo $row['date']; ?> </p> 
+<p>Дата:<?php echo $row['time']; ?> </p> 
+
+
+<?php
 }
 }
 else  //если комментов нет 
