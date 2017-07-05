@@ -7,7 +7,7 @@
 <div class='top-navigation'>
 
     <div class='navlist'>
-       <img src = "img/logo.jpg" class = "logo">
+       <a href="index.php"><img src = "img/logo.jpg" class = "logo"></a>
         <ul>
             
             <li class='selected'><a href='#0'>Политика</a></li>
