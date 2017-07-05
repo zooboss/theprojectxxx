@@ -853,21 +853,52 @@ footer .container {
 ================================================================
 */
 
-section.article-body {
-    border: 1px solid black;
+.article-body {
+    
+    
 }
 
-div.article {
+.article {
     border: 1px solid red;
+        
 }
 
-div.article-related {
+.article-related {
     border: 1px solid green;
+    min-height: 300px;
+    padding-left: 10px;
 }
 
+.article-header em.labels {
+    float: right;
+    
+}
 
+.article-content {
+    margin-top: 10px;
+    min-height: 300px;
+}
 
+.article-footer {
+    padding-top: 10px;
+    
+}
 
+.article-footer .share-social{
+    float: right;
+    
+}
+
+.vk-share, .ok-share, .fb-share, .tw-share {
+    display: inline-block;
+        
+}
+
+h4.comments-title {
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 2px solid black !important;
+}
 
 
 
