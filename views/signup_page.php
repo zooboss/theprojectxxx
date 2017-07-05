@@ -1,7 +1,7 @@
 <?php
  require_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/registration.php"); 
  require_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/registration/signup.php"); 
- 
+ define ("No_login_form", true);
  ?>
 <!DOCTYPE html>
 

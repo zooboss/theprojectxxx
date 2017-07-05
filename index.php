@@ -1,5 +1,5 @@
 <?php
-if (!empty($_POST["txtemail"])) {
+if (!empty($_POST["uname"])) {
   header("Location: ".$_SERVER["REQUEST_URI"]);
   } //для безопасности: предотвращает вход в систему через кнопку "назад" в сочетании с F5
 session_start();

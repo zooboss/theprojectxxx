@@ -128,6 +128,7 @@ $salt_encrypt = GenSalt(); //генерация соли
 		}
 						$_SESSION['userSession'] = $userRow['userID'];
 						return true;
+						header("Location: index.php?1212312");
 						
 					}
 					else
