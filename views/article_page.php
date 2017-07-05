@@ -1,3 +1,11 @@
+<?php
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php"); 
+
+$article_comments = new COMMENTS();		
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments_edit.php"); 
+
+ ?>
+
 <!DOCTYPE HMTL>
 <html>
 <head>
@@ -6,8 +14,7 @@
 </head>
 <body>
    <?php 
-    include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/header.php"); 
-    require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php"); 
+    include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/header.php");  
     ?>
    
 <section class = "container-fluid article-body">
@@ -88,13 +95,6 @@
         <a href = "#0">[i]</a>
     </h4>
     
-    <form class = "comment-form" method = "post">
-        <fieldset>
-            <input class="user" type="textarea"  id="comment-textarea" name="comment" required>
-        </fieldset> 
-        <input type="submit" name="btn-signup" value="Отправить" id="submit" class="btnDisabled" disabled>
-                        
-    </form>
          
     <?php   
     $article_comments = new COMMENTS();	
@@ -103,25 +103,54 @@
     {
         $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");
         $stmt->execute([$_GET['id']]);
-                                                    // Вывод комментариев
-        foreach ($stmt as $row)
+ if($user_login->is_logged_in()) 
+{  //Если авторизован
+
+?>
+<form method="post"> 
+ <div class="form-group">
+ <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10"></textarea>
+ <div class="widget-content padded">
+<input type="submit" class="" name="btn-comment" value="Стать першим на хохлосраче" id="" ></input>
+</div>
+</div>
+</form>
+<?php
+}                                                   // Вывод комментариев
+       foreach ($stmt as $com)
         {
             ?>
-            <p>Автор:<?php echo $row['author']; ?> </p>
-            <p>Комментарий:<?php echo $row['content']; ?> </p> 
-            <p>Дата:<?php echo $row['date']; ?> </p> 
-            <p>Дата:<?php echo $row['time']; ?> </p> 
+            <p>Автор:<?php echo $com['author']; ?> </p>
+            <p>Комментарий:<?php echo $com['content']; ?> </p> 
+            <p>Дата:<?php echo $com['date']; ?> </p> 
+            <p>Дата:<?php echo $com['time']; ?> </p> 
            <?php
         }
-    }
+
+?>
+
+<?php
+}  // конец Если авторизован 	
+  
     else  //если комментов нет 
     {
     ?>  
     <h2>Комментариев еще нет!</h2>
-    <button>Стать першим на хохлосраче</button>
-    <?php 
-    }
-    ?> 
+   <h2>Авторизуйся и устрой набег!</h2>
+   
+<?php if($user_login->is_logged_in()) {  //Если авторизован ?>
+<form method="post"> 
+ <div class="form-group">
+ <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10"></textarea>
+ <div class="widget-content padded">
+<input type="submit" class="" name="btn-comment" value="Стать першим на хохлосраче" id="" ></input>
+</div>
+</div>
+</form>
+<?php 
+}  //конец Если авторизован 
+} // конец else если комментариев нет
+?> 
     
 </section>   
     
