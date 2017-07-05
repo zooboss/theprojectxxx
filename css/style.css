@@ -468,12 +468,13 @@ margin-right: 2%;
     
 }
 
-.image-wrap > img{
+.image-wrap > img {
     width: 100%;
     position: relative;
     z-index: -10;
         
-}	
+}
+
 
 .image-thumb > img {
     display: block;
@@ -545,6 +546,8 @@ margin-right: 2%;
 .article-wrap:hover .articleImageAnimate {
     transform: skew(-45deg) translate(210%);
 }
+
+
 
 .articleCathegoryAnimate {
     display: inline-block;
@@ -844,8 +847,23 @@ footer .container {
 }
 
 
+/*
+================================================================
+================ SINGLE ARTICLE CSS SHEET ======================
+================================================================
+*/
 
+section.article-body {
+    border: 1px solid black;
+}
 
+div.article {
+    border: 1px solid red;
+}
+
+div.article-related {
+    border: 1px solid green;
+}
 
 
 
