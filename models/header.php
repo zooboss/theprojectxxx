@@ -61,7 +61,7 @@
 if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 
  
-<section id="login" class = "loginBlock container-fluid">
+<!--<section id="login" class = "loginBlock container-fluid">
     
     <div class = "text-right">
         <div class = "loginSocial"> 
@@ -113,7 +113,7 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
     </div>
 </section>
 
-
+-->
 
 
  <?php }   // быдлокод конец

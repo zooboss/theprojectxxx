@@ -11,9 +11,19 @@
 <section id = "section-search" class = "container-fluid">
     <div class = "row">
         <div class = "col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
-           
+           <?php 
+                                if(isset($_GET['inactive']))
+                                {
+                                    ?>
+                                    <div class='alert alert-error'>
+                                        <button class='close' data-dismiss='alert'>&times;</button>
+                                        Не активирован
+                                    </div>
+                                    <?php
+                                }
+                                ?>
             <input type = "search" placeholder = "Поиск..." name = "search" class = "main-search">
-                        
+            <button type = "button" class = "btn" data-toggle = "modal" data-target = "#login-window">модал</button>            
         </div>
     </div>
 </section>	
@@ -88,7 +98,75 @@
         <!-- BOTTOM MENU -->
 		<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>
 
+<!-- MODAL LOGIN WINDOW -->
+    <div id = "login-window" class = "modal fade" role = "dialog">
+        <div class = "modal-dialog" role = "document">
+            <div class = "modal_content">
+                <div class = "modal-header">
+                    <button type = "button" class = "close" data-dismiss = "modal">&times;</button> 
+                    <h4 class = "modal-title">Логин</h4>
+                </div>
+                <div class = "modal-body">
+                    <section id="login" class = "loginBlock container-fluid">
     
+                        <div class = "text-right">
+                            <div class = "loginSocial"> 
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                            </div>
+                            <div class = "loginStandart">
+                                <?php 
+                                if(isset($_GET['inactive']))
+                                {
+                                    ?>
+                                    <div class='alert alert-error'>
+                                        <button class='close' data-dismiss='alert'>&times;</button>
+                                        Не активирован
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                <form class="form-signin" method="post">
+                                    <?php
+                                    if(isset($_GET['error']))
+                                    {
+                                        ?>
+                                        <div class='alert alert-success'>
+                                            <button class='close' data-dismiss='alert'>&times;</button>
+                                            <strong>Неправильный логин или пароль</strong> 
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                    <fieldset>
+                                        <input type="text" placeholder="Логин" name="uname" required />
+                                        <input type="password"  placeholder="Пароль" name="txtupass" required />
+
+                                   </fieldset>
+
+                                   <label for="remember">Запомнить меня</label>
+                                   <input name="remember" id="remember" type='checkbox' value='1'>
+                                   <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
+
+                              </form>
+                                <p><a href="views/forgot_pass_page.php">Восстановить пароль </a></p>
+                                <p><a href="views/signup_page.php" >Регистрация</a></p>
+
+                          </div>
+
+                        </div>
+                    </section>
+                </div>
+                <div class = "modal-footer">
+                    <button type = "button" class = "btn btn-default" data-dismiss = "modal">Закрыть</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+<!-- END OF MODAL -->    
 
 </body>
 </html>

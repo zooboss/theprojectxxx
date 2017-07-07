@@ -6,6 +6,8 @@
 <link type='text/css' rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link type='text/css' rel='stylesheet' href='libs/css/font-awesome.css' />
 <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+<script rel="text/javascript" src="libs/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="js/main.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>

@@ -206,11 +206,11 @@ color: #ffffff;
 }
 
 #login {
-        position: relative;
+        
         padding-top: 10px !important;
-        float: right;
-        height: 40px;
-        width: 40%;
+       
+       
+       
                       
         opacity: 0;
         visibility: hidden;
@@ -315,7 +315,15 @@ color: #ffffff;
 
 }
 	  
-	  
+	
+#login-window {
+    
+}
+
+.modal-dialog {
+    background: white;
+}
+
 	  /* _________Шапка сайта__________ */
 
 
