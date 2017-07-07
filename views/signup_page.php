@@ -39,7 +39,7 @@ $email = ($_GET['email']);
 			--></div>
 	
 			<div class="icon">
-				<label class="cd-label" for="login">Логин</label>
+				<label class="cd-label" for="signup_login">Логин</label>
 				<input class="user" type="text"  id="signup_login" name="txtuname" required>
                 <div class="warning warning_disabled" id="login_warning">Логин занят или используются недопустимые символы</div>
 		    </div> 
