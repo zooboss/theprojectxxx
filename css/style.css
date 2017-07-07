@@ -273,7 +273,7 @@ img.login-icon {
 	  
 	  
 /* LOGIN WINDOW */
-
+/*
 .loginBlock {
     
 }
@@ -282,10 +282,6 @@ img.login-icon {
     padding: 0px;
 }
 
-.loginBlock hr {
-    margin: 5px;
-    border: 0px;
-}
 
 .form-signin {
     padding-bottom: 10px;
@@ -331,8 +327,7 @@ img.login-icon {
 }
 
 .loginSocial, .loginStandart {
-    width: 50%;
-    float: left;
+    
         
 }
 
@@ -353,7 +348,7 @@ img.login-icon {
 #login-window {
     
 }
-
+*/
 .modal-dialog {
     background: white;
 }
@@ -960,7 +955,9 @@ footer .container {
     color: #aaa;
 }
 
-
+.forgot-password-container {
+    height: 1000px;
+}
 
 
 /*

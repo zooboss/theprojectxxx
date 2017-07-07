@@ -157,6 +157,7 @@ $email = ($_GET['email']);
 		    </div>
 		</fieldset>
 	</form>
-
+ <!-- BOTTOM MENU -->
+		<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>
 </body>
 </html>

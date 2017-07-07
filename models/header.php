@@ -82,8 +82,7 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                 </div>
                 <div class = "modal-body">
                     <section id="login" class = "loginBlock container-fluid">
-    
-                        <div class = "text-right">
+                        
                             <div class = "loginSocial"> 
                                 <a href = "#0"><div class = "loginSocialLink"></div></a>
                                 <a href = "#0"><div class = "loginSocialLink"></div></a>
@@ -102,7 +101,7 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                                     <?php
                                 }
                                 ?>
-                                <form class="form-signin" method="post">
+                                <form class="form-signin cd-form floating-labels" method="post">
                                     <?php
                                     if(isset($_GET['error']))
                                     {
@@ -115,8 +114,14 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                                     }
                                     ?>
                                     <fieldset>
-                                        <input type="text" placeholder="Логин" name="uname" required />
-                                        <input type="password"  placeholder="Пароль" name="txtupass" required />
+                                       <div class = "icon">
+                                       <label class="cd-label" for="main-login">Логин</label>
+                                        <input class = "user" type="text" name="uname" id = "main-login" required />
+                                        </div>
+                                        <div class = "icon">
+                                        <label class="cd-label" for="main-password">Пароль</label>
+                                        <input class = "company" type="password"  name="txtupass" id = "main-password" required />
+                                        </div>
 
                                    </fieldset>
 
@@ -130,7 +135,7 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 
                           </div>
 
-                        </div>
+                        
                     </section>
                 </div>
                 <div class = "modal-footer">
