@@ -14,9 +14,9 @@
 	<link rel="stylesheet" href="/theprojectxxx/css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="/theprojectxxx/css/signup.css"> <!-- Resource style -->
 	<link type='text/css' rel='stylesheet' href='/theprojectxxx/libs/css/bootstrap.css' />  <!-- локальное подключение для запуска на апаче -->
-<link type='text/css' rel='stylesheet' href='/theprojectxxx/css/style.css' />
-<link type='text/css' rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link type='text/css' rel='stylesheet' href='/theprojectxxx/libs/css/font-awesome.css' />
+    <link type='text/css' rel='stylesheet' href='/theprojectxxx/css/style.css' />
+    <link type='text/css' rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link type='text/css' rel='stylesheet' href='/theprojectxxx/libs/css/font-awesome.css' />
 	<script src="/theprojectxxx/libs/js/modernizr.js"></script> <!-- Modernizr -->
     <script src="/theprojectxxx/libs/js/jquery-2.1.1.js"></script> <!-- JQuery -->
     <script src="/theprojectxxx/js/signup.js"></script>

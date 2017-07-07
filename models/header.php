@@ -5,7 +5,7 @@
 <div class='top-navigation'>
 
     <div class='navlist'>
-       <a href="index.php"><img src = "img/logo.jpg" class = "logo"></a>
+       <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
         <ul>
             
             <li class='selected'><a href='#0'>Политика</a></li>
@@ -45,7 +45,7 @@
             
     <!-- подобрать иконки -->
     <div class='share-box'>
-       <img class = "header-profile-image" src = "img/icons/empty_user.png">
+       <img class = "header-profile-image" src = "/theprojectxxx/img/icons/empty_user.png">
         <a href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-vk'></i></a>
@@ -94,23 +94,28 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                     <?php
                 }
                 ?>
-
-                <input type="text" placeholder="Логин" name="uname" required />
-                <input type="password"  placeholder="Пароль" name="txtupass" required />
-                <hr />
-                <input name="remember" type='checkbox' value='1'>
-				Запомнить меня
-                <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
-				<a href="views/signup_page.php" class="btn btn-large">Регистрация</a><hr />
-                <a href="views/forgot_pass_page.php">Забыли пароль ? </a>
-		
-				
-			
+                <fieldset>
+                    <input type="text" placeholder="Логин" name="uname" required />
+                    <input type="password"  placeholder="Пароль" name="txtupass" required />
+                    				
+               </fieldset>
+               
+               <label for="remember">Запомнить меня</label>
+               <input name="remember" id="remember" type='checkbox' value='1'>
+               <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
+								
           </form>
+            <p><a href="views/forgot_pass_page.php">Восстановить пароль </a></p>
+            <p><a href="views/signup_page.php" >Регистрация</a></p>
+            
       </div>
       
     </div>
 </section>
+
+
+
+
  <?php }   // быдлокод конец
  elseif($user_login->is_logged_in()!="")
  {  // Быдлокод начало

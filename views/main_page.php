@@ -7,7 +7,17 @@
 <body>   
 
 <?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/header.php"); ?>
-	
+
+<section id = "section-search" class = "container-fluid">
+    <div class = "row">
+        <div class = "col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
+           
+            <input type = "search" placeholder = "Поиск..." name = "search" class = "main-search">
+                        
+        </div>
+    </div>
+</section>	
+			
 <section class='container-fluid articlesGallery'>
     
      <div class='row'>
