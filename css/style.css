@@ -192,8 +192,46 @@ color: #ffffff;
 }
 /* стили меню для мобильной версии */
 
+/* всплывающее окно логина */
 
+.header-profile {
+    display: inline-block;
+}
 
+.header-profile-image {
+    padding-right: 10px;
+    border-right: 1px solid grey;
+    cursor: pointer;
+    
+}
+
+#login {
+        position: relative;
+        visibility: hidden;
+        top: 10px;
+        right: 0px;
+        height: 40px;
+                      
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        
+      }
+
+#login.fadein {
+        
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
 
 	  
 	  
@@ -839,9 +877,9 @@ footer .container {
 }
 
 .loginSocialLink {
-    width: 50px;
-    height: 50px;
-    background: white;
+    width: 40px;
+    height: 40px;
+    background: grey;
     display: inline-block;
 
 }

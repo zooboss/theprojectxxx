@@ -32,18 +32,20 @@
 
 
     <!-- Меню для планшетов и мобильных  -->
-
+    <!--
     <div class='search-box'>
         <span class='icon-search'>
-            <i class='fa fa-search'></i>
+            <img src = "img/icons/empty_user.png">
         </span>
         <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
             <input name='q' type='search' placeholder='Search and hit enter'/>
         </form>
     </div>
-    
+    -->
+            
     <!-- подобрать иконки -->
     <div class='share-box'>
+       <img class = "header-profile-image" src = "img/icons/empty_user.png">
         <a href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-vk'></i></a>
@@ -60,8 +62,8 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 
  
 <section id="login" class = "loginBlock container-fluid">
-    <div class = "col-md-10 col-sm-6 text-center"><h1>Название сайта</h1></div>
-    <div class = "col-md-2 col-sm-6 text-right">
+    
+    <div class = "text-right">
         <div class = "loginSocial"> 
             <a href = "#0"><div class = "loginSocialLink"></div></a>
             <a href = "#0"><div class = "loginSocialLink"></div></a>
@@ -96,10 +98,10 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                 <input type="text" placeholder="Логин" name="uname" required />
                 <input type="password"  placeholder="Пароль" name="txtupass" required />
                 <hr />
-                <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
-				<input name="remember" type='checkbox' value='1'>
+                <input name="remember" type='checkbox' value='1'>
 				Запомнить меня
-                <a href="views/signup_page.php" class="btn btn-large">Регистрация</a><hr />
+                <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
+				<a href="views/signup_page.php" class="btn btn-large">Регистрация</a><hr />
                 <a href="views/forgot_pass_page.php">Забыли пароль ? </a>
 		
 				

@@ -21,14 +21,15 @@ $( document ).ready(function() {
     
     //Скрипт поиска
     var searchCount = 0;
-    $('.fa-search').click(function() {
+    $('.header-profile-image').click(function() {
         if (searchCount % 2 == 0) {
-            $('.search-box input').addClass('fadein');
+            $('#login').addClass('fadein');
         }
         else {
-            $('.search-box input').removeClass('fadein');
+            $('#login').removeClass('fadein');
         }
         searchCount++;
+        console.log(searchCount);
     });
 
 });
