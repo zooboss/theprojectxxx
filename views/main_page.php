@@ -11,19 +11,9 @@
 <section id = "section-search" class = "container-fluid">
     <div class = "row">
         <div class = "col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
-           <?php 
-                                if(isset($_GET['inactive']))
-                                {
-                                    ?>
-                                    <div class='alert alert-error'>
-                                        <button class='close' data-dismiss='alert'>&times;</button>
-                                        Не активирован
-                                    </div>
-                                    <?php
-                                }
-                                ?>
+           
             <input type = "search" placeholder = "Поиск..." name = "search" class = "main-search">
-            <button type = "button" class = "btn" data-toggle = "modal" data-target = "#login-window">модал</button>            
+                      
         </div>
     </div>
 </section>	

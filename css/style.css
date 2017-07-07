@@ -192,6 +192,43 @@ color: #ffffff;
 }
 /* стили меню для мобильной версии */
 
+/* DROPDOWN MENU ON AVATAR */
+
+#avatar-image-dropdown .dropdown-menu {
+    padding: 0px;
+    display: block;
+    visibility: hidden;
+    transform: scale(0);
+    
+    
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#avatar-image-dropdown.open .dropdown-menu {
+    visibility: visible;
+    transform: scale(1);
+    transform-origin: top right;
+}
+
+#avatar-image-dropdown.open .dropdown-menu .dropdown-item {
+    padding: 0px;
+    padding-left: 10px;
+    height: 40px;
+    
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+img.login-icon {
+    height: 0.9em;
+    padding-bottom: 3px;
+    padding-left: 5px;
+}
+
 /* всплывающее окно логина */
 
 .header-profile {
@@ -208,12 +245,9 @@ color: #ffffff;
 #login {
         
         padding-top: 10px !important;
-       
-       
-       
+           
                       
-        opacity: 0;
-        visibility: hidden;
+        
     /*
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -284,7 +318,7 @@ color: #ffffff;
     margin: 0px;
     padding: 0px;
     transform: scale(2.75) translate(-6px, 3.5px);
-    
+    transform-origin: 0 0;
 }
 
 .loginBlock input:focus {

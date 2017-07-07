@@ -20,6 +20,7 @@ $( document ).ready(function() {
     );
     
     //Скрипт логина
+    /*
     var searchCount = 0;
     $('.header-profile-image').click(function() {
         if (searchCount % 2 == 0) {
@@ -31,7 +32,7 @@ $( document ).ready(function() {
         searchCount++;
         console.log(searchCount);
     });
-    
+    */
     //Скрипт поиска
     
     $(".main-search").keydown(function(e){

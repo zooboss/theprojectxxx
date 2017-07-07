@@ -45,7 +45,19 @@
             
     <!-- подобрать иконки -->
     <div class='share-box'>
-       <img class = "header-profile-image" src = "/theprojectxxx/img/icons/empty_user.png">
+        <div class = "btn-group" id = "avatar-image-dropdown">
+            
+            <a  class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class = "header-profile-image" src = "/theprojectxxx/img/icons/empty_user.png">
+            </a>
+            <div class="dropdown-menu">
+                <button type = "button" class = "dropdown-item" data-toggle = "modal" data-target = "#login-window">
+                    <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
+                    Войти
+                </button>
+                                   
+            </div>
+        </div>
         <a href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-vk'></i></a>
@@ -71,7 +83,7 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
             <a href = "#0"><div class = "loginSocialLink"></div></a>
         </div>
         <div class = "loginStandart">
-            <?php 
+          <?php 
             if(isset($_GET['inactive']))
             {
                 ?>
