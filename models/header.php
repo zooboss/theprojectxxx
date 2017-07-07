@@ -76,19 +76,19 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
     <div id = "login-window" class = "modal fade" role = "dialog">
         <div class = "modal-dialog" role = "document">
             <div class = "modal_content">
-                <div class = "modal-header">
-                    <button type = "button" class = "close" data-dismiss = "modal">&times;</button> 
-                    <h4 class = "modal-title">Логин</h4>
-                </div>
+                
                 <div class = "modal-body">
                     <section id="login" class = "loginBlock container-fluid">
-                        
-                            <div class = "loginSocial"> 
+                           
+                            <div class = "loginSocial text-center"> 
+                               <p class = "text-center">ВОЙТИ ЧЕРЕЗ:</p>
+                              
                                 <a href = "#0"><div class = "loginSocialLink"></div></a>
                                 <a href = "#0"><div class = "loginSocialLink"></div></a>
                                 <a href = "#0"><div class = "loginSocialLink"></div></a>
                                 <a href = "#0"><div class = "loginSocialLink"></div></a>
-                            </div>
+                            </div>   
+                                               
                             <div class = "loginStandart">
                                 <?php 
                                 if(isset($_GET['inactive']))
@@ -101,7 +101,7 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                                     <?php
                                 }
                                 ?>
-                                <form class="form-signin cd-form floating-labels" method="post">
+                                <form class="cd-form floating-labels" method="post">
                                     <?php
                                     if(isset($_GET['error']))
                                     {
@@ -115,32 +115,33 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                                     ?>
                                     <fieldset>
                                        <div class = "icon">
-                                       <label class="cd-label" for="main-login">Логин</label>
-                                        <input class = "user" type="text" name="uname" id = "main-login" required />
+                                            <label class="cd-label" for="main-login">Логин</label>
+                                            <input class = "user" type="text" name="uname" id = "main-login" required />
                                         </div>
                                         <div class = "icon">
-                                        <label class="cd-label" for="main-password">Пароль</label>
-                                        <input class = "company" type="password"  name="txtupass" id = "main-password" required />
+                                            <label class="cd-label" for="main-password">Пароль</label>
+                                            <input class = "company" type="password"  name="txtupass" id = "main-password" required />
                                         </div>
-
                                    </fieldset>
-
-                                   <label for="remember">Запомнить меня</label>
-                                   <input name="remember" id="remember" type='checkbox' value='1'>
-                                   <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
-
-                              </form>
-                                <p><a href="views/forgot_pass_page.php">Восстановить пароль </a></p>
-                                <p><a href="views/signup_page.php" >Регистрация</a></p>
+                                    
+                                    <ul class="cd-form-list">
+                                        <li>
+                                            <input name="remember" id="remember" type='checkbox' value='1'>
+                                            <label for="remember">запомнить меня</label>
+                                        </li>
+                                    </ul>
+                                   <button class="btn btn-large btn-primary btn-login pull-right" type="submit" name="btn-login">ВОЙТИ</button>
+                                   <p class = "p-register-button"><a href="views/signup_page.php" class = "register-button btn btn-success pull-right">РЕГИСТРАЦИЯ</a></p>
+                                   <p class = "text-right"><a href="views/forgot_pass_page.php">Забыли пароль?</a></p>
+                                </form>
+                                                                                        
 
                           </div>
 
                         
                     </section>
                 </div>
-                <div class = "modal-footer">
-                    <button type = "button" class = "btn btn-default" data-dismiss = "modal">Закрыть</button>
-                </div>
+                
                 
             </div>
         </div>
