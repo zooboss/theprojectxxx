@@ -162,8 +162,8 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                                         </li>
                                     </ul>
                                    <button class="btn btn-large btn-primary btn-login pull-right" type="submit" name="btn-login">ВОЙТИ</button>
-                                   <p class = "p-register-button"><a href="views/signup_page.php" class = "register-button btn btn-success pull-right">РЕГИСТРАЦИЯ</a></p>
-                                   <p class = "text-right"><a href="views/forgot_pass_page.php">Забыли пароль?</a></p>
+                                   <p class = "p-register-button"><a href="index.php?send=registration&registration=1" class = "register-button btn btn-success pull-right">РЕГИСТРАЦИЯ</a></p>
+                                   <p class = "text-right"><a href="index.php?send=forgot_pass&forgot_pass=1">Забыли пароль?</a></p>
                                 </form>
                                                                                         
 

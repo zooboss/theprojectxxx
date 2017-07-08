@@ -75,7 +75,7 @@
                                
                             </div>
                         --> 
-                        <a href="index.php?id=<?=$a['id']?>"><div class='read'>Читать </div></a>
+                        <a href="index.php?send=article&id=<?=$a['id']?>"><div class='read'>Читать </div></a>
                     </div>
                 </div>
             </div>   
