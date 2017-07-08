@@ -61,10 +61,31 @@
                 >
             </a>
             <div class="dropdown-menu">
-                <button type = "button" class = "dropdown-item" data-toggle = "modal" data-target = "#login-window">
-                    <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
-                    Войти
-                </button>
+               <?php
+                     if ($user_login->is_logged_in()!="") {
+                ?>
+                         <a href = "#" class = "dropdown-item btn">
+                             <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
+                             Профиль
+                         </a>
+                         <div class="dropdown-divider"></div>
+                         <a href = "#" class = "dropdown-item btn">
+                             <img class = "login-icon" src = "/theprojectxxx/img/icons/logout_icon.svg">
+                             Выйти
+                         </a>
+              <?php
+                     }
+                     else {
+                ?>
+                         <button type = "button" class = "dropdown-item" data-toggle = "modal" data-target = "#login-window">
+                            <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
+                            Войти
+                        </button>
+             <?php
+                     }
+                
+            ?>
+                
                                    
             </div>
         </div>
