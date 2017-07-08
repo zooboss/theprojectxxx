@@ -236,9 +236,11 @@ img.login-icon {
 }
 
 .header-profile-image {
-    padding-right: 10px;
-    border-right: 1px solid grey;
+    
     cursor: pointer;
+    
+    border-radius: 50%;
+    height: 24px;
     
 }
 

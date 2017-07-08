@@ -48,7 +48,17 @@
         <div class = "btn-group" id = "avatar-image-dropdown">
             
             <a  class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class = "header-profile-image" src = "/theprojectxxx/img/icons/empty_user.png">
+                <img class = "header-profile-image" src = 
+                <?php
+                     if ($user_login->is_logged_in()!="") {
+                         echo "/theprojectxxx/img/icons/full_user.jpg";
+                     }
+                     else {
+                         echo "/theprojectxxx/img/icons/empty_user.png";
+                     }
+                
+                ?>
+                >
             </a>
             <div class="dropdown-menu">
                 <button type = "button" class = "dropdown-item" data-toggle = "modal" data-target = "#login-window">
