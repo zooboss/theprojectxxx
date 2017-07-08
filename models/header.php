@@ -64,12 +64,12 @@
                <?php
                      if ($user_login->is_logged_in()!="") {
                 ?>
-                         <a href = "#" class = "dropdown-item btn">
+                         <a href = "<?php echo 'user-'.$row['userID'].'.html'?>" class = "dropdown-item btn">
                              <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
                              Профиль
                          </a>
                          <div class="dropdown-divider"></div>
-                         <a href = "#" class = "dropdown-item btn">
+                         <a href = "/theprojectxxx/models/registration/logout.php" class = "dropdown-item btn">
                              <img class = "login-icon" src = "/theprojectxxx/img/icons/logout_icon.svg">
                              Выйти
                          </a>
@@ -181,7 +181,8 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 
 
  <?php }   // быдлокод конец
- elseif($user_login->is_logged_in()!="")
+
+/* elseif($user_login->is_logged_in()!="")
  {  // Быдлокод начало
  echo '<h1>Вы вошли как ' . $row['PublicUserName'] . ', но кого это ебет?</h1>';
  echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
@@ -192,4 +193,4 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 					 
                     </div>
  
-  <?php  }  }?> <!-- Быдлокод конец -->
+  <?php  } */ } ?> <!-- Быдлокод конец --> 

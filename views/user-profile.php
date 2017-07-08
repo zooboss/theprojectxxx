@@ -38,8 +38,8 @@
  
  <?php if($user_login->is_logged_in()!="" and $row['userID']==$_GET['userID'])
  {  // Быдлокод начало
- echo '<h1>Вы вошли как ' . $row['userName'] . ', но кого это ебет?</h1>';
- echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
+ //echo '<h1>Вы вошли как ' . $row['userName'] . ', но кого это ебет?</h1>';
+ //echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
   ?>   
    <div class='alert alert-success'>
                      <h3>Моя страница</h3>
