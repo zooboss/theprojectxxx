@@ -2,7 +2,7 @@
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php"); 
 
 $article_comments = new COMMENTS();		
-require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments_edit.php"); 
+
 
  ?>
 
@@ -19,6 +19,15 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
    
 <section class = "container-fluid article-body">
     <div class = "col-md-9 col-sm-12 col-xs-12 ">
+	
+	
+	<div class="overlay" title="окно"></div> 
+<div class="popup"></div>
+	
+	
+	
+
+	
         <div class = "article">
             <div class = "article-header">
                 <h2> <strong><?=$article['title']?></strong> </h2>
@@ -34,39 +43,15 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
                 <div class='share-social'>
                     <div class = "vk-share">
                         <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
-                        <script type="text/javascript">
-                            document.write(VK.Share.button(false,{type: "round", text: "&nbsp;"}));
-                        </script>
+                    
                     </div>
                     <div class = "ok-share">
                         <div id="ok_shareWidget"></div>
-                        <script>
-                            !function (d, id, did, st, title, description, image) {
-                              var js = d.createElement("script");
-                              js.src = "https://connect.ok.ru/connect.js";
-                              js.onload = js.onreadystatechange = function () {
-                              if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {
-                                if (!this.executed) {
-                                  this.executed = true;
-                                  setTimeout(function () {
-                                    OK.CONNECT.insertShareWidget(id,did,st, title, description, image);
-                                  }, 0);
-                                }
-                              }};
-                              d.documentElement.appendChild(js);
-                            }(document,"ok_shareWidget",document.URL,'{"sz":20,"st":"straight","nt":1}',"","","");
-                        </script>
+  
                     </div>
                     <div class = "fb-share">
                         <div id="fb-root"></div>
-                            <script>(function(d, s, id) {
-                                  var js, fjs = d.getElementsByTagName(s)[0];
-                                  if (d.getElementById(id)) return;
-                                  js = d.createElement(s); js.id = id;
-                                  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.9";
-                                  fjs.parentNode.insertBefore(js, fjs);
-                                }(document, 'script', 'facebook-jssdk'));
-                            </script>
+                 
                             <div class="fb-share-button" data-href="localhost/theprojectxxx/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">&nbsp;</a></div>
                     </div>
                     <div class = "tw-share">
@@ -86,7 +71,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
     </div>
 </section>
    
-      
+       <div id="new_comment">Заменить</div>
 <section class = "container-fluid article-comments">
     <p><a name="comments"></a></p>
     <h4 class = "comments-title">
@@ -94,8 +79,6 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
         (48)
         <a href = "#0">[i]</a>
     </h4>
-    
-         
     <?php   
     $article_comments = new COMMENTS();	
 
@@ -106,15 +89,39 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
  if($user_login->is_logged_in()) 
 {  //Если авторизован
 
-?>
-<form method="post"> 
- <div class="form-group">
- <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10"></textarea>
- <div class="widget-content padded">
-<input type="submit" class="" name="btn-comment" value="Стать першим на хохлосраче" id="" ></input>
-</div>
-</div>
-</form>
+?>	
+
+<a class="edit" author="<?php echo $row['PublicUserName'] ?>" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>
+	
+<script>
+$(document).ready(function(){
+$('a.edit').click(function(){
+$('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
+
+		var author = $(this).attr('author');
+		var article = $(this).attr('article');
+		$.ajax({ //отправляем ajax-запрос
+        type: "POST", //тип (POST, GET, PUT, etc)
+        url: "models/comments/comments_edit.php", //УРЛ Вашего обработчика
+        data: { 
+		commentator: author,	
+		article_id: article
+		} //сами данные, передается POST[xmlUrl] со значением из data нажатой кнопки
+    })
+           .done(function( res ) { //при успехе (200 статус)
+        	$('div.popup').html(res) //заменяем блок с id="id_click" полученной строкой от сервера.
+		$('.popup .close_window, .overlay').click(function (){
+$('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
+});
+    });
+    
+	});
+    
+});
+</script> 
+
+
+
 <?php
 }                                                   // Вывод комментариев
        foreach ($stmt as $com)
@@ -139,21 +146,16 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
    <h2>Авторизуйся и устрой набег!</h2>
    
 <?php if($user_login->is_logged_in()) {  //Если авторизован ?>
-<form method="post"> 
- <div class="form-group">
- <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10"></textarea>
- <div class="widget-content padded">
-<input type="submit" class="" name="btn-comment" value="Стать першим на хохлосраче" id="" ></input>
-</div>
-</div>
-</form>
+
 <?php 
 }  //конец Если авторизован 
 } // конец else если комментариев нет
 ?> 
     
 </section>   
-    
+
+
+ 
 <?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>    
 
    

@@ -4,7 +4,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/dbconfig.php")
 class COMMENTS {	
 
     
-	private $conn;
+	private $conn; 
 	
 	public function __construct()
 	{
