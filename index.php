@@ -54,8 +54,8 @@ $articles = articles_all($link);
 if (isset($_GET['send'])) {
     $send = $_GET['send'];
     switch ($send) {
-        case $_GET['userID']:
-            include(dirname(__FILE__) . "/views/user-profile.php");            
+        case 'profile':
+            include(dirname(__FILE__) . "/views/user-profile.php");   			
             break;
         case "article":
             $article = articles_get($link, $_GET['id']);
