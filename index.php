@@ -51,6 +51,33 @@ require_once(dirname(__FILE__) . "/models/functions.php");
 $articles = articles_all($link);
 
 
+if (isset($_GET['send'])) {
+    $send = $_GET['send'];
+    switch ($send) {
+        case 'profile':
+            include(dirname(__FILE__) . "/views/user-profile.php");   			
+            break;
+        case "article":
+            $article = articles_get($link, $_GET['id']);
+            include(dirname(__FILE__) . "/views/article_page.php");
+            break;
+        case "registration" :
+            include(dirname(__FILE__) . "/views/signup_page.php");
+            break;
+        case "forgot_pass":
+            include(dirname(__FILE__) . "/views/forgot_pass_page.php");
+            break;    
+                        
+    }
+        
+}
+else {
+    include(dirname(__FILE__) . "/views/main_page.php");
+}
+
+
+
+/*
 if (isset($_GET['userID'])) 
 {
     include(dirname(__FILE__) . "/views/user-profile.php");
@@ -72,6 +99,7 @@ else
     }
 
 }
+*/
 
 ?>
   

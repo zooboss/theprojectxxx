@@ -192,7 +192,7 @@ $(function() {
 	});
 	
 	function buttonOnAndOff(){
-        console.log(emailStat, passwordStat, password2Stat, loginStat);
+        //console.log(emailStat, passwordStat, password2Stat, loginStat);
         if(emailStat == 1 && passwordStat == 1 && password2Stat == 1 && loginStat == 1){
 			$("#submit").removeAttr("disabled").removeClass().addClass("btnEnabled");
 		}else{

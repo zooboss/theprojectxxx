@@ -5,7 +5,7 @@
 <div class='top-navigation'>
 
     <div class='navlist'>
-       <a href="index.php"><img src = "img/logo.jpg" class = "logo"></a>
+       <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
         <ul>
             
             <li class='selected'><a href='#0'>Политика</a></li>
@@ -32,18 +32,63 @@
 
 
     <!-- Меню для планшетов и мобильных  -->
-
+    <!--
     <div class='search-box'>
         <span class='icon-search'>
-            <i class='fa fa-search'></i>
+            <img src = "img/icons/empty_user.png">
         </span>
         <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
             <input name='q' type='search' placeholder='Search and hit enter'/>
         </form>
     </div>
-    
+    -->
+            
     <!-- подобрать иконки -->
     <div class='share-box'>
+        <div class = "btn-group" id = "avatar-image-dropdown">
+            
+            <a  class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class = "header-profile-image" src = 
+                <?php
+                     if ($user_login->is_logged_in()!="") {
+                         echo "/theprojectxxx/img/icons/full_user.jpg";
+                     }
+                     else {
+                         echo "/theprojectxxx/img/icons/empty_user.png";
+                     }
+                
+                ?>
+                >
+            </a>
+            <div class="dropdown-menu">
+               <?php
+                     if ($user_login->is_logged_in()!="") {
+                ?>
+                         <a href = "<?php echo 'user-'.$row['userID'].'.html'?>" class = "dropdown-item btn">
+                             <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
+                             Профиль
+                         </a>
+                         <div class="dropdown-divider"></div>
+                         <a href = "/theprojectxxx/models/registration/logout.php" class = "dropdown-item btn">
+                             <img class = "login-icon" src = "/theprojectxxx/img/icons/logout_icon.svg">
+                             Выйти
+                         </a>
+              <?php
+                     }
+                     else {
+                ?>
+                         <button type = "button" class = "dropdown-item" data-toggle = "modal" data-target = "#login-window">
+                            <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
+                            Войти
+                        </button>
+             <?php
+                     }
+                
+            ?>
+                
+                                   
+            </div>
+        </div>
         <a href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-vk'></i></a>
@@ -58,59 +103,86 @@
 <?php if (!defined("No_login_form")) {         //если не определена переменная "No_login_form" - идем дальше, возможно, следует убрать этот пункт, изменив порядок.  
 if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 
- 
-<section id="login" class = "loginBlock container-fluid">
-    <div class = "col-md-10 col-sm-6 text-center"><h1>Название сайта</h1></div>
-    <div class = "col-md-2 col-sm-6 text-right">
-        <div class = "loginSocial"> 
-            <a href = "#0"><div class = "loginSocialLink"></div></a>
-            <a href = "#0"><div class = "loginSocialLink"></div></a>
-            <a href = "#0"><div class = "loginSocialLink"></div></a>
-            <a href = "#0"><div class = "loginSocialLink"></div></a>
-        </div>
-        <div class = "loginStandart">
-            <?php 
-            if(isset($_GET['inactive']))
-            {
-                ?>
-                <div class='alert alert-error'>
-                    <button class='close' data-dismiss='alert'>&times;</button>
-                    Не активирован
-                </div>
-                <?php
-            }
-            ?>
-            <form class="form-signin" method="post">
-                <?php
-                if(isset($_GET['error']))
-                {
-                    ?>
-                    <div class='alert alert-success'>
-                        <button class='close' data-dismiss='alert'>&times;</button>
-                        <strong>Неправильный логин или пароль</strong> 
-                    </div>
-                    <?php
-                }
-                ?>
+<!-- MODAL LOGIN WINDOW -->
+    <div id = "login-window" class = "modal fade" role = "dialog">
+        <div class = "modal-dialog" role = "document">
+            <div class = "modal_content">
+                
+                <div class = "modal-body">
+                    <section id="login" class = "loginBlock container-fluid">
+                           
+                            <div class = "loginSocial text-center"> 
+                               <p class = "text-center">ВОЙТИ ЧЕРЕЗ:</p>
+                              
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                            </div>   
+                                               
+                            <div class = "loginStandart">
+                                <?php 
+                                if(isset($_GET['inactive']))
+                                {
+                                    ?>
+                                    <div class='alert alert-error'>
+                                        <button class='close' data-dismiss='alert'>&times;</button>
+                                        Не активирован
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                <form class="cd-form floating-labels" method="post">
+                                    <?php
+                                    if(isset($_GET['error']))
+                                    {
+                                        ?>
+                                        <div class='alert alert-success'>
+                                            <button class='close' data-dismiss='alert'>&times;</button>
+                                            <strong>Неправильный логин или пароль</strong> 
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                    <fieldset>
+                                       <div class = "icon">
+                                            <label class="cd-label" for="main-login">Логин</label>
+                                            <input class = "user" type="text" name="uname" id = "main-login" required />
+                                        </div>
+                                        <div class = "icon">
+                                            <label class="cd-label" for="main-password">Пароль</label>
+                                            <input class = "company" type="password"  name="txtupass" id = "main-password" required />
+                                        </div>
+                                   </fieldset>
+                                    
+                                    <ul class="cd-form-list">
+                                        <li>
+                                            <input name="remember" id="remember" type='checkbox' value='1'>
+                                            <label for="remember">запомнить меня</label>
+                                        </li>
+                                    </ul>
+                                   <button class="btn btn-large btn-primary btn-login pull-right" type="submit" name="btn-login">ВОЙТИ</button>
+                                   <p class = "p-register-button"><a href="index.php?send=registration&registration=1" class = "register-button btn btn-success pull-right">РЕГИСТРАЦИЯ</a></p>
+                                   <p class = "text-right"><a href="index.php?send=forgot_pass&forgot_pass=1">Забыли пароль?</a></p>
+                                </form>
+                                                                                        
 
-                <input type="text" placeholder="Логин" name="uname" required />
-                <input type="password"  placeholder="Пароль" name="txtupass" required />
-                <hr />
-                <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
-				<input name="remember" type='checkbox' value='1'>
-				Запомнить меня
-                <a href="views/signup_page.php" class="btn btn-large">Регистрация</a><hr />
-                <a href="views/forgot_pass_page.php">Забыли пароль ? </a>
-		
-				
-			
-          </form>
-      </div>
-      
+                          </div>
+
+                        
+                    </section>
+                </div>
+                
+                
+            </div>
+        </div>
     </div>
-</section>
+<!-- END OF MODAL -->    
+
+
  <?php }   // быдлокод конец
- elseif($user_login->is_logged_in()!="")
+
+/* elseif($user_login->is_logged_in()!="")
  {  // Быдлокод начало
  echo '<h1>Вы вошли как ' . $row['PublicUserName'] . ', но кого это ебет?</h1>';
  echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
@@ -121,4 +193,4 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 					 
                     </div>
  
-  <?php  }  }?> <!-- Быдлокод конец -->
+  <?php  } */ } ?> <!-- Быдлокод конец --> 
