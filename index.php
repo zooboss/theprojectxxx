@@ -3,7 +3,7 @@ if (!empty($_POST["uname"])) {
   header("Location: ".$_SERVER["REQUEST_URI"]);
   } //для безопасности: предотвращает вход в систему через кнопку "назад" в сочетании с F5
 session_start();
-require_once("/models/registration.php"); 
+require_once("models/registration.php"); 
 
 
     
