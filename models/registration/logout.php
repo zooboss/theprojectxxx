@@ -5,7 +5,7 @@ $user = new USER();
 
 if(!$user->is_logged_in())
 {
-	$user->redirect('http://localhost/theprojectxxx');   //Пути сменить!//
+	$user->redirect($_SERVER['HTTP_REFERER']);   //Пути сменить!//
 }
 
 if($user->is_logged_in()!="")
@@ -13,6 +13,6 @@ if($user->is_logged_in()!="")
 	$user->logout();
     setcookie('username', $uname, time()-3600, '/'); //Логин Пути!
     setcookie('key', $key, time()-3600,  '/');	//Кука Пути!
-	$user->redirect('http://localhost/theprojectxxx');    //Пути сменить!//
+	$user->redirect($_SERVER['HTTP_REFERER']);    //Пути сменить!//
 }
 ?>

@@ -22,7 +22,9 @@ $article_comments = new COMMENTS();
 	
 	
 	<div class="overlay" title="окно"></div> 
-<div class="popup"></div>
+<div class="popup">
+<div class="close_window">x</div>
+</div>
 	
 	
 	
@@ -70,14 +72,15 @@ $article_comments = new COMMENTS();
         </div>
     </div>
 </section>
-   
-       <div id="new_comment">Заменить</div>
+
+
 <section class = "container-fluid article-comments">
     <p><a name="comments"></a></p>
     <h4 class = "comments-title">
         Комментарии 
         (48)
         <a href = "#0">[i]</a>
+	
     </h4>
     <?php   
     $article_comments = new COMMENTS();	
@@ -91,11 +94,63 @@ $article_comments = new COMMENTS();
 
 ?>	
 
-<a class="edit" author="<?php echo $row['PublicUserName'] ?>" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>
+<form id="my_form" method="POST" action="models/comments/comments_edit.php" > 
+<textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
+<input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
+<input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
+<input type="submit" class="" name="btn-comment" value="Отправить"  ></input>
+</form>
+
+<a id="showform" href = "#0">Добавить еще один комментарий</a>
+
+
+
+<script >
+
+$(function(){
+  $('#my_form').on('submit', function(e){
+    e.preventDefault();
+	
+	var textarea = $("textarea[name='comment']");
+    var $that = $(this),
+        fData = $that.serialize(); // сериализируем данные
+        // ИЛИ
+        // fData = $that.serializeArray();
+    $.ajax({
+      url: $that.attr('action'), // путь к обработчику берем из атрибута action
+      type: $that.attr('method'), // метод передачи - берем из атрибута method
+      data: {form_data: fData},
+      dataType: 'json',
+      success: function(json){
+        // В случае успешного завершения запроса...
+        if(json){
+        $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
+		$('#my_form').toggle();
+		textarea.val('');
+        $('#showform').show();
+        }
+      }
+    });
+  });
+});
+
+</script>
+
+
+
+
+<?php
+} //Если авторизован 
+
+else
+{
+?>	
+	
+<a class="add_comment" author="<?php echo $row['PublicUserName'] ?>" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>
 	
 <script>
 $(document).ready(function(){
-$('a.edit').click(function(){
+$('a.add_comment').click(function(){
 $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
 
 		var author = $(this).attr('author');
@@ -109,7 +164,7 @@ $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
 		} //сами данные, передается POST[xmlUrl] со значением из data нажатой кнопки
     })
            .done(function( res ) { //при успехе (200 статус)
-        	$('div.popup').html(res) //заменяем блок с id="id_click" полученной строкой от сервера.
+        	$('div.popup').html(res) //заменяем блок с id="div.popup" полученной строкой от сервера.
 		$('.popup .close_window, .overlay').click(function (){
 $('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
 });
@@ -119,25 +174,42 @@ $('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
     
 });
 </script> 
-
-
-
-<?php
-}                                                   // Вывод комментариев
-       foreach ($stmt as $com)
+	
+<?php	
+}  
+?>
+	<div id="comments">
+<?php	 foreach ($stmt as $com)
         {
             ?>
+		
             <p>Автор:<?php echo $com['author']; ?> </p>
             <p>Комментарий:<?php echo $com['content']; ?> </p> 
             <p>Дата:<?php echo $com['date']; ?> </p> 
             <p>Дата:<?php echo $com['time']; ?> </p> 
+			
            <?php
         }
+?>		
+</div>		
 
-?>
+<script >
+$(function(){
+  $('#showform').on('click', function(showForm){
+    showForm.preventDefault();
+		$('#my_form').toggle();
+		$('#showform').hide();
+		$('#comment_info').remove();
+		$('#comments').replaceWith(json);
+		
+		
+  });
+  
+});
 
+</script>
 <?php
-}  // конец Если авторизован 	
+}  // если есть комментарии	
   
     else  //если комментов нет 
     {
