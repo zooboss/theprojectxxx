@@ -146,20 +146,18 @@ else
 {
 ?>	
 	
-<a class="add_comment" author="<?php echo $row['PublicUserName'] ?>" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>
+<a class="add_comment" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>
 	
 <script>
 $(document).ready(function(){
 $('a.add_comment').click(function(){
 $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
 
-		var author = $(this).attr('author');
 		var article = $(this).attr('article');
 		$.ajax({ //отправляем ajax-запрос
         type: "POST", //тип (POST, GET, PUT, etc)
-        url: "models/comments/comments_edit.php", //УРЛ Вашего обработчика
-        data: { 
-		commentator: author,	
+        url: "models/comments/comments_via_social.php", //УРЛ Вашего обработчика
+        data: { 	
 		article_id: article
 		} //сами данные, передается POST[xmlUrl] со значением из data нажатой кнопки
     })
