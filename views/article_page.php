@@ -92,55 +92,9 @@ $article_comments = new COMMENTS();
  if($user_login->is_logged_in()) 
 {  //Если авторизован
 
-?>	
+include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");
 
-<form id="my_form" method="POST" action="models/comments/comments_edit.php" > 
-<textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
-<input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
-<input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
-<input type="submit" class="" name="btn-comment" value="Отправить"  ></input>
-</form>
-
-<a id="showform" href = "#0">Добавить еще один комментарий</a>
-
-
-
-<script >
-
-$(function(){
-  $('#my_form').on('submit', function(e){
-    e.preventDefault();
-	
-	var textarea = $("textarea[name='comment']");
-    var $that = $(this),
-        fData = $that.serialize(); // сериализируем данные
-        // ИЛИ
-        // fData = $that.serializeArray();
-    $.ajax({
-      url: $that.attr('action'), // путь к обработчику берем из атрибута action
-      type: $that.attr('method'), // метод передачи - берем из атрибута method
-      data: {form_data: fData},
-      dataType: 'json',
-      success: function(json){
-        // В случае успешного завершения запроса...
-        if(json){
-        $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
-		$('#my_form').toggle();
-		textarea.val('');
-        $('#showform').show();
-        }
-      }
-    });
-  });
-});
-
-</script>
-
-
-
-
-<?php
-} //Если авторизован 
+} // конец если авторизован 
 
 else
 {
@@ -191,35 +145,35 @@ $('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
 ?>		
 </div>		
 
-<script >
-$(function(){
-  $('#showform').on('click', function(showForm){
-    showForm.preventDefault();
-		$('#my_form').toggle();
-		$('#showform').hide();
-		$('#comment_info').remove();
-		$('#comments').replaceWith(json);
-		
-		
-  });
-  
-});
 
-</script>
 <?php
 }  // если есть комментарии	
   
     else  //если комментов нет 
     {
-    ?>  
+    ?>
+	<div id="comments">	
     <h2>Комментариев еще нет!</h2>
-   <h2>Авторизуйся и устрой набег!</h2>
+	</div>
    
-<?php if($user_login->is_logged_in()) {  //Если авторизован ?>
+   
+<?php if($user_login->is_logged_in()) {  //Если авторизован 
+
+include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");
+}  //конец Если авторизован 
+else 
+{
+?>	
+
+<div id="comments">
+<h2>Авторизуйся и устрой набег!</h2>
+</div>	
 
 <?php 
-}  //конец Если авторизован 
-} // конец else если комментариев нет
+} //конец else "Если не авторизован и нет комментариев"
+
+} 
+// конец else если комментариев нет
 ?> 
     
 </section>   
