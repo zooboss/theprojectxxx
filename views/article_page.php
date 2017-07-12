@@ -92,17 +92,74 @@ $article_comments = new COMMENTS();
  if($user_login->is_logged_in()) 
 {  //Если авторизован
 
-include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");
+include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");  //выдаем форму
 
-} // конец если авторизован 
+} // конец если авторизован и комментарии есть
 
-else
+else   //если не авторизован и комментарии есть
 {
 ?>	
 	
+<a class="add_comment" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>  <!-- Всплывающее окно с социальными сетями !-->
+
+<?php	
+}  // конец если не авторизован и комментарии есть
+?>
+	<div id="comments">
+<?php	 foreach ($stmt as $com)   //выводим комментарии в обоих случаях
+        {
+            ?>
+		
+            <p>Автор:<?php echo $com['author']; ?> </p>
+            <p>Комментарий:<?php echo $com['content']; ?> </p> 
+            <p>Дата:<?php echo $com['date']; ?> </p> 
+            <p>Дата:<?php echo $com['time']; ?> </p> 
+			
+           <?php
+        }
+?>		
+</div>		
+
+
+<?php
+}  // конец если есть комментарии	
+  
+    else  //если комментов нет 
+    {
+    ?>
+	<div id="comments">	
+    <h2>Комментариев еще нет!</h2>
+	</div>
+   
+   
+<?php if($user_login->is_logged_in()) {  //Если авторизован и комментариев нет
+
+include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");  //добовляем форму
+}  //конец Если авторизован и комментариев нет
+else //если не авторизован и комментарии есть
+{
+?>	
+
+<div id="comments">
 <a class="add_comment" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>
-	
-<script>
+<h2>Авторизуйся и устрой набег!</h2>
+</div>	
+
+<?php 
+} //конец else если не авторизован и комментарии есть
+
+} 
+// конец else если комментариев нет
+?> 
+    
+</section>   
+
+
+ 
+<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>    
+
+   
+ <script>
 $(document).ready(function(){
 $('a.add_comment').click(function(){
 $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
@@ -125,65 +182,7 @@ $('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
 	});
     
 });
-</script> 
-	
-<?php	
-}  
-?>
-	<div id="comments">
-<?php	 foreach ($stmt as $com)
-        {
-            ?>
-		
-            <p>Автор:<?php echo $com['author']; ?> </p>
-            <p>Комментарий:<?php echo $com['content']; ?> </p> 
-            <p>Дата:<?php echo $com['date']; ?> </p> 
-            <p>Дата:<?php echo $com['time']; ?> </p> 
-			
-           <?php
-        }
-?>		
-</div>		
-
-
-<?php
-}  // если есть комментарии	
-  
-    else  //если комментов нет 
-    {
-    ?>
-	<div id="comments">	
-    <h2>Комментариев еще нет!</h2>
-	</div>
-   
-   
-<?php if($user_login->is_logged_in()) {  //Если авторизован 
-
-include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");
-}  //конец Если авторизован 
-else 
-{
-?>	
-
-<div id="comments">
-<h2>Авторизуйся и устрой набег!</h2>
-</div>	
-
-<?php 
-} //конец else "Если не авторизован и нет комментариев"
-
-} 
-// конец else если комментариев нет
-?> 
-    
-</section>   
-
-
- 
-<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>    
-
-   
-  
+</script>  
 
 
 </body>
