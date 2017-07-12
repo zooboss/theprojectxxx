@@ -21,6 +21,16 @@ testLoginEmail.php - скрипт для проверки введенного Логина и E-mail на занятость
 
 *-----registration-----*
 
+
+*-----comments-----*
+comments_form.php - форма для комментариев + скрипт Query, делающий запрос в comments_edit.php
+comments.php - класс и функции комментов
+comments_edit.php - обработчик Ajax запроса из comments_form.php
+comments_via_social - возможно, файл для регистрации через социальные сети, либо же будет регистрация через registration.php
+
+
+*-----comments-----*
+
 *-----models-----*
 
 
@@ -38,6 +48,7 @@ user-profile.php - вывод личной страницы пользователя (url меняется через htacce
 reset.css -                    сброс большинства свойств в дефолт
 signup.css -                   таблица стилей для страниц регистрации и восстановления пароля
 style.css -                    таблица стилей для главной страницы
+comments.css -                 стили всплывающего окна для авторизации через социальные сети
 /libs/pickmeup.css -           стили календаря
 
 *-----css-----*
