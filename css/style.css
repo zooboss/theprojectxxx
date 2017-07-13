@@ -1,4 +1,8 @@
-  /* Шапка сайта */  
+html,body {
+    height:100%;
+}  
+
+/* Шапка сайта */  
   .top-navigation{
         position: relative;
         bottom: 0;
@@ -1015,5 +1019,74 @@ display: none;
 }
 
 
+/*                                                         COMMENTS */
+
+.single-comment {
+    position: relative;
+    margin-bottom: 15px;
+    min-height: 50px;
+       
+}
+
+
+.single-comment-avatar {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 50px;   
+    padding-top: 5px;
+            
+}
+
+
+.single-comment-body {
+    margin-left: 55px;   
+    
+}
+
+.single-comment-header {
+    margin-bottom: 5px;
+}
+
+.single-comment-header a, .single-comment-header a:active, .single-comment-header a:visited{
+    color: #0543a8;
+    text-decoration: none;
+}
+
+.single-comment-header a:hover{ 
+    color: #031e4c;
+}
+
+.single-comment-header span{
+   font-size: 10px;
+    color: #b1b1b1;
+}
+
+
+.single-comment-avatar-image {
+    border-radius: 50%;
+    height: 40px;
+    
+}
+
+.single-comment-text {
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.single-comment-footer {
+    font-size: 13px;
+    color: grey;
+}
+
+.single-comment-footer a, .single-comment-footer a:active, .single-comment-footer a:visited {
+    text-decoration: none;
+    font-size: 13px;
+    color: grey;
+}
+
+.single-comment-footer a:hover {
+    color: #404040;
+}
 
 

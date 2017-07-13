@@ -75,46 +75,67 @@ $article_comments = new COMMENTS();
 
 
 <section class = "container-fluid article-comments">
-    <p><a name="comments"></a></p>
-    <h4 class = "comments-title">
-        Комментарии 
-        (48)
-        <a href = "#0">[i]</a>
-	
-    </h4>
-    <?php   
-    $article_comments = new COMMENTS();	
+    
+    
+	<div id="comments" class = "col-md-9 col-sm-12 col-xs-12">
+      <p><a name="comments"></a></p>
+        <h4 class = "comments-title">
+            Комментарии 
+            (48)
+            <a href = "#0">[i]</a>
 
-    if($article_comments->check_comments()== true)  // проверяем есть ли коментарии при помощи функции в comments.php
-    {
-        $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");
-        $stmt->execute([$_GET['id']]);
-        
-        if($user_login->is_logged_in()) 
-        {  //Если авторизован
+        </h4>
+       <?php   
+        $article_comments = new COMMENTS();	
 
-            include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");  //выдаем форму
-
-            } // конец если авторизован и комментарии есть
-
-        else   //если не авторизован и комментарии есть
+        if($article_comments->check_comments()== true)  // проверяем есть ли коментарии при помощи функции в comments.php
         {
-        ?>	
-	
-            <a class="add_comment" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>  <!-- Всплывающее окно с социальными сетями !-->
+            $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");
+            $stmt->execute([$_GET['id']]);
+
+            if($user_login->is_logged_in()) 
+            {  //Если авторизован
+
+                include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");  //выдаем форму
+
+                } // конец если авторизован и комментарии есть
+
+            else   //если не авторизован и комментарии есть
+            {
+            ?>	
+
+                <a class="add_comment" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>  <!-- Всплывающее окно с социальными сетями !-->
 
         <?php	
         }  // конец если не авторизован и комментарии есть
         ?>
-	<div id="comments">
+       
+       
+       
+       
+       
+       
         <?php	 foreach ($stmt as $com)   //выводим комментарии в обоих случаях
         {
             ?>
-		
-            <p>Автор:<?php echo $com['author']; ?> </p>
-            <p>Комментарий:<?php echo $com['content']; ?> </p> 
-            <p>Дата:<?php echo $com['date']; ?> </p> 
-            <p>Дата:<?php echo $com['time']; ?> </p> 
+		    <div class = "single-comment">
+               <div class = "single-comment-avatar">
+                   <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
+               </div>
+               <div class = "single-comment-body">
+                   <div class = "single-comment-header">
+                       <a href = "#0"><?php echo $com['author']?></a>
+                       <span><?php echo $com['date'] . " " . $com['time'] ?></span>
+                   </div>
+                   <div class = "single-comment-text">
+                      <span><?php echo $com['content']; ?></span>  
+                   </div>
+                   <div class = "single-comment-footer">
+                       <a href = "#0">Ответить</a>
+                   </div>                
+                </div>
+                
+            </div>
 			
            <?php
         }
