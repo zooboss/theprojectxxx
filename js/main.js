@@ -43,23 +43,33 @@ $( document ).ready(function() {
         
     });
     
+    
+    
+    
+/*
+==================================================================================
+==============Обработчик комментариев для article_page.php========================
+=================================================================================
+*/
+    
+    
     $('a.add_comment').click(function(){
-$('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
+        $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
 
 		var article = $(this).attr('article');
 		$.ajax({ //отправляем ajax-запрос
-        type: "POST", //тип (POST, GET, PUT, etc)
-        url: "models/comments/comments_via_social.php", //УРЛ Вашего обработчика
-        data: { 	
-		article_id: article
-		} //сами данные, передается POST[xmlUrl] со значением из data нажатой кнопки
-    })
-           .done(function( res ) { //при успехе (200 статус)
+            type: "POST", //тип (POST, GET, PUT, etc)
+            url: "models/comments/comments_via_social.php", //УРЛ Вашего обработчика
+            data: { 	
+		      article_id: article
+		    } //сами данные, передается POST[xmlUrl] со значением из data нажатой кнопки
+        })
+        .done(function( res ) { //при успехе (200 статус)
         	$('div.popup').html(res) //заменяем блок с id="div.popup" полученной строкой от сервера.
-		$('.popup .close_window, .overlay').click(function (){
-$('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
-});
-    });
+		    $('.popup .close_window, .overlay').click(function (){
+                $('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
+            });
+        });
     
 	});
     
