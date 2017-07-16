@@ -28,7 +28,10 @@ $article_comments = new COMMENTS();
 ?>
 <div id="comment_info">
  <h1>Ваш комментарий добавлен!</h1> 
-</div> 
+</div>
+
+
+
 <?php 
   $article = $form_data['article'];  //id статьи
   $comment_date = date("Y.m.d.");  //дата

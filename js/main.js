@@ -116,8 +116,10 @@ $(function(){
 $(function(){
   $('#showform').on('click', function(showForm){
     showForm.preventDefault();
+/*
 		$('#my_form').toggle();
 		$('#showform').hide();
+*/
 		$('#comment_info').remove();
 		$('#comments').replaceWith(json);
 		
