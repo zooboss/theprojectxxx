@@ -1132,3 +1132,7 @@ display: none;
     margin-top: 5px;
     transform: scale(0.9);
 }
+
+.reply-1 {
+    margin-left: 55px;
+}

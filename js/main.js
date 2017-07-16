@@ -91,21 +91,43 @@ $( document ).ready(function() {
         fData = $that.serialize(); // сериализируем данные
         // ИЛИ
         // fData = $that.serializeArray();
-    $.ajax({
-      url: $that.attr('action'), // путь к обработчику берем из атрибута action
-      type: $that.attr('method'), // метод передачи - берем из атрибута method
-      data: {form_data: fData},
-      dataType: 'json',
-      success: function(json){
-        // В случае успешного завершения запроса...
-        if(json){
-        $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
-		//$('#my_form').toggle();
-		textarea.val('');
-        //$('#showform').show();
-        }
-      }
-    });
+    console.log($(this).hasClass("form-reply"));  
+    if ($(this).hasClass("form-reply") == true) {
+        var formReplyNumber = $(this).parent().parent().parent().index();
+        $.ajax({
+          url: $that.attr('action'), // путь к обработчику берем из атрибута action
+          type: $that.attr('method'), // метод передачи - берем из атрибута method
+          data: {form_data: fData, form_reply: true, form_reply_number: formReplyNumber},
+          dataType: 'json',
+          success: function(json){
+            // В случае успешного завершения запроса...
+            if(json){
+            $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
+            //$('#my_form').toggle();
+            textarea.val('');
+            //$('#showform').show();
+            }
+          }
+        });
+    }  
+    else{  
+        console.log("no_reply_request")
+        $.ajax({
+          url: $that.attr('action'), // путь к обработчику берем из атрибута action
+          type: $that.attr('method'), // метод передачи - берем из атрибута method
+          data: {form_data: fData, form_reply: false, form_reply_number: 0},
+          dataType: 'json',
+          success: function(json){
+            // В случае успешного завершения запроса...
+            if(json){
+            $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
+            //$('#my_form').toggle();
+            textarea.val('');
+            //$('#showform').show();
+            }
+          }
+        });
+    }
   });
 
 
@@ -128,7 +150,7 @@ $( document ).ready(function() {
     
 /* Визуализация "ответить" */ 
 $(document).on('click', '.reply', function(){
-    console.log("reply");
+    console.log($(this).parent().parent().parent().index());
     if ( $(this).parent().find('form').hasClass('form-hidden') == 1 ) {
         
         $(this).parent().find('form').removeClass('form-hidden');
