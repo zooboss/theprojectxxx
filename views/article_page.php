@@ -20,17 +20,20 @@ $article_comments = new COMMENTS();
 <section class = "container-fluid article-body">
     <div class = "col-md-9 col-sm-12 col-xs-12 ">
 	
-	
+<!-- popup window sovial registration -->	
 	<div class="overlay" title="окно"></div> 
-<div class="popup">
-<div class="close_window">x</div>
-</div>
+        <div class="popup">
+        <div class="close_window">x</div>
+    </div>
 	
 	
 	
 
 	
         <div class = "article">
+           <div class = "article-main-image-wrap">
+                <img alt="#0" src="img/test_image4.jpg" class = "img-responsive pull-left"> 
+           </div>
             <div class = "article-header">
                 <h2> <strong><?=$article['title']?></strong> </h2>
                 <em> <?="date_icon &nbsp;" . $article['date'] . "&nbsp;" . "comment_icon 48" ?></em>
