@@ -12,7 +12,7 @@ $article_comments = new COMMENTS();
   if (empty($content)) //если поле комментария пустое
   {
 ?>
-<div id="comments">
+<div id="comments" >
     <h2>Нельзя отправить пустой комментарий!</h2>
 </div>
 
@@ -30,13 +30,7 @@ $article_comments = new COMMENTS();
  <h1>Ваш комментарий добавлен!</h1> 
 </div>
 -->
-<form id="my_form" method="POST" action="models/comments/comments_edit.php" > 
-    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
-    <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
-    <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
-    <input type="submit" class="" name="btn-comment" value="Отправить"  ></input>
-</form>
-<a id="showform" href = "#0">Добавить еще один комментарий</a>  <!--выдаем форму -->
+
 
 <?php 
   $article = $form_data['article'];  //id статьи
@@ -49,7 +43,16 @@ $article_comments = new COMMENTS();
   $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");
   $stmt->execute([$form_data['article']]);
 ?>
-<div id="comments">
+<div id="comments" class = "col-md-9 col-sm-12 col-xs-12">
+
+<form id="my_form" class = "add-comment-form" method="POST" action="models/comments/comments_edit.php" > 
+    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
+    <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
+    <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
+    <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
+</form>
+<a id="showform" href = "#0">Добавить еще один комментарий</a>  <!--выдаем форму -->
+
 <?php
   foreach ($stmt as $com)
         {
@@ -67,7 +70,13 @@ $article_comments = new COMMENTS();
                       <span><?php echo $com['content']; ?></span>  
                    </div>
                    <div class = "single-comment-footer">
-                       <a href = "#0">Ответить</a>
+                       <a href = "#0" class = "reply">Ответить</a>
+                       <form id="my_form" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
+                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
+                            <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
+                            <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
+                            <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
+                        </form>
                    </div>                
                 </div>
                 

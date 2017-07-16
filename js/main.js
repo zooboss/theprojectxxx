@@ -77,16 +77,15 @@ $( document ).ready(function() {
     
     
 
-});
+
 
 
 /* В случае авторизованного пользователя */
 
 
-$(function(){
-  $('#my_form').on('submit', function(e){
+
+  $(document).on('submit', '#my_form', function(e){
     e.preventDefault();
-	window.alert("Проверка");
 	var textarea = $("textarea[name='comment']");
     var $that = $(this),
         fData = $that.serialize(); // сериализируем данные
@@ -108,13 +107,13 @@ $(function(){
       }
     });
   });
-});
+
 
 
 /* Вывод нового комментария после добавленного */
 
-$(function(){
-  $('#showform').on('click', function(showForm){
+
+  $(document).on('click', '#showform', function(showForm){
     showForm.preventDefault();
 
 		//$('#my_form').toggle();
@@ -126,10 +125,9 @@ $(function(){
 		
   });
     
-
-/* Визуализация "ответить" */    
     
-$('.reply').on('click', function(){
+/* Визуализация "ответить" */ 
+$(document).on('click', '.reply', function(){
     console.log("reply");
     if ( $(this).parent().find('form').hasClass('form-hidden') == 1 ) {
         
@@ -139,12 +137,17 @@ $('.reply').on('click', function(){
         $(this).parent().find('form').addClass('form-hidden');
     }
     
-});
     
     
-    
-   
-    
+});    
   
+    
+    
+    
+    
 });
+
+
+
+
 

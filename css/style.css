@@ -1079,13 +1079,13 @@ display: none;
     color: grey;
 }
 
-.single-comment-footer a, .single-comment-footer a:active, .single-comment-footer a:visited {
+.single-comment-footer > a, .single-comment-footer > a:active, .single-comment-footer > a:visited {
     text-decoration: none;
     font-size: 13px;
     color: grey;
 }
 
-.single-comment-footer a:hover {
+.single-comment-footer > a:hover {
     color: #404040;
 }
 
@@ -1095,7 +1095,8 @@ display: none;
     position: relative;
     opacity: 1;
     visibility: visible;
-    
+    margin-bottom: 50px;
+            
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     -ms-transition: all 0.4s ease;
@@ -1103,9 +1104,31 @@ display: none;
     transition: all 0.4s ease;
 }
 
+.add-comment-form textarea {
+    box-shadow: 0px 0px 5px #aaaaaa;
+    height: 35px;
+    margin-top: 5px;
+    
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.add-comment-form textarea:focus {
+    height: 150px;
+}
+
+
 .form-hidden {
     position: absolute;
     
     opacity: 0;
     visibility: hidden;
+}
+
+.add-comment-form input[type="submit"] {
+    margin-top: 5px;
+    transform: scale(0.9);
 }
