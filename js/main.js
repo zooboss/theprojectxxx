@@ -51,7 +51,9 @@ $( document ).ready(function() {
 ==============Обработчик комментариев для article_page.php========================
 =================================================================================
 */
+
     
+/* В случае неавторизованного пользователя */
     
     $('a.add_comment').click(function(){
         $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
@@ -75,5 +77,52 @@ $( document ).ready(function() {
     
     
 
+});
+
+
+/* В случае авторизованного пользователя */
+
+
+$(function(){
+  $('#my_form').on('submit', function(e){
+    e.preventDefault();
+	
+	var textarea = $("textarea[name='comment']");
+    var $that = $(this),
+        fData = $that.serialize(); // сериализируем данные
+        // ИЛИ
+        // fData = $that.serializeArray();
+    $.ajax({
+      url: $that.attr('action'), // путь к обработчику берем из атрибута action
+      type: $that.attr('method'), // метод передачи - берем из атрибута method
+      data: {form_data: fData},
+      dataType: 'json',
+      success: function(json){
+        // В случае успешного завершения запроса...
+        if(json){
+        $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
+		$('#my_form').toggle();
+		textarea.val('');
+        $('#showform').show();
+        }
+      }
+    });
+  });
+});
+
+
+/* Замена комментариев с добавлением нового */
+
+$(function(){
+  $('#showform').on('click', function(showForm){
+    showForm.preventDefault();
+		$('#my_form').toggle();
+		$('#showform').hide();
+		$('#comment_info').remove();
+		$('#comments').replaceWith(json);
+		
+		
+  });
+  
 });
 

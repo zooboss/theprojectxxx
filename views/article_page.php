@@ -95,10 +95,17 @@ $article_comments = new COMMENTS();
 
             if($user_login->is_logged_in()) 
             {  //Если авторизован
+            ?>
+                <form id="my_form" method="POST" action="models/comments/comments_edit.php" > 
+                    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
+                    <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
+                    <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
+                    <input type="submit" class="" name="btn-comment" value="Отправить"  ></input>
+                </form>
 
-                include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");  //выдаем форму
-
-                } // конец если авторизован и комментарии есть
+                <a id="showform" href = "#0">Добавить еще один комментарий</a>  //выдаем форму
+            <?php
+            } // конец если авторизован и комментарии есть
 
             else   //если не авторизован и комментарии есть
             {
