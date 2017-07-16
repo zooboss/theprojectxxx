@@ -86,7 +86,7 @@ $( document ).ready(function() {
 $(function(){
   $('#my_form').on('submit', function(e){
     e.preventDefault();
-	
+	window.alert("Проверка");
 	var textarea = $("textarea[name='comment']");
     var $that = $(this),
         fData = $that.serialize(); // сериализируем данные
@@ -101,9 +101,9 @@ $(function(){
         // В случае успешного завершения запроса...
         if(json){
         $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
-		$('#my_form').toggle();
+		//$('#my_form').toggle();
 		textarea.val('');
-        $('#showform').show();
+        //$('#showform').show();
         }
       }
     });
@@ -111,20 +111,40 @@ $(function(){
 });
 
 
-/* Замена комментариев с добавлением нового */
+/* Вывод нового комментария после добавленного */
 
 $(function(){
   $('#showform').on('click', function(showForm){
     showForm.preventDefault();
-/*
-		$('#my_form').toggle();
-		$('#showform').hide();
-*/
+
+		//$('#my_form').toggle();
+		//$('#showform').hide();
+
 		$('#comment_info').remove();
 		$('#comments').replaceWith(json);
 		
 		
   });
+    
+
+/* Визуализация "ответить" */    
+    
+$('.reply').on('click', function(){
+    console.log("reply");
+    if ( $(this).parent().find('form').hasClass('form-hidden') == 1 ) {
+        
+        $(this).parent().find('form').removeClass('form-hidden');
+    }
+    else {
+        $(this).parent().find('form').addClass('form-hidden');
+    }
+    
+});
+    
+    
+    
+   
+    
   
 });
 

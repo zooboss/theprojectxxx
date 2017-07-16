@@ -96,7 +96,7 @@ $article_comments = new COMMENTS();
             if($user_login->is_logged_in()) 
             {  //Если авторизован
             ?>
-                <form id="my_form" method="POST" action="models/comments/comments_edit.php" > 
+                <form id="my_form" class = "add-comment-form" method="POST" action="models/comments/comments_edit.php" > 
                     <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
                     <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
                     <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
@@ -138,7 +138,13 @@ $article_comments = new COMMENTS();
                       <span><?php echo $com['content']; ?></span>  
                    </div>
                    <div class = "single-comment-footer">
-                       <a href = "#0">Ответить</a>
+                       <a class = "reply" href = "#0">Ответить</a>
+                       <form id="my_form" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
+                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
+                            <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
+                            <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
+                            <input type="submit" class="" name="btn-comment" value="Отправить"  ></input>
+                        </form>
                    </div>                
                 </div>
                 
@@ -163,7 +169,7 @@ $article_comments = new COMMENTS();
         <?php 
         if($user_login->is_logged_in()) {  //Если авторизован и комментариев нет
         ?>
-             <form id="my_form" method="POST" action="models/comments/comments_edit.php" > 
+                <form id="my_form" method="POST" action="models/comments/comments_edit.php" > 
                     <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
                     <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
                     <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>

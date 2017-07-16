@@ -6,17 +6,16 @@ $article_comments = new COMMENTS();
   parse_str($_POST['form_data'], $form_data); // разбираем строку запроса
   // Приведём полученную информацию в удобочитаемый вид
   ob_start(); 
-?>
-
-<?php  
+  
   $commentator = $form_data['author']; //автор
   $content = $form_data['comment'];  //комментарий
   if (empty($content)) //если поле комментария пустое
   {
 ?>
 <div id="comments">
-<h1>Нельзя отправить пустой комментарий!</h1>
+    <h2>Нельзя отправить пустой комментарий!</h2>
 </div>
+
 <?php	  
  $req = ob_get_contents();
   ob_end_clean();
@@ -26,11 +25,18 @@ $article_comments = new COMMENTS();
   else
   {
 ?>
+<!--
 <div id="comment_info">
  <h1>Ваш комментарий добавлен!</h1> 
 </div>
-
-
+-->
+<form id="my_form" method="POST" action="models/comments/comments_edit.php" > 
+    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
+    <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
+    <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
+    <input type="submit" class="" name="btn-comment" value="Отправить"  ></input>
+</form>
+<a id="showform" href = "#0">Добавить еще один комментарий</a>  <!--выдаем форму -->
 
 <?php 
   $article = $form_data['article'];  //id статьи
