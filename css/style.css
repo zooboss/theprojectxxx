@@ -981,6 +981,15 @@ footer .container {
     padding-left: 10px;
 }
 
+.article-main-image-wrap img {
+    max-height: 400px;
+    padding-bottom: 20px;
+}
+
+.article-header {
+    
+}
+
 .article-header em.labels {
     float: right;
     

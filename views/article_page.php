@@ -35,7 +35,7 @@ $article_comments = new COMMENTS();
                 <img alt="#0" src="img/test_image4.jpg" class = "img-responsive pull-left"> 
            </div>
             <div class = "article-header">
-                <h2> <strong><?=$article['title']?></strong> </h2>
+                <h1> <strong><?=$article['title']?></strong> </h1>
                 <em> <?="date_icon &nbsp;" . $article['date'] . "&nbsp;" . "comment_icon 48" ?></em>
                 <em class = "labels"> label_icon Хохлы, бандеры, либерахи</em>
             </div>
@@ -72,6 +72,55 @@ $article_comments = new COMMENTS();
     <div class = "col-md-3 hidden-sm hidden-xs">
         <div class = "article-related">
             <h3>news list</h3>
+            <?php foreach ($articles as $a): ?>  
+            <!-- отдельный блок статьи-->
+        
+            <div class='article-wrap' >                           
+                <div class='image-wrap'> 
+                    <img alt="#0" src="img/test_image4.jpg"> 
+                   
+                    <div class='post-author'>
+
+                        <div class='image-thumb'>
+                            <img alt='#0' title='#0' src='img/author_icon.jpg'/>
+                            <cite> 
+                                <a href="#0"><?php echo "Author"; ?></a> 
+                                <span><?php echo "{$a['date']}"; ?> </span>
+                            </cite>  
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class='post-body'>
+                    <div class='post-title'>
+                        <h2><a href="index.php?send=article&id=<?=$a['id']?>"> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
+                    </div>
+
+                    <div class='post-entry'>
+                     <p> <?php echo articles_intro($a['content']) ?></p> <!-- Вывод текста, первые 100 символов по дефолту -->
+                    </div>
+
+                    <div class='postfooter clearfix'>
+                       <i class='fa fa-comment linker'></i>
+                        <a class='linker' href="index.php?send=article&id=<?=$a['id']?>#comments" >48 Комментариев</a>
+                        <!-- Социалки для превью статьи
+                            <div class='socialpost'>
+                               <div class='icons clearfix'>
+                                <a href='#0'><i class='fa fa-facebook'></i><div class='texts'>Facebook</div></a>
+                                <a href='#0'><i class='fa fa-vk'></i><div class='texts'>VK</div></a>
+                                <a href='#0'><i class='fa fa-twitter'></i><div class='texts'>Twitter</div></a>
+                                </div>
+                               
+                            </div>
+                        --> 
+                        <a href="index.php?send=article&id=<?=$a['id']?>"><div class='read'>Читать </div></a>
+                    </div>
+                </div>
+            </div>   
+        
+        <!-- отдельный блок статьи-->
+        <?php endforeach ?>
         </div>
     </div>
 </section>
