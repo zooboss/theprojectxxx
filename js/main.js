@@ -75,8 +75,23 @@ $( document ).ready(function() {
     
 	});
     
-    
 
+/* Первый запуск страницы статьи */    
+    
+$(document).on('ready', function(){
+        var first_entry = true;
+        $.ajax({
+          url: "models/comments/comments_edit.php", // путь к обработчику берем из атрибута action
+          type: "POST", // метод передачи - берем из атрибута method
+          data: {first_entry},
+          dataType: 'json',
+          success: function(json){
+              console.log("first-comments");
+            $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
+          }
+        
+        });
+    });
 
 
 
