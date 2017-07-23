@@ -127,11 +127,16 @@ if($article_comments->check_comments()== true){
                    </div>
                    <div class = "single-comment-footer">
                        <a href = "#0" class = "reply">Ответить</a>
-                       <form id="my_form" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
+                       <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
+                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
                             <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
-                            <input type="hidden" class="" name="author" value="<?php echo $public_user_name ; ?>" ></input>
-                            <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
+                            <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
+                            <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
+                                    data-toggle = "<?php echo $data_toggle ?>"
+                                    data-target = "<?php echo $data_target ?>"    
+                            >
+
+                            </input>
                         </form>
                    </div>                
                 </div>
@@ -152,11 +157,16 @@ if($article_comments->check_comments()== true){
                            </div>
                            <div class = "single-comment-footer">
                                <a href = "#0" class = "reply">Ответить</a>
-                               <form id="my_form" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                                    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
+                               <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
+                                    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
                                     <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
-                                    <input type="hidden" class="" name="author" value="<?php echo $public_user_name ; ?>" ></input>
-                                    <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
+                                    <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
+                                    <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
+                                            data-toggle = "<?php echo $data_toggle ?>"
+                                            data-target = "<?php echo $data_target ?>"    
+                                    >
+
+                                    </input>
                                 </form>
                            </div>                
                         </div>
