@@ -57,11 +57,17 @@ $( document ).ready(function() {
 /* Первый запуск страницы статьи */    
     
     $(document).on('ready', function(){
-        
+                        
         var articleId = $(document).find('#comments').attr('index');
         var userLogged = $(document).find('#comments').attr('user_logged');
         var publicUserName = $(document).find('#comments').attr('public_user_name');
-              
+        var savedComment = '';
+        if (window.sessionStorage.getItem("saved_comment") != '') {
+            savedComment = window.sessionStorage.getItem("saved_comment");
+            window.sessionStorage.setItem("saved_comment", '');
+        }
+        
+        console.log("saved comment" + savedComment);
         
         $.ajax({
           url: "models/comments/comments_edit.php", // путь к обработчику берем из атрибута action
@@ -69,7 +75,8 @@ $( document ).ready(function() {
           data: {
               article_id: articleId,
               public_user_name: publicUserName,
-              user_logged: userLogged
+              user_logged: userLogged,
+              saved_comment: savedComment
           },
           dataType: 'json',
           success: function(json){
@@ -84,8 +91,8 @@ $( document ).ready(function() {
     });
 
 
-/* В случае неавторизованного пользователя */
-    
+/* В случае неавторизованного пользователя
+   
     $('a.add_comment').click(function(){
         $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
 
@@ -105,6 +112,20 @@ $( document ).ready(function() {
         });
     
 	});
+ */
+    
+    $(document).on('submit', '#unlogged_form', function(e){
+        e.preventDefault();
+        console.log("unlogged comment form");
+        
+        var comment = $(this).find('textarea').val().trim();
+        console.log(comment);
+        window.sessionStorage.setItem("saved_comment", comment);
+        var savedCommentCheck = window.sessionStorage.getItem("saved_comment");
+        console.log(savedCommentCheck);
+    });
+    
+     
 /* В случае авторизованного пользователя */
 
 
@@ -117,7 +138,11 @@ $( document ).ready(function() {
     var articleId = $(document).find('#comments').attr('index'),
         userLogged = $(document).find('#comments').attr('user_logged'),
         publicUserName = $(document).find('#comments').attr('public_user_name');
-    
+     var savedComment = '';
+        if (window.sessionStorage.getItem("saved_comment") != '') {
+            savedComment = window.sessionStorage.getItem("saved_comment");
+            window.sessionStorage.setItem("saved_comment", '');
+        }
         // ИЛИ
         // fData = $that.serializeArray();
     var emptyCheck = emptyCheck = $that.find('textarea').val();     //проверка пустого поля
@@ -130,7 +155,8 @@ $( document ).ready(function() {
               form_data: fData, 
               article_id: articleId,
               public_user_name: publicUserName,
-              user_logged: userLogged
+              user_logged: userLogged,
+              saved_comment: savedComment
               
           },
           dataType: 'json',

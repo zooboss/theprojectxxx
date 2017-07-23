@@ -18,13 +18,13 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
 <section class = "container-fluid article-body">
     <div class = "col-md-9 col-sm-12 col-xs-12 ">
 	
-<!-- popup window sovial registration -->	
+<!-- popup window sovial registration -->
 	<div class="overlay" title="окно"></div> 
         <div class="popup">
         <div class="close_window">x</div>
     </div>
 	
-	
+
 	
 
 	

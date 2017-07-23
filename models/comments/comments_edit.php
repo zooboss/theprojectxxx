@@ -13,6 +13,7 @@ if (isset($_POST['article_id'])){
     $article_id = $_POST['article_id'];
     $user_logged = $_POST['user_logged'];
     $public_user_name = $_POST['public_user_name'];
+    $saved_comment = trim($_POST['saved_comment']);
 }
 //Новый комментарий
 
@@ -71,18 +72,34 @@ if (isset($_POST['article_id'])){
     </h4>
 <?php
    
-   
+//Реакции на залогиненного и незалогиненного пользователей   
 if($user_logged == true) {
+    $form_id = "my_form";
+    $data_toggle = "none";
+    $data_target = "none";
+}
+else {
+    $form_id = "unlogged_form";
+    $data_toggle = "modal";
+    $data_target = "#login-window";
+    
+}
 ?>
-<form id="my_form" class = "add-comment-form" method="POST" action="models/comments/comments_edit.php" > 
-    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
-    <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
-    <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
-    <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
-</form>
+    <form id="<?php echo $form_id ?>" class = "add-comment-form" method="POST" action="models/comments/comments_edit.php" > 
+        <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+        <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
+        <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
+        <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
+                data-toggle = "<?php echo $data_toggle ?>"
+                data-target = "<?php echo $data_target ?>"    
+        >
+            
+        </input>
+    </form>
 
 <?php
-}
+
+
 ?>
 
 
