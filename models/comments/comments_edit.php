@@ -56,7 +56,13 @@ if (isset($_POST['article_id'])){
 
 
 <div id="comments" class = "col-md-9 col-sm-12 col-xs-12">
+    <p><a name="comments"></a></p>
+    <h4 class = "comments-title">
+        Комментарии 
+        (48)
+        <a href = "#0">[i]</a>
 
+    </h4>
 <?php
    
    
