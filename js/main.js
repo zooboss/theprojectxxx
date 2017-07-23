@@ -78,19 +78,22 @@ $( document ).ready(function() {
 
 /* Первый запуск страницы статьи */    
     
-$(document).on('ready', function(){
-        var first_entry = true;
+    $(document).on('ready', function(){
+        
+        var articleId = $(document).find('#comments').attr('index');
+        console.log(articleId);
+        
         $.ajax({
           url: "models/comments/comments_edit.php", // путь к обработчику берем из атрибута action
           type: "POST", // метод передачи - берем из атрибута method
-          data: {first_entry},
+          data: {article_id: articleId},
           dataType: 'json',
           success: function(json){
-              console.log("first-comments");
+            console.log("first-comments");
             $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
-          }
-        
+          }        
         });
+        
     });
 
 
@@ -98,53 +101,33 @@ $(document).on('ready', function(){
 /* В случае авторизованного пользователя */
 
 
-
   $(document).on('submit', '#my_form', function(e){
+      console.log("send_comment");
     e.preventDefault();
 	var textarea = $("textarea[name='comment']");
     var $that = $(this),
-        fData = $that.serialize(); // сериализируем данные
+        fData = $that.serialize(), // сериализируем данные
+        articleId = $(document).find('#comments').attr('index');
         // ИЛИ
         // fData = $that.serializeArray();
-    console.log($(this).hasClass("form-reply"));  
-    if ($(this).hasClass("form-reply") == true) {
-        var formReplyNumber = $(this).parent().parent().parent().index();
+        
         $.ajax({
           url: $that.attr('action'), // путь к обработчику берем из атрибута action
           type: $that.attr('method'), // метод передачи - берем из атрибута method
-          data: {form_data: fData, form_reply: true, form_reply_number: formReplyNumber},
+          data: {form_data: fData, article_id: articleId},
           dataType: 'json',
           success: function(json){
+              console.log("comment_success");
             // В случае успешного завершения запроса...
             if(json){
-            $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
-            //$('#my_form').toggle();
-            textarea.val('');
-            //$('#showform').show();
+                $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
+                //$('#my_form').toggle();
+                textarea.val('');
+                //$('#showform').show();
             }
           }
         });
-    }  
-    else{  
-        console.log("no_reply_request")
-        $.ajax({
-          url: $that.attr('action'), // путь к обработчику берем из атрибута action
-          type: $that.attr('method'), // метод передачи - берем из атрибута method
-          data: {form_data: fData, form_reply: false, form_reply_number: 0},
-          dataType: 'json',
-          success: function(json){
-            // В случае успешного завершения запроса...
-            if(json){
-            $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
-            //$('#my_form').toggle();
-            textarea.val('');
-            //$('#showform').show();
-            }
-          }
-        });
-    }
   });
-
 
 
 /* Вывод нового комментария после добавленного */
@@ -158,7 +141,6 @@ $(document).on('ready', function(){
 
 		$('#comment_info').remove();
 		$('#comments').replaceWith(json);
-		
 		
   });
     

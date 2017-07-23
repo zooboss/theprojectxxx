@@ -30,7 +30,7 @@ class COMMENTS {
 public function check_comments()
 	{
 
-$article_id = $_GET['id'];	
+$article_id = $_POST['article_id'];	
 
 
 $sql = "SELECT COUNT(*) FROM comments WHERE article_id = ?";

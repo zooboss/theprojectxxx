@@ -1,10 +1,8 @@
 <?php
+
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php"); 
 
-$article_comments = new COMMENTS();		
-
-
- ?>
+?>
 
 <!DOCTYPE HMTL>
 <html>
@@ -129,135 +127,9 @@ $article_comments = new COMMENTS();
 <section class = "container-fluid article-comments">
     
     
-	<div id="comments" class = "col-md-9 col-sm-12 col-xs-12">
-      <p><a name="comments"></a></p>
-        <h4 class = "comments-title">
-            Комментарии 
-            (48)
-            <a href = "#0">[i]</a>
-
-        </h4>
-       <?php   
-        $article_comments = new COMMENTS();	
-
-        if($article_comments->check_comments()== true)  // проверяем есть ли коментарии при помощи функции в comments.php
-        {
-            $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");
-            $stmt->execute([$_GET['id']]);
-
-            if($user_login->is_logged_in()) 
-            {  //Если авторизован
-            ?>
-                <form id="my_form" class = "add-comment-form" method="POST" action="models/comments/comments_edit.php" > 
-                    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
-                    <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
-                    <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
-                    <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
-                </form>
-
-                <a id="showform" href = "#0">Добавить еще один комментарий</a>  <!--выдаем форму -->
-            <?php
-            } // конец если авторизован и комментарии есть
-
-            else   //если не авторизован и комментарии есть
-            {
-            ?>	
-
-                <a class="add_comment" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>  <!-- Всплывающее окно с социальными сетями !-->
-
-        <?php	
-        }  // конец если не авторизован и комментарии есть
-        ?>
-       
-       
-       
-       
-       
-       
-        <?php	 foreach ($stmt as $com)   //выводим комментарии в обоих случаях
-        {
-            ?>
-		    <div class = "single-comment">
-               <div class = "single-comment-avatar">
-                   <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
-               </div>
-               <div class = "single-comment-body">
-                   <div class = "single-comment-header">
-                       <a href = "#0"><?php echo $com['author']?></a>
-                       <span><?php echo $com['date'] . " " . $com['time'] ?></span>
-                   </div>
-                   <div class = "single-comment-text">
-                      <span><?php echo $com['content']; ?></span>  
-                   </div>
-                   <div class = "single-comment-footer">
-                      
-                       <a class = "reply" href = "#0">Ответить</a>
-                       <?php 
-                      if($user_login->is_logged_in()) 
-                        {  //Если авторизован
-                        ?>
-                       <form id="my_form" class = "add-comment-form form-hidden form-reply" method="POST" action="models/comments/comments_edit.php" > 
-                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
-                            <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
-                            <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
-                            <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
-                        </form>
-                        
-                        <?php
-                        } // конец если авторизован 
-                        else {
-                            echo " авторизируйся, пидор";
-                        }
-                        ?>
-                   </div>                
-                </div>
-                
-            </div>
-			
-           <?php
-        }
-        ?>		
+	<div id="comments" class = "col-md-9 col-sm-12 col-xs-12" index = "<?=$_GET['id']?>" >
+      		
     </div>		
-
-
-    <?php
-    }  // конец если есть комментарии	
-  
-    else  //если комментов нет 
-    {
-        ?>
-        <div id="comments">	
-        <h2>Комментариев еще нет!</h2>
-        </div>
-      
-        <?php 
-        if($user_login->is_logged_in()) {  //Если авторизован и комментариев нет
-        ?>
-                <form id="my_form" method="POST" action="models/comments/comments_edit.php" > 
-                    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
-                    <input type="hidden" class="" name="article" value="<?php echo $_GET['id']; ?>" ></input>
-                    <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
-                    <input type="submit" class="" name="btn-comment" value="Отправить"  ></input>
-                </form>
-
-                <a id="showform" href = "#0">Добавить еще один комментарий</a>   <!--добавляем форму -->
-        <?php
-        }  //конец Если авторизован и комментариев нет
-        else //если не авторизован и комментарии есть
-        {
-        ?>	
-
-            <div id="comments">
-            <a class="add_comment" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>
-            <h2>Авторизуйся и устрой набег!</h2>
-            </div>	
-
-        <?php 
-        } //конец else если не авторизован и комментарии есть
-
-    } 
-// конец else если комментариев нет
-?> 
     
 </section>   
 
