@@ -15,7 +15,7 @@ if (isset($_POST['article_id'])){
     $public_user_name = $_POST['public_user_name'];
 }
 //Новый комментарий
-/*
+
  if(isset($_POST['form_data'])){
   $req = false; // изначально переменная для "ответа" - false
   parse_str($_POST['form_data'], $form_data); // разбираем строку запроса
@@ -47,7 +47,7 @@ if (isset($_POST['article_id'])){
       }
   
 }
-*/
+
     //Выводим форму и список комментариев в любом случае без условий -->
     //Запрашиваем бд$article_comments = new COMMENTS();
     $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");   
