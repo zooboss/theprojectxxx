@@ -53,28 +53,6 @@ $( document ).ready(function() {
 */
 
     
-/* В случае неавторизованного пользователя */
-    
-    $('a.add_comment').click(function(){
-        $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
-
-		var article = $(this).attr('article');
-		$.ajax({ //отправляем ajax-запрос
-            type: "POST", //тип (POST, GET, PUT, etc)
-            url: "models/comments/comments_via_social.php", //УРЛ Вашего обработчика
-            data: { 	
-		      article_id: article
-		    } //сами данные, передается POST[xmlUrl] со значением из data нажатой кнопки
-        })
-        .done(function( res ) { //при успехе (200 статус)
-        	$('div.popup').html(res) //заменяем блок с id="div.popup" полученной строкой от сервера.
-		    $('.popup .close_window, .overlay').click(function (){
-                $('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
-            });
-        });
-    
-	});
-    
 
 /* Первый запуск страницы статьи */    
     
@@ -106,7 +84,27 @@ $( document ).ready(function() {
     });
 
 
+/* В случае неавторизованного пользователя */
+    
+    $('a.add_comment').click(function(){
+        $('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
 
+		var article = $(this).attr('article');
+		$.ajax({ //отправляем ajax-запрос
+            type: "POST", //тип (POST, GET, PUT, etc)
+            url: "models/comments/comments_via_social.php", //УРЛ Вашего обработчика
+            data: { 	
+		      article_id: article
+		    } //сами данные, передается POST[xmlUrl] со значением из data нажатой кнопки
+        })
+        .done(function( res ) { //при успехе (200 статус)
+        	$('div.popup').html(res) //заменяем блок с id="div.popup" полученной строкой от сервера.
+		    $('.popup .close_window, .overlay').click(function (){
+                $('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
+            });
+        });
+    
+	});
 /* В случае авторизованного пользователя */
 
 
@@ -122,7 +120,9 @@ $( document ).ready(function() {
     
         // ИЛИ
         // fData = $that.serializeArray();
-        
+    var emptyCheck = emptyCheck = $that.find('textarea').val();     //проверка пустого поля
+        console.log(emptyCheck);
+      if (emptyCheck != "" && emptyCheck != null){
         $.ajax({
           url: $that.attr('action'), // путь к обработчику берем из атрибута action
           type: $that.attr('method'), // метод передачи - берем из атрибута method
@@ -150,6 +150,10 @@ $( document ).ready(function() {
             
           }
         });
+      }
+      else {
+         console.log("empty textarea - no ajax");
+      }
   });
 
 

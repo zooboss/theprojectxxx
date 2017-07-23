@@ -32,7 +32,7 @@ if (isset($_POST['article_id'])){
       $ip = ip2long($prepare_ip);
       $article_comments->add_comment($commentator,$content,$article,$comment_date,$comment_time,$ip); //функция класса COMMENTS в comments.php 
         
-//если поле комментария пустое  
+/* если поле комментария пустое  - теперь проверка в js
      if (empty($content)) {
      ?>
         <div id="comments" >
@@ -45,7 +45,7 @@ if (isset($_POST['article_id'])){
           echo json_encode($req); // вернем полученное в ответе
           exit;	  
       }
-  
+  */
 }
 
     //Выводим форму и список комментариев в любом случае без условий -->
@@ -113,7 +113,7 @@ if($article_comments->check_comments()== true){
                        <form id="my_form" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
                             <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
                             <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
-                            <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
+                            <input type="hidden" class="" name="author" value="<?php echo $public_user_name ; ?>" ></input>
                             <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
                         </form>
                    </div>                
@@ -138,7 +138,7 @@ if($article_comments->check_comments()== true){
                                <form id="my_form" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
                                     <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
                                     <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
-                                    <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
+                                    <input type="hidden" class="" name="author" value="<?php echo $public_user_name ; ?>" ></input>
                                     <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
                                 </form>
                            </div>                
