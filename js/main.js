@@ -81,17 +81,26 @@ $( document ).ready(function() {
     $(document).on('ready', function(){
         
         var articleId = $(document).find('#comments').attr('index');
-        console.log(articleId);
+        var userLogged = $(document).find('#comments').attr('user_logged');
+        var publicUserName = $(document).find('#comments').attr('public_user_name');
+              
         
         $.ajax({
           url: "models/comments/comments_edit.php", // путь к обработчику берем из атрибута action
           type: "POST", // метод передачи - берем из атрибута method
-          data: {article_id: articleId},
+          data: {
+              article_id: articleId,
+              public_user_name: publicUserName,
+              user_logged: userLogged
+          },
           dataType: 'json',
           success: function(json){
             console.log("first-comments");
             $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
-          }        
+          },
+          error: function(data){
+              console.log(data);
+          }
         });
         
     });
@@ -108,6 +117,7 @@ $( document ).ready(function() {
     var $that = $(this),
         fData = $that.serialize(), // сериализируем данные
         articleId = $(document).find('#comments').attr('index');
+    
         // ИЛИ
         // fData = $that.serializeArray();
         

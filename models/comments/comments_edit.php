@@ -1,5 +1,6 @@
 <?php 
 
+session_start();
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/registration.php");
 
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php");
@@ -9,6 +10,8 @@ if (isset($_POST['article_id'])){
     $article_comments = new COMMENTS();	
     ob_start();
     $article_id = $_POST['article_id'];
+    $user_logged = $_POST['user_logged'];
+    $public_user_name = $_POST['public_user_name'];
 }
 //Новый комментарий
 
@@ -17,10 +20,7 @@ if (isset($_POST['article_id'])){
   parse_str($_POST['form_data'], $form_data); // разбираем строку запроса
       
   // Приведём полученную информацию в удобочитаемый вид
-    echo $form_data;
- 
-  
-    
+       
         //Записываем новый комментарий в бд     
       $commentator = $form_data['author']; //автор
       $content = $form_data['comment'];  //комментарий
@@ -58,9 +58,9 @@ if (isset($_POST['article_id'])){
 <div id="comments" class = "col-md-9 col-sm-12 col-xs-12">
 
 <?php
-   echo $user_login;
-   echo $row;
-//if($user_login->is_logged_in()) {
+   
+   
+if($user_logged == true) {
 ?>
 <form id="my_form" class = "add-comment-form" method="POST" action="models/comments/comments_edit.php" > 
     <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
@@ -70,7 +70,7 @@ if (isset($_POST['article_id'])){
 </form>
 
 <?php
-//}
+}
 ?>
 
 

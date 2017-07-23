@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="/theprojectxxx/css/signup.css"> <!-- Resource style -->
 <link type='text/css' rel='stylesheet' href='/theprojectxxx/css/style.css' />
 <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script type='text/javascript' src="/theprojectxxx/libs/js/jquery-2.1.1.js"></script> <!--на случай отключения интернета -->
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script rel="text/javascript" src="/theprojectxxx/libs/js/bootstrap.min.js"></script>
 <script src="/theprojectxxx/libs/js/modernizr.js"></script> <!-- Modernizr -->
