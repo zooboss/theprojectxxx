@@ -134,7 +134,8 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
 	<div id="comments" class = "col-md-9 col-sm-12 col-xs-12" 
              index = "<?=$_GET['id']?>" 
              user_logged = "<?php echo $user_login->is_logged_in() ?>" 
-             public_user_name = "<?php echo $row['PublicUserName'] ; ?>">
+             public_user_name = "<?php echo $row['PublicUserName']  ?>"
+    >
       		
     </div>		
     

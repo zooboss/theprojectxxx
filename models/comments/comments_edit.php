@@ -1,20 +1,21 @@
 <?php 
 
-session_start();
-require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/registration.php");
+
+//require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/registration.php");
 
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php");
 
 
 if (isset($_POST['article_id'])){
-    $article_comments = new COMMENTS();	
+    $article_comments = new COMMENTS();
+    //var_dump($article_comments);
     ob_start();
     $article_id = $_POST['article_id'];
     $user_logged = $_POST['user_logged'];
     $public_user_name = $_POST['public_user_name'];
 }
 //Новый комментарий
-
+/*
  if(isset($_POST['form_data'])){
   $req = false; // изначально переменная для "ответа" - false
   parse_str($_POST['form_data'], $form_data); // разбираем строку запроса
@@ -30,7 +31,7 @@ if (isset($_POST['article_id'])){
       $prepare_ip = ($_SERVER["REMOTE_ADDR"]); //ip отправителя 
       $ip = ip2long($prepare_ip);
       $article_comments->add_comment($commentator,$content,$article,$comment_date,$comment_time,$ip); //функция класса COMMENTS в comments.php 
-   
+        
 //если поле комментария пустое  
      if (empty($content)) {
      ?>
@@ -46,16 +47,21 @@ if (isset($_POST['article_id'])){
       }
   
 }
-
+*/
     //Выводим форму и список комментариев в любом случае без условий -->
-    //Запрашиваем бд
+    //Запрашиваем бд$article_comments = new COMMENTS();
     $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");   
     $stmt->execute([$article_id]);
 ?>
 
 
 
-<div id="comments" class = "col-md-9 col-sm-12 col-xs-12">
+<div id="comments" class = "col-md-9 col-sm-12 col-xs-12"
+             index = "<?php echo $article_id ?>" 
+             user_logged = "<?php echo $user_logged ?>" 
+             public_user_name = "<?php echo $public_user_name  ?>"
+      
+>
     <p><a name="comments"></a></p>
     <h4 class = "comments-title">
         Комментарии 
@@ -71,7 +77,7 @@ if($user_logged == true) {
 <form id="my_form" class = "add-comment-form" method="POST" action="models/comments/comments_edit.php" > 
     <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ></textarea>
     <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
-    <input type="hidden" class="" name="author" value="<?php echo $row['PublicUserName'] ; ?>" ></input>
+    <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
     <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  ></input>
 </form>
 

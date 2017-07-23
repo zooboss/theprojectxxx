@@ -98,8 +98,8 @@ $( document ).ready(function() {
             console.log("first-comments");
             $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
           },
-          error: function(data){
-              console.log(data);
+          error: function(xhr, status, error){
+              console.log(xhr.responseText);;
           }
         });
         
@@ -111,12 +111,14 @@ $( document ).ready(function() {
 
 
   $(document).on('submit', '#my_form', function(e){
-      console.log("send_comment");
+      console.log("comment_sent");
     e.preventDefault();
 	var textarea = $("textarea[name='comment']");
     var $that = $(this),
-        fData = $that.serialize(), // сериализируем данные
-        articleId = $(document).find('#comments').attr('index');
+        fData = $that.serialize(); // сериализируем данные
+    var articleId = $(document).find('#comments').attr('index'),
+        userLogged = $(document).find('#comments').attr('user_logged'),
+        publicUserName = $(document).find('#comments').attr('public_user_name');
     
         // ИЛИ
         // fData = $that.serializeArray();
@@ -124,7 +126,13 @@ $( document ).ready(function() {
         $.ajax({
           url: $that.attr('action'), // путь к обработчику берем из атрибута action
           type: $that.attr('method'), // метод передачи - берем из атрибута method
-          data: {form_data: fData, article_id: articleId},
+          data: {
+              form_data: fData, 
+              article_id: articleId,
+              public_user_name: publicUserName,
+              user_logged: userLogged
+              
+          },
           dataType: 'json',
           success: function(json){
               console.log("comment_success");
@@ -135,6 +143,11 @@ $( document ).ready(function() {
                 textarea.val('');
                 //$('#showform').show();
             }
+          },
+          error: function(xhr, status, error){
+            console.log("comment_error");
+            console.log(xhr.responseText);
+            
           }
         });
   });
