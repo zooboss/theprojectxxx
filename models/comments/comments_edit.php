@@ -135,7 +135,7 @@ if($article_comments->check_comments()== true){
                        <span><?php echo $com['date'] . " " . $com['time'] ?></span>
                    </div>
                    <div class = "single-comment-text">
-                      <span><?php echo $com['content']; ?></span>  
+                       <span><?php echo htmlentities($com['content'], ENT_QUOTES) ?></span>  
                    </div>
                    <div class = "single-comment-footer">
                        <a href = "#0" class = "reply">Ответить</a>
