@@ -23,8 +23,7 @@ if (isset($_POST['article_id'])){
       
   // Приведём полученную информацию в удобочитаемый вид
        
-        //Записываем новый комментарий в бд  
-      $reply_to_id = $_POST['reply_to_id'];
+        //Записываем новый комментарий в бд     
       $commentator = $form_data['author']; //автор
       $content = $form_data['comment'];  //комментарий
       $article = $article_id;  //id статьи
@@ -32,7 +31,7 @@ if (isset($_POST['article_id'])){
       $comment_time = date("H:i:s");   //время
       $prepare_ip = ($_SERVER["REMOTE_ADDR"]); //ip отправителя 
       $ip = ip2long($prepare_ip);
-      $article_comments->add_comment($commentator,$content,$article,$comment_date,$comment_time,$ip, $reply_to_id); //функция класса COMMENTS в comments.php 
+      $article_comments->add_comment($commentator,$content,$article,$comment_date,$comment_time,$ip); //функция класса COMMENTS в comments.php 
         
 /* если поле комментария пустое  - теперь проверка в js
      if (empty($content)) {
@@ -54,8 +53,7 @@ if (isset($_POST['article_id'])){
     //Запрашиваем бд$article_comments = new COMMENTS();
     $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");   
     $stmt->execute([$article_id]);
-    $stmt = $stmt->fetchAll();
-    
+    $comments_count = count($stmt);
     
 ?>
 
@@ -113,9 +111,9 @@ else {
 //Есть комментарии
 if($article_comments->check_comments()== true){
 
-  foreach ($stmt as $com)
+  for ($i = 0; $i < $comments_count; $i++)
         {
-            if ($com['reply_to_id'] == 0){
+            
             ?>
             
             <div class = "single-comment" comment-id = "<?php echo $com['id'] ?>" >
@@ -147,7 +145,7 @@ if($article_comments->check_comments()== true){
                    </div>                
                 </div>
                 <?php 
-                   foreach ($stmt as $com1) {
+                    foreach ($stmt as $com1) {
                         if ($com1['reply_to_id'] == $com['id']) {
                     
                 ?>
@@ -184,11 +182,10 @@ if($article_comments->check_comments()== true){
                         }
                     }
                 ?>
-                    
                 
             </div>
            <?php
-        }
+            
     }
 }
 

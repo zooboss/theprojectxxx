@@ -145,8 +145,9 @@ $( document ).ready(function() {
         }
         // ИЛИ
         // fData = $that.serializeArray();
-    var emptyCheck = emptyCheck = $that.find('textarea').val();     //проверка пустого поля
-        console.log(emptyCheck);
+    var emptyCheck = emptyCheck = $that.find('textarea').val();     //проверка пустого поля    
+    var replyToId = $(this).find("input[type=submit]").attr('reply-to');
+      console.log(replyToId);
       if (emptyCheck != "" && emptyCheck != null){
         $.ajax({
           url: $that.attr('action'), // путь к обработчику берем из атрибута action
@@ -156,7 +157,8 @@ $( document ).ready(function() {
               article_id: articleId,
               public_user_name: publicUserName,
               user_logged: userLogged,
-              saved_comment: savedComment
+              saved_comment: savedComment,
+              reply_to_id: replyToId
               
           },
           dataType: 'json',
@@ -200,7 +202,7 @@ $( document ).ready(function() {
     
 /* Визуализация "ответить" */ 
 $(document).on('click', '.reply', function(){
-    console.log($(this).parent().parent().parent().index());
+    
     if ( $(this).parent().find('form').hasClass('form-hidden') == 1 ) {
         
         $(this).parent().find('form').removeClass('form-hidden');
