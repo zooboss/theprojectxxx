@@ -151,14 +151,14 @@ if($article_comments->check_comments()== true){
                         if ($com1['reply_to_id'] == $com['id']) {
                     
                 ?>
-                            <div class = "single-comment reply-1" comment-id = "<?php echo $com1['id'] ?>" >
+                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com1['id'] ?>" >
                                <div class = "single-comment-avatar">
                                    <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
                                </div>
                                <div class = "single-comment-body">
                                    <div class = "single-comment-header">
-                                       <a href = "#0"><?php echo $com['author']?></a>
-                                       <span><?php echo $com['date'] . " " . $com['time'] ?></span>
+                                       <a href = "#0"><?php echo $com1['author']?></a>
+                                       <span><?php echo $com1['date'] . " " . $com1['time'] ?></span>
                                    </div>
                                    <div class = "single-comment-text">
                                       <span><?php echo $com1['content'] ?></span>  
@@ -178,8 +178,47 @@ if($article_comments->check_comments()== true){
                                             </input>
                                         </form>
                                    </div>                
-                                </div>
-                            </div>    
+                                 </div>
+                                 
+                                 <?php 
+                                   foreach ($stmt as $com2) {
+                                        if ($com2['reply_to_id'] == $com1['id']) {
+
+                                ?>
+                                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com2['id'] ?>" >
+                                               <div class = "single-comment-avatar">
+                                                   <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
+                                               </div>
+                                               <div class = "single-comment-body">
+                                                   <div class = "single-comment-header">
+                                                       <a href = "#0"><?php echo $com2['author']?></a>
+                                                       <span><?php echo $com2['date'] . " " . $com2['time'] ?></span>
+                                                   </div>
+                                                   <div class = "single-comment-text">
+                                                      <span><?php echo $com2['content'] ?></span>  
+                                                   </div>
+                                                   <div class = "single-comment-footer">
+                                                       <a href = "#0" class = "reply">Ответить</a>
+                                                       <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
+                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+                                                            <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
+                                                            <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
+                                                            <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
+                                                                    data-toggle = "<?php echo $data_toggle ?>"
+                                                                    data-target = "<?php echo $data_target ?>"
+                                                                    reply-to    = "<?php echo $com2['id']   ?>"    
+                                                            >
+
+                                                            </input>
+                                                        </form>
+                                                   </div>                
+                                                 </div>
+                                               </div>    
+                                <?php
+                                        }
+                                    }
+                                ?>
+                                </div>    
                 <?php
                         }
                     }
