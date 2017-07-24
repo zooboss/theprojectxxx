@@ -54,7 +54,7 @@ if (isset($_POST['article_id'])){
     $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");   
     $stmt->execute([$article_id]);
     $stmt = $stmt->fetchAll();
-    $comments_count = count($stmt);
+    
     
 ?>
 
@@ -114,7 +114,7 @@ if($article_comments->check_comments()== true){
 
   foreach ($stmt as $com)
         {
-            
+            if ($com['reply_to_id'] == 0){
             ?>
             
             <div class = "single-comment" comment-id = "<?php echo $com['id'] ?>" >
@@ -187,7 +187,7 @@ if($article_comments->check_comments()== true){
                 
             </div>
            <?php
-            
+        }
     }
 }
 
