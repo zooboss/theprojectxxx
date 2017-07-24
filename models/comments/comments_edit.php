@@ -13,8 +13,14 @@ if (isset($_POST['article_id'])){
     $article_id = $_POST['article_id'];
     $user_logged = $_POST['user_logged'];
     $public_user_name = $_POST['public_user_name'];
-    $saved_comment = trim($_POST['saved_comment']);
-    $saved_comment_id = $_POST['saved_comment_id'];
+    if(isset($_POST['saved_comment'])){
+        $saved_comment = trim($_POST['saved_comment']);
+        $saved_comment_id = $_POST['saved_comment_id'];
+    }
+    else{
+        $saved_comment = '';
+        $saved_comment_id = NULL;
+    }
 }
 //Новый комментарий
 
