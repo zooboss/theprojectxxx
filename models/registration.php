@@ -88,18 +88,6 @@ $salt_encrypt = GenSalt(); //генерация соли
 			$stmt->execute(array(":userName_id"=>$uname));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			
-			if($stmt->rowCount() == 1)
-			{ 
-				if($userRow['userStatus']=="Y")
-				{
-	
-					if($userRow['userPass']==hash("sha256", hash("sha256",$upass).$userRow['salt']))
-			
-					{
-					
-					if ( !empty($remember) and $remember == 1 ) //если нажата кнопка "запомнить"
-						{
-										
 	function GenCookie ($length=24) 
 	{
      $chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP";
@@ -109,6 +97,31 @@ $salt_encrypt = GenSalt(); //генерация соли
      while($length--) $Cookie.=$chars[rand(0,$size)];
      return $Cookie;
 	}
+	
+			if($stmt->rowCount() == 1)
+			{ 
+				if($userRow['userStatus']=="Y")
+				{
+	
+					if($userRow['userPass']==hash("sha256", hash("sha256",$upass).$userRow['salt']))
+			
+					{
+					if($userRow['role']==='chief')  //если админ
+					{
+						$admin_key = GenCookie(); 
+						setcookie ('admin_session', $admin_key,  time()+60*60, '/');
+						$sql = "UPDATE users SET cookie = :user_cookie
+				        WHERE userName= :user_name";
+		                $stmt = $this->conn->prepare($sql);
+		                $stmt->bindParam(':user_name', $uname); 
+	                    $stmt->bindParam(':user_cookie', $admin_key);       
+		                $stmt->execute();
+					}					
+					
+					if ( !empty($remember) and $remember == 1 ) //если нажата кнопка "запомнить"
+						{
+										
+
 //Сформируем случайную строку для куки (используем функцию GenCookie):
 	$key = GenCookie(); 
 
@@ -197,8 +210,37 @@ $salt_encrypt = GenSalt(); //генерация соли
 	// Выход из системы
 	public function logout()
 	{
+		$userID = $_SESSION['userSession'];
+		$null = '0';
 		session_destroy();
 		$_SESSION['userSession'] = false;
+		setcookie('username', 0, time()-3600, '/'); //Логин Пути!
+        setcookie('key', 0, time()-3600,  '/');	//Кука Пути!
+	
+	    setcookie('admin_session', 0, time()-3600,  '/');
+    $sql = "UPDATE users SET cookie = :new_cookie
+		WHERE userID = :user_id";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->bindParam(':user_id', $userID); 
+	    $stmt->bindParam(':new_cookie', $null);      
+		$stmt->execute();
+	
+	
+	if (isset($_COOKIE['admin_session']))
+	{
+	$delete_cookie = $_COOKIE['admin_session'];	
+	
+	
+	
+    setcookie('admin_session', 0, time()-3600,  '/');
+    $sql = "UPDATE users SET cookie = :new_cookie
+		WHERE userID = :user_id";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->bindParam(':user_id', $userID); 
+	    $stmt->bindParam(':new_cookie', $null);       
+		$stmt->execute();
+	}	
+	
 	}
 	
 	// Отправка почты

@@ -12,6 +12,7 @@ $user_login = new USER();
 
 
 /// Куки
+
 if ( isset($_COOKIE['username']) )
 {
 echo "Login".$_COOKIE['username']."<br>";

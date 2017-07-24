@@ -5,14 +5,22 @@ $user = new USER();
 
 if(!$user->is_logged_in())
 {
-	$user->redirect($_SERVER['HTTP_REFERER']);   //Пути сменить!//
+	if (isset($_SERVER['HTTP_REFERER'])){	
+	$user->redirect($_SERVER['HTTP_REFERER']); 
+    }
+    else	
+	$user->redirect($_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx");	//Пути сменить!//
 }
 
 if($user->is_logged_in()!="")
 {
+   if (isset($_SERVER['HTTP_REFERER'])){	   
+	$user->redirect($_SERVER['HTTP_REFERER']); 
 	$user->logout();
-    setcookie('username', $uname, time()-3600, '/'); //Логин Пути!
-    setcookie('key', $key, time()-3600,  '/');	//Кука Пути!
-	$user->redirect($_SERVER['HTTP_REFERER']);    //Пути сменить!//
+    }
+    else	
+	$user->redirect( "/theprojectxxx");	//Пути сменить!//
+    $user->logout();
+ 
 }
 ?>

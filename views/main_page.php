@@ -2,9 +2,14 @@
 
 <html>
 
-<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); ?>
+<?php 
+include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); 
+?>
+
     
 <body>   
+
+
 
 <?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/header.php"); ?>
 
@@ -17,7 +22,16 @@
         </div>
     </div>
 </section>	
-			
+		
+<?php   if ($user_login->is_logged_in()!="" and $row['role']=="chief")
+{
+define("Security", true);
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");	
+?>
+
+<?php 
+}	
+?>		
 <section class='container-fluid articlesGallery'>
     
      <div class='row'>
