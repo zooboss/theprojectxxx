@@ -57,8 +57,8 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");
                     <div class = "articleCathegoryAnimate"> <a href='#0'>политика</a></div>
                    
                     <div class = "articleCommentsAnimate"> 
-                        <a href="index.php?id=<?=$a['id']?>#comments"><i class='fa fa-comment'></i></a> 
-                        <a href="index.php?id=<?=$a['id']?>#comments">48</a>
+                        <a href="index.php?send=article&id=<?=$a['id']?>#comments"><i class='fa fa-comment'></i></a> 
+                        <a href="index.php?send=article&id=<?=$a['id']?>#comments">48</a>
                     </div>
                    
                     <div class = "articleDateAnimate"> 
@@ -69,7 +69,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");
                 
                 <div class='post-body'>
                     <div class='post-title'>
-                        <h2><a href="index.php?id=<?=$a['id']?>"> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
+                        <h2><a href="index.php?send=article&id=<?=$a['id']?>"> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
                     </div>
 
                     <div class='post-entry'>
@@ -78,7 +78,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");
 
                     <div class='postfooter clearfix'>
                        <i class='fa fa-comment linker'></i>
-                        <a class='linker' href='#0' >48 Комментариев</a>
+                        <a class='linker' href="index.php?send=article&id=<?=$a['id']?>#comments" >48 Комментариев</a>
                         <!-- Социалки для превью статьи
                             <div class='socialpost'>
                                <div class='icons clearfix'>

@@ -35,8 +35,9 @@ var login,
 
 $(function() {
 	//Логин
-	$("#login").change(function(){
-        login = $("#login").val();
+	$("#signup_login").change(function(){
+        console.log("login start");
+        login = $("#signup_login").val();
 		var expLogin = /^[а-яА-ЯёЁa-zA-Z0-9]+$/g;
 		var resLogin = login.search(expLogin);
 		if(resLogin == -1){
@@ -47,11 +48,12 @@ $(function() {
 			buttonOnAndOff();
 		}else{
 			$.ajax({
-			url: "../models/registration/testLoginEmail.php",
+			url: "models/registration/testLoginEmail.php",
 			type: "GET",
 			data: "login=" + login,
 			cache: false,
 			success: function(response){
+                console.log("login success");
 				if(response == "no"){
 					/*$("#login").next().hide().text("Логин занят").css("color","red").fadeIn(400);
 					$("#login").removeClass().addClass("inputRed");*/	
@@ -62,7 +64,10 @@ $(function() {
                     $("#login_warning").addClass("warning_disabled");
 				}			
 				
-			}
+			},
+            error: function(xhr, status, error){
+              console.log(xhr.responseText);;
+           } 
 		});
 			loginStat = 1;
 			buttonOnAndOff();
@@ -94,7 +99,7 @@ $(function() {
 		}else{
 			
 			$.ajax({
-			url: "../models/registration/testLoginEmail.php",
+			url: "models/registration/testLoginEmail.php",
 			type: "GET",
 			data: "email=" + email,
 			cache: false,			
@@ -193,6 +198,7 @@ $(function() {
 	
 	function buttonOnAndOff(){
         //console.log(emailStat, passwordStat, password2Stat, loginStat);
+        console.log(emailStat + " " + passwordStat + " " + password2Stat + "Login " + loginStat);
         if(emailStat == 1 && passwordStat == 1 && password2Stat == 1 && loginStat == 1){
 			$("#submit").removeAttr("disabled").removeClass().addClass("btnEnabled");
 		}else{
@@ -200,6 +206,17 @@ $(function() {
 		}
 	
 	}
-	
+    
+  /*  
+	<script>
+    $(document).on('ready', function(){
+    showForm.preventDefault();
+
+		window.alert("we are in special place");
+		
+  });
+</script>
+    
+    */
 });
 });

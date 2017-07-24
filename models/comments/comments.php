@@ -30,7 +30,7 @@ class COMMENTS {
 public function check_comments()
 	{
 
-$article_id = $_GET['id'];	
+$article_id = $_POST['article_id'];	
 
 
 $sql = "SELECT COUNT(*) FROM comments WHERE article_id = ?";
@@ -40,19 +40,20 @@ return $result->fetchColumn() ;
 } 
 
 
-public function add_comment($commentator,$content,$article,$comment_date,$comment_time,$ip)
+public function add_comment($commentator,$content,$article,$comment_date,$comment_time,$ip, $reply_to_id)
 {
 
 try
 		{		
-			$stmt = $this->conn->prepare("INSERT INTO comments(author,content,article_id,date,time,author_ip) 
-			             VALUES(:Author_id,:Comment,:Article_id,:Comment_date,:Comment_time,:Author_ip)");
+			$stmt = $this->conn->prepare("INSERT INTO comments(author,content,article_id,date,time,author_ip,reply_to_id) 
+			             VALUES(:Author_id,:Comment,:Article_id,:Comment_date,:Comment_time,:Author_ip, :Reply_to_id)");
 			$stmt->bindparam(":Author_id",$commentator);
 			$stmt->bindparam(":Comment",$content);
 			$stmt->bindparam(":Article_id",$article);
 			$stmt->bindparam(":Comment_date",$comment_date);
 			$stmt->bindparam(":Comment_time",$comment_time);
 			$stmt->bindparam(":Author_ip",$ip);
+            $stmt->bindparam(":Reply_to_id",$reply_to_id);
 			
 			$stmt->execute();	
 			return $stmt;

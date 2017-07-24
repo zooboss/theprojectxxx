@@ -40,9 +40,9 @@ $user_login->Cookie_login($uname, $key );
 
 if($user_login->is_logged_in()!="")
 {
-$stmt = $user_login->runQuery("SELECT * FROM users WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['userSession']));
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $user_login->runQuery("SELECT * FROM users WHERE userID=:uid");
+    $stmt->execute(array(":uid"=>$_SESSION['userSession']));
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 }// если авторизован, то выбираем из базы через PDO, можно убрать условие, но будет вылезать ошибка.
 
 require_once(dirname(__FILE__)."/models/database.php");

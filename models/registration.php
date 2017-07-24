@@ -1,6 +1,7 @@
 <?php
 
-require_once 'dbconfig.php';
+//require_once 'dbconfig.php';
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/dbconfig.php");
 
 class USER
 {	

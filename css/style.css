@@ -1,4 +1,8 @@
-  /* Шапка сайта */  
+html,body {
+    height:100%;
+}  
+
+/* Шапка сайта */  
   .top-navigation{
         position: relative;
         bottom: 0;
@@ -823,6 +827,7 @@ section.articlesGallery {
     box-shadow: 0px 0px 1px black;
     padding: 0px 10px;
     
+    padding-bottom: 2px;
                         
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -849,11 +854,12 @@ section.articlesGallery {
     text-decoration: none;
     font-weight: bold;
     color: white;
-    margin: 0;
+    margin: auto;
     
     display: block;
     padding: 4px 8px;
-    text-align: center;
+    
+       
     text-transform: uppercase;
     
     -webkit-transition: all 0.3s ease;
@@ -975,6 +981,15 @@ footer .container {
     padding-left: 10px;
 }
 
+.article-main-image-wrap img {
+    max-height: 400px;
+    padding-bottom: 20px;
+}
+
+.article-header {
+    
+}
+
 .article-header em.labels {
     float: right;
     
@@ -1013,5 +1028,123 @@ display: none;
 }
 
 
+/*                                                         COMMENTS */
+
+.single-comment {
+    position: relative;
+    margin-bottom: 15px;
+    min-height: 50px;
+       
+}
+
+
+.single-comment-avatar {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 50px;   
+    padding-top: 5px;
+            
+}
+
+
+.single-comment-body {
+    margin-left: 55px;   
+    
+}
+
+.single-comment-header {
+    margin-bottom: 5px;
+}
+
+.single-comment-header a, .single-comment-header a:active, .single-comment-header a:visited{
+    color: #0543a8;
+    text-decoration: none;
+}
+
+.single-comment-header a:hover{ 
+    color: #031e4c;
+}
+
+.single-comment-header span{
+   font-size: 10px;
+    color: #b1b1b1;
+}
+
+
+.single-comment-avatar-image {
+    border-radius: 50%;
+    height: 40px;
+    
+}
+
+.single-comment-text {
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.single-comment-footer {
+    font-size: 13px;
+    color: grey;
+}
+
+.single-comment-footer > a, .single-comment-footer > a:active, .single-comment-footer > a:visited {
+    text-decoration: none;
+    font-size: 13px;
+    color: grey;
+}
+
+.single-comment-footer > a:hover {
+    color: #404040;
+}
+
+/* reply form */
+
+.add-comment-form {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    margin-bottom: 50px;
+            
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.add-comment-form textarea {
+    box-shadow: 0px 0px 5px #aaaaaa;
+    height: 35px;
+    margin-top: 5px;
+    
+        
+    -webkit-transition: all 0.4s 0.1s ease-in-out;
+    -moz-transition: all 0.4s 0.1s ease-in-out;
+    -ms-transition: all 0.4s 0.1s ease-in-out;
+    -o-transition: all 0.4s 0.1s ease-in-out;
+    transition: all 0.4s 0.1s ease-in-out;
+}
+
+.add-comment-form textarea:focus {
+    height: 150px;
+}
+
+
+.form-hidden {
+    position: absolute;
+    
+    opacity: 0;
+    visibility: hidden;
+}
+
+.add-comment-form input[type="submit"] {
+    margin-top: 5px;
+    transform: scale(0.9);
+}
+
+.reply-comment {
+    margin-left: 55px;
+}
 
 

@@ -1,10 +1,8 @@
 <?php
+
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php"); 
 
-$article_comments = new COMMENTS();		
-
-
- ?>
+?>
 
 <!DOCTYPE HMTL>
 <html>
@@ -20,19 +18,22 @@ $article_comments = new COMMENTS();
 <section class = "container-fluid article-body">
     <div class = "col-md-9 col-sm-12 col-xs-12 ">
 	
-	
+<!-- popup window sovial registration -->
 	<div class="overlay" title="окно"></div> 
-<div class="popup">
-<div class="close_window">x</div>
-</div>
+        <div class="popup">
+        <div class="close_window">x</div>
+    </div>
 	
-	
+
 	
 
 	
         <div class = "article">
+           <div class = "article-main-image-wrap">
+                <img alt="#0" src="img/test_image4.jpg" class = "img-responsive pull-left"> 
+           </div>
             <div class = "article-header">
-                <h2> <strong><?=$article['title']?></strong> </h2>
+                <h1> <strong><?=$article['title']?></strong> </h1>
                 <em> <?="date_icon &nbsp;" . $article['date'] . "&nbsp;" . "comment_icon 48" ?></em>
                 <em class = "labels"> label_icon Хохлы, бандеры, либерахи</em>
             </div>
@@ -69,120 +70,84 @@ $article_comments = new COMMENTS();
     <div class = "col-md-3 hidden-sm hidden-xs">
         <div class = "article-related">
             <h3>news list</h3>
+            <?php foreach ($articles as $a): ?>  
+            <!-- отдельный блок статьи-->
+        
+            <div class='article-wrap' >                           
+                <div class='image-wrap'> 
+                    <img alt="#0" src="img/test_image4.jpg"> 
+                   
+                    <div class='post-author'>
+
+                        <div class='image-thumb'>
+                            <img alt='#0' title='#0' src='img/author_icon.jpg'/>
+                            <cite> 
+                                <a href="#0"><?php echo "Author"; ?></a> 
+                                <span><?php echo "{$a['date']}"; ?> </span>
+                            </cite>  
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class='post-body'>
+                    <div class='post-title'>
+                        <h2><a href="index.php?send=article&id=<?=$a['id']?>"> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
+                    </div>
+
+                    <div class='post-entry'>
+                     <p> <?php echo articles_intro($a['content']) ?></p> <!-- Вывод текста, первые 100 символов по дефолту -->
+                    </div>
+
+                    <div class='postfooter clearfix'>
+                       <i class='fa fa-comment linker'></i>
+                        <a class='linker' href="index.php?send=article&id=<?=$a['id']?>#comments" >48 Комментариев</a>
+                        <!-- Социалки для превью статьи
+                            <div class='socialpost'>
+                               <div class='icons clearfix'>
+                                <a href='#0'><i class='fa fa-facebook'></i><div class='texts'>Facebook</div></a>
+                                <a href='#0'><i class='fa fa-vk'></i><div class='texts'>VK</div></a>
+                                <a href='#0'><i class='fa fa-twitter'></i><div class='texts'>Twitter</div></a>
+                                </div>
+                               
+                            </div>
+                        --> 
+                        <a href="index.php?send=article&id=<?=$a['id']?>"><div class='read'>Читать </div></a>
+                    </div>
+                </div>
+            </div>   
+        
+        <!-- отдельный блок статьи-->
+        <?php endforeach ?>
         </div>
     </div>
 </section>
 
+<?php
+    
+    
+?>
 
 <section class = "container-fluid article-comments">
-    <p><a name="comments"></a></p>
-    <h4 class = "comments-title">
-        Комментарии 
-        (48)
-        <a href = "#0">[i]</a>
-	
-    </h4>
-    <?php   
-    $article_comments = new COMMENTS();	
-
-    if($article_comments->check_comments()== true)  // проверяем есть ли коментарии при помощи функции в comments.php
-    {
-        $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");
-        $stmt->execute([$_GET['id']]);
- if($user_login->is_logged_in()) 
-{  //Если авторизован
-
-include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");  //выдаем форму
-
-} // конец если авторизован и комментарии есть
-
-else   //если не авторизован и комментарии есть
-{
-?>	
-	
-<a class="add_comment" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>  <!-- Всплывающее окно с социальными сетями !-->
-
-<?php	
-}  // конец если не авторизован и комментарии есть
-?>
-	<div id="comments">
-<?php	 foreach ($stmt as $com)   //выводим комментарии в обоих случаях
-        {
-            ?>
-		
-            <p>Автор:<?php echo $com['author']; ?> </p>
-            <p>Комментарий:<?php echo $com['content']; ?> </p> 
-            <p>Дата:<?php echo $com['date']; ?> </p> 
-            <p>Дата:<?php echo $com['time']; ?> </p> 
-			
-           <?php
-        }
-?>		
-</div>		
-
-
-<?php
-}  // конец если есть комментарии	
-  
-    else  //если комментов нет 
-    {
-    ?>
-	<div id="comments">	
-    <h2>Комментариев еще нет!</h2>
-	</div>
-   
-   
-<?php if($user_login->is_logged_in()) {  //Если авторизован и комментариев нет
-
-include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comment_form.php");  //добовляем форму
-}  //конец Если авторизован и комментариев нет
-else //если не авторизован и комментарии есть
-{
-?>	
-
-<div id="comments">
-<a class="add_comment" article="<?php echo $_GET['id']; ?>" >Вскукарекнуть</a>
-<h2>Авторизуйся и устрой набег!</h2>
-</div>	
-
-<?php 
-} //конец else если не авторизован и комментарии есть
-
-} 
-// конец else если комментариев нет
-?> 
+    
+    
+	<div id="comments" class = "col-md-9 col-sm-12 col-xs-12" 
+             index = "<?=$_GET['id']?>" 
+             user_logged = "<?php echo $user_login->is_logged_in() ?>" 
+             public_user_name = "<?php echo $row['PublicUserName']  ?>"
+    >
+      		
+    </div>		
     
 </section>   
 
 
  
-<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>    
+<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>
+
 
    
- <script>
-$(document).ready(function(){
-$('a.add_comment').click(function(){
-$('.popup, .overlay').css({'opacity': 1, 'visibility': 'visible'});
-
-		var article = $(this).attr('article');
-		$.ajax({ //отправляем ajax-запрос
-        type: "POST", //тип (POST, GET, PUT, etc)
-        url: "models/comments/comments_via_social.php", //УРЛ Вашего обработчика
-        data: { 	
-		article_id: article
-		} //сами данные, передается POST[xmlUrl] со значением из data нажатой кнопки
-    })
-           .done(function( res ) { //при успехе (200 статус)
-        	$('div.popup').html(res) //заменяем блок с id="div.popup" полученной строкой от сервера.
-		$('.popup .close_window, .overlay').click(function (){
-$('.popup, .overlay').css({'opacity': 0, 'visibility': 'hidden'});
-});
-    });
-    
-	});
-    
-});
-</script>  
+ 
 
 
 </body>
