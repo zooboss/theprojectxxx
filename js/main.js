@@ -61,13 +61,15 @@ $( document ).ready(function() {
         var articleId = $(document).find('#comments').attr('index');
         var userLogged = $(document).find('#comments').attr('user_logged');
         var publicUserName = $(document).find('#comments').attr('public_user_name');
-        var savedComment = '';
+        var savedComment = '',
+            savedCommentId = null;
         if (window.sessionStorage.getItem("saved_comment") != '') {
-            savedComment = window.sessionStorage.getItem("saved_comment");
-            window.sessionStorage.setItem("saved_comment", '');
+            savedComment   = window.sessionStorage.getItem("saved_comment");
+            savedCommentId = window.sessionStorage.getItem("saved_comment_id");
+            
         }
         
-        console.log("saved comment" + savedComment);
+        console.log("saved comment " + savedComment + " " + savedCommentId);
         
         $.ajax({
           url: "models/comments/comments_edit.php", // путь к обработчику берем из атрибута action
@@ -76,17 +78,20 @@ $( document ).ready(function() {
               article_id: articleId,
               public_user_name: publicUserName,
               user_logged: userLogged,
-              saved_comment: savedComment
+              saved_comment: savedComment,
+              saved_comment_id: savedCommentId
           },
           dataType: 'json',
           success: function(json){
-            console.log("first-comments");
             $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
+            $('[comment-id='+savedCommentId+'] form:first-of-type').removeClass("form-hidden");  
           },
           error: function(xhr, status, error){
               console.log(xhr.responseText);;
           }
         });
+        window.sessionStorage.setItem("saved_comment", '');
+        window.sessionStorage.setItem("saved_comment_id", null);
         
     });
 
@@ -116,13 +121,11 @@ $( document ).ready(function() {
     
     $(document).on('submit', '#unlogged_form', function(e){
         e.preventDefault();
-        console.log("unlogged comment form");
-        
         var comment = $(this).find('textarea').val().trim();
-        console.log(comment);
+        var commentId = $(this).parent().parent().parent().attr('comment-id');
         window.sessionStorage.setItem("saved_comment", comment);
-        var savedCommentCheck = window.sessionStorage.getItem("saved_comment");
-        console.log(savedCommentCheck);
+        window.sessionStorage.setItem("saved_comment_id", commentId);
+        
     });
     
      
@@ -138,11 +141,11 @@ $( document ).ready(function() {
     var articleId = $(document).find('#comments').attr('index'),
         userLogged = $(document).find('#comments').attr('user_logged'),
         publicUserName = $(document).find('#comments').attr('public_user_name');
-     var savedComment = '';
+     /*var savedComment = '';
         if (window.sessionStorage.getItem("saved_comment") != '') {
             savedComment = window.sessionStorage.getItem("saved_comment");
             window.sessionStorage.setItem("saved_comment", '');
-        }
+        } */
         // ИЛИ
         // fData = $that.serializeArray();
     var emptyCheck = emptyCheck = $that.find('textarea').val();     //проверка пустого поля    
@@ -157,7 +160,7 @@ $( document ).ready(function() {
               article_id: articleId,
               public_user_name: publicUserName,
               user_logged: userLogged,
-              saved_comment: savedComment,
+              //saved_comment: savedComment,
               reply_to_id: replyToId
               
           },

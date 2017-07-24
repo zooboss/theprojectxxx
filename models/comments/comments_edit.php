@@ -14,6 +14,7 @@ if (isset($_POST['article_id'])){
     $user_logged = $_POST['user_logged'];
     $public_user_name = $_POST['public_user_name'];
     $saved_comment = trim($_POST['saved_comment']);
+    $saved_comment_id = $_POST['saved_comment_id'];
 }
 //Новый комментарий
 
@@ -90,7 +91,7 @@ else {
 }
 ?>
     <form id="<?php echo $form_id ?>" class = "add-comment-form" method="POST" action="models/comments/comments_edit.php" > 
-        <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+        <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '' && $saved_comment_id == 0) echo $saved_comment ?></textarea>
         <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
         <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
         <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
@@ -133,7 +134,7 @@ if($article_comments->check_comments()== true){
                    <div class = "single-comment-footer">
                        <a href = "#0" class = "reply">Ответить</a>
                        <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '' && $saved_comment_id == $com['id']) echo $saved_comment ?></textarea>
                             <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
                             <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
                             <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
@@ -166,7 +167,7 @@ if($article_comments->check_comments()== true){
                                    <div class = "single-comment-footer">
                                        <a href = "#0" class = "reply">Ответить</a>
                                        <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '' && $saved_comment_id == $com1['id']) echo $saved_comment ?></textarea>
                                             <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
                                             <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
                                             <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
@@ -200,7 +201,7 @@ if($article_comments->check_comments()== true){
                                                    <div class = "single-comment-footer">
                                                        <a href = "#0" class = "reply">Ответить</a>
                                                        <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '' && $saved_comment_id == $com2['id']) echo $saved_comment ?></textarea>
                                                             <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
                                                             <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
                                                             <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
@@ -234,7 +235,7 @@ if($article_comments->check_comments()== true){
                                                                    <div class = "single-comment-footer">
                                                                        <a href = "#0" class = "reply">Ответить</a>
                                                                        <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+                                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '' && $saved_comment_id == $com3['id']) echo $saved_comment ?></textarea>
                                                                             <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
                                                                             <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
                                                                             <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
@@ -268,7 +269,7 @@ if($article_comments->check_comments()== true){
                                                                                    <div class = "single-comment-footer">
                                                                                        <a href = "#0" class = "reply">Ответить</a>
                                                                                        <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                                                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+                                                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '' && $saved_comment_id == $com4['id']) echo $saved_comment ?></textarea>
                                                                                             <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
                                                                                             <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
                                                                                             <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
@@ -302,7 +303,7 @@ if($article_comments->check_comments()== true){
                                                                                                    <div class = "single-comment-footer">
                                                                                                        <a href = "#0" class = "reply">Ответить</a>
                                                                                                        <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                                                                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+                                                                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '' && $saved_comment_id == $com5['id']) echo $saved_comment ?></textarea>
                                                                                                             <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
                                                                                                             <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
                                                                                                             <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
@@ -336,7 +337,7 @@ if($article_comments->check_comments()== true){
                                                                                                                    <div class = "single-comment-footer">
                                                                                                                        <a href = "#0" class = "reply">Ответить</a>
                                                                                                                        <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                                                                                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+                                                                                                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '' && $saved_comment_id == $com6['id']) echo $saved_comment ?></textarea>
                                                                                                                             <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
                                                                                                                             <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
                                                                                                                             <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
