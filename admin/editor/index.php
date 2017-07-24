@@ -2,7 +2,7 @@
 if (!defined("Admin") )
 {
 if (isset ($_SESSION))
-{ 
+{  
 $_SESSION['userSession'] = false;
 }	
 exit ("Пошел на хуй");

@@ -24,7 +24,7 @@ exit ("Пошел на хуй");
 		
 		switch ($send) {
         case 'New_article':
-            include ("editor/index.php");   			
+            include ("editor/index.php");   			 
             break;                
     }
  		
