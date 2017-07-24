@@ -53,6 +53,9 @@ if (isset($_POST['article_id'])){
     //Запрашиваем бд$article_comments = new COMMENTS();
     $stmt = $article_comments->runQuery("SELECT * FROM comments WHERE article_id= ?");   
     $stmt->execute([$article_id]);
+    $stmt = $stmt->fetchAll();
+    $comments_count = count($stmt);
+    
 ?>
 
 
@@ -91,7 +94,8 @@ else {
         <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
         <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
                 data-toggle = "<?php echo $data_toggle ?>"
-                data-target = "<?php echo $data_target ?>"    
+                data-target = "<?php echo $data_target ?>"
+                reply-to    = "0"   
         >
             
         </input>
@@ -113,7 +117,7 @@ if($article_comments->check_comments()== true){
             
             ?>
             
-            <div class = "single-comment">
+            <div class = "single-comment" comment-id = "<?php echo $com['id'] ?>" >
                <div class = "single-comment-avatar">
                    <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
                </div>
@@ -133,7 +137,8 @@ if($article_comments->check_comments()== true){
                             <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
                             <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
                                     data-toggle = "<?php echo $data_toggle ?>"
-                                    data-target = "<?php echo $data_target ?>"    
+                                    data-target = "<?php echo $data_target ?>"
+                                    reply-to    = "<?php echo $com['id']   ?>"
                             >
 
                             </input>
@@ -141,39 +146,44 @@ if($article_comments->check_comments()== true){
                    </div>                
                 </div>
                 <?php 
-                
+                   foreach ($stmt as $com1) {
+                        if ($com1['reply_to_id'] == $com['id']) {
+                    
                 ?>
-                    <div class = "single-comment reply-1">
-                       <div class = "single-comment-avatar">
-                           <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
-                       </div>
-                       <div class = "single-comment-body">
-                           <div class = "single-comment-header">
-                               <a href = "#0"><?php echo $com['author']?></a>
-                               <span><?php echo $com['date'] . " " . $com['time'] ?></span>
-                           </div>
-                           <div class = "single-comment-text">
-                              <span><?php echo "reply_placeholder"; ?></span>  
-                           </div>
-                           <div class = "single-comment-footer">
-                               <a href = "#0" class = "reply">Ответить</a>
-                               <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
-                                    <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
-                                    <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
-                                    <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
-                                    <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
-                                            data-toggle = "<?php echo $data_toggle ?>"
-                                            data-target = "<?php echo $data_target ?>"    
-                                    >
+                            <div class = "single-comment reply-1" comment-id = "<?php echo $com1['id'] ?>" >
+                               <div class = "single-comment-avatar">
+                                   <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
+                               </div>
+                               <div class = "single-comment-body">
+                                   <div class = "single-comment-header">
+                                       <a href = "#0"><?php echo $com['author']?></a>
+                                       <span><?php echo $com['date'] . " " . $com['time'] ?></span>
+                                   </div>
+                                   <div class = "single-comment-text">
+                                      <span><?php echo $com1['content'] ?></span>  
+                                   </div>
+                                   <div class = "single-comment-footer">
+                                       <a href = "#0" class = "reply">Ответить</a>
+                                       <form id="<?php echo $form_id ?>" class = "add-comment-form form-hidden" method="POST" action="models/comments/comments_edit.php" > 
+                                            <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '') echo $saved_comment ?></textarea>
+                                            <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
+                                            <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
+                                            <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
+                                                    data-toggle = "<?php echo $data_toggle ?>"
+                                                    data-target = "<?php echo $data_target ?>"
+                                                    reply-to    = "<?php echo $com1['id']   ?>"    
+                                            >
 
-                                    </input>
-                                </form>
-                           </div>                
-                        </div>
-                    </div>    
+                                            </input>
+                                        </form>
+                                   </div>                
+                                </div>
+                            </div>    
                 <?php
-                
+                        }
+                    }
                 ?>
+                    
                 
             </div>
            <?php
