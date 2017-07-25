@@ -38,7 +38,7 @@
                 ?>
                 >
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu dropdown-menu-right">
                <?php
                      if ($user_login->is_logged_in()!="") {
                 ?>

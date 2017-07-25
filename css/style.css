@@ -140,6 +140,17 @@ color: #ffffff;
     transition: all 0.3s ease;
 }
 
+@media only screen and (max-width:990px) {
+    #avatar-image-dropdown {
+        
+    }
+    
+}
+    
+
+
+
+
 #avatar-image-dropdown.open .dropdown-menu {
     visibility: visible;
     transform: scale(1);
