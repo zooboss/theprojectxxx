@@ -22,7 +22,7 @@
 
 
     <!-- Аватар-Меню -->
-    <div class = "col-sm-1 text-right">
+    <div class = "col-md-1 col-sm-1 offset-sm-11 col-xs-1 offset-xs-11 text-right">
         <div class = "btn-group" id = "avatar-image-dropdown">
             
             <a  class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,7 +76,7 @@
                                                             
                                                                                     
     <!-- Соцсети -->
-    <div class='col-sm-2 social-links'>
+    <div class='col-md-2 hidden-sm hidden-xs social-links'>
         
         <a href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
