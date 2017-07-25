@@ -37,45 +37,7 @@ html,body {
 li.selected a{
     color: #cf955f;
 }
-      .top-navigation .search-box .icon-search {
-        display: block;
-        position: absolute;
-        width: 40px;
-        height: 20px;
-        text-align: center;
-        cursor: pointer;
-        color: #aaa;
-        right: 15px;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
-        -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-      }
-      .top-navigation .search-box .icon-search .fa {
-        line-height: 18px;
-      }
-      .top-navigation .search-box .icon-search.active, .top-navigation .search-box .icon-search:hover {
-        color: #e15d5d;
-      }
-      .top-navigation .search-box .icon-search:before {
-        content: '';
-        display: block;
-        position: absolute;
-        border-left: 1px solid #999;
-        height: 16px;
-        width: 0;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        left: 0;
-      }
+      
       .top-navigation .share-box {
         position: absolute;
         top: 47%;
