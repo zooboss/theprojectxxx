@@ -188,7 +188,7 @@ $phone_send = 'Не указан';
 			$reg_user->send_mail($email,$message,$subject);	
 			$msg = "12321321321321321321";
 			//header("Location: http://localhost/theprojectxxx/views/signup_page.php?email=$email");
-            header("Location: http://localhost/theprojectxxx/index.php?send=registration&?email=$email");
+            header("Location: http://localhost/theprojectxxx/index.php?send=registration&email=$email");
 							
 		}
 		else

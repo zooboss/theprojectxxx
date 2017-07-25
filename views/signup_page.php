@@ -15,21 +15,29 @@
 
 <?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/header.php"); ?>
 
+
+
+
+
 <?php //вывод сообщения об отправке почты. 
 if ( isset($_GET['email'])) 
 {
 $email = ($_GET['email']);
 ?>
-    <div class='alert alert-success'>
+   <section class = "container-fluid forgot-password-container">
+    <div class='alert alert-success offset-md-3 col-md-6'>
         <button class='close' data-dismiss='alert'>&times;</button>
         <strong>Регистрация почти завершена!</strong>  Для активации учетной записи Вам необходимо перейти по ссылке, отправленный на <?php	echo $email ?>
+        <?php// if(isset($msg)) echo $msg;  ?>
     </div>
+   </section>
 <?php					
 } //вывод сообщения об отправке почты. 
+else {
 ?>
 
 
-<?php if(isset($msg)) echo $msg;  ?>					
+					
 	<form class="cd-form floating-labels" method="post">
 		<fieldset>
 			<legend>Регистрация</legend>
@@ -157,6 +165,10 @@ $email = ($_GET['email']);
 		    </div>
 		</fieldset>
 	</form>
+<?php
+     }
+?>
+
  <!-- BOTTOM MENU -->
 		<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>
 </body>

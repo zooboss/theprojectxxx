@@ -955,7 +955,8 @@ footer .container {
 }
 
 .forgot-password-container {
-    height: 1000px;
+    min-height: 1000px;
+   
 }
 
 
