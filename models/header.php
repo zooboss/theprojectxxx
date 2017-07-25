@@ -4,11 +4,11 @@
 
 <header class='top-navigation container-fluid total-header'>
   
-   <div class = 'navlist col-md-3'>
+   <div class = 'navlist col-md-3 hidden-sm hidden-xs'>
        <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
    </div>
        
-    <div class='navlist col-md-6'>
+    <div class='navlist col-md-6 hidden-sm hidden-xs'>
        
         <ul>
             

@@ -507,13 +507,15 @@ margin-right: 2%;
 }
  	 
 	 }
-*/	 
+*/	
+
 @media only screen and (min-width: 1030px) {
   #menu-trigger {
     display: none;  
   }
     
 }
+/*
 @media only screen and (max-width:491px) {
     .navlist {
         display: none;
@@ -532,7 +534,9 @@ margin-right: 2%;
         display: none;
     }
 }
-	  
+
+*/
+
    /* мобильная версия
       ----------------------------------------------- */	 
     
