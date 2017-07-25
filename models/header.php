@@ -3,11 +3,12 @@
 </div>
 
 <header class='top-navigation container-fluid'>
-   <div class = 'navlist'>
+  
+   <div class = 'navlist col-md-3'>
        <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
    </div>
-    
-    <div class='navlist offset-md-3 col-md-6'>
+       
+    <div class='navlist col-md-6'>
        
         <ul>
             
@@ -82,6 +83,7 @@
         </div>
 
         <div id="mySidenav" class="sidenav">
+          <a href="/theprojectxxx/index.php">Главная</a>
           <a href="#">Актуальное</a>
           <a href="#">Аналитика</a>
           <a href="#">Будущее</a>
