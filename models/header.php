@@ -20,9 +20,9 @@
                         
     </div>
 
-            
-    <!-- подобрать иконки -->
-    <div class='share-box'>
+
+    <!-- Аватар-Меню -->
+    <div class = "col-sm-1">
         <div class = "btn-group" id = "avatar-image-dropdown">
             
             <a  class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,6 +67,17 @@
                                    
             </div>
         </div>
+        
+        
+    </div>        
+                        
+                                    
+                                                
+                                                            
+                                                                                    
+    <!-- Соцсети -->
+    <div class='col-sm-2 pull-right share-box'>
+        
         <a href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-vk'></i></a>
@@ -90,6 +101,12 @@
           <a href="#">Прошлое</a>
         </div>
 </header>
+
+
+
+
+
+
 
 <?php if (!defined("No_login_form")) {         //если не определена переменная "No_login_form" - идем дальше, возможно, следует убрать этот пункт, изменив порядок.  
 if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
