@@ -20,10 +20,10 @@ if ( isset($_GET['email']))
 {
 $email = ($_GET['email']);
 ?>
-<div class='alert alert-success'>
-						<button class='close' data-dismiss='alert'>&times;</button>
-						<strong>Регистрация почти завершена!</strong>  Для активации учетной записи Вам необходимо перейти по ссылке, отправленный на <?php	echo $email ?>
-			  		</div>
+    <div class='alert alert-success'>
+        <button class='close' data-dismiss='alert'>&times;</button>
+        <strong>Регистрация почти завершена!</strong>  Для активации учетной записи Вам необходимо перейти по ссылке, отправленный на <?php	echo $email ?>
+    </div>
 <?php					
 } //вывод сообщения об отправке почты. 
 ?>

@@ -8,7 +8,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
 <html>
 <head>
     <?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); ?>
-    
+    <script src="/theprojectxxx/js/comments.js"></script>
 </head>
 <body>
    <?php 

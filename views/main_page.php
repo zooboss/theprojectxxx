@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 <html>
-
-<?php 
-include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); 
-?>
-
+    <head>
+        <?php 
+        include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); 
+        ?>
+    </head>
     
 <body>   
 

@@ -180,17 +180,8 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 <!-- END OF MODAL -->    
 
 
- <?php }   // быдлокод конец
+ <?php 
+    }   
 
-/* elseif($user_login->is_logged_in()!="")
- {  // Быдлокод начало
- echo '<h1>Вы вошли как ' . $row['PublicUserName'] . ', но кого это ебет?</h1>';
- echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
-  ?>   
-   <div class='alert alert-success'>
-                     <h3>Моя страница</h3>
-                     <a href=' <?php echo 'user-'.$row['userID'].'.html'?>' ><?php echo $row['PublicUserName'] ?></a>
-					 
-                    </div>
- 
-  <?php  } */ } ?> <!-- Быдлокод конец --> 
+} ?> <!-- Быдлокод конец --> 
+  

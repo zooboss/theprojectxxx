@@ -43,8 +43,7 @@
       </form>
 
     </div> <!-- /container -->
-    <script src="bootstrap/js/jquery-1.9.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
      <!-- BOTTOM MENU -->
 		<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>
   </body>
