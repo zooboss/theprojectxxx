@@ -71,20 +71,23 @@ li.selected a{
 
 /* стили меню для мобильной версии */
 #mySidenav  {
-display: none;
-top: 0;
-right: 0;
-height: 100%;
-width: 100%;
+    display: none;
+    margin-top: 40px;
+    height: 100%;
+    width: 150px;
 }
 #top-hidden-menu{
-width: 300px;
+    position: absolute;
+    z-index: 1;
+    width: 300px;
 }
 
 .sidenav a {
     display: block;
-    font-size: 2.5em;
-	font: inherit;
+    position: relative;
+    font-size: 1em;
+    font-family: 'Open sans', sans-serif;
+	
 	background: #2e3233;
     height: 50px;
     line-height: 50px;
@@ -97,7 +100,7 @@ width: 300px;
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    color: #CF955F;
 }
 
 #menu-trigger{
@@ -505,13 +508,11 @@ margin-right: 2%;
  	 
 	 }
 */	 
-@media only screen and (min-width: 1170px) {
+@media only screen and (min-width: 1030px) {
   #menu-trigger {
     display: none;  
   }
-    .loginBlock h1 {
-        padding-left: 17%;
-    }
+    
 }
 @media only screen and (max-width:491px) {
     .navlist {

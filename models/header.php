@@ -22,7 +22,7 @@
 
 
     <!-- Аватар-Меню -->
-    <div class = "col-md-1 col-sm-1 offset-sm-11 col-xs-1 offset-xs-11 text-right">
+    <div class = "col-md-1 offset-md-0 col-sm-1 offset-sm-11 col-xs-1 offset-xs-11 text-right">
         <div class = "btn-group" id = "avatar-image-dropdown">
             
             <a  class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
