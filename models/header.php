@@ -2,7 +2,7 @@
 <meta content='' itemprop='name'/>    <!-- Придумать название это тег для микроразметки и поисковиков -->
 </div>
 
-<header class='top-navigation container-fluid'>
+<header class='top-navigation container-fluid total-header'>
   
    <div class = 'navlist col-md-3'>
        <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
@@ -22,7 +22,7 @@
 
 
     <!-- Аватар-Меню -->
-    <div class = "col-sm-1">
+    <div class = "col-sm-1 text-right">
         <div class = "btn-group" id = "avatar-image-dropdown">
             
             <a  class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,7 +76,7 @@
                                                             
                                                                                     
     <!-- Соцсети -->
-    <div class='col-sm-2 pull-right share-box'>
+    <div class='col-sm-2 social-links'>
         
         <a href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-twitter'></i></a>

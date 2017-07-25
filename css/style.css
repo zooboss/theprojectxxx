@@ -3,6 +3,11 @@ html,body {
 }  
 
 /* Шапка сайта */  
+.total-header {
+    padding-left: 3% !important;
+    padding-right: 3% !important;
+}
+
   .top-navigation{
         position: relative;
         bottom: 0;
@@ -19,7 +24,13 @@ html,body {
     padding-left: 0px;
 }
 
-
+/* Аватар-Меню */	  
+      .navlist li {
+        position: relative;
+        display: inline-block;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
 
 .navlist li a {
   display: inline-block;
@@ -38,35 +49,24 @@ li.selected a{
     color: #cf955f;
 }
       
-      .top-navigation .share-box {
-        position: absolute;
-        top: 47%;
-        right: 60px;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
+      .top-navigation .social-links {
+        text-align: left;
+        padding-top: 9px;
+        white-space: nowrap;
       }
-      .top-navigation .share-box a {
+      .top-navigation .social-links a {
         display: inline-block;
         margin: 0 5px;
         color: #aaa;
       }
-      .top-navigation .share-box a:hover {
+      .top-navigation .social-links a:hover {
         color: #e15d5d;
       }
-	  
-      .navlist li {
-        position: relative;
-        display: inline-block;
-        margin-left: 20px;
-        margin-right: 20px;
-      }
+
 	  
 	  
 .logo {
-    margin-top: 2px;
+    
 }
 
 /* стили меню для мобильной версии */
@@ -117,6 +117,11 @@ color: #ffffff;
 /* стили меню для мобильной версии */
 
 /* DROPDOWN MENU ON AVATAR */
+#avatar-image-dropdown {
+    padding-top: 5px;
+    
+}
+
 
 #avatar-image-dropdown .dropdown-menu {
     padding: 0px;
@@ -177,7 +182,7 @@ img.login-icon {
     cursor: pointer;
     
     border-radius: 50%;
-    height: 24px;
+    height: 30px;
     
 }
 
