@@ -3,7 +3,10 @@
 </div>
 
 <header class='top-navigation container-fluid'>
-    <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
+   <div class = 'navlist'>
+       <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
+   </div>
+    
     <div class='navlist offset-md-3 col-md-6'>
        
         <ul>

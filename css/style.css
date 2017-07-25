@@ -11,50 +11,12 @@ html,body {
         background-color: #444;
         z-index: 9999;
         height: 40px;
-        -webkit-transform: translateZ(0);
-        -moz-transform: translateZ(0);
-        -ms-transform: translateZ(0);
-        -o-transform: translateZ(0);
-        transform: translateZ(0);
+        
       }
      
-      
-      .top-navigation .search-box {
-        position: absolute;
-        top: 50%;
-        right: 0px;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
-		
-      }
-      .top-navigation .search-box input[type="search"] {
-        position: absolute;
-        height: 40px;
-        line-height: 40px;
-        background-color: #fff;
-        border: 1px solid #eee;
-        top: 26px;
-        right: 25px;
-        width: 50%;
-        opacity: 0;
-        visibility: hidden;
-        -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-      }
-      .top-navigation .search-box input[type="search"].fadein {
-        width: 200px;
-        opacity: 1;
-        visibility: visible;
-      }
-
 .top-navigation ul {
     text-align: center;
+    padding-left: 0px;
 }
 
 
