@@ -15,7 +15,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
     include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/header.php");  
     ?>
    
-<section class = "container-fluid article-body">
+<section class = "container-fluid container-fluid-my article-body">
     <div class = "col-md-9 col-sm-12 col-xs-12 ">
 	
 <!-- popup window sovial registration -->
@@ -128,7 +128,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
     
 ?>
 
-<section class = "container-fluid article-comments">
+<section class = "container-fluid container-fluid-my article-comments">
     
     
 	<div id="comments" class = "col-md-9 col-sm-12 col-xs-12" 

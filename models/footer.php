@@ -1,4 +1,4 @@
-<section class = "bottomMenu container-fluid">
+<section class = "bottomMenu container-fluid container-fluid-my">
     <div class = "container">
         <div class = "col-md-2 col-sm-2 col-xs-6">
             <ul>

@@ -24,7 +24,7 @@ if ( isset($_GET['email']))
 {
 $email = ($_GET['email']);
 ?>
-   <section class = "container-fluid forgot-password-container">
+   <section class = "container-fluid container-fluid-my forgot-password-container">
     <div class='alert alert-success offset-md-3 col-md-6'>
         <button class='close' data-dismiss='alert'>&times;</button>
         <strong>Регистрация почти завершена!</strong>  Для активации учетной записи Вам необходимо перейти по ссылке, отправленный на <?php	echo $email ?>
