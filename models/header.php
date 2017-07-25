@@ -2,46 +2,20 @@
 <meta content='' itemprop='name'/>    <!-- Придумать название это тег для микроразметки и поисковиков -->
 </div>
 
-<div class='top-navigation'>
-
-    <div class='navlist'>
-       <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
+<header class='top-navigation container-fluid'>
+    <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
+    <div class='navlist offset-md-3 col-md-6'>
+       
         <ul>
             
-            <li class='selected'><a href='#0'>Политика</a></li>
-            <li><a href='#0'>Экономика</a></li>
-            <li><a href='#0'>История России</a></li>
-            <li><a href='#0'>Всемирная история</a></li>
+            <li class='selected'><a href='#0'>Актуальное</a></li>
+            <li><a href='#0'>Аналитика</a></li>
+            <li><a href='#0'>Будущее</a></li>
+            <li><a href='#0'>Прошлое</a></li>
         </ul>
                         
     </div>
 
-    <!-- Меню для планшетов и мобильных  -->
-
-    <div id="top-hidden-menu">
-        <span id='menu-trigger'>&#9776;</span>
-        <span id="menu-close-trigger">&#10005;</span>
-    </div>
-
-    <div id="mySidenav" class="sidenav">
-      <a href="#">Раздел 1</a>
-      <a href="#">Раздел 2</a>
-      <a href="#">Раздел 3</a>
-      <a href="#">Раздел 4</a>
-    </div>
-
-
-    <!-- Меню для планшетов и мобильных  -->
-    <!--
-    <div class='search-box'>
-        <span class='icon-search'>
-            <img src = "img/icons/empty_user.png">
-        </span>
-        <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
-            <input name='q' type='search' placeholder='Search and hit enter'/>
-        </form>
-    </div>
-    -->
             
     <!-- подобрать иконки -->
     <div class='share-box'>
@@ -97,8 +71,20 @@
         <a href='#0' target='_blank'><i class='fa fa-rss'></i></a>
         
     </div>
+    <!-- Меню для планшетов и мобильных  -->
 
-</div>
+        <div id="top-hidden-menu">
+            <span id='menu-trigger'>&#9776;</span>
+            <span id="menu-close-trigger">&#10005;</span>
+        </div>
+
+        <div id="mySidenav" class="sidenav">
+          <a href="#">Актуальное</a>
+          <a href="#">Аналитика</a>
+          <a href="#">Будущее</a>
+          <a href="#">Прошлое</a>
+        </div>
+</header>
 
 <?php if (!defined("No_login_form")) {         //если не определена переменная "No_login_form" - идем дальше, возможно, следует убрать этот пункт, изменив порядок.  
 if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
