@@ -1,5 +1,6 @@
 <?php 
 session_start ();
+
 if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session']))
 {
 header('Location: https://navalny.com/');	
@@ -16,7 +17,7 @@ exit ("Пошел на хуй");
     {
       $check_session = '-+*M,./(31M'.$_SESSION['adminSession'].'GhUy891246/*- '.'  ';
       $check_session = hash("sha256", $check_session );
-      if ($_POST['ID'] === $check_session and ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')) // если есть запрос Ajax и если ID пост запроса соответствует 
+      if ($_POST['ID'] === $check_session and ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') and (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])) ) // если есть запрос Ajax и если ID пост запроса соответствует 
       {
        require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_functions.php");	
 	   $send = $_POST['Data'];
@@ -24,7 +25,8 @@ exit ("Пошел на хуй");
 		
 		switch ($send) {
         case 'New_article':
-            include ("editor/index.php");   			 
+            include ("editor/index.php");
+            setcookie('edit', rand(10, 15), time()+10, '/');		//куки для отвлечения внимания	
             break;                
     }
  		

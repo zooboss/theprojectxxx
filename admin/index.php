@@ -18,6 +18,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_functions
 $_SESSION['adminSession'] = GenUnicPass();
 $update_Session ='-+*M,./(31M'.$_SESSION['adminSession'].'GhUy891246/*- '.'  ';
 $update_Session = hash("sha256", $update_Session );	
+
 ?>
 <h3>Админка</h3>
 <ol class="rounded">

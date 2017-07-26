@@ -1,4 +1,10 @@
 <?php 
+if (!defined("Redactor_check") or !isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session']) )
+{
+exit ("Пошел на хуй");	
+}
+else {
+	
 class Database
 {
      
@@ -57,7 +63,7 @@ class ARTICLES {
 
 
 
-
+//Добавление новой статьи
 public function add_article($recieved_date,$article_date,$article_time,$ip_1)
 {
 
@@ -86,18 +92,8 @@ try
 	
 }
 
-$add_article_content = new ARTICLES();
-	
-	if (isset($_POST["content"])) 
-	{
-	$recieved_date = $_POST["content"];
-$article_date = date("Y.m.d.");  //дата
-$article_time = date("H:i:s"); 
-$ip = $_SERVER["REMOTE_ADDR"];
-$ip_1 = ip2long($ip);
-$add_article_content->add_article($recieved_date,$article_date,$article_time,$ip_1);
-		
-	}
-	
+
+
+}	
 	
 ?>	
