@@ -9,6 +9,7 @@ exit ("Пошел на хуй");
 }
 else {
 require_once "richtexteditor/include_rte.php" 
+
 ?>   
 <html>   
 <body>   

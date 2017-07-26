@@ -67,8 +67,6 @@ class ARTICLES {
 public function add_article($recieved_date,$article_date,$article_time,$ip_1)
 {
 
-
-
 try
 		{		
 			$stmt = $this->conn->prepare("INSERT INTO articles(content,date,Time,IP) 
