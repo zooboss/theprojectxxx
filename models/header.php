@@ -2,49 +2,27 @@
 <meta content='' itemprop='name'/>    <!-- Придумать название это тег для микроразметки и поисковиков -->
 </div>
 
-<div class='top-navigation'>
-
-    <div class='navlist'>
-       <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logo.jpg" class = "logo"></a>
+<header class='top-navigation container-fluid total-header'>
+  
+   <div class = 'navlist col-md-3 hidden-sm hidden-xs'>
+       <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logotype.png" class = "logo"></a>
+   </div>
+       
+    <div class='navlist col-md-6 hidden-sm hidden-xs'>
+       
         <ul>
             
-            <li class='selected'><a href='#0'>Политика</a></li>
-            <li><a href='#0'>Экономика</a></li>
-            <li><a href='#0'>История России</a></li>
-            <li><a href='#0'>Всемирная история</a></li>
+            <li class='selected'><a href='#0'>Актуальное</a></li>
+            <li><a href='#0'>Аналитика</a></li>
+            <li><a href='#0'>Будущее</a></li>
+            <li><a href='#0'>Прошлое</a></li>
         </ul>
                         
     </div>
 
-    <!-- Меню для планшетов и мобильных  -->
 
-    <div id="top-hidden-menu">
-        <span id='menu-trigger'>&#9776;</span>
-        <span id="menu-close-trigger">&#10005;</span>
-    </div>
-
-    <div id="mySidenav" class="sidenav">
-      <a href="#">Раздел 1</a>
-      <a href="#">Раздел 2</a>
-      <a href="#">Раздел 3</a>
-      <a href="#">Раздел 4</a>
-    </div>
-
-
-    <!-- Меню для планшетов и мобильных  -->
-    <!--
-    <div class='search-box'>
-        <span class='icon-search'>
-            <img src = "img/icons/empty_user.png">
-        </span>
-        <form action='http://gridz-themexpose.blogspot.ru/search' method='get'>
-            <input name='q' type='search' placeholder='Search and hit enter'/>
-        </form>
-    </div>
-    -->
-            
-    <!-- подобрать иконки -->
-    <div class='share-box'>
+    <!-- Аватар-Меню -->
+    <div class = "col-md-1 offset-md-0 col-sm-1 offset-sm-11 col-xs-1 offset-xs-11 text-right">
         <div class = "btn-group" id = "avatar-image-dropdown">
             
             <a  class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,7 +38,7 @@
                 ?>
                 >
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu dropdown-menu-right">
                <?php
                      if ($user_login->is_logged_in()!="") {
                 ?>
@@ -89,6 +67,17 @@
                                    
             </div>
         </div>
+        
+        
+    </div>        
+                        
+                                    
+                                                
+                                                            
+                                                                                    
+    <!-- Соцсети -->
+    <div class='col-md-2 hidden-sm hidden-xs social-links'>
+        
         <a href='#0' target='_blank'><i class='fa fa-facebook'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-twitter'></i></a>
         <a href='#0' target='_blank'><i class='fa fa-vk'></i></a>
@@ -97,8 +86,27 @@
         <a href='#0' target='_blank'><i class='fa fa-rss'></i></a>
         
     </div>
+    <!-- Меню для планшетов и мобильных  -->
 
-</div>
+        <div id="top-hidden-menu">
+            <span id='menu-trigger'>&#9776;</span>
+            <span id="menu-close-trigger">&#10005;</span>
+        </div>
+
+        <div id="mySidenav" class="sidenav">
+          <a href="/theprojectxxx/index.php">Главная</a>
+          <a href="#">Актуальное</a>
+          <a href="#">Аналитика</a>
+          <a href="#">Будущее</a>
+          <a href="#">Прошлое</a>
+        </div>
+</header>
+
+
+
+
+
+
 
 <?php if (!defined("No_login_form")) {         //если не определена переменная "No_login_form" - идем дальше, возможно, следует убрать этот пункт, изменив порядок.  
 if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
@@ -180,17 +188,8 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 <!-- END OF MODAL -->    
 
 
- <?php }   // быдлокод конец
+ <?php 
+    }   
 
-/* elseif($user_login->is_logged_in()!="")
- {  // Быдлокод начало
- echo '<h1>Вы вошли как ' . $row['PublicUserName'] . ', но кого это ебет?</h1>';
- echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
-  ?>   
-   <div class='alert alert-success'>
-                     <h3>Моя страница</h3>
-                     <a href=' <?php echo 'user-'.$row['userID'].'.html'?>' ><?php echo $row['PublicUserName'] ?></a>
-					 
-                    </div>
- 
-  <?php  } */ } ?> <!-- Быдлокод конец --> 
+} ?> <!-- Быдлокод конец --> 
+  

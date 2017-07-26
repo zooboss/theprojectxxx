@@ -10,7 +10,7 @@
 
 <?php if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
 
-<section id="login" class = "loginBlock container-fluid">
+<section id="login" class = "loginBlock container-fluid container-fluid-my">
     <div class = "col-md-10 col-sm-6 text-center"><h1>Название сайта</h1></div>
     <div class = "col-md-2 col-sm-6 text-right">
         <div class = "loginSocial"> 
@@ -95,7 +95,7 @@ foreach ($statment as $line)
           </form>
 
 <?php } ?>
-<section class='container-fluid articlesGallery'>
+<section class='container-fluid container-fluid-my articlesGallery'>
     
 
 	

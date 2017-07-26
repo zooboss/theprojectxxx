@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 <html>
-
-<?php 
-include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); 
-?>
-
+    <head>
+        <?php 
+        include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); 
+        ?>
+    </head>
     
 <body>   
 
@@ -13,7 +13,7 @@ include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php");
 
 <?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/header.php"); ?>
 
-<section id = "section-search" class = "container-fluid">
+<section id = "section-search" class = "container-fluid container-fluid-my">
     <div class = "row">
         <div class = "col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
            
@@ -32,7 +32,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");
 <?php 
 }	
 ?>		
-<section class='container-fluid articlesGallery'>
+<section class='container-fluid container-fluid-my articlesGallery'>
     
      <div class='row'>
     <!-- Вывод массива всех статей из бд-->
