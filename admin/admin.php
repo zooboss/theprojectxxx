@@ -30,6 +30,7 @@ exit ("Пошел на хуй");
      
         case 'Users':
 	    include_once ($_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_bd_config.php");
+		define("Users_check", true);
         include ("database/index.php");
         break;  	 
     }

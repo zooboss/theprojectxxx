@@ -1,5 +1,6 @@
 <?php
-
+if (defined("Users_check"))
+{
 $crud = new Editing_db();
 
 ?>
@@ -42,3 +43,9 @@ $crud = new Editing_db();
        
 </div>
 
+<?php 
+}
+else
+{
+	exit('Доступ закрыт');
+}	?>
