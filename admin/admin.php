@@ -1,16 +1,16 @@
 <?php 
 session_start ();
 
-if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session']))
+if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session']))  //проверяем сессию
 {
-header('Location: https://navalny.com/');	
+header('Location: https://navalny.com/');	//заменить на 404
 exit ("Пошел на хуй");	 
 }// если нет админской сессии или админского кукиса
 else //если есть админская сессия и админский кукис
 {	
 if (empty($_POST['ID'])) //если нет POST запроса
 {
-header('Location: https://navalny.com/');	
+header('Location: https://navalny.com/');	//заменить на 404
 exit ("Пошел на хуй");
 } // конец если нет POST запроса
   else // если есть POST запрос
@@ -19,15 +19,19 @@ exit ("Пошел на хуй");
       $check_session = hash("sha256", $check_session );
       if ($_POST['ID'] === $check_session and ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') and (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])) ) // если есть запрос Ajax и если ID пост запроса соответствует 
       {
-       require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_functions.php");	
-	   $send = $_POST['Data'];
-		define("Admin", true);
-		
+	    $send = $_POST['Data'];
+		define("Admin", true);  //определяем Admin.php
+		require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_functions.php");	
 		switch ($send) {
         case 'New_article':
-            include ("editor/index.php");
-            setcookie('edit', rand(10, 15), time()+10, '/');		//куки для отвлечения внимания	
-            break;                
+        include ("editor/index.php");
+        setcookie('edit', rand(10, 15), time()+10, '/');		//куки для отвлечения внимания	
+        break;   
+     
+        case 'Users':
+	    include_once ($_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_bd_config.php");
+        include ("database/index.php");
+        break;  	 
     }
  		
  } // конец есть запрос Ajax и если ID пост запроса соответствует 
@@ -35,8 +39,6 @@ exit ("Пошел на хуй");
 {
  exit ("Пошел на хуй");	
 }
-
-
     
 
 }     //конец  если есть POST запрос

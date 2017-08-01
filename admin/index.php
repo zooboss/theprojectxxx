@@ -1,5 +1,5 @@
 <?php 
-if (!defined("Security") )
+if (!defined("Security") ) //проверяем переменную из main_page.php
 {
 	header('Location: https://navalny.com/');
 	exit ("Пошел на хуй");	 
@@ -8,7 +8,7 @@ if (!defined("Security") )
 else {	
 $cookie_bd = $row['cookie'];
 $cookie_local = $_COOKIE['admin_session'];
-if (!isset($_COOKIE['admin_session'])or ($cookie_bd !== $cookie_local) )
+if (!isset($_COOKIE['admin_session'])or ($cookie_bd !== $cookie_local) ) //сверяем куки из бд с локальным
 {
 exit ("Пошел на хуй");		
 }
@@ -16,7 +16,7 @@ else
 {
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_functions.php");	  
 $_SESSION['adminSession'] = GenUnicPass();
-$update_Session ='-+*M,./(31M'.$_SESSION['adminSession'].'GhUy891246/*- '.'  ';
+$update_Session ='-+*M,./(31M'.$_SESSION['adminSession'].'GhUy891246/*- '.'  ';  //добавляем идентифииактор Ajax, чтобы затем сравнить в admin/admin.php
 $update_Session = hash("sha256", $update_Session );	
 
 
@@ -25,7 +25,7 @@ $update_Session = hash("sha256", $update_Session );
 <h3>Админка</h3>
 <ol class="rounded">
   <li><a class="send" href="#0" data="New_article" session="<?php echo $update_Session; ?>" >Добавить новую статью</a></li>
-  <li><a class="send" href="#0" data="">Пользователи</a></li>
+  <li><a class="send" href="#0" data="Users"  session="<?php echo $update_Session; ?>">Пользователи</a></li>
 </ol>
 <script>  
 $(document).ready(function(){

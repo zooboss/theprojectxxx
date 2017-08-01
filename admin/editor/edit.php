@@ -1,15 +1,15 @@
 <?php 
-if ( empty($_POST["content"]) and empty ($_POST["Editor1"])) {
+if ( empty($_POST["content"]) and empty ($_POST["Editor1"])) {  //проверяем наличие нужного Post запроса
  exit ("Пошел на хуй");	
   }
 else 
 {  
 session_start ();
-if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session'])) 
+if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session'])) //проверяем наличие админской сессии
 {
 	if (isset ($_SESSION))
 {  
-$_SESSION['userSession'] = false;
+$_SESSION['userSession'] = false;  //убиваем сессию, если нет адмиской сессии
 }	
 exit ("Пошел на хуй");
 }
