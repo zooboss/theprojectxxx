@@ -69,6 +69,7 @@ li.selected a{
     padding-top: 50px; 
     height: 160px;
     position: absolute;
+    transform: scale(0.5);
 }
 
 /* стили меню для мобильной версии */

@@ -8,42 +8,91 @@
  
 <?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/header.php"); ?>
 
-<?php if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
-
-<section id="login" class = "loginBlock container-fluid container-fluid-my">
-    <div class = "col-md-10 col-sm-6 text-center"><h1>Название сайта</h1></div>
-    <div class = "col-md-2 col-sm-6 text-right">
-        <div class = "loginSocial"> 
-            <a href = "#0"><div class = "loginSocialLink"></div></a>
-            <a href = "#0"><div class = "loginSocialLink"></div></a>
-            <a href = "#0"><div class = "loginSocialLink"></div></a>
-        </div>
-        <div class = "loginStandart">
-            <?php 
-            if(isset($_GET['inactive']))
-            {
-                ?>
-                <div class='alert alert-error'>
-                    <button class='close' data-dismiss='alert'>&times;</button>
-                    Ваш профиль не активирован, подтвердите E-mail для просмотра других пользователей
+<?php if ($user_login->is_logged_in()=="") 
+ {?>
+ 
+ 	 
+        
+           <div class = "text-center">
+                <div class = "modal-header">
+                    <h4><b>ДЛЯ ПРОСМОТРА ПРОФИЛЯ НЕОБХОДИМО АВТОРИЗИРОВАТЬСЯ</b></h4>
                 </div>
-                <?php
-            }
-            ?>
-      </div>
-      
-    </div>
-</section>
- <?php } // быдлокод конец ?> 
+                <div class = "modal-body">
+                    <section id="login" class = "loginBlock container-fluid">
+                           
+                            <div class = "loginSocial text-center"> 
+                               <p class = "text-center">ВОЙТИ ЧЕРЕЗ:</p>
+                              
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                                <a href = "#0"><div class = "loginSocialLink"></div></a>
+                            </div>   
+                                               
+                            <div class = "loginStandart">
+                                <?php 
+                                if(isset($_GET['inactive']))
+                                {
+                                    ?>
+                                    <div class='alert alert-error'>
+                                        <button class='close' data-dismiss='alert'>&times;</button>
+                                        Не активирован
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                <form class="cd-form floating-labels" method="post">
+                                    <?php
+                                    if(isset($_GET['error']))
+                                    {
+                                        ?>
+                                        <div class='alert alert-success'>
+                                            <button class='close' data-dismiss='alert'>&times;</button>
+                                            <strong>Неправильный логин или пароль</strong> 
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
+                                    <fieldset>
+                                       <div class = "icon">
+                                            <label class="cd-label" for="main-login">Логин</label>
+                                            <input class = "user" type="text" name="uname" id = "main-login" required />
+                                        </div>
+                                        <div class = "icon">
+                                            <label class="cd-label" for="main-password">Пароль</label>
+                                            <input class = "company" type="password"  name="txtupass" id = "main-password" required />
+                                        </div>
+                                   </fieldset>
+                                    
+                                    <ul class="cd-form-list">
+                                        <li>
+                                            <input name="remember" id="remember" type='checkbox' value='1'>
+                                            <label for="remember">запомнить меня</label>
+                                        </li>
+                                    </ul>
+                                   <button class="btn btn-large btn-primary btn-login pull-right" type="submit" name="btn-login">ВОЙТИ</button>
+                                   <p class = "p-register-button"><a href="index.php?send=registration&registration=1" class = "register-button btn btn-success pull-right">РЕГИСТРАЦИЯ</a></p>
+                                   <p class = "text-right"><a href="index.php?send=forgot_pass&forgot_pass=1">Забыли пароль?</a></p>
+                                </form>
+                                                                                        
+
+                          </div>
+
+                        
+                    </section>
+                </div>
+             </div>   
+       
+
+<?php } ?>
+ 
  
  <?php if($user_login->is_logged_in()!="" and $row['userID']==$_GET['userID'])
  {  // Быдлокод начало
  //echo '<h1>Вы вошли как ' . $row['userName'] . ', но кого это ебет?</h1>';
  //echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
   ?>   
-   <div class='alert alert-success'>
-                     <h3>Моя страница</h3>
-                    </div>
+   
   <h4>Логин: <?php echo $row['userName'] ?></h4>
    <h4>E-mail: <?php echo $row['userEmail'] ?></h4>
    <h4>Фамилия: <?php echo $row['Surname'] ?></h4>
@@ -82,27 +131,8 @@ foreach ($statment as $line)
  echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
 }
  
- if ($user_login->is_logged_in()=="") 
- {?>
- <h2>зарегестрируйтесь или авторизуйтесь для просмотра профиля</h2>
- 	 <form class="form-signin" method="post">
-                <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
-                <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
-                <hr />
-                <button class="btn btn-large btn-primary" type="submit" name="btn-login">Войти</button>
-                <a href="models/registration/signup.php" class="btn btn-large">Регистрация</a><hr />
-                <a href="models/registration/fpass.php">Забыли пароль ? </a>
-          </form>
-
-<?php } ?>
-<section class='container-fluid container-fluid-my articlesGallery'>
-    
-
-	
-     
-</section>   <!-- galery -->
-
-        <!-- BOTTOM MENU -->
+?>
+         
 <?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>
     
 
