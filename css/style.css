@@ -1,5 +1,6 @@
 html,body {
     height:100%;
+    font-family: "Montserrat", sans-serif;
 }  
 
 /* Шапка сайта */  
@@ -1091,5 +1092,53 @@ display: none;
 .reply-comment {
     margin-left: 55px;
 }
+
+
+/*
+================================================================
+====================== PERSONAL      PAGE ======================
+================================================================
+*/
+
+.personal-avatar {
+    height: 160px;
+    border-radius: 50%;
+}
+
+.divider {
+    height: 100px;
+}
+
+.personal-panel {
+    height: 320px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
