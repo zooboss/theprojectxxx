@@ -34,11 +34,15 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");
 ?>		
 <section class='container-fluid container-fluid-my articlesGallery'>
     
-     <div class='row'>
-    <!-- Вывод массива всех статей из бд-->
-        <?php foreach ($articles as $a): ?>  
-            <!-- отдельный блок статьи-->
-        
+     <!-- Вывод массива всех статей из бд-->
+        <?php 
+         $count = 0;
+         foreach ($articles as $a)
+         {
+             
+           ?>
+            
+             <!-- отдельный блок статьи-->
             <div class='col-md-4 col-sm-6  article-wrap' >                           
                 <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
                     <img alt="#0" src="img/test_image4.jpg"> 
@@ -92,11 +96,13 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");
                         <a href="index.php?send=article&id=<?=$a['id']?>"><div class='read'>Читать </div></a>
                     </div>
                 </div>
-            </div>   
+            </div> 
+             
         
         <!-- отдельный блок статьи-->
-        <?php endforeach ?>
-    </div>
+       
+        <?php } ?>
+    
 </section>   <!-- galery -->
 
         <!-- BOTTOM MENU -->
