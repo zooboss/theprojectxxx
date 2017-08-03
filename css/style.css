@@ -68,6 +68,7 @@ li.selected a{
 .logo {
     padding-top: 50px; 
     height: 160px;
+    position: absolute;
 }
 
 /* стили меню для мобильной версии */
