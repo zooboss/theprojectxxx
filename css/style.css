@@ -1,6 +1,6 @@
 html,body {
     height:100%;
-    font-family: "Montserrat", sans-serif;
+    
 }  
 
 /* Шапка сайта */  
@@ -573,12 +573,17 @@ section.articlesGallery {
 }
 
 .post-body {
+    
     -webkit-box-shadow: 0px 1px 2px grey;
     -moz-box-shadow: 0px 1px 2px grey;
     box-shadow: 0px 1px 2px gray;
     margin-top: -20px;
     padding: 10px;
     
+}
+
+.post-entry {
+    min-height: 200px;
 }
 
 .image-wrap {
