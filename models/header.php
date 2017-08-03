@@ -129,18 +129,19 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                             </div>   
                                                
                             <div class = "loginStandart">
-                                <?php 
-                                if(isset($_GET['inactive']))
-                                {
-                                    ?>
-                                    <div class='alert alert-error'>
-                                        <button class='close' data-dismiss='alert'>&times;</button>
-                                        Не активирован
-                                    </div>
-                                    <?php
-                                }
-                                ?>
+                                
                                 <form class="cd-form floating-labels" method="post">
+                                   <?php 
+                                    if(isset($_GET['inactive']))
+                                    {
+                                        ?>
+                                        <div class='alert alert-danger'>
+                                            <button class='close' data-dismiss='alert'>&times;</button>
+                                             <strong>Профиль не активирован</strong>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
                                     <?php
                                     if(isset($_GET['error']))
                                     {
