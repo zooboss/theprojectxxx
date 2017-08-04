@@ -3,6 +3,7 @@
 <html>
 
 <?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); ?>
+<script src="/theprojectxxx/js/profile.js"></script>
     
 <body>   
  
