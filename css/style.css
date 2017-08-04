@@ -582,7 +582,7 @@ section.articlesGallery {
     
 }
 
-.post-entry {
+.articlesGallery .post-entry {
     min-height: 200px;
     max-height: 300px;
     overflow: hidden;
@@ -1123,7 +1123,9 @@ display: none;
 #personal-data td {
     word-wrap: break-word;
     
-    max-width: 500px;
+    max-width: 400px;
+    
+    cursor: pointer;
 }
 
 

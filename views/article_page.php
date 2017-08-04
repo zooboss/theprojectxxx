@@ -18,7 +18,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
 <section class = "container-fluid container-fluid-my article-body">
     <div class = "col-md-9 col-sm-12 col-xs-12 ">
 	
-<!-- popup window sovial registration -->
+<!-- popup window social registration -->
 	<div class="overlay" title="окно"></div> 
         <div class="popup">
         <div class="close_window">x</div>
@@ -75,7 +75,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
         
             <div class='article-wrap' >                           
                 <div class='image-wrap'> 
-                    <img alt="#0" src="img/test_image4.jpg"> 
+                    <!--<img alt="#0" src="img/test_image4.jpg"> -->
                    
                     <div class='post-author'>
 

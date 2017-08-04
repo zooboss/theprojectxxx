@@ -8,6 +8,7 @@ ob_start();
 $author = $_POST['username'];
 $my_comments = get_my_comments($author);
 
+
 ?>
 
 <div class = " table-responsive personal-output "
@@ -27,10 +28,10 @@ $my_comments = get_my_comments($author);
         <?php 
             foreach ($my_comments as $comment) {
                 ?>
-                <tr>
+                <tr class = "clickable-row" data-href = "<?php echo '/theprojectxxx/index.php?send=article&id=' . $comment['article_id'] ?>">
                     <td><?php echo $comment['content'] ?> </td>
                     <td><?php echo $comment['date'] . " " . $comment['time'] ?> </td>
-                    <td><?php echo $comment['id'] ?> </td>
+                    <td><?php echo get_article_by_id($comment['article_id'])[0]['title'] ?> </td>
                     <td><?php echo "Рейтинг" ?> </td>
                 
                 </tr>
