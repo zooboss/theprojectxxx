@@ -84,12 +84,13 @@
 
 
     <?php }
+    
+    //Залогиненный пользователь
+    
     else {
     
          if($user_login->is_logged_in()!="" and $row['userID']==$_GET['userID'])
-         {  // Быдлокод начало
-         //echo '<h1>Вы вошли как ' . $row['userName'] . ', но кого это ебет?</h1>';
-         //echo '<a tabindex="-1" href="/theprojectxxx/models/registration/logout.php">Выйти</a>  '; //Исправить путь
+         {  
           ?>   
             <div class = "personal-body">
                 <div class = "row">
@@ -101,7 +102,7 @@
                 </div>
                 <div class = "divider"></div>
                 <div class = "row">
-                    <div class = "col-md-6 col-sm-6 col-xs-12">
+                    <div class = "offset-md-2 col-md-4 offset-sm-2 col-sm-4 col-xs-12">
                         <div class = "panel panel-info personal-panel">
                             <div class = "panel-heading text-center">
                                 Персональные данные
@@ -116,11 +117,17 @@
                                    <h4>Дата рождения: <?php echo $row['birthday'] ?></h4>
                                    <h4>Пол: <?php echo $row['sex'] ?></h4>
                                    <h4>Телефон:   <?php echo $row['phone'] ?></h4>
-
+                                    
+                                    <div class = "text-right">
+                                        <button class = "btn btn-success">
+                                            Изменить данные
+                                        </button>
+                                    </div>
+                                    
                             </div>
                         </div>
                     </div>
-                    <div class = "col-md-6 col-sm-6 col-xs-12">
+                    <div class = "col-md-4  col-sm-4  col-xs-12">
                         <div class = "panel panel-info personal-panel">
                             <div class = "panel-heading text-center">
                                 Активность
@@ -128,31 +135,35 @@
                             <div class = "panel-body personal-info">
 
                                 <a href = #0><h4>Непрочитанные статьи (<?php echo 1 ?>)</h4></a>
-                                <a href = #0><h4>Ваши комментарии (<?php echo 1 ?>)</h4></a>
+                                <a href = #0 id = "my_comments"><h4>Ваши комментарии (<?php echo 1 ?>)</h4></a>
                                 <a href = #0><h4>Ответы (<?php echo 1 ?>)</h4></a>
                                 <a href = #0><h4>Личные сообщения (<?php echo 1 ?>)</h4></a>
                                 <a href = #0><h4>Рейтинг (<?php echo 1 ?>)</h4></a>
-                                   
-
+                                
                             </div>
                         </div>
                     </div>
-                    
-                    <div class = "col-md-12 col-sm-12 col-xs-12 text-center">
-                        <button class = "btn btn-success">
-                            Изменить данные
-                        </button>
-                    </div>
+                                        
                     
                 </div>
             </div>
-          
+            <div class = "offset-md-2 col-md-8 offset-sm-2 col-sm-8 col-xs-12 personal-output"
+                 id = "personal-data"
+                 username = "<?php echo $row['userName'] ?>"
+               
+               
+               >
+                message
+            </div>
 
 
 
-          <?php  } ?> <!-- Быдлокод конец -->
+          <?php  
+            } ?> 
+            
 
           <?php 
+        
         // Вывод данных другого пользователя через новое PDO//
 
 
