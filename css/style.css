@@ -1120,7 +1120,11 @@ display: none;
     height: 350px;
 }
 
-
+#personal-data td {
+    word-wrap: break-word;
+    
+    max-width: 500px;
+}
 
 
 

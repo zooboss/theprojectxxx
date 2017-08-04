@@ -10,15 +10,35 @@ $my_comments = get_my_comments($author);
 
 ?>
 
-<div class = "offset-md-2 col-md-8 offset-sm-2 col-sm-8 col-xs-12 personal-output"
+<div class = " table-responsive personal-output "
      id = "personal-data"
      username = "<?php echo $author ?>"
      >
-<?php 
-    foreach ($my_comments as $comment) {
-        echo $comment['content'] . "<br>";
-    }
-?>
+    <table class = "table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Комментарий</th>
+                <th>Дата</th>
+                <th>Статья</th>
+                <th>Рейтинг</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php 
+            foreach ($my_comments as $comment) {
+                ?>
+                <tr>
+                    <td><?php echo $comment['content'] ?> </td>
+                    <td><?php echo $comment['date'] . " " . $comment['time'] ?> </td>
+                    <td><?php echo $comment['id'] ?> </td>
+                    <td><?php echo "Рейтинг" ?> </td>
+                
+                </tr>
+            <?php
+            }
+        ?>
+        </tbody>
+    </table>
 </div>
 
 
