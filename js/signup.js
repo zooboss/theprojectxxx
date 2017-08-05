@@ -1,24 +1,54 @@
 //Плавающие названия полей регистрации
 
-jQuery(document).ready(function($){
-	if( $('.floating-labels').length > 0 ) floatLabels();
+$(document).on("focus", ".floating-labels", function(e){
+    console.log($(e.target).is(':focus'));
+    
+	if( $('.floating-labels').length > 0 || $(e.target).is(':focus')) floatLabels();
 
 	function floatLabels() {
 		var inputFields = $('.floating-labels .cd-label').next();
 		inputFields.each(function(){
-			var singleInput = $(this);
+			var singleInput = $(e.target);
 			//check if user is filling one of the form fields 
 			checkVal(singleInput);
 			singleInput.on('change keyup', function(){
 				checkVal(singleInput);	
 			});
+            
 		});
 	}
 
 	function checkVal(inputField) {
-		( inputField.val() == '' ) ? inputField.prev('.cd-label').removeClass('float') : inputField.prev('.cd-label').addClass('float');
+		( inputField.val() == '' && !$(e.target).is(':focus')) ? inputField.prev('.cd-label').removeClass('float') : inputField.prev('.cd-label').addClass('float');
 	}
 });
+
+$(document).on("focusout", ".floating-labels", function(e){
+    console.log($(e.target).is(':focus'));
+    
+	if( $('.floating-labels').length > 0 || $(e.target).is(':focus')) floatLabels();
+
+	function floatLabels() {
+		var inputFields = $('.floating-labels .cd-label').next();
+		inputFields.each(function(){
+			var singleInput = $(e.target);
+			//check if user is filling one of the form fields 
+			checkVal(singleInput);
+			singleInput.on('change keyup', function(){
+				checkVal(singleInput);	
+			});
+            
+		});
+	}
+
+	function checkVal(inputField) {
+		( inputField.val() == '' && !$(e.target).is(':focus')) ? inputField.prev('.cd-label').removeClass('float') : inputField.prev('.cd-label').addClass('float');
+	}
+});
+
+
+
+
 
 
 //Функционал проверки данных регистрации
