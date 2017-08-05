@@ -6,6 +6,7 @@ function get_my_comments ($author) {
     $stmt = $author_comments->runQuery("SELECT * FROM comments WHERE author= ?");   
     $stmt->execute([$author]);
     $stmt = $stmt->fetchAll();
+    $stmt = array_reverse($stmt);
     return $stmt;
 }
 

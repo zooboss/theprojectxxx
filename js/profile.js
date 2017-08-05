@@ -15,16 +15,13 @@ $(document).on('click', '.clickable-row', function(e) {
     
 $(document).on('click', '#my_comments', function(e){
     e.preventDefault();
-    
-    var $that = $(this),
-        fData = $that.serialize(); // сериализируем данные
     var userName = $(document).find('#personal-data').attr('username');
-    
+        
         $.ajax({
           url: "models/profile/profile.php", 
           type: "POST", //
           data: {
-              form_data: fData, 
+              personal_request_type: "my_comments", 
               username: userName              
           },
           dataType: 'json',
@@ -47,6 +44,15 @@ $(document).on('click', '#my_comments', function(e){
   });
     
 //    
+    
+//Мои ответы
+    
+    
+    
+    
+    
+    
+    
     
     
     
