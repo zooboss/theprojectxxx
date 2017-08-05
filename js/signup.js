@@ -238,7 +238,7 @@ $(function(){
    
 $(function(){
     
-    $("#email").inputmask("***@***");
+    $("#login_public").inputmask("email");
             
             
               
