@@ -11,7 +11,7 @@ $my_comments = get_my_comments($author);
 
 ?>
 
-<div class = " table-responsive personal-output "
+<div class = "  personal-output "
      id = "personal-data"
      username = "<?php echo $author ?>"
      >
