@@ -4,8 +4,7 @@ $( document ).ready(function() {
 //Кликабельные строки таблиц
     
 $(document).on('click', '.clickable-row', function(e) {
-    //e.preventDefault();
-    console.log($(this).attr("data-href"));
+    
     window.location = $(this).attr("data-href");
     
 });
@@ -46,6 +45,9 @@ $(document).on('click', '#my_comments', function(e){
       
       
   });
+    
+//    
+    
     
     
 });

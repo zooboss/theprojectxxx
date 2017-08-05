@@ -219,4 +219,53 @@ $(function() {
     
     */
 });
+  
+//Маски
+
+$(document).ready(function() {
+
+  $(":input[data-inputmask-mask]").inputmask();
+
+  $(":input[data-inputmask-alias]").inputmask();
+
+  $(":input[data-inputmask-regex]").inputmask("Regex");
+
+});    
+    
+$(function(){
+    $("#phone_number_id").inputmask("8 (999) 999-9999");
+}); 
+   
+$(function(){
+    
+    $("#email").inputmask("***@***");
+            
+            
+              
 });
+    
+    
+    
+    
+    
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
