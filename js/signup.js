@@ -84,19 +84,17 @@ $(function() {
 	});
 	
 	// Email
+
 	$("#email").change(function(){
 		email = $("#email").val();
 		var expEmail = /[-0-9a-z_]+@[-0-9a-z_]+\.[a-z]{2,6}/i;
 		var resEmail = email.search(expEmail);
 		if(resEmail == -1){
-			/*
-            $("#email").next().hide().text("Неверный формат Email").css("color","red").fadeIn(400);
-			$("#email").removeClass().addClass("inputRed");
-            */
-            $("#email_warning").removeClass("warning_disabled");
+			$("#email_warning").removeClass("warning_disabled");
             emailStat = 0;
 			buttonOnAndOff();
-		}else{
+		}
+        else{
 			
 			$.ajax({
 			url: "models/registration/testLoginEmail.php",
@@ -105,19 +103,11 @@ $(function() {
 			cache: false,			
 			success: function(response){
 				if(response == "no"){
-					/*
-                    $("#email").next().hide().text("Email Занят").css("color","red").fadeIn(400);
-					$("#email").removeClass().addClass("inputRed");
-                    */
-                    $("#email_warning").removeClass("warning_disabled");
+					$("#email_warning").removeClass("warning_disabled");
                     emailStat = 0;
                     buttonOnAndOff();
 				}else{					
-					/*
-                    $("#email").removeClass().addClass("inputGreen");
-					$("#email").next().text("");
-                    */
-                    $("#email_warning").addClass("warning_disabled");
+					$("#email_warning").addClass("warning_disabled");
                     emailStat = 1;
                     buttonOnAndOff();
 				}					
@@ -129,10 +119,6 @@ $(function() {
 		
 	});	
 	$("#email").keyup(function(){
-        /*
-		$("#email").removeClass();
-		$("#email").next().text("");
-        */
         $("#email_warning").addClass("warning_disabled");
 	});	
 	
@@ -238,8 +224,8 @@ $(function(){
    
 $(function(){
     
-    $("#login_public").inputmask("email");
-            
+    $("#email").inputmask("email");
+    $("#email_restore").inputmask("email");        
             
               
 });

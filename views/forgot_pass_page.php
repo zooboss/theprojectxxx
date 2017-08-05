@@ -36,7 +36,7 @@
                 ?>
             <div class="icon">
                 <label class="cd-label" for="email_restore">Адрес email</label>
-                <input type="email" id="email_restore" class="email"  name="txtemail" required />
+                <input type="text" id="email_restore" class="email"  name="txtemail" required />
             </div>
         </fieldset>
         <button class="btn btn-danger btn-primary pull-right" type="submit" name="btn-submit">Создать новый пароль</button>

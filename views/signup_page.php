@@ -60,7 +60,7 @@ else {
 		    
 		    <div class="icon">
 		    	<label class="cd-label" for="email">Адрес email</label>
-				<input class="email" type="email" id='email' name="txtemail" required>
+				<input class="email" type="text" id='email' name="txtemail" required>
                 <div class="warning warning_disabled" id="email_warning">Адрес почты занят или введен некорректно</div>
 		    </div>
 		    
