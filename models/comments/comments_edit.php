@@ -100,6 +100,7 @@ else {
         <textarea placeholder="Ваш комментарий" name="comment" class="form-control smoll" rows="5" cols="10" ><?php if ($saved_comment != '' && $saved_comment_id == 0) echo $saved_comment ?></textarea>
         <input type="hidden" class="" name="article" value="<?php echo $article_id; ?>" ></input>
         <input type="hidden" class="" name="author" value="<?php echo $public_user_name; ?>" ></input>
+        
         <input type="submit" class="btn btn-primary pull-right" name="btn-comment" value="Отправить"  
                 data-toggle = "<?php echo $data_toggle ?>"
                 data-target = "<?php echo $data_target ?>"
@@ -107,6 +108,7 @@ else {
         >
             
         </input>
+        <span class = "pull-right comment-lenght">1000</span>
     </form>
 
 <?php

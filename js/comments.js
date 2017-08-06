@@ -12,7 +12,9 @@ $( document ).ready(function() {
         
         /* Блок реакции на якорную ссылку */
             var url = window.location.href;
-            var replyAnchor = url.split('#').pop()
+            if (url.indexOf('#') > -1) {
+                 var replyAnchor = url.split('#').pop();
+            }
                   
         /* Блок реакции на якорную ссылку */  
         
@@ -44,7 +46,7 @@ $( document ).ready(function() {
             $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
             $('[comment-id='+savedCommentId+'] form:first-of-type').removeClass("form-hidden");  
             /* Блок реакции на якорную ссылку */
-              if (replyAnchor != ""){
+              if (replyAnchor != "" && replyAnchor != null){
                 
                 var container = $('body');
                 var scrollTo = $('#' + replyAnchor);
@@ -149,6 +151,31 @@ $( document ).ready(function() {
 
 
     });   
+    
+/* Ограничение количества символов в сообщении */
+    
+    $(document).on('change', '.form-controll', function(e){
+        console.log('input change');
+       
+        
+        
+        
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 });
