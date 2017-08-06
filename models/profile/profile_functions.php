@@ -38,6 +38,12 @@ function get_my_replies ($author) {
         
     }
     
+    //Сортировка массива по id
+    
+    usort ($author_replies, function ($a, $b) {
+       return $a[0]['id'] - $b[0]['id']; 
+    });
+    
     return $author_replies;
 }
 
