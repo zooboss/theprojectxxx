@@ -51,7 +51,7 @@ switch ($personal_request_type):
     case "my_replies":
 
         $my_replies = get_my_replies($author);
-         ?> <a href = 'http://localhost/theprojectxxx/index.php?send=article&id=23#comments'>123</a>
+         
         ?>
         
          <div class = "  personal-output "

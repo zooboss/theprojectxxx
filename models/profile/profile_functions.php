@@ -30,10 +30,14 @@ function get_my_replies ($author) {
         $stmt->execute([$comment['id']]);
         $stmt = $stmt->fetchAll();
         foreach($stmt as $key) {
-            array_push($author_replies, $stmt);   
+            if ($key['author'] != $author){
+                array_push($author_replies, $stmt);    
+            }
+               
         }
         
     }
+    
     return $author_replies;
 }
 
