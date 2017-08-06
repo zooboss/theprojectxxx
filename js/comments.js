@@ -9,7 +9,13 @@ $( document ).ready(function() {
 /* Первый запуск страницы статьи */    
     
     $(document).on('ready', function(){
-                        
+        
+        /* Блок реакции на якорную ссылку */
+            var url = window.location.href;
+            var replyAnchor = url.split('#').pop()
+                  
+        /* Блок реакции на якорную ссылку */  
+        
         var articleId = $(document).find('#comments').attr('index');
         var userLogged = $(document).find('#comments').attr('user_logged');
         var publicUserName = $(document).find('#comments').attr('public_user_name');
@@ -37,6 +43,16 @@ $( document ).ready(function() {
           success: function(json){
             $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
             $('[comment-id='+savedCommentId+'] form:first-of-type').removeClass("form-hidden");  
+            /* Блок реакции на якорную ссылку */
+              if (replyAnchor != ""){
+                
+                var container = $('body');
+                var scrollTo = $('#' + replyAnchor);
+                container.animate({
+                    scrollTop: scrollTo.offset().top
+                });
+            }
+            /* Блок реакции на якорную ссылку */    
           },
           error: function(xhr, status, error){
               console.log(xhr.responseText);;

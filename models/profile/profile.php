@@ -51,7 +51,7 @@ switch ($personal_request_type):
     case "my_replies":
 
         $my_replies = get_my_replies($author);
-        
+         ?> <a href = 'http://localhost/theprojectxxx/index.php?send=article&id=23#comments'>123</a>
         ?>
         
          <div class = "  personal-output "
@@ -71,11 +71,11 @@ switch ($personal_request_type):
                 <?php 
                     foreach ($my_replies as $reply) {
                         ?>
-                        <tr class = "clickable-row" data-href = "<?php echo '/theprojectxxx/index.php?send=article&id=' . $comment['article_id'] ?>">
-                            <?php var_dump($reply); echo "<br>"; ?>
+                        <tr class = "clickable-row" data-href = '<?php echo '/theprojectxxx/index.php?send=article&id=' . $reply[0]['article_id'] . "#" . $reply[0]['id']?>'>
+                            
                             <td><?php echo $reply[0]['content'] ?> </td>
                             <td><?php echo $reply[0]['date'] . " " . $reply[0]['time'] ?> </td>
-                            <td><?php echo get_article_by_id($reply['article_id'])[0]['title'] ?> </td>
+                            <td><?php echo get_article_by_id($reply[0]['article_id'])[0]['title'] ?> </td>
                             <td><?php echo "Рейтинг" ?> </td>
 
                         </tr>
@@ -102,12 +102,7 @@ echo json_encode($req); // вернем полученное в ответе
 exit;
 
 
-/*
-<script>
-    var i = 101;
-    console.log(i);
-</script>
-*/
+
 
 
 

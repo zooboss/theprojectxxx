@@ -29,7 +29,10 @@ function get_my_replies ($author) {
         $stmt = $search_replies->runQuery("SELECT * FROM comments WHERE reply_to_id= ?");
         $stmt->execute([$comment['id']]);
         $stmt = $stmt->fetchAll();
-        array_push($author_replies, $stmt);
+        foreach($stmt as $key) {
+            array_push($author_replies, $stmt);   
+        }
+        
     }
     return $author_replies;
 }

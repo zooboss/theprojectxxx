@@ -125,7 +125,7 @@ if($article_comments->check_comments()== true){
             if ($com['reply_to_id'] == 0){
             ?>
             
-            <div class = "single-comment" comment-id = "<?php echo $com['id'] ?>" >
+            <div class = "single-comment" comment-id = "<?php echo $com['id'] ?>" id = "<?php echo $com['id'] ?>">
                <div class = "single-comment-avatar">
                    <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
                </div>
@@ -158,7 +158,7 @@ if($article_comments->check_comments()== true){
                         if ($com1['reply_to_id'] == $com['id']) {
                     
                 ?>
-                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com1['id'] ?>" >
+                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com1['id'] ?>" id = "<?php echo $com1['id'] ?>">
                                <div class = "single-comment-avatar">
                                    <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
                                </div>
@@ -192,7 +192,7 @@ if($article_comments->check_comments()== true){
                                         if ($com2['reply_to_id'] == $com1['id']) {
 
                                 ?>
-                                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com2['id'] ?>" >
+                                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com2['id'] ?>" id = "<?php echo $com2['id'] ?>">
                                                <div class = "single-comment-avatar">
                                                    <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
                                                </div>
@@ -226,7 +226,7 @@ if($article_comments->check_comments()== true){
                                                         if ($com3['reply_to_id'] == $com2['id']) {
 
                                                 ?>
-                                                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com3['id'] ?>" >
+                                                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com3['id'] ?>" id = "<?php echo $com3['id'] ?>">
                                                                <div class = "single-comment-avatar">
                                                                    <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
                                                                </div>
@@ -260,7 +260,7 @@ if($article_comments->check_comments()== true){
                                                                         if ($com4['reply_to_id'] == $com3['id']) {
 
                                                                 ?>
-                                                                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com4['id'] ?>" >
+                                                                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com4['id'] ?>" id = "<?php echo $com4['id'] ?>">
                                                                                <div class = "single-comment-avatar">
                                                                                    <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
                                                                                </div>
@@ -294,7 +294,7 @@ if($article_comments->check_comments()== true){
                                                                                         if ($com5['reply_to_id'] == $com4['id']) {
 
                                                                                 ?>
-                                                                                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com5['id'] ?>" >
+                                                                                            <div class = "single-comment reply-comment" comment-id = "<?php echo $com5['id'] ?>" id = "<?php echo $com5['id'] ?>">
                                                                                                <div class = "single-comment-avatar">
                                                                                                    <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
                                                                                                </div>
@@ -328,7 +328,7 @@ if($article_comments->check_comments()== true){
                                                                                                         if ($com6['reply_to_id'] == $com5['id']) {
 
                                                                                                 ?>
-                                                                                                            <div class = "single-comment" comment-id = "<?php echo $com6['id'] ?>" >
+                                                                                                            <div class = "single-comment" comment-id = "<?php echo $com6['id'] ?>" id = "<?php echo $com6['id'] ?>">
                                                                                                                <div class = "single-comment-avatar">
                                                                                                                    <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "single-comment-avatar-image">
                                                                                                                </div>
