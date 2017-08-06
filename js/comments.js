@@ -14,6 +14,7 @@ $( document ).ready(function() {
             var url = window.location.href;
             if (url.indexOf('#') > -1) {
                  var replyAnchor = url.split('#').pop();
+                 
             }
                   
         /* Блок реакции на якорную ссылку */  
@@ -46,7 +47,7 @@ $( document ).ready(function() {
             $('#comments').replaceWith(json); // заменим форму данными, полученными в ответе
             $('[comment-id='+savedCommentId+'] form:first-of-type').removeClass("form-hidden");  
             /* Блок реакции на якорную ссылку */
-              if (replyAnchor != "" && replyAnchor != null){
+              if (replyAnchor != "" && replyAnchor != null && replyAnchor != 0){
                 
                 var container = $('body');
                 var scrollTo = $('#' + replyAnchor);
@@ -154,10 +155,9 @@ $( document ).ready(function() {
     
 /* Ограничение количества символов в сообщении */
     
-    $(document).on('change', '.form-controll', function(e){
+    $(document).on('change', 'textarea', function(e){
         console.log('input change');
-       
-        
+              
         
         
     });
