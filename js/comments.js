@@ -155,11 +155,9 @@ $( document ).ready(function() {
     
 /* Ограничение количества символов в сообщении */
     
-    $(document).on('change', 'textarea', function(e){
-        console.log('input change');
-              
-        
-        
+    $(document).on('keyup', 'textarea', function(e){
+        $(this).parent().find(".comment-lenght").empty().append(1000 - e.target.value.length);
+       
     });
     
     
