@@ -22,11 +22,14 @@ $update_Session = hash("sha256", $update_Session );
 
 
 ?>
+
+
 <h3>Админка</h3>
 <ol class="rounded">
   <li><a class="send" href="#0" data="New_article" session="<?php echo $update_Session; ?>" >Добавить новую статью</a></li>
   <li><a class="send" href="#0" data="Users"  session="<?php echo $update_Session; ?>">Пользователи</a></li>
 </ol>
+
 <script>  
 $(document).ready(function(){
 $('.send').click(function( event ){

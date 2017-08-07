@@ -26,7 +26,7 @@ $crud = new Editing_db();
      </tr>
      <?php
 		$query = "SELECT * FROM users";       
-		$records_per_page=10;
+		$records_per_page=5;
 		$newquery = $crud->paging($query,$records_per_page);
 		$crud->dataview($newquery);
 	 ?>
