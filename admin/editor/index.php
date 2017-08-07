@@ -11,8 +11,16 @@ else {
 require_once "richtexteditor/include_rte.php" 
 
 ?>   
-<html>   
-<body>   
+
+
+<div class="container">
+
+	
+              <!-- Форма дополнительных параметров -->
+		
+	
+		
+		
         <form id="form1" method="POST" action="admin/editor/edit.php">   
             <?php   
                 // Create Editor instance and use Text property to load content into the RTE.  
@@ -26,6 +34,6 @@ require_once "richtexteditor/include_rte.php"
             ?>   
 			
         </form>   
-</body>   
-</html> 
+	
+
 <?php } ?>

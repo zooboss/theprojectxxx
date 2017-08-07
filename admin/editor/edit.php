@@ -79,18 +79,57 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
             
         </div>
 
+		
+		 <!-- Форма дополнительных параметров -->
+	 <div class="col-sm-12 col-md-12">
+
+                <h2 >Дорогой модератор, пожалуйста, заполни поля: "название", "ключевые слова", и добавь картинку, иначе будешь послан</h2>
+				  <form id="add_article"  class="form-horizontal" method="POST" action="edit.php">
+                    <div class="form-group form-material">
+                      <label class="col-sm-3 control-label">Название статьи теги H1 и title (255) </label>
+                      <div class="col-sm-9">
+                        <input type="text" required class="form-control" name="title" placeholder="Статья о хороших людях" autocomplete="off"
+                        />
+                      </div>
+                    </div>
+					
+					  <div class="form-group form-material">
+                      <label class="col-sm-3 control-label">Ключевые слова, тег Keywords, через запятую </label>
+                      <div class="col-sm-9">
+                        <input type="text" required class="form-control" name="keywords" placeholder="политика, Путин, скаклы," autocomplete="off"
+                        />
+                      </div>
+                    </div>
+            
+                    <textarea name="content" style="display:none;"><?php echo  $data; ?></textarea>
+					
+                    <div class="form-group form-material">
+                      <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit"  class="btn btn-primary">Добавить статью </button>
+                        <button type="reset" class="btn btn-danger">Сбросить дополнительные параметры </button>
+                      </div>
+                    </div>
+                  </form>
+               
+            
+			  </div>
    
 </section>
 
-<?php include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/footer.php"); ?>		
-     
-<form id="add_article" method="POST" action="edit.php">
-<textarea name="content" style="display:none;"><?php echo  $data; ?></textarea>
-<input type="submit" class="" name="btn-comment" value="Добавить статью"></input>
- </form>
 
 
-<h2>Редактирование </h2>
+
+
+ 
+
+
+ 
+
+
+
+<div class="container">
+
+<h2>Редактирование статьи</h2>
 
       <form id="form1" method="POST" action="edit.php">   
             <?php   
@@ -106,31 +145,39 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
         </form>
 		
 
-
+</div>
 </body> 
 </html>		
 	<?php	
 	}  //Конец если есть запрос Post и он не от Аякса
 
 elseif  (isset($_POST["content"])  and !isset($_SERVER['HTTP_X_REQUESTED_WITH']))  //если есть контент и нет аяксса
-{
+{	
 define("Redactor_check", true);	
 require_once "add_new_article.php" ;	
 $add_article_content = new ARTICLES();
-$recieved_date = $_POST["content"];
+$recieved_date = $_POST["content"]; //статья
+if (isset($_POST["title"]) and isset($_POST["keywords"]) )
+{
+$title = $_POST["title"]; //название
+$keywords = $_POST["keywords"]; //ключевые слова
 $article_date = date("Y.m.d.");  //дата
-$article_time = date("H:i:s"); 
+$article_time = date("H:i:s");   //время
 $ip = $_SERVER["REMOTE_ADDR"];
 $ip_1 = ip2long($ip);
-$add_article_content->add_article($recieved_date,$article_date,$article_time,$ip_1);
+$add_article_content->add_article($recieved_date,$article_date,$article_time,$ip_1,$title,$keywords);
 echo "Добавлено";
 session_destroy();
 }
-else {
-	if (isset ($_SESSION))
-	{
-		$_SESSION['userSession'] = false;
-	}	
+else
+{ // если не заполнено поле с ключевыми словами и названием 
+$_SESSION['userSession'] = false;	
+exit ("Пошел на хуй");	
+}  // конец если не заполнено поле с ключевыми словами и названием 
+} // конец если есть контент и нет аяксса
+else   //если нет контента и есть аякс
+{
+$_SESSION['userSession'] = false;	
 exit ("Пошел на хуй");	
 }
 } // конец если есть админская сессия и админский кукис

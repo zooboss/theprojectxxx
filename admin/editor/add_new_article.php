@@ -19,17 +19,19 @@ class ARTICLES {
 		$this->conn = $db;
     }
 //Добавление новой статьи
-public function add_article($recieved_date,$article_date,$article_time,$ip_1)
+public function add_article($recieved_date,$article_date,$article_time,$ip_1,$title,$keywords)
 {
 
 try
 		{		
-			$stmt = $this->conn->prepare("INSERT INTO articles(content,date,Time,IP) 
-			             VALUES(:Content,:Date,:Time,:IP)");
+			$stmt = $this->conn->prepare("INSERT INTO articles(content,date,Time,IP,title,keywords) 
+			             VALUES(:Content,:Date,:Time,:IP,:Title,:Keywords)");
 			$stmt->bindparam(":Content",$recieved_date);
 			$stmt->bindparam(":Date",$article_date);
 			$stmt->bindparam(":Time",$article_time);
 			$stmt->bindparam(":IP",$ip_1);
+			$stmt->bindparam(":Title",$title);
+			$stmt->bindparam(":Keywords",$keywords);
 
 			
 			$stmt->execute();	
