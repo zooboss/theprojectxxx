@@ -100,7 +100,15 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
                         />
                       </div>
                     </div>
+					
+					  <div class="form-group form-material">
+                      <label class="col-sm-3 control-label">Главная картинка статьи</label>
+                      <div class="col-sm-9">
+                       <input class="input-group" type="file" name="article_image" accept="image/*" required />              
+                      </div>
+                    </div>
             
+
                     <textarea name="content" style="display:none;"><?php echo  $data; ?></textarea>
 					
                     <div class="form-group form-material">
