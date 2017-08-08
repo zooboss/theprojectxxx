@@ -254,7 +254,7 @@ class RichTextEditor extends CuteSoftLibrary
 	
 	
 	
-	var $RTEClient;
+
 	
 	function RichTextEditor()
 	{
@@ -264,7 +264,7 @@ class RichTextEditor extends CuteSoftLibrary
 		$this->Uploader->AllowedFileExtensions="";	//,bmp
 		$this->RTEClient=str_replace("\\","/",dirname(dirname(dirname($this->Uploader->ResourceDirectory)))."/");    
     ///$this->RTEClient=dirname($_SERVER['SCRIPT_NAME']).'/richtexteditor/';
-		$this->Uploader->LicenseUrl=$this->RTEClient."load.php?type=license&_temp=".time();
+		
 	}
 	
 	function JSEncode($_x68)
@@ -480,7 +480,7 @@ class RichTextEditor extends CuteSoftLibrary
 		
 		$_x78["langfiles"]=$_x80;
 		
-		$_x78["licenseurl"]=$this->Uploader->LicenseUrl;
+		
 		$_x78["uploaderresourcehandler"]=$this->RTEClient."server_php/phpuploader/ajaxuploaderhandler.php";
 		
 				

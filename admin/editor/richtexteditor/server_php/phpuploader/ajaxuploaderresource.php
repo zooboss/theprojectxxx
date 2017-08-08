@@ -46,19 +46,7 @@ else if($type=="script")
 	
 	
 }
-else if($type=="license")
-{
-	header("Content-Type: application/oct-stream"); 
-	$licensefile=dirname($scriptfile)."/license/phpuploader.lic";
-	$size=filesize($licensefile);
-	$mqr=get_magic_quotes_runtime();
-	//set_magic_quotes_runtime(0);
-	$handle=fopen($licensefile,"rb");
-	$data=fread($handle,$size);
-	fclose($handle);
-	//set_magic_quotes_runtime($mqr);
-	echo(bin2hex($data));
-}
+
 else if($type=="serverip")
 {
 	$ip=@$_SERVER['SER'.'VER_AD'.'DR'];

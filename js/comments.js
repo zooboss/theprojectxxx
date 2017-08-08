@@ -157,7 +157,7 @@ $( document ).ready(function() {
     
     $(document).on('keyup', 'textarea', function(e){
         $(this).parent().find(".comment-lenght").empty().append(1000 - e.target.value.length);
-       
+   
     });
     
     

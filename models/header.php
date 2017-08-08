@@ -3,11 +3,12 @@
 </div>
 
 <header class='top-navigation container-fluid total-header'>
-  
+  <?php if (!isset($_COOKIE['admin_session']))
+  { ?>
    <div class = 'navlist col-md-3 hidden-sm hidden-xs'>
        <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logotype.png" class = "logo"></a>
    </div>
-       
+  <?php } ?>    
     <div class='navlist col-md-6 hidden-sm hidden-xs'>
        
         <ul>
@@ -44,9 +45,9 @@
                 ?>
                          <a href = "<?php echo 'user-'.$row['userID'].'.html'?>" class = "dropdown-item btn">
                              <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
-                             Кабинет
+                             Профиль
                          </a>
-                         <!--<div class="dropdown-divider"></div>-->
+                         <div class="dropdown-divider"></div>
                          <a href = "/theprojectxxx/models/registration/logout.php" class = "dropdown-item btn">
                              <img class = "login-icon" src = "/theprojectxxx/img/icons/logout_icon.svg">
                              Выйти
@@ -129,19 +130,18 @@ if(!$user_login->is_logged_in()) {?>   <!-- Быдлокод начало -->
                             </div>   
                                                
                             <div class = "loginStandart">
-                                
-                                <form class="cd-form floating-labels" method="post">
-                                   <?php 
-                                    if(isset($_GET['inactive']))
-                                    {
-                                        ?>
-                                        <div class='alert alert-danger'>
-                                            <button class='close' data-dismiss='alert'>&times;</button>
-                                             <strong>Профиль не активирован</strong>
-                                        </div>
-                                        <?php
-                                    }
+                                <?php 
+                                if(isset($_GET['inactive']))
+                                {
                                     ?>
+                                    <div class='alert alert-error'>
+                                        <button class='close' data-dismiss='alert'>&times;</button>
+                                        Не активирован
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                <form class="cd-form floating-labels" method="post">
                                     <?php
                                     if(isset($_GET['error']))
                                     {
