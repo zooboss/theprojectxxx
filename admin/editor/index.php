@@ -16,8 +16,6 @@ require_once "richtexteditor/include_rte.php"
 <div class="container">
 
 	
-              <!-- Форма дополнительных параметров -->
-		
 	
 		
 		
@@ -34,6 +32,6 @@ require_once "richtexteditor/include_rte.php"
             ?>   
 			
         </form>   
-	
+	</div>
 
 <?php } ?>

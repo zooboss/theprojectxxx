@@ -84,7 +84,7 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
 	 <div class="col-sm-12 col-md-12">
 
                 <h2 >Дорогой модератор, пожалуйста, заполни поля: "название", "ключевые слова", и добавь картинку, иначе будешь послан</h2>
-				  <form id="add_article"  class="form-horizontal" method="POST" action="edit.php">
+				  <form id="add_article"  class="form-horizontal" enctype="multipart/form-data" method="POST" action="edit.php">
                     <div class="form-group form-material">
                       <label class="col-sm-3 control-label">Название статьи теги H1 и title (255) </label>
                       <div class="col-sm-9">
@@ -171,9 +171,12 @@ $title = $_POST["title"]; //название
 $keywords = $_POST["keywords"]; //ключевые слова
 $article_date = date("Y.m.d.");  //дата
 $article_time = date("H:i:s");   //время
+$imgFile = $_FILES['article_image']['name'];  //получаям имя картинки
+$tmp_dir = $_FILES['article_image']['tmp_name'];  //формат
+$imgSize = $_FILES['article_image']['size'];    //получаям размер
 $ip = $_SERVER["REMOTE_ADDR"];
 $ip_1 = ip2long($ip);
-$add_article_content->add_article($recieved_date,$article_date,$article_time,$ip_1,$title,$keywords);
+$add_article_content->add_article($recieved_date,$article_date,$article_time,$ip_1,$title,$keywords,$imgFile,$tmp_dir,$imgSize);
 echo "Добавлено";
 session_destroy();
 }
