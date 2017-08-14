@@ -25,13 +25,26 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
     <?php 
     include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); 
     ?>
+	 
+
+	 <style type="text/css">
+	 .image-preview, img 
+	 {
+	  width: 400px;	 
+	 }
+	 </style>
+
+	
 </head>
 <body>   
 
 
 <h3>Предпросомотр</h3>
 
-
+   <div class="image-preview">
+            <img id="preview" src="" alt="">
+          </div>
+		  
 <section class = "container-fluid container-fluid-my article-body">
     <div class = "col-md-9 col-sm-12 col-xs-12 ">
 	
@@ -104,7 +117,7 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
 					  <div class="form-group form-material">
                       <label class="col-sm-3 control-label">Главная картинка статьи</label>
                       <div class="col-sm-9">
-                       <input class="input-group" type="file" name="article_image" accept="image/*" required />              
+                       <input class="input-group" id="image" type="file" name="article_image" accept="image/*" required />              
                       </div>
                     </div>
             
@@ -125,8 +138,29 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
 </section>
 
 
+<script>
+$(document).ready(function () {
+ 
+  function readImage ( input ) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+ 
+      reader.onload = function (e) {
+        $('#preview').attr('src', e.target.result);
+      }
+ 
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 
+ 
+  $('#image').change(function(){
+    readImage(this);
+  });
+ 
 
+});
+</script>
 
  
 

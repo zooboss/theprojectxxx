@@ -28,6 +28,8 @@ $update_Session = hash("sha256", $update_Session );
 <ol class="rounded">
   <li><a class="send" href="#0" data="New_article" session="<?php echo $update_Session; ?>" >Добавить новую статью</a></li>
   <li><a class="send" href="#0" data="Users"  session="<?php echo $update_Session; ?>">Пользователи</a></li>
+   <li><a class="send" href="#0" edit_data="	<?php echo  $data;?>" data="Edit_article" session="<?php echo $update_Session; ?>" >Редактировать новую статью</a></li>
+
 </ol>
 
 <script>  
@@ -36,17 +38,19 @@ $('.send').click(function( event ){
 event.preventDefault();
 		var data = $(this).attr('data');
 		var id = $(this).attr('session');
+		var edit_data = $(this).attr('edit_data');
 		$.ajax({ //отправляем ajax-запрос
         type: "POST", //тип (POST, GET, PUT, etc)
-        url: "admin/admin.php", //адрес обработчика
+        url: "/theprojectxxx/admin/admin.php", //адрес обработчика
         data: { 
 		Data: data,	
-		ID: id
+		ID: id,
+		Edit: edit_data 
 		} //сами данные, передается POST[xmlUrl] со значением из data-link нажатой кнопки
     })
            .done(function( res ) { //при успехе (200 статус)
-        	$('.articlesGallery').html(res) //заменяем блок с div.popup  полученной строкой от сервера.
-            $('#section-search').remove()
+        	$('.rounded').html(res) //заменяем блок с div.popup  полученной строкой от сервера.
+      
     });
     
 	}); 

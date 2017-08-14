@@ -21,13 +21,19 @@ exit ("Пошел на хуй");
       {
 	    $send = $_POST['Data'];
 		define("Admin", true);  //определяем Admin.php
-		require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_functions.php");	
+		require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_functions.php");		
 		switch ($send) {
         case 'New_article':
         include ("editor/index.php");
         setcookie('edit', rand(10, 15), time()+10, '/');		//куки для отвлечения внимания	
         break;   
-     
+		
+		 case 'Edit_article':
+		$data =  $_POST['Edit']; 
+        include ("editor/index.php");
+        setcookie('edit', rand(10, 15), time()+10, '/');		//куки для отвлечения внимания	
+        break;   
+		
         case 'Users':
 	    include_once ($_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_bd_config.php");
 		define("Users_check", true);

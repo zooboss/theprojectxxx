@@ -27,9 +27,6 @@
 {
 define("Security", true);
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");	
-?>
-
-<?php 
 }	
 ?>		
 <section class='container-fluid container-fluid-my articlesGallery'>
