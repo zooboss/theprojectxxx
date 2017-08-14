@@ -25,29 +25,7 @@ class ARTICLES {
 public function add_article($recieved_date,$article_date,$article_time,$ip_1,$title,$keywords,$imgFile,$tmp_dir,$imgSize)
 {
 
-			$upload_dir = "C:/xampp/htdocs/theprojectxxx/img/articles/"; // куда зугружаем картинку
-	
-			$imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // получаем формат картинки
-		
-			// проверяем расширения
-			$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // разрешенные типы файлов
-		
-			//переименовываем картинку
-		     $userpic = "article_image-1.".$imgExt;
-				
-			// 
-			if(in_array($imgExt, $valid_extensions)){			
-				// проверяем, чтобы не карттинка была не больше '5MB'
-				if($imgSize < 5000000)				{
-					move_uploaded_file($tmp_dir,$upload_dir.$userpic);
-				}
-				else{
-					$errMSG = "Sorry, your file is too large.";
-				}
-			}
-			else{
-				$errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";		
-			}
+
 
 		
 
@@ -63,8 +41,8 @@ try
 			$stmt->bindparam(":Keywords",$keywords);
 
 			$stmt->execute();	
-			$last_ID = $this->conn->lastInsertId();
-			return $stmt;
+			$last_ID = $this->conn->lastInsertId(); //получаем идентификатор последней статьи
+		
 	
 		}
 		catch(PDOException $ex)
@@ -72,7 +50,35 @@ try
 			echo $ex->getMessage();
 		}
 		
+				$upload_dir = "C:/xampp/htdocs/theprojectxxx/img/articles/"; // куда зугружаем картинку
+	
+			$imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // получаем формат картинки
 		
+			// проверяем расширения
+			$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // разрешенные типы файлов
+		
+			//переименовываем картинку
+		     $userpic = "article_image-".$last_ID.".".$imgExt;
+				
+			// 
+			if(in_array($imgExt, $valid_extensions)){			
+				// проверяем, чтобы не карттинка была не больше '5MB'
+				if($imgSize < 5000000)				{
+					  if (move_uploaded_file($tmp_dir,$upload_dir.$userpic))
+					  {
+					echo 'Главная картинка добавлена <br>';
+					} 
+					else {
+					echo 'Главная картинка не добавлена <br>';
+					}
+				}
+				else{
+					$errMSG = "Sorry, your file is too large.";
+				}
+			}
+			else{
+				$errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";		
+			}	
 
 	}
 	
