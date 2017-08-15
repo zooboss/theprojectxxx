@@ -21,18 +21,8 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
 	$data = $_POST["Editor1"];
 ?>  
 
-	 
-
-
-
-	
-  
-
-
 <h3>Предпросомотр</h3>
-
-
-		  
+  
 <section class = "container-fluid container-fluid-my article-body">
     <div class = "col-md-9 col-sm-12 col-xs-12 ">
 	
@@ -50,28 +40,7 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
 			?>
 			</div> 
 
-			    <div class = "article-footer">
-                <div class='share-social'>
-                    <div class = "vk-share">
-                        <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
-                    
-                    </div>
-                    <div class = "ok-share">
-                        <div id="ok_shareWidget"></div>
-  
-                    </div>
-                    <div class = "fb-share">
-                        <div id="fb-root"></div>
-                 
-                            <div class="fb-share-button" data-href="localhost/theprojectxxx/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">&nbsp;</a></div>
-                    </div>
-                    <div class = "tw-share">
-                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </div>
-                </div>
-                
-
-            </div>
+			
 			
         </div>
    
@@ -151,7 +120,7 @@ $(document).ready(function () {
 </script>
 
  
-
+<h2>Редактирование</h2>
 
 	
 	<?php	
