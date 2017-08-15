@@ -26,8 +26,34 @@
 <?php   if ($user_login->is_logged_in()!="" and $row['role']=="chief")
 {
 define("Security", true);
-require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");	
-}	
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");
+
+   if (isset($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH']) and defined("security"))
+   {
+	   require_once ($_SERVER['DOCUMENT_ROOT'] ."/theprojectxxx/admin/editor/richtexteditor/include_rte.php");
+	   $data = $_POST["Editor1"];
+	   require_once ($_SERVER['DOCUMENT_ROOT'] ."/theprojectxxx/admin/editor/edit.php");
+	   ?>
+	   <form id="form1" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">   
+            <?php   
+                // Create Editor instance and use Text property to load content into the RTE.  
+                $rte=new RichTextEditor();   
+                $rte->Text=  $data ; 
+                // Set a unique ID to Editor   
+                $rte->ID="Editor1";    
+                $rte->MvcInit();   
+                // Render Editor 
+                echo $rte->GetString();  
+            ?>   
+        </form> 
+ <?php    }
+ else 
+ {
+
+ }
+ 
+}
+else {	//если не админ
 ?>		
 <section class='container-fluid container-fluid-my articlesGallery'>
     
@@ -98,7 +124,11 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php");
         
         <!-- отдельный блок статьи-->
        
-        <?php } ?>
+	   
+	  <?php 
+	  }
+} // конец если не админ		
+?>
     
 </section>   <!-- galery -->
 
