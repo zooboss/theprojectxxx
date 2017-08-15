@@ -18,7 +18,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/admin_functions
 $_SESSION['adminSession'] = GenUnicPass();
 $update_Session ='-+*M,./(31M'.$_SESSION['adminSession'].'GhUy891246/*- '.'  ';  //добавляем идентифииактор Ajax, чтобы затем сравнить в admin/admin.php
 $update_Session = hash("sha256", $update_Session );	
-
+define ("security", true);
 
 
 ?>
@@ -26,9 +26,10 @@ $update_Session = hash("sha256", $update_Session );
 
 <h3>Админка</h3>
 <ol class="rounded">
+  <?php  if (!isset($_POST["Editor1"])){?>
   <li><a class="send" href="#0" data="New_article" session="<?php echo $update_Session; ?>" >Добавить новую статью</a></li>
+  <?php } ?>
   <li><a class="send" href="#0" data="Users"  session="<?php echo $update_Session; ?>">Пользователи</a></li>
-   <li><a class="send" href="#0" edit_data="	<?php echo  $data;?>" data="Edit_article" session="<?php echo $update_Session; ?>" >Редактировать новую статью</a></li>
 
 </ol>
 
@@ -45,11 +46,10 @@ event.preventDefault();
         data: { 
 		Data: data,	
 		ID: id,
-		Edit: edit_data 
 		} //сами данные, передается POST[xmlUrl] со значением из data-link нажатой кнопки
     })
            .done(function( res ) { //при успехе (200 статус)
-        	$('.rounded').html(res) //заменяем блок с div.popup  полученной строкой от сервера.
+        	$('#section-search').html(res); //заменяем блок с div.popup  полученной строкой от сервера.
       
     });
     

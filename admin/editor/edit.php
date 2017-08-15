@@ -20,37 +20,25 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
 	require_once "richtexteditor/include_rte.php" ;
 	$data = $_POST["Editor1"];
 ?>  
-<html>
-<head>
-    <?php 
-    include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); 
-    ?>
+
 	 
 
-	 <style type="text/css">
-	 .image-preview, img 
-	 {
-	  width: 400px;	 
-	 }
-	 </style>
+
 
 	
-</head>
-<body>   
+  
 
 
 <h3>Предпросомотр</h3>
 
-   <div class="image-preview">
-            <img id="preview" src="" alt="">
-          </div>
+
 		  
 <section class = "container-fluid container-fluid-my article-body">
     <div class = "col-md-9 col-sm-12 col-xs-12 ">
 	
 	        <div class = "article">
            <div class = "article-main-image-wrap">
-                <img alt="#0" src="img/test_image4.jpg" class = "img-responsive pull-left"> 
+            <img alt="#0" id="preview" src="" class = "img-responsive pull-left"> 
            </div>
             <div class = "article-header">
                 <h1> <strong><?=$article['title']?></strong> </h1>
@@ -97,7 +85,7 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
 	 <div class="col-sm-12 col-md-12">
 
                 <h2 >Дорогой модератор, пожалуйста, заполни поля: "название", "ключевые слова", и добавь картинку, иначе будешь послан</h2>
-				  <form id="add_article"  class="form-horizontal" enctype="multipart/form-data" method="POST" action="edit.php">
+				  <form id="add_article"  class="form-horizontal" enctype="multipart/form-data" method="POST" action="http://localhost/theprojectxxx/admin/editor/edit.php">
                     <div class="form-group form-material">
                       <label class="col-sm-3 control-label">Название статьи теги H1 и title (255) </label>
                       <div class="col-sm-9">
@@ -165,31 +153,7 @@ $(document).ready(function () {
  
 
 
- 
-
-
-
-<div class="container">
-
-<h2>Редактирование статьи</h2>
-
-      <form id="form1" method="POST" action="edit.php">   
-            <?php   
-                // Create Editor instance and use Text property to load content into the RTE.  
-                $rte=new RichTextEditor();   
-                $rte->Text=$data; 
-                // Set a unique ID to Editor   
-                $rte->ID="Editor1";    
-                $rte->MvcInit();   
-                // Render Editor 
-                echo $rte->GetString();  
- ?>   
-        </form>
-		
-
-</div>
-</body> 
-</html>		
+	
 	<?php	
 	}  //Конец если есть запрос Post и он не от Аякса
 
