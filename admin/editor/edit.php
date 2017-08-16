@@ -1,6 +1,6 @@
 <?php 
-if ( empty($_POST["content"]) and empty ($_POST["Editor1"])) {  //проверяем наличие нужного Post запроса
- exit ("Пошел на хуй");	
+if (!isset($_POST["Editor1"]) and !isset($_POST["title"])) {  //проверяем наличие нужного Post запроса
+ exit ("Пошел на хуй1");	
   }
 else 
 {  
@@ -15,8 +15,14 @@ exit ("Пошел на хуй");
 }
 else { // если есть админская сессия и админский кукис
   
-if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //Если есть запрос Post и нет никакого заголовка
+if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])  ) //Если есть запрос Post и нет никакого заголовка
 {	  
+if (!defined("security")) // конец проверка на наличие переменной из admin/admin.php
+{
+	exit ("3112");
+}
+else 
+	{
 	require_once "richtexteditor/include_rte.php" ;
 	$data = $_POST["Editor1"];
 ?>  
@@ -64,7 +70,7 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
                     </div>
 					
 					  <div class="form-group form-material">
-                      <label class="col-sm-3 control-label">Ключевые слова, тег Keywords, через запятую </label>
+                      <label class="col-sm-3 control-label">Ключевые слова, тег Keywords, через запятую (300) </label>
                       <div class="col-sm-9">
                         <input type="text" required class="form-control" name="keywords" placeholder="политика, Путин, скаклы," autocomplete="off"
                         />
@@ -75,6 +81,14 @@ if (isset ($_POST["Editor1"]) and !isset ($_SERVER['HTTP_X_REQUESTED_WITH'])) //
                       <label class="col-sm-3 control-label">Главная картинка статьи</label>
                       <div class="col-sm-9">
                        <input class="input-group" id="image" type="file" name="article_image" accept="image/*" required />              
+                      </div>
+                    </div>
+					
+					<div class="form-group form-material">
+                      <label class="col-sm-3 control-label">атрибут alt для главной картинки (50)</label>
+                      <div class="col-sm-9">
+                        <input type="text" required class="form-control" name="main_alt" placeholder="Милонов" autocomplete="off"
+                        />
                       </div>
                     </div>
             
@@ -124,7 +138,9 @@ $(document).ready(function () {
 
 	
 	<?php	
+	} // конец проверка на наличие переменной из admin/admin.php
 	}  //Конец если есть запрос Post и он не от Аякса
+	
 
 elseif  (isset($_POST["content"])  and !isset($_SERVER['HTTP_X_REQUESTED_WITH']))  //если есть контент и нет аяксса
 {	
@@ -136,14 +152,16 @@ if (isset($_POST["title"]) and isset($_POST["keywords"]) )
 {
 $title = $_POST["title"]; //название
 $keywords = $_POST["keywords"]; //ключевые слова
+$main_alt = $_POST["main_alt"]; //alt главной картинки
 $article_date = date("Y.m.d.");  //дата
 $article_time = date("H:i:s");   //время
+
 $imgFile = $_FILES['article_image']['name'];  //получаям имя картинки
 $tmp_dir = $_FILES['article_image']['tmp_name'];  //формат
 $imgSize = $_FILES['article_image']['size'];    //получаям размер
 $ip = $_SERVER["REMOTE_ADDR"];
 $ip_1 = ip2long($ip);
-$add_article_content->add_article($recieved_date,$article_date,$article_time,$ip_1,$title,$keywords,$imgFile,$tmp_dir,$imgSize);
+$add_article_content->add_article($recieved_date,$article_date,$article_time,$ip_1,$title,$keywords,$main_alt,$imgFile,$tmp_dir,$imgSize);
 echo "Добавлено";
 session_destroy();
 }

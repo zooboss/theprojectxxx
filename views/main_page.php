@@ -33,7 +33,7 @@ if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session'])) //п
 {  
 $_SESSION['userSession'] = false;  //убиваем сессию, если нет адмиской сессии
 }	
-exit ("Пошел на хуй");
+exit ("Пошел на хуй111");
 } //конец проверяем наличие админской сессии
 
 else { //если все ок и есть запрос от редактора в admin/index.php плдключаем редактор на текущей странице, форма редактора ссылаетсяна текущую страницы.
@@ -80,7 +80,7 @@ else {	//если не админ
              <!-- отдельный блок статьи-->
             <div class='col-md-4 col-sm-6  article-wrap' >                           
                 <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
-                    <img alt="#0" src="img/test_image4.jpg"> 
+                    <img alt="#0" src="img/articles/article_image-<?=$a['id']?>.jpg"> 
                    
                     <div class='post-author'>
 

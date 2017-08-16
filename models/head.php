@@ -1,4 +1,4 @@
-<title>      </title> <!-- Придумать название -->
+<title><?php include_once ("title.php");?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <link href='#0' rel='icon' type='image/x-icon'/>	<!-- сгенерировать фавиконы для всех устройств --> 
