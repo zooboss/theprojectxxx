@@ -22,7 +22,7 @@ class ARTICLES {
 
 	
 //Добавление новой статьи
-public function add_article($recieved_date,$article_date,$article_time,$ip_1,$title,$keywords,$imgFile,$tmp_dir,$imgSize)
+public function add_article($recieved_date,$article_date,$article_time,$ip_1,$title,$keywords,$main_alt,$imgFile,$tmp_dir,$imgSize)
 {
 
 
@@ -31,14 +31,16 @@ public function add_article($recieved_date,$article_date,$article_time,$ip_1,$ti
 
 try
 		{		
-			$stmt = $this->conn->prepare("INSERT INTO articles(content,date,Time,IP,title,keywords) 
-			             VALUES(:Content,:Date,:Time,:IP,:Title,:Keywords)");
+			$stmt = $this->conn->prepare("INSERT INTO articles(content,date,Time,IP,title,keywords,img_main_alt) 
+			             VALUES(:Content,:Date,:Time,:IP,:Title,:Keywords,:Main_img_alt)");
 			$stmt->bindparam(":Content",$recieved_date);
 			$stmt->bindparam(":Date",$article_date);
 			$stmt->bindparam(":Time",$article_time);
 			$stmt->bindparam(":IP",$ip_1);
 			$stmt->bindparam(":Title",$title);
 			$stmt->bindparam(":Keywords",$keywords);
+			$stmt->bindparam(":Main_img_alt",$main_alt);
+			
 
 			$stmt->execute();	
 			$last_ID = $this->conn->lastInsertId(); //получаем идентификатор последней статьи

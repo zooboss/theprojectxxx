@@ -30,7 +30,7 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comme
 	
         <div class = "article">
            <div class = "article-main-image-wrap">
-                <img alt="#0" src="img/test_image4.jpg" class = "img-responsive pull-left"> 
+                <img alt="<?=$article['img_main_alt']?>" src="img/articles/article_image-<?=$article['id']?>.jpg" class = "img-responsive pull-left"> 
            </div>
             <div class = "article-header">
                 <h1> <strong><?=$article['title']?></strong> </h1>
