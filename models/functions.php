@@ -33,20 +33,18 @@ function articles_all(){
     return $stmt;
 }
 
-function articles_get($link, $id_article)
+function articles_get($id_article)
 {
-    $query = sprintf("SELECT * FROM articles WHERE id=%d", (int)$id_article);
-    $result = $link->query($query, MYSQLI_STORE_RESULT);
+    $articles = new ARTICLES();
     
-    if (!$result)
-        die(mysqli_error($link));
-    
-    $article = $result->fetch_array(MYSQLI_BOTH);
-    
-    return $article;
+    $stmt = $articles->runQuery("SELECT * FROM articles WHERE id= ?");   
+    $stmt->execute([$id_article]);
+    $stmt = $stmt->fetchAll();
+        
+    return $stmt[0];
 }
 
-function articles_new($link, $title, $date, $content){
+/*function articles_new($title, $date, $content){
     $title = trim($title);
     $content = trim($content);
     
@@ -89,6 +87,7 @@ function articles_delete($link, $id){
         die(mysqli_error($link));
     return true;
 } 
+*/
 
 function articles_intro($text, $len = 100)
 {

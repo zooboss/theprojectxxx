@@ -91,18 +91,18 @@ switch ($personal_request_type):
 
     case "articles_not_visited":
         $articles_visited = get_articles_visited();
-        
+        $articles_not_visited = get_not_visited_articles($articles_visited);
         ?>
         <div class = "  personal-output "
               id = "personal-data"
               username = "<?php echo $author ?>"
          >
             <?php 
-            $articles_visited = get_articles_visited();
-            $articles_not_visited = get_not_visited_articles($articles_visited);
-                         
-            if ( empty($articles_not_visited) == true){
-                echo "Непрочитанные статьи отсутствуют";
+                                     
+            if ( empty($articles_not_visited) == true ){
+                ?>
+                <div class = "text-center"><h2><?php echo "Непрочитанные статьи отсутствуют"; ?></h2></div>
+            <?php
             }
             else{
             ?>
@@ -141,6 +141,33 @@ switch ($personal_request_type):
         </div>
     <?php
     break;
+
+    case "personal_messages":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+
+    case "rating":
+        ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+
+
 
 endswitch;
 ?>

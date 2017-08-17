@@ -59,7 +59,7 @@ if (isset($_GET['send'])) {
             include(dirname(__FILE__) . "/views/user-profile.php");   			
             break;
         case "article":
-            $article = articles_get($link, $_GET['id']);
+            $article = articles_get($_GET['id']);
             //статья прочтена
             set_article_visited($_GET['id']);
             include(dirname(__FILE__) . "/views/article_page.php");
@@ -76,7 +76,7 @@ if (isset($_GET['send'])) {
 }
 else {
     //Сброс кукисов прочитанных статей
-    setcookie("articles_visited", "", time()-3600);
+    //setcookie("articles_visited", "", time()-3600);
     include(dirname(__FILE__) . "/views/main_page.php");
 }
 
