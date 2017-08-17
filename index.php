@@ -60,6 +60,8 @@ if (isset($_GET['send'])) {
             break;
         case "article":
             $article = articles_get($link, $_GET['id']);
+            //статья прочтена
+            article_visited($_GET['id']);
             include(dirname(__FILE__) . "/views/article_page.php");
             break;
         case "registration" :

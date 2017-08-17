@@ -78,7 +78,26 @@ function articles_intro($text, $len = 100)
     return mb_substr($text, 0, $len);   
 }
 
-
+function article_visited ($article_id) {
+    if ( isset($_COOKIE['articles_visited']) and !empty($_COOKIE['articles_visited']) ){
+        //get COOKIE
+        $articles_visited = $_COOKIE['articles_visited'];
+        $articles_visited = stripslashes($articles_visited);
+        $articles_visited = json_decode($articles_visited, true);
+        array_push($articles_visited, $article_id);
+        
+        //set new COOKIE
+        $articles_visited = json_encode($articles_visited, true);
+        setcookie('articles_visited', $articles_visited);
+        
+    }
+    else{
+        $articles_visited = [$article_id];
+        $articles_visited = json_encode($articles_visited, true);
+        setcookie('articles_visited', $articles_visited);
+    }
+    
+}
 
 
 
