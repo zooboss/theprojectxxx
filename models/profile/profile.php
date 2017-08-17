@@ -100,17 +100,42 @@ switch ($personal_request_type):
             <?php 
             $articles_visited = get_articles_visited();
             $articles_not_visited = get_not_visited_articles($articles_visited);
+                         
             if ( empty($articles_not_visited) == true){
                 echo "Непрочитанные статьи отсутствуют";
             }
             else{
+            ?>
+                <table class = "table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Автор</th>
+                            <th>Дата</th>
+                            <th>Превью</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                        foreach ($articles_not_visited as $article) {
+                            ?>
+                            <tr class = "clickable-row" data-href = '<?php echo '/theprojectxxx/index.php?send=article&id=' . $article[0]['id'] ?>'>
+
+                                <td><?php echo $article[0]['title']  ?> </td>
+                                <td><?php echo $article[0]['author']  ?> </td>
+                                <td><?php echo $article[0]['date']   ?> </td>
+                                <td><?php echo articles_intro($article[0]['content'])  ?> </td>
+
+                            </tr>
+                        <?php
+                        }
+                    ?>
+                    </tbody>
+                </table>
                 
                 
-                
-                
-            }
-             
-             
+            <?php
+            }                          
             ?>
             
         </div>

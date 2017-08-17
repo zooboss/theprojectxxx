@@ -61,8 +61,18 @@ function get_not_visited_articles ($articles_visited){
     }
     
     $uniq_IDs = array_diff($all_IDs, $articles_visited);
+    asort($uniq_IDs);
     
-    return $uniq_IDs;
+    $not_visited_articles = array();
+    
+    foreach ($uniq_IDs as $ID) {
+        $stmt = $search_not_visited->runQuery("SELECT * FROM articles WHERE id= ?");   
+        $stmt->execute([$ID]);
+        $stmt = $stmt->fetchAll();
+        array_push($not_visited_articles, $stmt);
+    }
+    
+    return $not_visited_articles;
 }
 
 
