@@ -12,7 +12,7 @@ $(document).on('click', '.clickable-row', function(e) {
  
 //Непрочитанные статьи
 
-$(document).on('click', '#articles_visited', function(e){
+$(document).on('click', '#articles_not_visited', function(e){
     e.preventDefault();
     var userName = $(document).find('#personal-data').attr('username');
         
@@ -20,7 +20,7 @@ $(document).on('click', '#articles_visited', function(e){
           url: "models/profile/profile.php", 
           type: "POST", //
           data: {
-              personal_request_type: "articles_visited", 
+              personal_request_type: "articles_not_visited", 
               username: userName              
           },
           dataType: 'json',

@@ -48,8 +48,14 @@ function get_my_replies ($author) {
 }
 
 
-function get_unvisited_articles ($articles_visited){
-    //$search_unvisited = new 
+function get_not_visited_articles ($articles_visited){
+    $search_not_visited = new ARTICLES();
+    
+    $stmt = $search_not_visited->runQuery("SELECT * FROM articles WHERE id= ?");   
+    $stmt->execute(1);
+    $stmt = $stmt->fetchAll();
+    
+    return $search_not_visited;
 }
 
 

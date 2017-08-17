@@ -1,5 +1,6 @@
 <?php
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/dbconfig.php"); 
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/functions.php");
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php");
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/profile/profile_functions.php");
 
@@ -88,15 +89,22 @@ switch ($personal_request_type):
     <?php
     break;
 
-    case "articles_visited":
+    case "articles_not_visited":
+        $articles_visited = $_COOKIE['articles_visited'];
+        $articles_visited = stripslashes($articles_visited);
+        $articles_visited = json_decode($articles_visited, true);
 
         ?>
         <div class = "  personal-output "
               id = "personal-data"
               username = "<?php echo $author ?>"
          >
-            ТУт
-            
+            <?php 
+            $articles_visited = get_articles_visited();
+            var_dump($articles_visited);
+             
+             
+            ?>
             
         </div>
     <?php
