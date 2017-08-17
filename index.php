@@ -45,8 +45,6 @@ if($user_login->is_logged_in()!="")
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 }// если авторизован, то выбираем из базы через PDO, можно убрать условие, но будет вылезать ошибка.
 
-require_once(dirname(__FILE__)."/models/database.php");
-$link = db_connect();
 
 require_once(dirname(__FILE__) . "/models/functions.php");
 $articles = articles_all();
