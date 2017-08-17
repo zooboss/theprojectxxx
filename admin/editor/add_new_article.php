@@ -1,5 +1,5 @@
 <?php 
-if (!defined("Redactor_check") or !isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session']) )
+if (!defined("Redactor_check") or !isset($_SESSION['adminSession']) or !isset($_COOKIE['_SS']) )
 {
 exit ("Пошел на хуй");	
 }

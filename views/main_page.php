@@ -27,7 +27,7 @@
 { //если залогинен и шеф
 define("Security", true);
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/admin/index.php"); //включаем первый редактор
-if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session'])) //проверяем наличие админской сессии
+if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['_SS'])) //проверяем наличие админской сессии
 {
 	if (isset ($_SESSION))
 {  

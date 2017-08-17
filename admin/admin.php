@@ -1,7 +1,7 @@
 <?php 
 session_start ();
 
-if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session']))  //проверяем сессию
+if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['_SS']))  //проверяем сессию
 {
 header('Location: https://navalny.com/');	//заменить на 404
 exit ("Пошел на хуй");	 
@@ -25,7 +25,8 @@ exit ("Пошел на хуй");
 		switch ($send) {
         case 'New_article':
         include ("editor/index.php");
-        setcookie('edit', rand(10, 15), time()+10, '/');		//куки для отвлечения внимания	
+		$cookie = GenUnicPass();
+        setcookie('admin_session', $cookie , time()+60, '/');		//куки для отвлечения внимания	
         break;   
 		
 		

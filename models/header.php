@@ -3,7 +3,7 @@
 </div>
 
 <header class='top-navigation container-fluid total-header'>
-  <?php if (!isset($_COOKIE['admin_session']))
+  <?php if (!isset($_COOKIE['_SS']))
   { ?>
    <div class = 'navlist col-md-3 hidden-sm hidden-xs'>
        <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logotype.png" class = "logo"></a>

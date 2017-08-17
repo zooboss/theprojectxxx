@@ -7,8 +7,8 @@ if (!defined("Security") ) //проверяем переменную из main_p
 
 else {	
 $cookie_bd = $row['cookie'];
-$cookie_local = $_COOKIE['admin_session'];
-if (!isset($_COOKIE['admin_session'])or ($cookie_bd !== $cookie_local) ) //сверяем куки из бд с локальным
+$cookie_local = $_COOKIE['_SS'];
+if (!isset($_COOKIE['_SS'])or ($cookie_bd !== $cookie_local) ) //сверяем куки из бд с локальным
 {
 exit ("Пошел на хуй");		
 }

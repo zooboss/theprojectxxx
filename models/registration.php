@@ -110,7 +110,7 @@ $salt_encrypt = GenSalt(); //генерация соли
 					if($userRow['role']==='chief')  //если админ
 					{
 						$admin_key = GenCookie(); 
-						setcookie ('admin_session', $admin_key,  time()+60*60, '/');
+						setcookie ('_SS', $admin_key,  time()+60*60, '/');
 						$sql = "UPDATE users SET cookie = :user_cookie
 				        WHERE userName= :user_name";
 		                $stmt = $this->conn->prepare($sql);
@@ -127,8 +127,8 @@ $salt_encrypt = GenSalt(); //генерация соли
 	$key = GenCookie(); 
 
 //Пишем куки (имя куки, значение, время жизни - сейчас+месяц)
-	setcookie('username', $uname, time()+60*60*24*30, '/'); //почта
-	setcookie('key', $key, time()+60*60*24*30,  '/' ); //кука
+	setcookie('_VV', $uname, time()+60*60*24*30, '/'); //почта
+	setcookie('_DD', $key, time()+60*60*24*30,  '/' ); //кука
 								
 		$sql = "UPDATE users SET cookie = :user_cookie
 				WHERE userName= :user_name";
@@ -215,10 +215,10 @@ $salt_encrypt = GenSalt(); //генерация соли
 		$null = '0';
 		session_destroy();
 		$_SESSION['userSession'] = false;
-		setcookie('username', 0, time()-3600, '/'); //Логин Пути!
-        setcookie('key', 0, time()-3600,  '/');	//Кука Пути!
+		setcookie('_VV', 0, time()-3600, '/'); //Логин Пути!
+        setcookie('_DD', 0, time()-3600,  '/');	//Кука Пути!
 	
-	    setcookie('admin_session', 0, time()-3600,  '/');
+	    setcookie('_SS', 0, time()-3600,  '/');
     $sql = "UPDATE users SET cookie = :new_cookie
 		WHERE userID = :user_id";
 		$stmt = $this->conn->prepare($sql);
@@ -227,13 +227,13 @@ $salt_encrypt = GenSalt(); //генерация соли
 		$stmt->execute();
 	
 	
-	if (isset($_COOKIE['admin_session']))
+	if (isset($_COOKIE['_SS']))
 	{
-	$delete_cookie = $_COOKIE['admin_session'];	
+	$delete_cookie = $_COOKIE['_SS'];	
 	
 	
 	
-    setcookie('admin_session', 0, time()-3600,  '/');
+    setcookie('_SS', 0, time()-3600,  '/');
     $sql = "UPDATE users SET cookie = :new_cookie
 		WHERE userID = :user_id";
 		$stmt = $this->conn->prepare($sql);
