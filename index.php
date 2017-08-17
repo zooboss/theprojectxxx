@@ -10,22 +10,21 @@ require_once("models/registration.php");
 
 $user_login = new USER();
 
-
 /// Куки
 
-if ( isset($_COOKIE['username']) )
+if ( isset($_COOKIE['_VV']) )
 {
-echo "Login".$_COOKIE['username']."<br>";
+echo "Login".$_COOKIE['_VV']."<br>";
 }
 
-if ( isset($_COOKIE['key']) )
+if ( isset($_COOKIE['_DD']) )
 {
-echo "key". $_COOKIE['key']."<br>";
+echo "key". $_COOKIE['_DD']."<br>";
 }
  
-if ( isset($_COOKIE['username']) and isset($_COOKIE['key']) ) {	  //проверка на кукисы
-$uname = $_COOKIE['username']; //логин из кукисов
-$key = $_COOKIE['key']; //ключ из кук (аналог пароля, в базе поле cookie)				
+if ( isset($_COOKIE['_VV']) and isset($_COOKIE['_DD']) ) {	  //проверка на кукисы
+$uname = $_COOKIE['_VV']; //логин из кукисов
+$key = $_COOKIE['_DD']; //ключ из кук (аналог пароля, в базе поле cookie)				
 $user_login->Cookie_login($uname, $key );
 }
  /// Куки конец 

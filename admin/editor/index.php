@@ -9,7 +9,7 @@ exit ("Пошел на хуй");
 }
 else {
 
-if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['admin_session'])) //проверяем наличие админской сессии
+if (!isset($_SESSION['adminSession']) or !isset($_COOKIE['_SS'])) //проверяем наличие админской сессии
 {
 	if (isset ($_SESSION))
 {  
