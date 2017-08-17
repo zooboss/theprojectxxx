@@ -134,9 +134,9 @@
                             </div>
                             <div class = "panel-body personal-info">
 
-                                <a href = #0><h4>Непрочитанные статьи</h4></a>
-                                <a href = #0 id = "my_comments"><h4>Ваши комментарии</h4></a>
-                                <a href = #0 id = "my_replies" ><h4>Ответы</h4></a>
+                                <a href = #0 id = "articles_visited"><h4>Непрочитанные статьи</h4></a>
+                                <a href = #0 id = "my_comments"     ><h4>Ваши комментарии</h4></a>
+                                <a href = #0 id = "my_replies"      ><h4>Ответы</h4></a>
                                 <a href = #0><h4>Личные сообщения</h4></a>
                                 <a href = #0><h4>Рейтинг</h4></a>
                                 

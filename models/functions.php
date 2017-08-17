@@ -1,19 +1,36 @@
 <?php
 
-function articles_all($link){
-    $query = "SELECT * FROM articles ORDER BY id DESC";
-    $result = $link->query($query, MYSQLI_STORE_RESULT);
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/dbconfig.php"); 
+
+class ARTICLES {	
+
     
-    if(!$result)
-        die(mysqli_error($link));
-    
-    $articles = array();
-    while ($row = $result->fetch_array(MYSQLI_BOTH))
-    {
-        $articles[] = $row;
+	private $conn; 
+	
+	public function __construct()
+	{
+		$database = new Database();
+		$db = $database->dbConnection();
+		$this->conn = $db;
     }
+	
+	public function runQuery($sql)
+	{
+		$stmt = $this->conn->prepare($sql);
+		return $stmt;
+	}
+	
+	
+}
+
+function articles_all(){
+    $articles = new ARTICLES();
     
-    return $articles;
+    $stmt = $articles->runQuery("SELECT * FROM articles ORDER BY id DESC");   
+    $stmt->execute();
+    $stmt = $stmt->fetchAll();
+        
+    return $stmt;
 }
 
 function articles_get($link, $id_article)

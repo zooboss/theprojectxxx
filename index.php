@@ -49,7 +49,7 @@ require_once(dirname(__FILE__)."/models/database.php");
 $link = db_connect();
 
 require_once(dirname(__FILE__) . "/models/functions.php");
-$articles = articles_all($link);
+$articles = articles_all();
 
 
 if (isset($_GET['send'])) {

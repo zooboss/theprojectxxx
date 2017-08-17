@@ -88,7 +88,19 @@ switch ($personal_request_type):
     <?php
     break;
 
+    case "articles_visited":
 
+        ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            ТУт
+            
+            
+        </div>
+    <?php
+    break;
 
 endswitch;
 ?>

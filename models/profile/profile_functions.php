@@ -48,7 +48,9 @@ function get_my_replies ($author) {
 }
 
 
-
+function get_unvisited_articles ($articles_visited){
+    //$search_unvisited = new 
+}
 
 
 
