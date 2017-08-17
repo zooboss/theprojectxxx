@@ -51,11 +51,18 @@ function get_my_replies ($author) {
 function get_not_visited_articles ($articles_visited){
     $search_not_visited = new ARTICLES();
     
-    $stmt = $search_not_visited->runQuery("SELECT * FROM articles WHERE id= ?");   
-    $stmt->execute(1);
+    $stmt = $search_not_visited->runQuery("SELECT * FROM articles ");   
+    $stmt->execute();
     $stmt = $stmt->fetchAll();
     
-    return $search_not_visited;
+    $all_IDs = array();
+    foreach ($stmt as $article){
+        array_push($all_IDs, $article['id']);
+    }
+    
+    $uniq_IDs = array_diff($all_IDs, $articles_visited);
+    
+    return $uniq_IDs;
 }
 
 

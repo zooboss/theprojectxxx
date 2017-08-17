@@ -113,7 +113,7 @@ function get_articles_visited (){
 }
 
 function set_article_visited ($article_id) {
-    echo "summon";
+    
     if ( isset($_COOKIE['articles_visited']) and !empty($_COOKIE['articles_visited']) ){
         //get COOKIE
         $articles_visited = get_articles_visited();

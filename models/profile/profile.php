@@ -99,7 +99,16 @@ switch ($personal_request_type):
          >
             <?php 
             $articles_visited = get_articles_visited();
-            var_dump($articles_visited);
+            $articles_not_visited = get_not_visited_articles($articles_visited);
+            if ( empty($articles_not_visited) == true){
+                echo "Непрочитанные статьи отсутствуют";
+            }
+            else{
+                
+                
+                
+                
+            }
              
              
             ?>
