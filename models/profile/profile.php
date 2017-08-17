@@ -90,10 +90,8 @@ switch ($personal_request_type):
     break;
 
     case "articles_not_visited":
-        $articles_visited = $_COOKIE['articles_visited'];
-        $articles_visited = stripslashes($articles_visited);
-        $articles_visited = json_decode($articles_visited, true);
-
+        $articles_visited = get_articles_visited();
+        
         ?>
         <div class = "  personal-output "
               id = "personal-data"

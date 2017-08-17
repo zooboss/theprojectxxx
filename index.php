@@ -75,6 +75,7 @@ if (isset($_GET['send'])) {
         
 }
 else {
+    //setcookie("articles_visited", "", time()-3600);
     include(dirname(__FILE__) . "/views/main_page.php");
 }
 
