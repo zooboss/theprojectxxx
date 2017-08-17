@@ -107,6 +107,7 @@ function get_articles_visited (){
         $articles_visited = array();
     }
     
+    $articles_visited = array_unique($articles_visited);
     return $articles_visited;
     
 }
