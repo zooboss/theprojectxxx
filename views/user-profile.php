@@ -149,7 +149,7 @@
             </div>
             <div class = "offset-md-2 col-md-8 offset-sm-2 col-sm-8 col-xs-12 personal-output"
                  id = "personal-data"
-                 username = "<?php echo $row['userName'] ?>"
+                 username = "<?php echo $row['PublicUserName'] ?>"
                
                
                >

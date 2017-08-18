@@ -13,7 +13,7 @@ switch ($personal_request_type):
     case "my_comments" :
     
     $my_comments = get_my_comments($author);
-
+    
     ?>
 
     <div class = "  personal-output "
