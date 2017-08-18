@@ -67,7 +67,7 @@ else { //если все ок и есть запрос от редактора �
 }// конец если залогинен и шеф
 else {	//если не админ
 ?>		
-<section class='articlesGallery clearfix' >
+<section class='articlesGallery clearfix'  >
     
      <!-- Вывод массива всех статей из бд-->
         <?php 
@@ -82,7 +82,7 @@ else {	//если не админ
 
                 <div class = "columns">  
                                                         <?php
-                                                        while ($minor_key % 13 < 12){
+                                                        while ($minor_key % 13 < 11){
                                                             if ($master_key < count($articles)){
                                                                 $a = $articles[$master_key];
                                                             }
@@ -155,7 +155,7 @@ else {	//если не админ
                                                         $minor_key = 0;
                                                         ?>
                 </div>
-                <div class = "column-page"></div>
+                <!-- <div class = "column-page"></div> -->
                 <?php
             }
 	     //}

@@ -16,7 +16,7 @@
 <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/bindings/inputmask.binding.min.js"></script>
 <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
 <script rel="text/javascript" src="/theprojectxxx/libs/js/bootstrap.min.js"></script>
-<script type='text/javascript' rel="javascript" src="/theprojectxxx/libs/js/salvattore.js"></script>
+
 <script src="/theprojectxxx/libs/js/modernizr.js"></script> <!-- Modernizr -->
 <script type='text/javascript' src="/theprojectxxx/js/main.js"></script>
 <script src="/theprojectxxx/js/signup.js"></script>
