@@ -67,20 +67,21 @@ else { //если все ок и есть запрос от редактора �
 }// конец если залогинен и шеф
 else {	//если не админ
 ?>		
-<section class='container-fluid container-fluid-my articlesGallery clearfix'>
+<section class='container-fluid container-fluid-my articlesGallery clearfix' data-columns="" id = "columns">
     
      <!-- Вывод массива всех статей из бд-->
         <?php 
          $count = 0;
          foreach ($articles as $a)
          {
+             /*
             if($count % 3 == 0) {
             ?>
                 <div class = "row">
                     
             <?php
             }
-             
+             */
              
            ?>
             
@@ -140,13 +141,15 @@ else {	//если не админ
                 </div>
             </div> 
             
-        <?php     
+        <?php
+        /*       
         if($count % 3 == 2) {
         ?>
                 </div>                    
         <?php
         }
         $count++;
+        */
         ?>
         <!-- отдельный блок статьи-->
        
