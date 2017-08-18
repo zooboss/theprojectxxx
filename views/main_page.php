@@ -67,20 +67,27 @@ else { //если все ок и есть запрос от редактора �
 }// конец если залогинен и шеф
 else {	//если не админ
 ?>		
-<section class='container-fluid container-fluid-my articlesGallery'>
+<section class='container-fluid container-fluid-my articlesGallery clearfix'>
     
      <!-- Вывод массива всех статей из бд-->
         <?php 
          $count = 0;
          foreach ($articles as $a)
          {
+            if($count % 3 == 0) {
+            ?>
+                <div class = "row">
+                    
+            <?php
+            }
+             
              
            ?>
             
              <!-- отдельный блок статьи-->
-            <div class='col-md-4 col-sm-6  article-wrap' >                           
+            <div class='col-md-4 col-sm-6  article-wrap article-box' >                           
                 <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
-                    <img alt="#0" src="img/articles/article_image-<?=$a['id']?>.jpg"> 
+                    <img alt="#0" src="img/articles/article_image-<?=$a['id']?>.jpg" class = "main-page-main-image"> 
                    
                     <div class='post-author'>
 
@@ -132,8 +139,15 @@ else {	//если не админ
                     </div>
                 </div>
             </div> 
-             
-        
+            
+        <?php     
+        if($count % 3 == 2) {
+        ?>
+                </div>                    
+        <?php
+        }
+        $count++;
+        ?>
         <!-- отдельный блок статьи-->
        
 	   

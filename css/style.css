@@ -569,8 +569,19 @@ section.articlesGallery {
 .article-wrap {
     padding-top: 3% !important;
     padding-left: 1.6% !important;
-    padding-right: 1.6% !important; */
+    padding-right: 1.6% !important; 
 }
+
+.main-page-main-image {
+   
+    
+}
+
+.article-box {
+    border: 1px dashed skyblue;
+}
+
+
 
 .post-body {
     
