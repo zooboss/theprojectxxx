@@ -118,6 +118,21 @@ function get_comments_number ($article_id) {
     return count($stmt);
 }
 
+function get_articles_by_cathegory ($cathegory){
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT id FROM articles WHERE tag= ?");
+    $stmt->execute([$cathegory]);
+    $stmt = $stmt->fetchAll();
+    
+    $article_ids = [];
+    foreach($stmt as $s) {
+        array_push($article_ids, $s['id']);
+    }
+    
+    return $article_ids;
+}
+
 
 
 ?>
