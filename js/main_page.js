@@ -23,4 +23,47 @@ $( document ).ready(function() {
         
     });
     
+    /* INFINITE SCROLL  */
+     function element_in_scroll(elem){
+         var docViewTop = $(window).scrollTop();
+         var docViewBottom = docViewTop + $(window).height();
+         
+         
+         console.log("dovViewTop=" + docViewTop + " docViewBottom=" + docViewBottom);
+     }
+    
+    $(document).on("scroll", function(){
+       element_in_scroll();
+        
+        
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 });

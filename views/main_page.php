@@ -6,6 +6,7 @@
         include_once( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/head.php"); 
         ?>
          <script src="/theprojectxxx/js/main_page.js"></script>
+        
     </head>
     
 <body>   
@@ -68,7 +69,7 @@ else { //если все ок и есть запрос от редактора �
 }// конец если залогинен и шеф
 else {	//если не админ
 ?>		
-    <section id = "articlesGallery" class='articlesGallery clearfix'  >
+    <section id = "articlesGallery" class='articlesGallery clearfix' infinite-scroll="myPagingFunction()" infinite-scroll-distance="3" >
 
     </section>   <!-- galery -->
 <?php
