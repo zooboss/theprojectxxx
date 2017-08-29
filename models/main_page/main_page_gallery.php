@@ -129,7 +129,7 @@ switch ($request_type){
         if ($block_number <= $max_block_number){
     ?>
        
-        <div class = "columns" id = "block-<?php echo $block_number ?>">  
+        <div class = "columns displayNone" id = "block-<?php echo $block_number ?>">  
                                                             <?php
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
                                                                 if ($master_key < count($articles)){

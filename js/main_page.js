@@ -74,6 +74,7 @@ $( document ).ready(function() {
                   success: function(json){
                     //$('#block-'+(blockNumber-1)).append(json);
                    $('#articlesGallery').append(json);
+                   $('#block-'+blockNumber).show('slow');  
                    
 
                   },
