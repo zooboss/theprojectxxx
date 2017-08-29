@@ -43,6 +43,19 @@ switch ($request_type){
                                                                     $a = $articles[$master_key];
                                                                     $article_author = get_author_by_article($a['id']);
                                                                     
+                                                                    $article_tag = $a['tag'];
+                                                                    switch ($article_tag){
+                                                                        case "actual":
+                                                                            $article_tag = "события";
+                                                                        break;
+                                                                        case "future":
+                                                                            $article_tag = "тренды";
+                                                                        break;
+                                                                        case "past":
+                                                                            $article_tag = "история";
+                                                                        break;
+                                                                    }
+                                                                    
                                                                 }
                                                                 else{
                                                                     break;
@@ -59,13 +72,13 @@ switch ($request_type){
                                 <div class='image-thumb'>
                                     <img alt='#0' title='#0' src='img/author_icon.jpg'/>
                                     <cite> 
-                                        <a href="#0"><?php echo "Author"; ?></a> 
+                                        <a href="http://localhost/theprojectxxx/user-<?php echo $article_author['userID'] ?>.html"><?php echo $article_author['PublicUserName']; ?></a> 
                                         <span><?php echo "{$a['date']}"; ?> </span>
                                     </cite>  <!-- Вывод автора статьи, необходимо добавить в бд, пока выводится дата добавления -->
                                 </div>
                             </div>
                             <div class = "articleImageAnimate"></div>
-                            <div class = "articleCathegoryAnimate"> <a href='#0'>политика</a></div>
+                            <div class = "articleCathegoryAnimate"> <a href='#0'><?php echo $article_tag ?></a></div>
 
                             <div class = "articleCommentsAnimate"> 
                                 <a href="index.php?send=article&id=<?=$a['id']?>#comments"><i class='fa fa-comment'></i></a> 
@@ -136,6 +149,21 @@ switch ($request_type){
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
                                                                 if ($master_key < count($articles)){
                                                                     $a = $articles[$master_key];
+                                                                    
+                                                                    $article_author = get_author_by_article($a['id']);
+                                                                    
+                                                                    $article_tag = $a['tag'];
+                                                                    switch ($article_tag){
+                                                                        case "actual":
+                                                                            $article_tag = "события";
+                                                                        break;
+                                                                        case "future":
+                                                                            $article_tag = "тренды";
+                                                                        break;
+                                                                        case "past":
+                                                                            $article_tag = "история";
+                                                                        break;
+                                                                    }
                                                                 }
                                                                 else{
                                                                     break;
