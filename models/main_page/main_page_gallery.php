@@ -474,7 +474,7 @@ switch ($request_type){
         }
         else{
             $articles_ids = get_articles_by_cathegory($cathegory_type);  
-            var_dump($articles_ids);    
+            
         ?>
         
         <section id = "articlesGallery" class='articlesGallery clearfix'  >
@@ -572,7 +572,9 @@ switch ($request_type){
                                                                 }
                                                                 else{
                                                                     break;
-                                                                }   
+                                                                }
+                                                                
+                                                                if (in_array($a['id'], $articles_ids)){
                                                                 ?>    
 
                          <!-- отдельный блок статьи-->
@@ -632,7 +634,7 @@ switch ($request_type){
     </div> 
 
                                                                <?php 
-
+                                                                }
                                                                 $master_key++;
                                                                 $minor_key++;
                                                             }
