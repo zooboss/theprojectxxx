@@ -14,9 +14,9 @@
         <ul>
             
             <li class='selected'><a href='#0'>Главная</a></li>
-            <li><a href='#0'>Актуальное</a></li>
-            <li><a href='#0'>Будущее</a></li>
-            <li><a href='#0'>Прошлое</a></li>
+            <li><a href='#0'>События</a></li>
+            <li><a href='#0'>Тренды</a></li>
+            <li><a href='#0'>История</a></li>
         </ul>
                         
     </div>
@@ -96,9 +96,9 @@
 
         <div id="mySidenav" class="sidenav">
           <a href="/theprojectxxx/index.php">Главная</a>
-          <a href="#">Актуальное</a>          
-          <a href="#">Будущее</a>
-          <a href="#">Прошлое</a>
+          <a href="#">События</a>          
+          <a href="#">Тренды</a>
+          <a href="#">История</a>
         </div>
 </header>
 
