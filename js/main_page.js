@@ -1,10 +1,11 @@
 $( document ).ready(function() {    
 
 /* Первый запуск главной страницы */    
-    var articlesInBlock = 6;
+    var articlesInBlock = 11;
     var blockNumber = 1;
     var maxBlockNumber = (Math.floor( $('#articlesGallery').attr('count-articles') / articlesInBlock) + 1);
-    console.log(maxBlockNumber);
+    var blockChange;
+    var timer;
     $(document).on('ready', function(){
         
         
@@ -34,28 +35,32 @@ $( document ).ready(function() {
     function element_in_scroll(elem){
         var docViewTop = $(window).scrollTop();
         var docViewBottom = docViewTop + $(window).height();
-         
-        var elemTop = $(elem).offset().top;
-        var elemBottom = elemTop + $(elem).height();
         
-        var what;
-        if (elemBottom <= docViewBottom){
-            what = true;
-        } 
-        else{
-            what = false;
-        }
-        console.log(what);
+        /* убирает сообщение об ошибке изза попытки считать элемент, который аякс ещё не успел подгрузить */
+            try {var elemTop = $(elem).offset().top;} 
+            catch(err){}
+            try {var elemBottom = elemTop + $(elem).height();} 
+            catch(err){}
+       /* убирает сообщение об ошибке изза попытки считать элемент, который аякс ещё не успел подгрузить */
         return((elemBottom <= docViewBottom));
          
     }
     
     $(document).on("scroll", function(e){
+        /*
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(function(){
+                    blockChange = element_in_scroll('#block-'+blockNumber);
+                }, 100);
+        
+        */
+        blockChange = element_in_scroll('#block-'+blockNumber);
         if (blockNumber <= maxBlockNumber){
-            if(element_in_scroll('#block-'+blockNumber) == true){
+            if(blockChange == true){
                 blockNumber++;
-
-
+               
                 $.ajax({
 
                   url: "models/main_page/main_page_gallery.php", 
@@ -69,6 +74,7 @@ $( document ).ready(function() {
                   success: function(json){
                     //$('#block-'+(blockNumber-1)).append(json);
                    $('#articlesGallery').append(json);
+                   
 
                   },
                   error: function(xhr, status, error){
