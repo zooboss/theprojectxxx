@@ -4,6 +4,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/functions.php");
 $articles = articles_all();
 $articles_in_block = $_POST['articlesInBlock'];
 $request_type = $_POST['requestType']; 
+$max_block_number = (int)(count($articles) / $articles_in_block) + 1;
+
 
 $block_number = 1;
 if( isset($_POST['blockNumber']) ){
@@ -37,7 +39,7 @@ switch ($request_type){
                     <div class = "columns" id = "block-<?php echo $block_number ?>">  
                                                             <?php
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
-                                                                if ($master_key < $articles_to_show){
+                                                                if ($master_key < count($articles)){
                                                                     $a = $articles[$master_key];
                                                                 }
                                                                 else{
@@ -124,12 +126,13 @@ switch ($request_type){
     case "scroll_request":
         $master_key = $articles_to_show - $articles_in_block;
         $minor_key = 0;
+        if ($block_number <= $max_block_number){
     ?>
        
         <div class = "columns" id = "block-<?php echo $block_number ?>">  
                                                             <?php
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
-                                                                if ($master_key < $articles_to_show){
+                                                                if ($master_key < count($articles)){
                                                                     $a = $articles[$master_key];
                                                                 }
                                                                 else{
@@ -202,6 +205,7 @@ switch ($request_type){
                                                             ?>
             </div>
     <?php
+        }
     break;
         
 }
