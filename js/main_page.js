@@ -3,12 +3,14 @@ $( document ).ready(function() {
 /* Первый запуск главной страницы */    
     
     $(document).on('ready', function(){
-     
+        var articlesInBlock = 11;
+        
         $.ajax({
+          
           url: "models/main_page/main_page_gallery.php", 
           type: "POST",
           data: {
-              
+              articlesInBlock: articlesInBlock
           },
           dataType: 'json',
           success: function(json){

@@ -2,7 +2,7 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/functions.php");
 $articles = articles_all();
-
+$articles_in_block = $_POST['articlesInBlock'];
 ob_start();
 ?>
 
@@ -23,7 +23,7 @@ ob_start();
 
                 <div class = "columns" id = "block-<?php echo $block_number ?> ">  
                                                         <?php
-                                                        while ($minor_key % 13 < 11){
+                                                        while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
                                                             if ($master_key < count($articles)){
                                                                 $a = $articles[$master_key];
                                                             }
