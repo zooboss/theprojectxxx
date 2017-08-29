@@ -94,7 +94,7 @@
           ?>   
             <div class = "personal-body">
                 <div class = "row">
-                    <div class = "personal-avatar offset-md-4 col-md-4 offset-sm-3 col-sm-6 col-xs-12 text-center">
+                    <div class = "personal-avatar offset-md-4 col-md-4 offset-sm-0 col-sm-6 offset-xs-0 col-xs-12 text-center">
                         <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "personal-avatar">
                         <h1><?php echo $row['userName'] ?></h1>
                         
@@ -102,7 +102,7 @@
                 </div>
                 <div class = "divider"></div>
                 <div class = "row">
-                    <div class = "offset-md-2 col-md-4 offset-sm-2 col-sm-4 col-xs-12">
+                    <div class = "offset-md-2 col-md-4 offset-sm-0 col-sm-5 offset-xs-0 col-xs-12">
                         <div class = "panel panel-info personal-panel">
                             <div class = "panel-heading text-center">
                                 Персональные данные
@@ -127,7 +127,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class = "col-md-4  col-sm-4  col-xs-12">
+                    <div class = "col-md-4  col-sm-5  col-xs-12">
                         <div class = "panel panel-info personal-panel">
                             <div class = "panel-heading text-center">
                                 Активность
@@ -143,6 +143,7 @@
                             </div>
                         </div>
                     </div>
+                   
                                         
                     
                 </div>
