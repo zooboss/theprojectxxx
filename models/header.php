@@ -13,8 +13,8 @@
        
         <ul>
             
-            <li class='selected'><a href='#0'>Актуальное</a></li>
-            <li><a href='#0'>Аналитика</a></li>
+            <li class='selected'><a href='#0'>Главная</a></li>
+            <li><a href='#0'>Актуальное</a></li>
             <li><a href='#0'>Будущее</a></li>
             <li><a href='#0'>Прошлое</a></li>
         </ul>
@@ -96,8 +96,7 @@
 
         <div id="mySidenav" class="sidenav">
           <a href="/theprojectxxx/index.php">Главная</a>
-          <a href="#">Актуальное</a>
-          <a href="#">Аналитика</a>
+          <a href="#">Актуальное</a>          
           <a href="#">Будущее</a>
           <a href="#">Прошлое</a>
         </div>
