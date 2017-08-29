@@ -295,6 +295,15 @@ switch ($request_type){
     <?php
         }
     break;
+    case "cathegory_request":
+        $cathegory_type = $_POST['cathegoryType'];
+        ?>
+        <section id = "articlesGallery" class='articlesGallery clearfix'  >
+        Hello world!        
+        
+        </section>
+    <?php
+    break;
         
 }
 ?>

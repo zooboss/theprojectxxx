@@ -1,5 +1,12 @@
 $( document ).ready(function() {
-    
+   
+//Скрывает категориальные меню не на основной странице    
+    var pathname = window.location.href;
+    if (pathname != "http://localhost/theprojectxxx/index.php"){
+       $("#everywhere-top-navigation-menu").hide();
+              
+    }
+        
     //Скрипт мобильного меню
     
     $('#menu-trigger').click(function() {
@@ -30,7 +37,7 @@ $( document ).ready(function() {
         
     });
     
-    //Infinite Scroll
+    
     
     
     

@@ -88,7 +88,35 @@ $( document ).ready(function() {
     });
     
     
+//Смена активной закладки
     
+    $(document).on('click', "#everywhere-top-navigation-menu li a", function(e){
+        e.preventDefault();
+        $("#everywhere-top-navigation-menu li").removeClass("selected");
+        $(this).parent().addClass("selected");    
+        
+        $.ajax({
+          
+          url: "models/main_page/main_page_gallery.php", 
+          type: "POST",
+          data: {
+              requestType: "cathegory_request",
+              cathegoryType: $(this).attr("cathegory-type"),
+              articlesInBlock: articlesInBlock
+          },
+          dataType: 'json',
+          success: function(json){
+            $('#articlesGallery').replaceWith(json); // заменим форму данными, полученными в ответе
+            
+            
+          },
+          error: function(xhr, status, error){
+              console.log(xhr.responseText);;
+          }
+        });
+        
+        
+    });
     
     
     

@@ -11,12 +11,12 @@
   <?php } ?>    
     <div class='navlist col-md-6 hidden-sm hidden-xs'>
        
-        <ul>
+        <ul id = "everywhere-top-navigation-menu">
             
-            <li class='selected'><a href='#0'>Главная</a></li>
-            <li><a href='#0'>События</a></li>
-            <li><a href='#0'>Тренды</a></li>
-            <li><a href='#0'>История</a></li>
+            <li class='selected'><a href='' cathegory-type = "main">Главная</a></li>
+            <li><a href='' cathegory-type = "actual">События</a></li>
+            <li><a href='' cathegory-type = "future">Тренды</a></li>
+            <li><a href='' cathegory-type = "past">История</a></li>
         </ul>
                         
     </div>
