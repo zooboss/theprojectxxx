@@ -69,7 +69,10 @@ else { //если все ок и есть запрос от редактора �
 }// конец если залогинен и шеф
 else {	//если не админ
 ?>		
-    <section id = "articlesGallery" class='articlesGallery clearfix' infinite-scroll="myPagingFunction()" infinite-scroll-distance="3" >
+    <section    id = "articlesGallery" 
+                class='articlesGallery clearfix' 
+                count-articles = "<?php echo count($articles)?>"
+     >
 
     </section>   <!-- galery -->
 <?php

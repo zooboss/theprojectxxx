@@ -44,10 +44,10 @@ if($user_login->is_logged_in()!="")
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 }// если авторизован, то выбираем из базы через PDO, можно убрать условие, но будет вылезать ошибка.
 
-/*
+
 require_once(dirname(__FILE__) . "/models/functions.php");
 $articles = articles_all();
-*/
+
 
 if (isset($_GET['send'])) {
     $send = $_GET['send'];
