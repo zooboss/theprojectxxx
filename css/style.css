@@ -659,7 +659,7 @@ section.articlesGallery {
     float: left;
     width: 40px;
     border-radius: 50%;
-    border: 1px solid black;
+    
     margin-bottom: 4px;
     margin-left: 10px;
         
@@ -1193,7 +1193,11 @@ display: none;
     display: none;
 }
 
-
+.main-page-author-name {
+    color: black;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+}
 
 
 

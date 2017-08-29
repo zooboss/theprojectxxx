@@ -41,8 +41,24 @@ switch ($request_type){
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
                                                                 if ($master_key < count($articles)){
                                                                     $a = $articles[$master_key];
-                                                                    $article_author = get_author_by_article($a['id']);
                                                                     
+                                                                    $article_author = get_author_by_article($a['id']);
+                                                                    $comments_number = get_comments_number($a['id']);
+                                                                    $comments_number_noun = "комментариев";
+                                                                    switch (substr($comments_number, -1)){
+                                                                        case "1":
+                                                                            $comments_number_noun = "комментарий";
+                                                                        break;
+                                                                        case "2":
+                                                                            $comments_number_noun = "комментария";
+                                                                        break;
+                                                                        case "3":
+                                                                            $comments_number_noun = "комментария";
+                                                                        break; 
+                                                                        case "4":
+                                                                            $comments_number_noun = "комментария";
+                                                                        break;    
+                                                                    }
                                                                     $article_tag = $a['tag'];
                                                                     switch ($article_tag){
                                                                         case "actual":
@@ -53,6 +69,48 @@ switch ($request_type){
                                                                         break;
                                                                         case "past":
                                                                             $article_tag = "история";
+                                                                        break;
+                                                                    }
+                                                                    
+                                                                    $article_date = $a['date'];
+                                                                    $article_date_array = explode("-", $article_date);
+                                                                    $article_date_array_numeric = $article_date_array;
+                                                                    switch ($article_date_array[1]){
+                                                                        case "01":
+                                                                            $article_date_array[1] = "янв";
+                                                                        break;
+                                                                        case "02":
+                                                                            $article_date_array[1] = "фев";
+                                                                        break;
+                                                                        case "03":
+                                                                            $article_date_array[1] = "мар";
+                                                                        break;
+                                                                        case "04":
+                                                                            $article_date_array[1] = "апр";
+                                                                        break;
+                                                                        case "05":
+                                                                            $article_date_array[1] = "май";
+                                                                        break;
+                                                                        case "06":
+                                                                            $article_date_array[1] = "июнь";
+                                                                        break;
+                                                                        case "07":
+                                                                            $article_date_array[1] = "июл";
+                                                                        break;
+                                                                        case "08":
+                                                                            $article_date_array[1] = "авг";
+                                                                        break;
+                                                                        case "09":
+                                                                            $article_date_array[1] = "сен";
+                                                                        break;
+                                                                        case "10":
+                                                                            $article_date_array[1] = "окт";
+                                                                        break;
+                                                                        case "11":
+                                                                            $article_date_array[1] = "ноя";
+                                                                        break;
+                                                                        case "12":
+                                                                            $article_date_array[1] = "дек";
                                                                         break;
                                                                     }
                                                                     
@@ -70,10 +128,10 @@ switch ($request_type){
                             <div class='post-author'>
 
                                 <div class='image-thumb'>
-                                    <img alt='#0' title='#0' src='img/author_icon.jpg'/>
+                                    <img alt='#0' title='#0' src='img/avatars/user-<?php echo $article_author['userID'] ?>.jpg'/>
                                     <cite> 
-                                        <a href="http://localhost/theprojectxxx/user-<?php echo $article_author['userID'] ?>.html"><?php echo $article_author['PublicUserName']; ?></a> 
-                                        <span><?php echo "{$a['date']}"; ?> </span>
+                                        <a class = "main-page-author-name" href="http://localhost/theprojectxxx/user-<?php echo $article_author['userID'] ?>.html"><?php echo $article_author['PublicUserName']; ?></a> 
+                                        <span><?php echo $article_date_array_numeric[2] . "." . $article_date_array_numeric[1] . "." . $article_date_array_numeric[0] ?> </span>
                                     </cite>  <!-- Вывод автора статьи, необходимо добавить в бд, пока выводится дата добавления -->
                                 </div>
                             </div>
@@ -82,12 +140,12 @@ switch ($request_type){
 
                             <div class = "articleCommentsAnimate"> 
                                 <a href="index.php?send=article&id=<?=$a['id']?>#comments"><i class='fa fa-comment'></i></a> 
-                                <a href="index.php?send=article&id=<?=$a['id']?>#comments">48</a>
+                                <a href="index.php?send=article&id=<?=$a['id']?>#comments"><?php echo $comments_number ?></a>
                             </div>
 
                             <div class = "articleDateAnimate"> 
-                                <p>2016</p> 
-                                <p>дек/08</p>
+                                <p><?php echo $article_date_array[0] ?></p> 
+                                <p><?php echo $article_date_array[1] . "/" . $article_date_array[2] ?></p>
                             </div>
                         </div>
 
@@ -102,7 +160,7 @@ switch ($request_type){
 
                             <div class='postfooter clearfix'>
                                <i class='fa fa-comment linker'></i>
-                                <a class='linker' href="index.php?send=article&id=<?=$a['id']?>#comments" >48 Комментариев</a>
+                                <a class='linker' href="index.php?send=article&id=<?=$a['id']?>#comments" ><?php echo $comments_number . " " . $comments_number_noun ?> </a>
                                 <!-- Социалки для превью статьи
                                     <div class='socialpost'>
                                        <div class='icons clearfix'>
@@ -181,7 +239,7 @@ switch ($request_type){
                                     <img alt='#0' title='#0' src='img/author_icon.jpg'/>
                                     <cite> 
                                         <a href="#0"><?php echo "Author"; ?></a> 
-                                        <span><?php echo "{$a['date']}"; ?> </span>
+                                        <span><?php echo $article_date_array_numeric[2] . "." . $article_date_array_numeric[1] . "." . article_date_array_numeric[0] ?> </span>
                                     </cite>  <!-- Вывод автора статьи, необходимо добавить в бд, пока выводится дата добавления -->
                                 </div>
                             </div>

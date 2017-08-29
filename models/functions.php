@@ -108,6 +108,15 @@ function get_author_by_article ($article_id) {
     return $stmt[0];
 }
 
+function get_comments_number ($article_id) {
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT id FROM comments WHERE article_id= ?");
+    $stmt->execute([$article_id]);
+    $stmt = $stmt->fetchAll();
+    
+    return count($stmt);
+}
 
 
 
