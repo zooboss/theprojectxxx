@@ -41,6 +41,8 @@ switch ($request_type){
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
                                                                 if ($master_key < count($articles)){
                                                                     $a = $articles[$master_key];
+                                                                    $article_author = get_author_by_article($a['id']);
+                                                                    
                                                                 }
                                                                 else{
                                                                     break;

@@ -44,51 +44,6 @@ function articles_get($id_article)
     return $stmt[0];
 }
 
-/*function articles_new($title, $date, $content){
-    $title = trim($title);
-    $content = trim($content);
-    
-    if ($title == '') return false;
-    
-    $query = "INSERT INTO articles (title, date, content) VALUES ('%s', '%s', '%s')";
-    $query = sprintf($query, $title, mysqli_real_escape_string($link, $date), mysqli_real_escape_string($link, $content));
-    
-    $result = mysqli_query($link, $query);
-    
-    if (!$result) 
-        die(mysqli_error($link));
-    
-    return true;
-}
-
-function articles_edit($link, $id, $title, $date, $content){
-    $title = trim($title);
-    $content = trim($content);
-    
-    if ($title == '') return false;
-    
-    $query = "UPDATE articles SET title = '%s', date = '%s', content = '%s' WHERE id = '%d'";
-    $query = sprintf($query, $title, mysqli_real_escape_string($link, $date), mysqli_real_escape_string($link, $content), $id);
-    
-    $result = mysqli_query($link, $query);
-    
-    if (!$result) 
-        die(mysqli_error($link));
-    
-    return true;
-}
-
-function articles_delete($link, $id){
-    $query = "DELETE FROM articles WHERE id = %d";
-    $query = sprintf($query, (int)$id);
-    $result = mysqli_query($link, $query);
-    
-    if (!$result) 
-        die(mysqli_error($link));
-    return true;
-} 
-*/
-
 function articles_intro($text, $len = 100)
 {
     return mb_substr($text, 0, $len);   
@@ -135,6 +90,24 @@ function set_article_visited ($article_id) {
     }
     
 }
+
+function get_author_by_article ($article_id) {
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT author_id FROM articles WHERE id= ?");   
+    $stmt->execute([$article_id]);
+    $stmt = $stmt->fetchAll();
+        
+    $author_id = $stmt[0]['author_id'];
+    
+    $stmt = $articles->runQuery("SELECT * FROM users WHERE userID= ?");
+    $stmt->execute([$author_id]);
+    $stmt = $stmt->fetchAll();
+    
+    
+    return $stmt[0];
+}
+
 
 
 
