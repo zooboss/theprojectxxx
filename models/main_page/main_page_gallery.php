@@ -13,6 +13,7 @@ ob_start();
         <?php 
          $master_key = 0;
          $minor_key = 0;
+         $block_number = 1;
                
          //foreach ($articles as $a)
          //{
@@ -20,7 +21,7 @@ ob_start();
                                                                      
                ?>
 
-                <div class = "columns">  
+                <div class = "columns" id = "block-<?php echo $block_number ?> ">  
                                                         <?php
                                                         while ($minor_key % 13 < 11){
                                                             if ($master_key < count($articles)){
@@ -95,8 +96,10 @@ ob_start();
                                                         $minor_key = 0;
                                                         ?>
                 </div>
+                
                 <!-- <div class = "column-page"></div> -->
                 <?php
+                $block_number++;
             }
 	     //}
 

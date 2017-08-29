@@ -28,12 +28,15 @@ $( document ).ready(function() {
          var docViewTop = $(window).scrollTop();
          var docViewBottom = docViewTop + $(window).height();
          
+         var elemTop = $(elem).offset().top;
+         var elemBottom = elemTop + $(elem).height();
          
-         console.log("dovViewTop=" + docViewTop + " docViewBottom=" + docViewBottom);
+         return((elemBottom <= docViewBottom));
+         
      }
     
-    $(document).on("scroll", function(){
-       element_in_scroll();
+    $(document).on("scroll", function(e){
+       console.log(element_in_scroll(".columns"));
         
         
     });
