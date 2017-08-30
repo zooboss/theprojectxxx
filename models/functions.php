@@ -133,6 +133,19 @@ function get_articles_by_cathegory ($cathegory){
     return $article_ids;
 }
 
-
+function get_all_ids () {
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT id FROM articles");
+    $stmt->execute();
+    $stmt = $stmt->fetchAll();
+    
+    $article_ids = [];
+    foreach($stmt as $s) {
+        array_push($article_ids, $s['id']);
+    }
+    
+    return $article_ids;
+}
 
 ?>

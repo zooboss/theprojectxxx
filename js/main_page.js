@@ -6,6 +6,8 @@ $( document ).ready(function() {
     var maxBlockNumber = (Math.floor( $('#articlesGallery').attr('count-articles') / articlesInBlock) + 1);
     var blockChange;
     var timer;
+    var cathegoryType = "main";
+    var currentRequest = "no_need";
     $(document).on('ready', function(){
         
         
@@ -14,6 +16,8 @@ $( document ).ready(function() {
           url: "models/main_page/main_page_gallery.php", 
           type: "POST",
           data: {
+               cathegoryType: $(".selected a").attr("cathegory-type"),
+              currentRequest: currentRequest,
               requestType: "initial_request",
               articlesInBlock: articlesInBlock
           },
@@ -42,10 +46,10 @@ $( document ).ready(function() {
             try {var elemBottom = elemTop + $(elem).height();} 
             catch(err){}
        /* убирает сообщение об ошибке изза попытки считать элемент, который аякс ещё не успел подгрузить */
-        //console.log("elemTop " + elemTop);
-        //console.log("elemBottom " + elemBottom);
-        //console.log("view " + docViewBottom);
-        //console.log(elem);
+        console.log("elemTop " + elemTop);
+        console.log("elemBottom " + elemBottom);
+        console.log("view " + docViewBottom);
+        console.log(elem);
         if(elem){
             if (elemBottom <= docViewBottom){
                 return "append_bottom_block";
@@ -60,7 +64,8 @@ $( document ).ready(function() {
     $(document).on("scroll", function(e){
         
         blockChange = element_in_scroll('#block-'+blockNumber);
-        //console.log(blockChange);
+        console.log(blockChange);
+        console.log(maxBlockNumber + " " + blockNumber);
         if (blockNumber <= maxBlockNumber){
             switch (blockChange){
                 case "append_bottom_block":
@@ -71,6 +76,8 @@ $( document ).ready(function() {
                       url: "models/main_page/main_page_gallery.php", 
                       type: "POST",
                       data: {
+                          cathegoryType: $(".selected a").attr("cathegory-type"),
+                          currentRequest: currentRequest,
                           requestType: "scroll_request",
                           blockNumber: blockNumber,
                           articlesInBlock: articlesInBlock
@@ -108,13 +115,19 @@ $( document ).ready(function() {
         $("#everywhere-top-navigation-menu li").removeClass("selected");
         $(this).parent().addClass("selected");    
         
+        blockNumber = 1;
+        
+        currentRequest = "request_cathegory";
+        cathegoryType = $(this).attr("cathegory-type");
+        
         $.ajax({
           
           url: "models/main_page/main_page_gallery.php", 
           type: "POST",
           data: {
+              currentRequest: currentRequest,
               requestType: "cathegory_request",
-              cathegoryType: $(this).attr("cathegory-type"),
+              cathegoryType: cathegoryType,
               articlesInBlock: articlesInBlock
           },
           dataType: 'json',

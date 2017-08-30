@@ -3,7 +3,9 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/functions.php");
 $articles = articles_all();
 $articles_in_block = $_POST['articlesInBlock'];
-$request_type = $_POST['requestType']; 
+$request_type = $_POST['requestType'];
+$cathegory_type = $_POST['cathegoryType'];
+$current_request = $_POST['currentRequest'];
 $max_block_number = (int)(count($articles) / $articles_in_block) + 1;
 
 
@@ -22,7 +24,7 @@ switch ($request_type){
 
     ?>
 
-    <section id = "articlesGallery" class='articlesGallery clearfix'  >
+    <section id = "articlesGallery" class='articlesGallery clearfix' count-articles = "<?php echo count($articles)?>" >
 
          <!-- Вывод массива всех статей из бд-->
             <?php 
@@ -199,128 +201,29 @@ switch ($request_type){
     case "scroll_request":
         $master_key = $articles_to_show - $articles_in_block;
         $minor_key = 0;
+       
+         if ($cathegory_type == "main"){
+            $articles_ids = get_all_ids();
+            
+        }
+        else {
+            $articles_ids = get_articles_by_cathegory($cathegory_type);
+            
+        }
+        $max_block_number = (int)(count($articles_ids) / $articles_in_block) + 1;
+        echo count($articles_ids);
+        echo $block_number . " <= " . $max_block_number; 
+            
         if ($block_number <= $max_block_number){
     ?>
        
-        <div class = "columns displayNone" id = "block-<?php echo $block_number ?>">  
+        <div class = "columns" id = "block-<?php echo $block_number ?>">  
                                                             <?php
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
                                                                 if ($master_key < count($articles)){
-                                                                    $a = $articles[$master_key];
                                                                     
-                                                                    $article_author = get_author_by_article($a['id']);
-                                                                    
-                                                                    $article_tag = $a['tag'];
-                                                                    switch ($article_tag){
-                                                                        case "actual":
-                                                                            $article_tag = "события";
-                                                                        break;
-                                                                        case "future":
-                                                                            $article_tag = "тренды";
-                                                                        break;
-                                                                        case "past":
-                                                                            $article_tag = "история";
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                else{
-                                                                    break;
-                                                                }   
-                                                                ?>    
-
-                         <!-- отдельный блок статьи-->
-                        <div class='article-wrap' >                           
-                        <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
-                            <img alt="#0" src="img/articles/article_image-<?=$a['id']?>.jpg" class = "main-page-main-image"> 
-
-                            <div class='post-author'>
-
-                                <div class='image-thumb'>
-                                    <img alt='#0' title='#0' src='img/author_icon.jpg'/>
-                                    <cite> 
-                                        <a href="#0"><?php echo "Author"; ?></a> 
-                                        <span><?php echo $article_date_array_numeric[2] . "." . $article_date_array_numeric[1] . "." . article_date_array_numeric[0] ?> </span>
-                                    </cite>  <!-- Вывод автора статьи, необходимо добавить в бд, пока выводится дата добавления -->
-                                </div>
-                            </div>
-                            <div class = "articleImageAnimate"></div>
-                            <div class = "articleCathegoryAnimate"> <a href='#0'>политика</a></div>
-
-                            <div class = "articleCommentsAnimate"> 
-                                <a href="index.php?send=article&id=<?=$a['id']?>#comments"><i class='fa fa-comment'></i></a> 
-                                <a href="index.php?send=article&id=<?=$a['id']?>#comments">48</a>
-                            </div>
-
-                            <div class = "articleDateAnimate"> 
-                                <p>2016</p> 
-                                <p>дек/08</p>
-                            </div>
-                        </div>
-
-                        <div class='post-body'>
-                            <div class='post-title'>
-                                <h2><a href="index.php?send=article&id=<?=$a['id']?>"> <?php echo $a['title'] ?> </a></h2> <!-- Вывод названия статьи, первые 100 символов по дефолту -->
-                            </div>
-
-                            <div class='post-entry'>
-                             <p> <?php echo articles_intro($a['content']) ?></p> <!-- Вывод текста, первые 100 символов по дефолту -->
-                            </div>
-
-                            <div class='postfooter clearfix'>
-                               <i class='fa fa-comment linker'></i>
-                                <a class='linker' href="index.php?send=article&id=<?=$a['id']?>#comments" >48 Комментариев</a>
-                                <!-- Социалки для превью статьи
-                                    <div class='socialpost'>
-                                       <div class='icons clearfix'>
-                                        <a href='#0'><i class='fa fa-facebook'></i><div class='texts'>Facebook</div></a>
-                                        <a href='#0'><i class='fa fa-vk'></i><div class='texts'>VK</div></a>
-                                        <a href='#0'><i class='fa fa-twitter'></i><div class='texts'>Twitter</div></a>
-                                        </div>
-
-                                    </div>
-                                --> 
-                                <a href="index.php?send=article&id=<?=$a['id']?>"><div class='read'>Читать </div></a>
-                            </div>
-                        </div>
-    </div> 
-
-                                                               <?php 
-
-                                                                $master_key++;
-                                                                $minor_key++;
-                                                            }
-                                                            $minor_key = 0;
-                                                            ?>
-            </div>
-    <?php
-        }
-    break;
-    case "cathegory_request":
-        
-        
-        
-        $cathegory_type = $_POST['cathegoryType'];
-        if ($cathegory_type == "main"){
-            ?>
-             <section id = "articlesGallery" class='articlesGallery clearfix'  >
-
-         <!-- Вывод массива всех статей из бд-->
-            <?php 
-             $master_key = 0;
-             $minor_key = 0;
-             
-
-             //foreach ($articles as $a)
-             //{
-                //while($master_key < count($articles)){
-                while($master_key < $articles_to_show){    
-                   ?>
-
-                    <div class = "columns" id = "block-<?php echo $block_number ?>">  
-                                                            <?php
-                                                            while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
-                                                                if ($master_key < count($articles)){
                                                                     $a = $articles[$master_key];
+                                                                    //echo $master_key . " " . $minor_key;
                                                                     
                                                                     $article_author = get_author_by_article($a['id']);
                                                                     $comments_number = get_comments_number($a['id']);
@@ -397,7 +300,9 @@ switch ($request_type){
                                                                 }
                                                                 else{
                                                                     break;
-                                                                }   
+                                                                }
+                                                                
+                                                                if (in_array($a['id'], $articles_ids)){
                                                                 ?>    
 
                          <!-- отдельный блок статьи-->
@@ -456,31 +361,34 @@ switch ($request_type){
                         </div>
     </div> 
 
-                                                               <?php 
-
+                                                               <?php
                                                                 $master_key++;
-                                                                $minor_key++;
+                                                                $minor_key++;    
+                                                                }
+                                                                else{                                                                    
+                                                                $master_key++;
+                                                                }
                                                             }
                                                             $minor_key = 0;
                                                             ?>
                     </div>
-
-                    <!-- <div class = "column-page"></div> -->
-                    <?php
-                    $block_number++;
-                }
-             //}
-
-    ?>       
-    </section>
-        <?php
+    <?php
         }
-        else{
+    break;
+    case "cathegory_request":
+        
+        
+        
+        
+        if ($cathegory_type == "main"){
+            $articles_ids = get_all_ids();
+        }
+        else {
             $articles_ids = get_articles_by_cathegory($cathegory_type);  
-            
+        }
         ?>
         
-        <section id = "articlesGallery" class='articlesGallery clearfix'  >
+        <section id = "articlesGallery" class='articlesGallery clearfix' count-articles = "<?php echo count($articles_ids)?>" >
 
          <!-- Вывод массива всех статей из бд-->
             <?php 
@@ -643,7 +551,9 @@ switch ($request_type){
                                                                 $master_key++;
                                                                 $minor_key++;    
                                                                 }
-                                                                $master_key++;
+                                                                else{
+                                                                    $master_key++;
+                                                                }
                                                             }
                                                             $minor_key = 0;
                                                             ?>
@@ -659,7 +569,7 @@ switch ($request_type){
     </section>
         
     <?php
-        }
+        
     break;
         
 }
