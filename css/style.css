@@ -593,6 +593,8 @@ section.articlesGallery {
 }
 
 .columns {
+    min-height: 1500px;
+    
     -webkit-column-count: 3;
      -moz-column-count: 3;
           column-count: 3;

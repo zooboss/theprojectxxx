@@ -1,7 +1,7 @@
 $( document ).ready(function() {    
 
 /* Первый запуск главной страницы */    
-    var articlesInBlock = 11;
+    var articlesInBlock = 6;
     var blockNumber = 1;
     var maxBlockNumber = (Math.floor( $('#articlesGallery').attr('count-articles') / articlesInBlock) + 1);
     var blockChange;
@@ -42,7 +42,17 @@ $( document ).ready(function() {
             try {var elemBottom = elemTop + $(elem).height();} 
             catch(err){}
        /* убирает сообщение об ошибке изза попытки считать элемент, который аякс ещё не успел подгрузить */
-        return((elemBottom <= docViewBottom));
+        console.log("elem " + elemBottom);
+        console.log("view " + docViewBottom);
+        console.log(elem);
+        if(elem){
+            console.log("height_check");
+            return((elemBottom <= docViewBottom));
+        }
+        else {
+            console.log("NAN");
+            return false;
+        }
          
     }
     
@@ -57,6 +67,7 @@ $( document ).ready(function() {
         
         */
         blockChange = element_in_scroll('#block-'+blockNumber);
+        console.log(blockChange);
         if (blockNumber <= maxBlockNumber){
             if(blockChange == true){
                 blockNumber++;
@@ -72,11 +83,11 @@ $( document ).ready(function() {
                   },
                   dataType: 'json',
                   success: function(json){
-                    //$('#block-'+(blockNumber-1)).append(json);
+                    
                    $('#articlesGallery').append(json);
                    $('#block-'+blockNumber).show('slow');  
                    
-
+                      
                   },
                   error: function(xhr, status, error){
                       console.log(xhr.responseText);;
