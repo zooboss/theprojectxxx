@@ -42,58 +42,60 @@ $( document ).ready(function() {
             try {var elemBottom = elemTop + $(elem).height();} 
             catch(err){}
        /* убирает сообщение об ошибке изза попытки считать элемент, который аякс ещё не успел подгрузить */
-        console.log("elem " + elemBottom);
+        console.log("elemTop " + elemTop);
+        console.log("elemBottom " + elemBottom);
         console.log("view " + docViewBottom);
         console.log(elem);
         if(elem){
-            console.log("height_check");
-            return((elemBottom <= docViewBottom));
-        }
-        else {
-            console.log("NAN");
-            return false;
+            if (elemBottom <= docViewBottom){
+                return "append_bottom_block";
+            }
+            if (elemTop > docViewBottom){
+                return "remove_bottom_block";
+            }
         }
          
     }
     
     $(document).on("scroll", function(e){
-        /*
-        if (timer) {
-            clearTimeout(timer);
-        }
-        timer = setTimeout(function(){
-                    blockChange = element_in_scroll('#block-'+blockNumber);
-                }, 100);
         
-        */
         blockChange = element_in_scroll('#block-'+blockNumber);
         console.log(blockChange);
         if (blockNumber <= maxBlockNumber){
-            if(blockChange == true){
-                blockNumber++;
-               
-                $.ajax({
+            switch (blockChange){
+                case "append_bottom_block":
+                    blockNumber++;
 
-                  url: "models/main_page/main_page_gallery.php", 
-                  type: "POST",
-                  data: {
-                      requestType: "scroll_request",
-                      blockNumber: blockNumber,
-                      articlesInBlock: articlesInBlock
-                  },
-                  dataType: 'json',
-                  success: function(json){
-                    
-                   $('#articlesGallery').append(json);
-                   $('#block-'+blockNumber).show('slow');  
-                   
-                      
-                  },
-                  error: function(xhr, status, error){
-                      console.log(xhr.responseText);;
-                  }
-                });
+                    $.ajax({
 
+                      url: "models/main_page/main_page_gallery.php", 
+                      type: "POST",
+                      data: {
+                          requestType: "scroll_request",
+                          blockNumber: blockNumber,
+                          articlesInBlock: articlesInBlock
+                      },
+                      dataType: 'json',
+                      success: function(json){
+
+                       $('#articlesGallery').append(json);
+                       $('#block-'+blockNumber).show('slow');  
+                       if (blockNumber > maxBlockNumber){
+                           blockNumber = maxBlockNumber;
+                       }      
+
+                      },
+                      error: function(xhr, status, error){
+                          console.log(xhr.responseText);;
+                      }
+                    });
+                break;
+            
+                case "remove_bottom_block":
+                    $('#block-'+blockNumber).remove();
+                    blockNumber--;
+
+                break;
             }
         }
     });
