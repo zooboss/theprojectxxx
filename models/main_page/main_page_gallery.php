@@ -296,6 +296,9 @@ switch ($request_type){
         }
     break;
     case "cathegory_request":
+        
+        
+        
         $cathegory_type = $_POST['cathegoryType'];
         if ($cathegory_type == "main"){
             ?>
@@ -484,6 +487,7 @@ switch ($request_type){
              $master_key = 0;
              $minor_key = 0;
              
+             
 
              //foreach ($articles as $a)
              //{
@@ -495,7 +499,9 @@ switch ($request_type){
                                                             <?php
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
                                                                 if ($master_key < count($articles)){
+                                                                    
                                                                     $a = $articles[$master_key];
+                                                                    
                                                                     
                                                                     $article_author = get_author_by_article($a['id']);
                                                                     $comments_number = get_comments_number($a['id']);
@@ -633,10 +639,11 @@ switch ($request_type){
                         </div>
     </div> 
 
-                                                               <?php 
+                                                               <?php
+                                                                $master_key++;
+                                                                $minor_key++;    
                                                                 }
                                                                 $master_key++;
-                                                                $minor_key++;
                                                             }
                                                             $minor_key = 0;
                                                             ?>

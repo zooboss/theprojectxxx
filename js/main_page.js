@@ -42,10 +42,10 @@ $( document ).ready(function() {
             try {var elemBottom = elemTop + $(elem).height();} 
             catch(err){}
        /* убирает сообщение об ошибке изза попытки считать элемент, который аякс ещё не успел подгрузить */
-        console.log("elemTop " + elemTop);
-        console.log("elemBottom " + elemBottom);
-        console.log("view " + docViewBottom);
-        console.log(elem);
+        //console.log("elemTop " + elemTop);
+        //console.log("elemBottom " + elemBottom);
+        //console.log("view " + docViewBottom);
+        //console.log(elem);
         if(elem){
             if (elemBottom <= docViewBottom){
                 return "append_bottom_block";
@@ -60,7 +60,7 @@ $( document ).ready(function() {
     $(document).on("scroll", function(e){
         
         blockChange = element_in_scroll('#block-'+blockNumber);
-        console.log(blockChange);
+        //console.log(blockChange);
         if (blockNumber <= maxBlockNumber){
             switch (blockChange){
                 case "append_bottom_block":
