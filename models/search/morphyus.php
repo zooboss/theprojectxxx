@@ -79,10 +79,11 @@
 					'МС'    => 0,
 
 					// Наиболее значимые части речи //
-					'С'     => 5,
-					'Г'     => 5,
-					'П'     => 3,
-					'Н'     => 3,
+					'С'         => 5,
+					'Г'         => 5,
+                    'ИНФИНИТИВ' => 5,
+					'П'         => 3,
+					'Н'         => 3,
 
 					// Остальные части речи //
 					'DEFAULT' => 1
@@ -138,13 +139,14 @@
     }
     
     //Тестирование //
-    $content = "Дерево";
+    $content = "шел";
     $morph = new morphyus();
     $words = $morph->get_words( $content );
     $word = $words[ 0 ];
     $lemma = $morph->lemmatize($word);
 
-    //$part = $morph->phpmorphy->getPartOfSpeech($lemma);
+    $part = $morph->phpmorphy->getPartOfSpeech($lemma);
+    var_dump($part);
     $weight = $morph->weight($lemma);
     var_dump($weight);
 
