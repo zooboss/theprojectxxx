@@ -52,7 +52,7 @@
         public function lemmatize ($word) {
             // Получение базовой формы слова //
             $lemmas = $this->phpmorphy->lemmatize($word);
-            return $lemmas[0];
+            return $lemmas;
         }
         
         /**
@@ -139,7 +139,8 @@
     }
     
     //Тестирование //
-    $content = "шел";
+/*   
+$content = "шел";
     $morph = new morphyus();
     $words = $morph->get_words( $content );
     $word = $words[ 0 ];
@@ -149,7 +150,7 @@
     var_dump($part);
     $weight = $morph->weight($lemma);
     var_dump($weight);
-
+*/
 
 
 
