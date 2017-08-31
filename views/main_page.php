@@ -19,7 +19,7 @@
     <div class = "row">
         <div class = "col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
            
-            <input type = "search" placeholder = "Поиск..." name = "search" class = "main-search">
+            <input id = "input-search" type = "search" placeholder = "Поиск..." name = "search" class = "main-search">
                       
         </div>
     </div>

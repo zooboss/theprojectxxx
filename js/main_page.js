@@ -1,6 +1,6 @@
 $( document ).ready(function() {    
 
-    var articlesInBlock = 4,
+    var articlesInBlock = 11,
         masterKey = 0,
         cathegoryType = "main",
         maxBlockNumber = (Math.floor( $('#articlesGallery').attr('max-block-number') / articlesInBlock) + 1),
@@ -147,6 +147,21 @@ $( document ).ready(function() {
     });
 
    
+//Поиск
+    $("#input-search").on("keyup", function(e){
+        if(e.which == 13) {
+            e.preventDefault();
+            window.alert("enter");
+        }
+        
+        
+        
+       
+        
+        
+    });
+    
+    
     
 
     
