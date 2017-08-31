@@ -1,9 +1,11 @@
 $( document ).ready(function() {    
 
-    var articlesInBlock = 6,
+    var articlesInBlock = 4,
+        masterKey = 0,
         cathegoryType = "main",
         maxBlockNumber = (Math.floor( $('#articlesGallery').attr('max-block-number') / articlesInBlock) + 1),
-        blockChange;
+        blockChange,
+        blockNumber;
  
     
 //Отрисовка статей
@@ -20,6 +22,7 @@ $( document ).ready(function() {
     //ресет страницы при смене закладки
         
         $("body").animate({ scrollTop: "0px" });
+        masterKey = 0;
         blockNumber = 1;
                 
         $.ajax({
@@ -91,9 +94,11 @@ $( document ).ready(function() {
 //Скролл
     
     $(document).on("scroll", function(e){
-        
+        masterKey = $("#block-" + blockNumber).find(".article-wrap:last-child").attr("master-key");
+       
+        console.log("mK: " + masterKey);
         blockChange = element_in_scroll('#block-'+blockNumber);
-        console.log(blockChange + " blockN: " + blockNumber + " maxN: " + maxBlockNumber);
+        
         
         //console.log(maxBlockNumber + " " + blockNumber);
         if (blockNumber < maxBlockNumber){
@@ -109,7 +114,8 @@ $( document ).ready(function() {
                           requestType: "cathegory_request",
                           cathegoryType: cathegoryType,
                           blockNumber: blockNumber,
-                          articlesInBlock: articlesInBlock
+                          articlesInBlock: articlesInBlock,
+                          masterKey: masterKey
                       },
                       dataType: 'json',
                       success: function(json){
@@ -134,7 +140,6 @@ $( document ).ready(function() {
                         
         }
         if( (blockNumber == maxBlockNumber) && (blockChange == "remove_bottom_block") ) {
-            console.log("excxlusion");
             $('#block-'+blockNumber).remove();
             blockNumber--;
         }

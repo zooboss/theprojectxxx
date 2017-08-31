@@ -4,10 +4,10 @@ $articles = articles_all();
 $articles_in_block = $_POST['articlesInBlock'];
 $request_type = $_POST['requestType'];
 $cathegory_type = $_POST['cathegoryType'];
-$block_number = $_POST['blockNumber'];
-
 
 isset($_POST['blockNumber']) ? $block_number = $_POST['blockNumber'] : $block_number = 1;
+isset($_POST['masterKey']) ? $master_key = $_POST['masterKey'] : $master_key = 0;
+    
 ($cathegory_type == "main") ? $articles_ids = get_all_ids() : $articles_ids = get_articles_by_cathegory($cathegory_type);
 
 $max_block_number = (int)(count($articles_ids) / $articles_in_block) + 1;
@@ -21,7 +21,7 @@ switch ($request_type){
             <div class = "columns" id = "block-<?php echo $block_number ?>" max-block-number = "<?php echo $max_block_number ?>">  
                                                             <?php
                                                             $minor_key = 0;
-                                                            $master_key = 0;
+                                                            
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
                                                                 if( !($master_key < count($articles)) ) break;
                                                                 else{   
@@ -104,7 +104,7 @@ switch ($request_type){
                                                                 ?>    
 
                          <!-- отдельный блок статьи-->
-                        <div class='article-wrap' >                           
+                        <div class='article-wrap' master-key = "<?php echo $master_key ?>" >                           
                         <div class='image-wrap'> <!-- Тестовая картинка-обертка -->
                             <img alt="#0" src="img/articles/article_image-<?=$a['id']?>.jpg" class = "main-page-main-image"> 
 
