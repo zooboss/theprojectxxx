@@ -84,12 +84,44 @@
                 
             }
             return $index;
-            
-            
-            
+                    
         }
         
+        /**
+		 * Выполняет поиск слов одного индексного объекта в другом
+		 *
+		 * @param  {object}  target Искомые данные
+		 * @param  {object}  source Данные, в которых выполняется поиск
+		 * @return {integer}        Суммарный ранг на основе найденных данных
+		 */
         
+        public function search ( $target, $index ) {
+            $total_range = 0;
+            
+            // Перебор слов запроса //
+            foreach ( $target->words as $target_word ) {
+                // Перебор слов индекса //
+                foreach ( $index->words as $index_word ) {
+                    if ( $index_word->source === $target_word->source ) {
+                        $total_range += $index_word->range;
+                    } else if ( $index_word->basic && $target_word->basic ){
+                        // Если у искомого с индексированным есть леммы //
+                        $index_count = count( $index_word->basic );
+                        $target_count = count( $target_word->basic );
+                        
+                        for ( $i = 0; $i < $target_count; $i++ ) {
+                            for ( $j = 0; $j < $index_count; $j++ ){
+                                if ( $index_word->basic[ $j ] === $target_word->basic[ $i ]){
+                                    $total_range += $index_word->range;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return $total_range;  
+            
+        }
         
         
         
@@ -121,18 +153,21 @@
 
 /* Тестирование */
 
+/*
 $SEARCH = new firewind();
 
 $content = "Шла Саша по шоссе и сосала сушку шла шла шла шла";
+$target = "сосать";
 $range = 1;
 
 $index = $SEARCH->make_index( $content, $range );
+$target_index = $SEARCH->make_index( $target, $range);
 
-var_dump( $index );
+$search = $SEARCH->search( $target_index, $index );
 
+var_dump( $search );
 
-
-
+*/
 
 
 ?>
