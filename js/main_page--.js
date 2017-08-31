@@ -84,10 +84,7 @@ $( document ).ready(function() {
 
                        $('#articlesGallery').append(json);
                        $('#block-'+blockNumber).show('slow');  
-                       if (blockNumber > maxBlockNumber){
-                           blockNumber = maxBlockNumber;
-                       }      
-
+                       
                       },
                       error: function(xhr, status, error){
                           console.log(xhr.responseText);;
