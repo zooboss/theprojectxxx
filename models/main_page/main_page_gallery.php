@@ -6,12 +6,11 @@ $request_type = $_POST['requestType'];
 $cathegory_type = $_POST['cathegoryType'];
 $block_number = $_POST['blockNumber'];
 
-$max_block_number = (int)(count($articles) / $articles_in_block) + 1;
 
 isset($_POST['blockNumber']) ? $block_number = $_POST['blockNumber'] : $block_number = 1;
 ($cathegory_type == "main") ? $articles_ids = get_all_ids() : $articles_ids = get_articles_by_cathegory($cathegory_type);
 
-
+$max_block_number = (int)(count($articles_ids) / $articles_in_block) + 1;
 
 ob_start();
 
@@ -19,7 +18,7 @@ switch ($request_type){
     case "cathegory_request":
         
         ?>
-            <div class = "columns" id = "block-<?php echo $block_number ?>">  
+            <div class = "columns" id = "block-<?php echo $block_number ?>" max-block-number = "<?php echo $max_block_number ?>">  
                                                             <?php
                                                             $minor_key = 0;
                                                             $master_key = 0;

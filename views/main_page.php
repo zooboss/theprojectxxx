@@ -71,7 +71,7 @@ else {	//если не админ
 ?>		
     <section    id = "articlesGallery" 
                 class='articlesGallery clearfix' 
-                count-articles = "<?php echo count($articles)?>"
+                max-block-number = "<?php echo count($articles)?>"
      >
 
     </section>   <!-- galery -->

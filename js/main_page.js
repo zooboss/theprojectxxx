@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
     var articlesInBlock = 6,
         cathegoryType = "main",
-        maxBlockNumber = (Math.floor( $('#articlesGallery').attr('count-articles') / articlesInBlock) + 1),
+        maxBlockNumber = (Math.floor( $('#articlesGallery').attr('max-block-number') / articlesInBlock) + 1),
         blockChange;
  
     
@@ -38,6 +38,10 @@ $( document ).ready(function() {
                 $('#articlesGallery').append(json);
                 $('#block-'+blockNumber).show('slow');
                 console.log("success");
+                  
+//Смена максимума блоков при смене категории     
+                  
+                maxBlockNumber = $('.columns').attr('max-block-number');      
               },
               error: function(xhr, status, error){
                   console.log(xhr.responseText);;
@@ -73,7 +77,7 @@ $( document ).ready(function() {
     
     $(document).on('ready', function(e){
         renderArticles(e, true);
-                
+            
     });           
                
 //Смена категории
@@ -89,7 +93,7 @@ $( document ).ready(function() {
     $(document).on("scroll", function(e){
         
         blockChange = element_in_scroll('#block-'+blockNumber);
-        console.log(blockChange);
+        console.log(blockChange + " blockN: " + blockNumber + " maxN: " + maxBlockNumber);
         
         //console.log(maxBlockNumber + " " + blockNumber);
         if (blockNumber < maxBlockNumber){
