@@ -2,7 +2,7 @@
     require_once __DIR__.'/src/common.php';
     
     class morphyus {
-        private $phpmorphy     = null;
+        public $phpmorphy     = null;
         private $regexp_word   = '/([a-zа-я0-9]+)/ui';
 		private $regexp_entity = '/&([a-zA-Z0-9]+);/';
     
@@ -52,7 +52,7 @@
         public function lemmatize ($word) {
             // Получение базовой формы слова //
             $lemmas = $this->phpmorphy->lemmatize($word);
-            return $lemmas;
+            return $lemmas[0];
         }
         
         /**
@@ -68,7 +68,7 @@
             $partsOfSpeech = $this->phpmorphy->getPartOfSpeech ($word);
             
             //Профиль по умолчанию
-            if (!profile) {
+            if (!$profile) {
                 $profile = [
                     // Служебные части речи //
 					'ПРЕДЛ' => 0,
@@ -138,10 +138,15 @@
     }
     
     //Тестирование //
-    $content = "Раз, два, три, 4, 5, вышел Петя погулять!";
+    $content = "Дерево";
     $morph = new morphyus();
     $words = $morph->get_words( $content );
-    var_dump( $words );
+    $word = $words[ 0 ];
+    $lemma = $morph->lemmatize($word);
+
+    //$part = $morph->phpmorphy->getPartOfSpeech($lemma);
+    $weight = $morph->weight($lemma);
+    var_dump($weight);
 
 
 
