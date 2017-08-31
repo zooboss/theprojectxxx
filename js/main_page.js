@@ -1,7 +1,6 @@
 $( document ).ready(function() {    
 
     var articlesInBlock = 6,
-        //requesType = "initial_request",
         cathegoryType = "main",
         maxBlockNumber = (Math.floor( $('#articlesGallery').attr('count-articles') / articlesInBlock) + 1),
         blockChange;
@@ -25,13 +24,15 @@ $( document ).ready(function() {
               url: "models/main_page/main_page_gallery.php", 
               type: "POST",
               data: {
+                  blockNumber: blockNumber,
                   requestType: "cathegory_request",
                   cathegoryType: cathegoryType,
                   articlesInBlock: articlesInBlock
               },
               dataType: 'json',
               success: function(json){
-                $('#articlesGallery').replaceWith(json); // заменим форму данными, полученными в ответе
+                $('#articlesGallery').append(json);
+                $('#block-'+blockNumber).show('slow');
                 console.log("success");  
 
               },

@@ -4,43 +4,31 @@ $articles = articles_all();
 $articles_in_block = $_POST['articlesInBlock'];
 $request_type = $_POST['requestType'];
 $cathegory_type = $_POST['cathegoryType'];
-$max_block_number = (int)(count($articles) / $articles_in_block) + 1;
-$block_number = 1;
- isset($_POST['blockNumber']) ? $block_number = $_POST['blockNumber'] : $block_number = 1;
+$block_number = $_POST['blockNumber'];
 
-$articles_to_show = $block_number * $articles_in_block;
+$max_block_number = (int)(count($articles) / $articles_in_block) + 1;
+
+isset($_POST['blockNumber']) ? $block_number = $_POST['blockNumber'] : $block_number = 1;
+($cathegory_type == "main") ? $articles_ids = get_all_ids() : $articles_ids = get_articles_by_cathegory($cathegory_type);
+
+
 
 ob_start();
 
 switch ($request_type){
     case "cathegory_request":
-            
-        if ($cathegory_type == "main"){
-            $articles_ids = get_all_ids();
-        }
-        else {
-            $articles_ids = get_articles_by_cathegory($cathegory_type);  
-        }
-        ?>
         
-        <section id = "articlesGallery" class='articlesGallery clearfix' count-articles = "<?php echo count($articles_ids)?>" >
-
-         <!-- Вывод массива всех статей из бд-->
-            <?php 
-             $master_key = 0;
-             $minor_key = 0;
-                       
-             while($master_key < $articles_to_show){    
-                   ?>
-
-                    <div class = "columns" id = "block-<?php echo $block_number ?>">  
+        ?>
+            <div class = "columns" id = "block-<?php echo $block_number ?>">  
                                                             <?php
+                                                            $minor_key = 0;
+                                                            $master_key = 0;
                                                             while ($minor_key % ($articles_in_block + 1) < $articles_in_block){
-                                                                if ($master_key < count($articles)){
-                                                                    
+                                                                if( !($master_key < count($articles)) ) break;
+                                                                else{   
                                                                     $a = $articles[$master_key];
-                                                                    
-                                                                    
+                                                                    if (in_array($a['id'], $articles_ids)){
+                                                                                                                                                                                                            
                                                                     $article_author = get_author_by_article($a['id']);
                                                                     $comments_number = get_comments_number($a['id']);
                                                                     $comments_number_noun = "комментариев";
@@ -112,13 +100,8 @@ switch ($request_type){
                                                                             $article_date_array[1] = "дек";
                                                                         break;
                                                                     }
-                                                                    
-                                                                }
-                                                                else{
-                                                                    break;
-                                                                }
-                                                                
-                                                                if (in_array($a['id'], $articles_ids)){
+                                                                    $master_key++;
+                                                                    $minor_key++; 
                                                                 ?>    
 
                          <!-- отдельный блок статьи-->
@@ -178,24 +161,20 @@ switch ($request_type){
     </div> 
 
                                                                <?php
-                                                                $master_key++;
-                                                                $minor_key++;    
+                                                                   
                                                                 }
                                                                 else{
                                                                     $master_key++;
+                                                                }
                                                                 }
                                                             }
                                                             
                                                             ?>
                     </div>
                     
-                    <?php
-                    $minor_key = 0;
-                    $block_number++;
-                }
-             //}
+                    
 
-    ?>       
+          
     </section>
         
     <?php

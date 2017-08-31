@@ -2,7 +2,8 @@ $( document ).ready(function() {
    
 //Скрывает категориальные меню не на основной странице    
     var pathname = window.location.href;
-    if (pathname != "http://localhost/theprojectxxx/index.php" or pathname != "http://localhost/theprojectxxx/"){
+    
+    if (pathname != "http://localhost/theprojectxxx/index.php" && pathname != "http://localhost/theprojectxxx/"){
        $("#everywhere-top-navigation-menu").hide();
               
     }
