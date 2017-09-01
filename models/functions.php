@@ -1,6 +1,7 @@
 <?php
 
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/dbconfig.php"); 
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/search/core.php");
 
 class ARTICLES {	
 
@@ -147,5 +148,49 @@ function get_all_ids () {
     
     return $article_ids;
 }
+
+/* Search functions */
+
+function SITE_INDEX ( ) {
+    // Индексация всех статей на сайте - инициация //
+    
+    $SEARCH = new SEARCH();
+    $ARTICLES = new ARTICLES();
+    
+    $stmt = $ARTICLES->runQuery("SELECT id, title, content, keywords, author_id FROM articles");
+    $stmt->execute();
+    $stmt = $stmt->fetchAll();
+    
+    foreach ($stmt as $s) {
+        $author = get_author_by_article( $s[ 'id' ] )[ 'PublicUserName' ];
+        echo $author;
+        
+    }
+    //$author   = "Петрович";
+    $title    = "Сталин рано пошел в школу петрович";
+    $content  = "Шла саша сталин и всех их убило потому что левый петрович поехали в правду и приехали нахуй";
+    $keywords = "Сталин, нахуй";
+
+    //$index = $SEARCH->integrated_index( $author, $title, $content, $keywords );
+    
+    return $stmt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>

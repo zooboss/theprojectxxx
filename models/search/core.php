@@ -1,7 +1,7 @@
 <?php
     require_once 'morphyus.php';
 
-    class firewind {
+    class SEARCH {
         public $VERSION = "1.0";
         private $morphyus;
         
@@ -123,67 +123,91 @@
             
         }
         
+        /**
+		 * Выполняет интегральную индексацию по нескольким параметрам
+		 *
+		 * @param  {string}  author   Автор статьи
+		 * @param  {string}  title    Название статьи
+         * @param  {string}  content  Содержание статьи
+		 * @param  {string}  keywords Ключевые слова
+		 * @return {object}           Объект с индексами
+		 */
         
+        public function integrated_index ( $author, $title, $content, $keywords ) {
+            $author_index   = $this->make_index( $author, $range = 5 );
+            $title_index    = $this->make_index( $title, $range = 10 );
+            $content_index  = $this->make_index( $content, $range = 1 );
+            $keywords_index = $this->make_index( $keywords, $range = 5);
+            
+            $integrate_index = new stdClass();
+            $integrate_index->author    = $author_index;
+            $integrate_index->title     = $title_index;
+            $integrate_index->content   = $content_index;
+            $integrate_index->keywords  = $keywords_index;
+            
+            return $integrate_index;
+        }
         
+        /**
+		 * Выполняет интегральную индексацию по нескольким параметрам
+		 *
+		 * @param  {string}  search_phrase_index   Индекс поисковой фразы
+		 * @param  {string}  integrated_index      Общий индекс статьи
+         * @return {int}                           Общий поисковый рейтинг фразы в статье
+		 */
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        public function integrated_search ( $search_phrase_index, $integrated_index ) {
+            $author_index   = $integrated_index->author;
+            $title_index    = $integrated_index->title;
+            $content_index  = $integrated_index->content;
+            $keywords_index = $integrated_index->keywords;
+            
+            $integrated_range =
+                $this->search( $search_phrase_index, $author_index )
+                + $this->search( $search_phrase_index, $title_index )
+                + $this->search( $search_phrase_index, $content_index )
+                + $this->search( $search_phrase_index, $keywords_index );
+            
+            return $integrated_range;
+        }
+                
         
     }
 
+    
+
+
+
+
+
+
+
+
 /* Тестирование */
-
-
+// Готовый код примера поиска, вместо строк подставить значения из бд //
+/*
 $SEARCH = new firewind();
 
-$search_phrase = "рано";
+$search_phrase = "нахуй шла";
 $search_phrase = $SEARCH->make_index( $search_phrase );
 
+$author   = "Петрович";
+$title    = "Сталин рано пошел в школу петрович";
+$content  = "Шла саша сталин и всех их убило потому что левый петрович поехали в правду и приехали нахуй";
+$keywords = "Сталин, нахуй";
 
-$author = "Петрович";
-$title = "Сталин рано пошел в школу петрович";
+$index = $SEARCH->integrated_index( $author, $title, $content, $keywords );
+$index = json_encode( $index );
+$index = json_decode( $index );
 
-$author_index = $SEARCH->make_index( $author, $range = 3 );
+$search = $SEARCH->integrated_search( $search_phrase, $index);
 
-$title_index = $SEARCH->make_index( $title, $range = 1);
+echo $search;
 
-$INDEX = new stdClass();
-$INDEX->author = $author_index;
-$INDEX->title  = $title_index;
-//$INDEX = {"author" => $author_index, "title" => $title_index};
-$INDEX = json_encode( $INDEX );
-//var_dump( $INDEX );
-echo "<br> начинаем поиск <br>";
-$INDEX = json_decode( $INDEX );
+/*
 
-$author_index = $INDEX->author;
 
-$title_index  = $INDEX->title;
-
-$search_author = $SEARCH->search ( $search_phrase, $author_index ); 
-$search_title  = $SEARCH->search ( $search_phrase, $title_index ); 
-
-echo "<br> search author: " . $search_author . "<br> search title: " . $search_title;
+//echo "<br> search author: " . $search_author . "<br> search title: " . $search_title;
 
 
 
