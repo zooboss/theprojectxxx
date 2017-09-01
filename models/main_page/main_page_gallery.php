@@ -182,9 +182,11 @@ switch ($request_type){
     break;
         
     case "search_request":
+        $search_result = SITE_SEARCH( $search_phrase );
+        var_dump( $search_result );
         ?>
         <div id = "site-search">
-            <?php echo $search_phrase ?>
+           
         </div>
         
     <?php    

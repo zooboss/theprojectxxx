@@ -152,7 +152,7 @@ function get_all_ids () {
 /* Search functions */
 
 function SITE_INDEX () {
-    // Индексация всех статей на сайте - инициация //
+    // Индексация всех статей на сайте //
     // Заготовка в меню рейтинг личного кабинета //
     
     $SEARCH = new SEARCH();
@@ -189,7 +189,31 @@ function SITE_INDEX () {
 }
 
 function SITE_SEARCH ( $search_phrase ) {
+    $SEARCH = new SEARCH();
+    $ARTICLES = new ARTICLES();
+    $result = [];
     
+    $stmt = $ARTICLES->runQuery("SELECT id, article_index FROM articles");
+    $stmt->execute();
+    $articles = $stmt->fetchAll();
+    
+    $search_phrase = $SEARCH->make_index( $search_phrase );
+    
+    foreach ( $articles as $article ){
+        $article_index = json_decode( $article[ "article_index" ] );
+                
+        $range = $SEARCH->integrated_search( $search_phrase, $article_index);
+        
+        if ( $range > 0 ) $result[ $article['id'] ] = $range;
+    }
+    
+    if ( isset( $result ) ) {
+        arsort( $result );
+    }
+    
+    
+    
+    return $result;
 }
 
 
