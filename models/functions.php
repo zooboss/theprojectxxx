@@ -185,10 +185,12 @@ function SITE_INDEX () {
 		}
         
     }
-    
+
 }
 
-
+function SITE_SEARCH ( $search_phrase ) {
+    
+}
 
 
 

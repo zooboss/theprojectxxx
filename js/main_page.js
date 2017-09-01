@@ -37,6 +37,7 @@ $( document ).ready(function() {
               },
               dataType: 'json',
               success: function(json){
+                $('#articlesGallery').find('#site-search').remove();
                 $('#block-'+blockNumber).remove();  
                 $('#articlesGallery').append(json);
                 $('#block-'+blockNumber).show('slow');
@@ -151,13 +152,36 @@ $( document ).ready(function() {
     $("#input-search").on("keyup", function(e){
         if(e.which == 13) {
             e.preventDefault();
-            window.alert("enter");
+            var searchPhrase = e.target.value;
+            $.ajax({
+                url: "models/main_page/main_page_gallery.php", 
+                      type: "POST",
+                      data: {
+                          searchPhrase: searchPhrase,
+                          requestType: "search_request",
+                          cathegoryType: cathegoryType,
+                          blockNumber: blockNumber,
+                          articlesInBlock: articlesInBlock,
+                          masterKey: masterKey
+                      },
+                      dataType: 'json',
+                      success: function(json){
+                            
+                       $('#articlesGallery').find('div').remove();
+                       $('#articlesGallery').append(json);     
+                           
+
+                      },
+                      error: function(xhr, status, error){
+                          console.log(xhr.responseText);;
+                      }
+                
+                
+                
+            });
+          
+        
         }
-        
-        
-        
-       
-        
         
     });
     

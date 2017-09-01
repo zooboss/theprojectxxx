@@ -28,15 +28,7 @@ $( document ).ready(function() {
     );
     
     
-    //Скрипт поиска
-    
-    $(".main-search").keydown(function(e){
-        if(e.which == 13) {
-            window.alert("enter");
-        }
-            
-        
-    });
+ 
     
     
     

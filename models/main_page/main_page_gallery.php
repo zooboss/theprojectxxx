@@ -7,6 +7,7 @@ $cathegory_type = $_POST['cathegoryType'];
 
 isset($_POST['blockNumber']) ? $block_number = $_POST['blockNumber'] : $block_number = 1;
 isset($_POST['masterKey']) ? $master_key = $_POST['masterKey'] : $master_key = 0;
+isset($_POST['searchPhrase']) ? $search_phrase = $_POST['searchPhrase'] : $search_phrase = "";
     
 ($cathegory_type == "main") ? $articles_ids = get_all_ids() : $articles_ids = get_articles_by_cathegory($cathegory_type);
 
@@ -179,6 +180,15 @@ switch ($request_type){
     <?php
         
     break;
+        
+    case "search_request":
+        ?>
+        <div id = "site-search">
+            <?php echo $search_phrase ?>
+        </div>
+        
+    <?php    
+    break;    
 
 }
 ?>
