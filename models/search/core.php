@@ -153,22 +153,56 @@
 
 /* Тестирование */
 
-/*
+
 $SEARCH = new firewind();
 
-$content = "Шла Саша по шоссе и сосала сушку шла шла шла шла";
-$target = "сосать";
-$range = 1;
+$search_phrase = "рано";
+$search_phrase = $SEARCH->make_index( $search_phrase );
 
-$index = $SEARCH->make_index( $content, $range );
-$target_index = $SEARCH->make_index( $target, $range);
 
-$search = $SEARCH->search( $target_index, $index );
+$author = "Петрович";
+$title = "Сталин рано пошел в школу петрович";
 
-var_dump( $search );
+$author_index = $SEARCH->make_index( $author, $range = 3 );
 
+$title_index = $SEARCH->make_index( $title, $range = 1);
+
+$INDEX = new stdClass();
+$INDEX->author = $author_index;
+$INDEX->title  = $title_index;
+//$INDEX = {"author" => $author_index, "title" => $title_index};
+$INDEX = json_encode( $INDEX );
+//var_dump( $INDEX );
+echo "<br> начинаем поиск <br>";
+$INDEX = json_decode( $INDEX );
+
+$author_index = $INDEX->author;
+
+$title_index  = $INDEX->title;
+
+$search_author = $SEARCH->search ( $search_phrase, $author_index ); 
+$search_title  = $SEARCH->search ( $search_phrase, $title_index ); 
+
+echo "<br> search author: " . $search_author . "<br> search title: " . $search_title;
+
+
+
+
+
+
+/*
+$search = $SEARCH->make_index ( $search );
+$search2 = $SEARCH->search( $search, $index2);
+$search = $SEARCH->search( $search, $index );
+
+
+var_dump( $index );
+echo " ";
+var_dump( $index2 );
+
+var_dump($search);
+var_dump($search2);
 */
-
 
 ?>
 
