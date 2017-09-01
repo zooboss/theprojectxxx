@@ -151,29 +151,41 @@ function get_all_ids () {
 
 /* Search functions */
 
-function SITE_INDEX ( ) {
+function SITE_INDEX () {
     // Индексация всех статей на сайте - инициация //
+    // Заготовка в меню рейтинг личного кабинета //
     
     $SEARCH = new SEARCH();
     $ARTICLES = new ARTICLES();
     
-    $stmt = $ARTICLES->runQuery("SELECT id, title, content, keywords, author_id FROM articles");
+    $stmt = $ARTICLES->runQuery("SELECT id, title, content, keywords FROM articles");
     $stmt->execute();
     $stmt = $stmt->fetchAll();
     
     foreach ($stmt as $s) {
         $author = get_author_by_article( $s[ 'id' ] )[ 'PublicUserName' ];
-        echo $author;
+        $title = $s[ 'title'];
+        $content = $s[ 'content' ];
+        $keywords = $s [ 'keywords' ];
+        
+        $article_index = $SEARCH->integrated_index( $author, $title, $content, $keywords );
+        $article_index = json_encode( $article_index );
+        //var_dump ($article_index);
+        
+        try {
+            $statement = $ARTICLES->runQuery("UPDATE articles SET article_index = :aindex WHERE id = :aid");
+            $statement->bindparam( ":aindex", $article_index );
+            $statement->bindparam( ":aid", $s[ 'id' ] );
+            $statement->execute();
+            
+        }
+        catch(PDOException $ex)
+		{
+			echo $ex->getMessage();
+		}
         
     }
-    //$author   = "Петрович";
-    $title    = "Сталин рано пошел в школу петрович";
-    $content  = "Шла саша сталин и всех их убило потому что левый петрович поехали в правду и приехали нахуй";
-    $keywords = "Сталин, нахуй";
-
-    //$index = $SEARCH->integrated_index( $author, $title, $content, $keywords );
     
-    return $stmt;
 }
 
 

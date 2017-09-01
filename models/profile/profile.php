@@ -164,7 +164,8 @@ switch ($personal_request_type):
               username = "<?php echo $author ?>"
          >
             <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
-            <?php  SITE_INDEX(); ?>
+            
+            <?php  ?>
         </div>
     <?php
     break;
