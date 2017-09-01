@@ -184,16 +184,16 @@ switch ($request_type){
     case "search_request":
         $search_result = SITE_SEARCH( $search_phrase );
         
-        
+        /*
         foreach( $search_result as $key => $result) {
             echo "id: " . $key . "range: " . $result . "<br>";
         }
+        */
+        
+        var_dump($search_result);
         ?>
         
-        
-        <div id = "site-search">
-           
-        </div>
+       
         
     <?php    
     break;    

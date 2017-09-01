@@ -192,8 +192,10 @@ function SITE_SEARCH ( $search_phrase ) {
     $SEARCH = new SEARCH();
     $ARTICLES = new ARTICLES();
     $result = [];
+    $result_ids = [];
+    $result_articles = [];
     
-    $stmt = $ARTICLES->runQuery("SELECT id, article_index FROM articles");
+    $stmt = $ARTICLES->runQuery("SELECT * FROM articles");
     $stmt->execute();
     $articles = $stmt->fetchAll();
     
@@ -209,15 +211,44 @@ function SITE_SEARCH ( $search_phrase ) {
     
     if ( isset( $result ) ) {
         arsort( $result );
+    
+    
+        //Получаем чистые отсортированные айди
+        foreach ( $result as $key => $value ){
+           if ( !empty ($value) ) array_push( $result_ids, $key );
+        }
+
+        //Поиск статей с нужными айди c сохранением порядка
+        foreach ( $result_ids as $result_id){
+            
+            foreach ( $articles as $article ) {
+                if ( $article[ 'id' ] == $result_id ) array_push( $result_articles, $article);
+            }
+        }
+    
+    return $result_articles;
     }
-    
-    
-    
-    return $result;
+    else{
+        return "";
+    }
 }
 
-
-
+/*
+function get_articles_by_search_result ( $ids ){
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT id FROM articles WHERE tag= ?");
+    $stmt->execute([$cathegory]);
+    $stmt = $stmt->fetchAll();
+    
+    $article_ids = [];
+    foreach($stmt as $s) {
+        array_push($article_ids, $s['id']);
+    }
+    
+    return $article_ids;
+}
+*/
 
 
 
