@@ -29,10 +29,35 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/functions.php"
 	
 
 	
-
-	
+       
+       <?php
+       
+                    
+                    $article_author = get_author_by_article($article['id']);
+                    $comments_number = get_comments_number($article['id']);
+                    $comments_number_noun = "комментариев";
+                    $article_date = $article['date'];
+                    $article_date_array = explode("-", $article_date);
+                    $article_date_array_numeric = $article_date_array;
+        ?>
+        
         <div class = "article">
-           <h1> <strong><?=$article['title']?></strong> </h1>
+           <h1> 
+               <strong><?=$article['title']?></strong> 
+            </h1>
+            <h4>
+                <img class = "related-author-image" alt='#0' title='#0' src='img/avatars/user-<?php echo $article_author['userID'] ?>.jpg'/>  
+                <a class = "main-page-author-name" href="http://localhost/theprojectxxx/user-<?php echo $article_author['userID'] ?>.html">
+                    <span class = "related-author-name">
+                        <?php echo $article_author['PublicUserName'] ?>
+                    </span>
+                                
+                </a>
+                <span class = "article-author-date">   
+                    <?php echo ", " . $article_date_array_numeric[2] . "." . $article_date_array_numeric[1] . "." . $article_date_array_numeric[0] ?>
+                </span>
+                            
+            </h4>
            <div class = "article-main-image-wrap">
                 <img alt="<?=$article['img_main_alt']?>" src="img/articles/article_image-<?=$article['id']?>.jpg" class = "img-responsive pull-left"> 
            </div>
@@ -76,6 +101,12 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/functions.php"
             
         </div>
     </div>
+    
+    
+    
+    
+    
+    
     <div class = "col-md-3 hidden-sm hidden-xs">
         <h3 class = "last-related-articles text-right">ПОСЛЕДНИЕ СТАТЬИ</h3>
         <div class = "article-related">
@@ -117,12 +148,13 @@ require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/functions.php"
                             <img class = "related-author-image" alt='#0' title='#0' src='img/avatars/user-<?php echo $article_author['userID'] ?>.jpg'/>   
                             <a class = "main-page-author-name" href="http://localhost/theprojectxxx/user-<?php echo $article_author['userID'] ?>.html">
                                 <span class = "related-author-name">
-                                    <?php echo $article_author['PublicUserName'] . ", " ?>
+                                    <?php echo $article_author['PublicUserName'] ?>
                                 </span>
-                                <span class = "related-author-date">   
-                                    <?php echo $article_date_array_numeric[2] . "." . $article_date_array_numeric[1] . "." . $article_date_array_numeric[0] ?>
-                                </span>
+                                
                             </a>
+                            <span class = "related-author-date">   
+                                <?php echo ", " . $article_date_array_numeric[2] . "." . $article_date_array_numeric[1] . "." . $article_date_array_numeric[0] ?>
+                            </span>
                         </h4>
                     </div>
 

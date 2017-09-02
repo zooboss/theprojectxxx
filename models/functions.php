@@ -45,7 +45,7 @@ function articles_get($id_article)
     return $stmt[0];
 }
 
-function articles_intro($text, $len = 100)
+function articles_intro($text, $len = 500)
 {
     return mb_substr($text, 0, $len);   
 }

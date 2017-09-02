@@ -5,11 +5,11 @@ if (isset($_GET['send'])) {
         case 'profile':
             if ($user_login->is_logged_in()!=""  and $row['userID']==$_GET['userID'])
 			{
-			echo "Мой профиль на RTB";
+			echo "Личный кабинет";
 			} 
 			elseif (($user_login->is_logged_in()!=""  and $row['userID']!==$_GET['userID']))
 			{
-				echo "Профиль пользователя ".$row['PublicUserName'];	
+				echo "Профиль ".$row['PublicUserName'];	
 				}  			
             break;
         case "article":
@@ -26,6 +26,6 @@ if (isset($_GET['send'])) {
         
 }
 else {
-    echo "Главная РТБ";
+    echo "РТБ";
 }
 ?>

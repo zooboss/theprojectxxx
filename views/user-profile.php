@@ -96,8 +96,10 @@
                 <div class = "row">
                     <div class = "personal-avatar offset-md-4 col-md-4 offset-sm-0 col-sm-6 offset-xs-0 col-xs-12 text-center">
                         <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "personal-avatar">
-                        <h1><?php echo $row['userName'] ?></h1>
-                        
+                        <h1><?php echo $row['PublicUserName'] ?></h1>
+                        <div id = "profile-avatar-change">
+                            <a href = "" id = "profile-avatar-change-link" >Изменить</a>                            
+                        </div>
                     </div>
                 </div>
                 <div class = "divider"></div>
@@ -184,10 +186,7 @@
                     <div class = "personal-avatar offset-md-4 col-md-4 offset-sm-0 col-sm-6 offset-xs-0 col-xs-12 text-center">
                         <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "personal-avatar">
                         <h1><?php echo $line['PublicUserName'] ?></h1>
-                        <div id = "profile-avatar-change">
-                            <a href = "" id = "profile-avatar-change-link" >Изменить</a>                            
-                        </div>
-                        
+                                                
                     </div>
                 </div>
                 <div class = "divider"></div>
@@ -199,8 +198,10 @@
                             </div>
                             <div class = "panel-body personal-info">
 
-                                   <h4>Логин: <?php echo $line['userName'] ?></h4>
-                                  
+                                   
+                                   <h4>Фамилия: <?php echo $row['Surname'] ?></h4>
+                                   <h4>Имя: <?php echo $row['Name'] ?></h4>
+                                   <h4>Отчество: <?php echo $row['Patronymic'] ?>
                                    <h4>Дата рождения: <?php echo $line['birthday'] ?></h4>
                                    <h4>Пол: <?php echo $line['sex'] ?></h4>
                                     <!--
