@@ -190,10 +190,53 @@ switch ($request_type){
         }
         */
         
-        var_dump($search_result);
         ?>
         
-       
+        
+        <div id = "site-search">
+           <?php 
+                                     
+            if ( empty($search_result) == true ){
+                ?>
+                <div class = "text-center"><h2><?php echo "Совпадений не найдено"; ?></h2></div>
+            <?php
+            }
+            else{
+            ?>
+                <table class = "table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>   
+                            <th>Название</th>
+                            <th>Автор</th>
+                            <th>Дата</th>
+                            <th>Превью</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                        foreach ($search_result as $article) {
+                            $not_visited_article_author = get_author_by_article( $article[ 'id' ] )[ 'PublicUserName' ];
+                            ?>
+                            <tr class = "clickable-row" data-href = '<?php echo '/theprojectxxx/index.php?send=article&id=' . $article['id'] ?>'>
+                                <td class = "td-search-image"><img alt="#0" src="img/articles/article_image-<?=$article['id']?>.jpg" class = "search-page-main-image"> </td>
+                                <td><?php echo $article['title']  ?> </td>
+                                <td><?php echo $not_visited_article_author  ?> </td>
+                                <td class = "td-search-date"><?php echo $article['date']   ?> </td>
+                                <td><?php echo articles_intro($article['content'])  ?> </td>
+
+                            </tr>
+                        <?php
+                        }
+                    ?>
+                    </tbody>
+                </table>
+                
+                
+            <?php
+            }                          
+            ?>
+        </div>
         
     <?php    
     break;    

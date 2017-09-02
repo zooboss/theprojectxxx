@@ -28,6 +28,31 @@ $( document ).ready(function() {
     );
     
     
+  //Скрипт согласия с куками
+    $("#cookie-accept").on('click', function(e){
+        e.preventDefault();
+        
+        var cookieAccept = true; 
+        $("#cookie-initial").hide('fast');
+        
+         $.ajax({
+                               
+              url: "models/cookie.php", 
+              type: "POST",
+              data: {
+                  cookieAccept: cookieAccept
+              },
+              dataType: 'json',
+              success: function(json){
+                  
+              },
+              error: function(xhr, status, error){
+                  console.log(xhr.responseText);;
+              }
+                
+        }); 
+                
+    });
  
     
     

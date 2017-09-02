@@ -185,7 +185,13 @@ $( document ).ready(function() {
         
     });
     
-    
+     //Кликабельные строки таблиц
+
+    $(document).on('click', '.clickable-row', function(e) {
+        
+        window.location = $(this).attr("data-href");
+
+    });   
     
 
     

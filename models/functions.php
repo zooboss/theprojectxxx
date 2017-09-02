@@ -226,11 +226,9 @@ function SITE_SEARCH ( $search_phrase ) {
             }
         }
     
+    }
+    
     return $result_articles;
-    }
-    else{
-        return "";
-    }
 }
 
 /*

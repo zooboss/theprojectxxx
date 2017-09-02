@@ -2,7 +2,33 @@
 <meta content='' itemprop='name'/>    <!-- Придумать название это тег для микроразметки и поисковиков -->
 </div>
 
+<!-- Cookie initiation -->
+<?php
+
+    // Проверка дано ли согласие на куки, вызывается аяксом из мейн.жс //
+    if ( !isset( $_COOKIE ) ) {
+        ?>
+        <div id = "cookie-initial" class = "container-fluid">
+            <div class = "container">  
+               <div class = "col-xs-10 ">
+                 <p>
+                     Администрация сайта просит вашего разрешения на использования cookie-файлов при навигации по сайту <span style="white-space: nowrap;" >russian-tribune.ru</span>
+                     Это делается в целях улучшения работы сайта и повышения его комфортабельности. 
+                 </p>
+               </div>
+               <div class = "col-xs-2">
+                   <button id = "cookie-accept" class = "btn btn-warning"> ОК </button>
+               </div>
+            </div>
+        </div>
+    <?php
+    }
+?>
+
+
 <header class='top-navigation container-fluid total-header'>
+
+ 
   <?php if (!isset($_COOKIE['_SS']))
   { ?>
    <div class = 'navlist col-md-3 hidden-sm hidden-xs'>

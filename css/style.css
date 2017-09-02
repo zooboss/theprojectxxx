@@ -1201,12 +1201,30 @@ display: none;
     font-family: "Montserrat", sans-serif;
 }
 
+.clickable-row:hover {
+    cursor: pointer;
+}
 
+.search-page-main-image {
+    width: 200px;
+    
+}
 
+.td-search-date {
+    width: 120px;    
+}
 
+#cookie-initial {
+    padding-top: 5px;
+}
 
-
-
+#cookie-accept {
+    width: 60px;
+    height: 40px;
+      
+    margin-top: 3px;
+    
+}
 
 
 
