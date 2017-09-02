@@ -184,7 +184,7 @@ $phone_send = 'Не указан';
 						Спасибо,";
 						
 			$subject = "Подтверждение регистрации";  //тема письма //поменять адрес ссылки
-						
+			setcookie( "cookie_accept", "true"); // согласие на кукизы			
 			$reg_user->send_mail($email,$message,$subject);	
 			$msg = "12321321321321321321";
 			//header("Location: http://localhost/theprojectxxx/views/signup_page.php?email=$email");
