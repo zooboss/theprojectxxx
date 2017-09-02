@@ -140,10 +140,13 @@ li.selected a{
 .logo-text-sup {
     top: 2px;
     
-    line-height: 12px;
-    font-size: 12px;
+    line-height: 13px;
+    font-size: 13px;
     font-style: italic;
     border-bottom: 0px;
+    
+    word-spacing: 3px;
+    letter-spacing: 1.5px;
 }
 
 
@@ -152,11 +155,11 @@ li.selected a{
 }
 
 .logo-word2{
-    margin-left: 9px;
+    margin-left: 0px;
 }
 
 .logo-word3 {
-     margin-left: 9px;
+     margin-left: 0px;
 }
 
 

@@ -38,9 +38,9 @@
            <div class = "logo-text-wrap">
                <div class = ""><strong class = "logo-text">РОССИЙСКАЯ ТРИБУНА</strong></div>
                <div class = ""><strong class = "logo-text logo-text-sup">
-                   <span class = "logo-word1">Аналитика </span>
-                   <span class = "logo-word2">Дискуссия </span>
-                   <span class = "logo-word3">Вердикт</span>
+                   <span class = "logo-word1">Анализ. </span>
+                   <span class = "logo-word2">Диалог. </span>
+                   <span class = "logo-word3">Вердикт.</span>
                    </strong>
                 </div>
            </div>
