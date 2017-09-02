@@ -4,7 +4,7 @@
 //require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/registration.php");
 
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php");
-
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/functions.php");
 
 if (isset($_POST['article_id'])){
     $article_comments = new COMMENTS();
@@ -77,8 +77,8 @@ if (isset($_POST['article_id'])){
     <p><a name="comments"></a></p>
     <h4 class = "comments-title">
         Комментарии 
-        (48)
-        <a href = "#0">[i]</a>
+        (<?php echo get_comments_number( $article_id ); ?>)
+       <!--<a href = "#0">[i]</a>-->
 
     </h4>
 <?php
