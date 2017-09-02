@@ -117,7 +117,7 @@ li.selected a{
 
 
 .logo-word1{
-   
+   margin-left: 3px;
 }
 
 .logo-word2{
@@ -1240,6 +1240,10 @@ display: none;
     height: 350px;
 }
 
+.personal-panel-user {
+    height: 200px;
+}
+
 #personal-data td {
     word-wrap: break-word;
     
@@ -1283,9 +1287,18 @@ display: none;
     
 }
 
+#profile-avatar-change {
+    position: absolute;
+    top: 0px;
+    right: 30%;
+}
 
-
-
+#profile-avatar-change a{
+    font-family: "Open sans", sans-serif;
+    font-style: italic;
+    font-size: 10px;
+    
+}
 
 
 

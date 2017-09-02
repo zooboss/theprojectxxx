@@ -85,7 +85,7 @@
                              <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
                              Кабинет
                          </a>
-                         <div class="dropdown-divider"></div>
+                         <!--<div class="dropdown-divider"></div>-->
                          <a href = "/theprojectxxx/models/registration/logout.php" class = "dropdown-item btn">
                              <img class = "login-icon" src = "/theprojectxxx/img/icons/logout_icon.svg">
                              Выйти

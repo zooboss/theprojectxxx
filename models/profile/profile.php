@@ -172,6 +172,59 @@ switch ($personal_request_type):
 
 
 
+// Обработка запросов в профиле другого пользователя //
+
+
+    
+    case "type_message":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+    case "user_comments":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+    case "user_articles":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+    case "user_raiting":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+
 
 endswitch;
 ?>

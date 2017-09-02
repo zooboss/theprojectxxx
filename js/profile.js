@@ -177,6 +177,139 @@ $(document).on('click', '#rating', function(e){
       
       
   });     
+
+// Профиль другого пользователя //
+    
+// Написать сообщение //
+   $(document).on('click', '#type_message', function(e){
+    e.preventDefault();
+    var userName = $(document).find('#personal-data').attr('username');
+        
+        $.ajax({
+          url: "models/profile/profile.php", 
+          type: "POST", //
+          data: {
+              personal_request_type: "type_message", 
+              username: userName              
+          },
+          dataType: 'json',
+          success: function(json){
+              
+            // В случае успешного завершения запроса...
+            if(json){
+                $('#personal-data').replaceWith(json); 
+                
+            }
+          },
+          error: function(xhr, status, error){
+            console.log("comment_error");
+            console.log(xhr.responseText);
+            
+          }
+        });
+      
+      
+  });  
+    
+    
+    
+// Посмотреть комментарии //
+    $(document).on('click', '#user_comments', function(e){
+    e.preventDefault();
+    var userName = $(document).find('#personal-data').attr('username');
+        
+        $.ajax({
+          url: "models/profile/profile.php", 
+          type: "POST", //
+          data: {
+              personal_request_type: "user_comments", 
+              username: userName              
+          },
+          dataType: 'json',
+          success: function(json){
+              
+            // В случае успешного завершения запроса...
+            if(json){
+                $('#personal-data').replaceWith(json); 
+                
+            }
+          },
+          error: function(xhr, status, error){
+            console.log("comment_error");
+            console.log(xhr.responseText);
+            
+          }
+        });
+      
+      
+  }); 
+    
+    
+    
+// Посмотреть статьи //
+    $(document).on('click', '#user-articles', function(e){
+    e.preventDefault();
+    var userName = $(document).find('#personal-data').attr('username');
+        
+        $.ajax({
+          url: "models/profile/profile.php", 
+          type: "POST", //
+          data: {
+              personal_request_type: "user-articles", 
+              username: userName              
+          },
+          dataType: 'json',
+          success: function(json){
+              
+            // В случае успешного завершения запроса...
+            if(json){
+                $('#personal-data').replaceWith(json); 
+                
+            }
+          },
+          error: function(xhr, status, error){
+            console.log("comment_error");
+            console.log(xhr.responseText);
+            
+          }
+        });
+      
+      
+  }); 
+    
+    
+    
+// Рейтинг //
+    $(document).on('click', '#user-rating', function(e){
+    e.preventDefault();
+    var userName = $(document).find('#personal-data').attr('username');
+        
+        $.ajax({
+          url: "models/profile/profile.php", 
+          type: "POST", //
+          data: {
+              personal_request_type: "user-rating", 
+              username: userName              
+          },
+          dataType: 'json',
+          success: function(json){
+              
+            // В случае успешного завершения запроса...
+            if(json){
+                $('#personal-data').replaceWith(json); 
+                
+            }
+          },
+          error: function(xhr, status, error){
+            console.log("comment_error");
+            console.log(xhr.responseText);
+            
+          }
+        });
+      
+      
+  }); 
+    
     
     
     
