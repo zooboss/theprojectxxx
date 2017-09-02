@@ -6,7 +6,7 @@
 <?php
 
     // Проверка дано ли согласие на куки, вызывается аяксом из мейн.жс //
-    if ( !isset( $_COOKIE ) ) {
+    if ( !isset( $_COOKIE[ 'cookie_accept' ] ) ) {
         ?>
         <div id = "cookie-initial" class = "container-fluid">
             <div class = "container">  
