@@ -32,17 +32,29 @@
   <?php if (!isset($_COOKIE['_SS']))
   { ?>
    <div class = 'navlist col-md-3 hidden-sm hidden-xs'>
-       <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logotype.png" class = "logo"></a>
+       <a href="/theprojectxxx/index.php">
+          
+           <img src = "/theprojectxxx/img/logotype.png" class = "logo ">
+           <div class = "logo-text-wrap">
+               <div class = ""><strong class = "logo-text">РОССИЙСКАЯ ТРИБУНА</strong></div>
+               <div class = ""><strong class = "logo-text logo-text-sup">
+                   <span class = "logo-word1">Аналитика </span>
+                   <span class = "logo-word2">Дискуссия </span>
+                   <span class = "logo-word3">Вердикт</span>
+                   </strong>
+                </div>
+           </div>
+           </a>
    </div>
   <?php } ?>    
     <div class='navlist col-md-6 hidden-sm hidden-xs'>
        
         <ul id = "everywhere-top-navigation-menu">
             
-            <li class='selected'><a href='' cathegory-type = "main">Главная</a></li>
-            <li><a href='' cathegory-type = "actual">События</a></li>
-            <li><a href='' cathegory-type = "future">Тренды</a></li>
-            <li><a href='' cathegory-type = "past">История</a></li>
+            <li class='selected'><a href='' cathegory-type = "main" class = "header-menu-item">Главная</a></li>
+            <li><a href='' cathegory-type = "actual" class = "header-menu-item">События</a></li>
+            <li><a href='' cathegory-type = "future" class = "header-menu-item">Тренды</a></li>
+            <li><a href='' cathegory-type = "past" class = "header-menu-item">История</a></li>
         </ul>
                         
     </div>
@@ -71,7 +83,7 @@
                 ?>
                          <a href = "<?php echo 'user-'.$row['userID'].'.html'?>" class = "dropdown-item btn">
                              <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
-                             Профиль
+                             Кабинет
                          </a>
                          <div class="dropdown-divider"></div>
                          <a href = "/theprojectxxx/models/registration/logout.php" class = "dropdown-item btn">
