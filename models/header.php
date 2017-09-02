@@ -31,8 +31,8 @@
  
   <?php if (!isset($_COOKIE['_SS']))
   { ?>
-   <div class = 'navlist col-md-3 hidden-sm hidden-xs'>
-       <a href="/theprojectxxx/index.php">
+   <div class = 'navlist col-md-3 hidden-sm hidden-xs logo-item-wrap'>
+       <a href="/theprojectxxx/index.php" class = "logo-wrap-link">
           
            <img src = "/theprojectxxx/img/logotype.png" class = "logo ">
            <div class = "logo-text-wrap">

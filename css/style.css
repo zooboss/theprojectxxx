@@ -71,45 +71,76 @@ li.selected a{
         color: #e15d5d;
       }
 
-	  
-	  
-.logo {
+
+.logo-item-wrap {
+    padding-left: 0px;
+}
+
+.logo-wrap-link {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     
     height: 40px;
-    width: 40px;
+}
+
+.logo {
+    position: absolute;
+    top: -5px;
+    left: -5px;
     
-    margin-top: -16px;
-            
+    height: 50px;
+    width: 50px;
+    
 }
 
 .logo-text-wrap {
-    display: inline-block;
-    margin-left: -3px;
+    position: absolute;
+    top: 0px;
+    left: 45px;
+    width: 200px;
+    height: 40px;
 }
 
 .logo-text-wrap div:first-child{
-    margin-top: 2px;
-    padding: 0;
-    height: 14px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    
+    height: 22px;
+}
+
+.logo-text-wrap div:nth-child(2){
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    height: 18px;
 }
 
 .logo-text {
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    height: 16px;
+    width: 187px;
+    
     text-decoration: none;
     font-weight: 100;
     color: white;
     font-family: "Monserrat";
     margin-left: 5px;
     line-height: 16px;
-    
-    
+        
     font-size: 16px;
     
     border-bottom: 1px solid white;
 }
 
 .logo-text-sup {
+    top: 2px;
     
-    line-height: 10px;
+    line-height: 12px;
     font-size: 12px;
     font-style: italic;
     border-bottom: 0px;
