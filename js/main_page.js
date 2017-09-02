@@ -17,7 +17,7 @@ $( document ).ready(function() {
             $("#everywhere-top-navigation-menu li").removeClass("selected");
             element.parent().addClass("selected");  
             cathegoryType = element.attr("cathegory-type");
-            console.log(cathegoryType);
+           
         }  
     //ресет страницы при смене закладки
         
@@ -92,6 +92,22 @@ $( document ).ready(function() {
         renderArticles(e, false, elem);
         
     });
+ 
+    
+// Смена категории от триггера в статьях
+    
+    $(document).on('click', ".article-cathegory-link", function(e){
+        elem = $(this);
+        renderArticles(e, false, elem);
+        var localCathegoryType = elem.attr("cathegory-type");
+        var localSearch = "[cathegory-type = ]" + localCathegoryType;
+        
+        $("#everywhere-top-navigation-menu li").removeClass("selected");
+        $("#everywhere-top-navigation-menu").find( "[cathegory-type=" + localCathegoryType + "]" ).parent().addClass("selected");
+        
+    });
+    
+    
 //Скролл
     
     $(document).on("scroll", function(e){

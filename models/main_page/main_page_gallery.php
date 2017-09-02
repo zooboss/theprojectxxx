@@ -49,13 +49,13 @@ switch ($request_type){
                                                                     $article_tag = $a['tag'];
                                                                     switch ($article_tag){
                                                                         case "actual":
-                                                                            $article_tag = "события";
+                                                                            $article_tag_show = "события";
                                                                         break;
                                                                         case "future":
-                                                                            $article_tag = "тренды";
+                                                                            $article_tag_show = "тренды";
                                                                         break;
                                                                         case "past":
-                                                                            $article_tag = "история";
+                                                                            $article_tag_show = "история";
                                                                         break;
                                                                     }
                                                                     
@@ -120,7 +120,7 @@ switch ($request_type){
                                 </div>
                             </div>
                             <div class = "articleImageAnimate"></div>
-                            <div class = "articleCathegoryAnimate"> <a href='#0'><?php echo $article_tag ?></a></div>
+                            <div class = "articleCathegoryAnimate"> <a href='' class = "article-cathegory-link" cathegory-type = "<?php echo $article_tag ?>"><?php echo $article_tag_show ?></a></div>
 
                             <div class = "articleCommentsAnimate"> 
                                 <a href="index.php?send=article&id=<?=$a['id']?>#comments"><i class='fa fa-comment'></i></a> 
