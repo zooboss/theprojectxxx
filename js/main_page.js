@@ -100,8 +100,19 @@ $( document ).ready(function() {
         elem = $(this);
         renderArticles(e, false, elem);
         var localCathegoryType = elem.attr("cathegory-type");
-        var localSearch = "[cathegory-type = ]" + localCathegoryType;
+               
+        $("#everywhere-top-navigation-menu li").removeClass("selected");
+        $("#everywhere-top-navigation-menu").find( "[cathegory-type=" + localCathegoryType + "]" ).parent().addClass("selected");
         
+    });
+    
+// Смена категории от триггера в мобильном меню
+    
+    $(document).on('click', ".mobile-menu-item", function(e){
+        elem = $(this);
+        renderArticles(e, false, elem);
+        var localCathegoryType = elem.attr("cathegory-type");
+                
         $("#everywhere-top-navigation-menu li").removeClass("selected");
         $("#everywhere-top-navigation-menu").find( "[cathegory-type=" + localCathegoryType + "]" ).parent().addClass("selected");
         

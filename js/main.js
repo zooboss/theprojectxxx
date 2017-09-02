@@ -26,6 +26,14 @@ $( document ).ready(function() {
             $(".articlesGallery").css({opacity:"1", backgroundColor:"transparent" });
         }
     );
+    $('.mobile-menu-item').click(function() {
+            $('#mySidenav').hide('slow');
+            $('#menu-close-trigger').hide();
+            $('#menu-trigger').show();
+            $(".article-wrap").css({opacity:"1", backgroundColor:"transparent" });
+            $(".articlesGallery").css({opacity:"1", backgroundColor:"transparent" });
+        }
+    );
     
     
   //Скрипт согласия с куками

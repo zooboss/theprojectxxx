@@ -133,10 +133,10 @@
         </div>
 
         <div id="mySidenav" class="sidenav">
-          <a href="/theprojectxxx/index.php">Главная</a>
-          <a href="#">События</a>          
-          <a href="#">Тренды</a>
-          <a href="#">История</a>
+          <a href="#" cathegory-type = "main" class = "mobile-menu-item">Главная</a>
+          <a href="#" cathegory-type = "actual" class = "mobile-menu-item">События</a>          
+          <a href="#" cathegory-type = "future" class = "mobile-menu-item">Тренды</a>
+          <a href="#" cathegory-type = "past" class = "mobile-menu-item">История</a>
         </div>
 </header>
 
