@@ -1,5 +1,6 @@
 <?php
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/dbconfig.php"); 
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/functions.php");
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/comments/comments.php");
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/profile/profile_functions.php");
 
@@ -87,6 +88,84 @@ switch ($personal_request_type):
         </div>
     <?php
     break;
+
+    case "articles_not_visited":
+        $articles_visited = get_articles_visited();
+        $articles_not_visited = get_not_visited_articles($articles_visited);
+        ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <?php 
+                                     
+            if ( empty($articles_not_visited) == true ){
+                ?>
+                <div class = "text-center"><h2><?php echo "Непрочитанные статьи отсутствуют"; ?></h2></div>
+            <?php
+            }
+            else{
+            ?>
+                <table class = "table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Автор</th>
+                            <th>Дата</th>
+                            <th>Превью</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                        foreach ($articles_not_visited as $article) {
+                            ?>
+                            <tr class = "clickable-row" data-href = '<?php echo '/theprojectxxx/index.php?send=article&id=' . $article[0]['id'] ?>'>
+
+                                <td><?php echo $article[0]['title']  ?> </td>
+                                <td><?php echo $article[0]['author']  ?> </td>
+                                <td><?php echo $article[0]['date']   ?> </td>
+                                <td><?php echo articles_intro($article[0]['content'])  ?> </td>
+
+                            </tr>
+                        <?php
+                        }
+                    ?>
+                    </tbody>
+                </table>
+                
+                
+            <?php
+            }                          
+            ?>
+            
+        </div>
+    <?php
+    break;
+
+    case "personal_messages":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+
+    case "rating":
+        ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
 
 
 

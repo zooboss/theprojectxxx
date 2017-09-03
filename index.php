@@ -44,11 +44,9 @@ if($user_login->is_logged_in()!="")
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 }// если авторизован, то выбираем из базы через PDO, можно убрать условие, но будет вылезать ошибка.
 
-require_once(dirname(__FILE__)."/models/database.php");
-$link = db_connect();
 
 require_once(dirname(__FILE__) . "/models/functions.php");
-$articles = articles_all($link);
+$articles = articles_all();
 
 
 if (isset($_GET['send'])) {
@@ -58,7 +56,9 @@ if (isset($_GET['send'])) {
             include(dirname(__FILE__) . "/views/user-profile.php");   			
             break;
         case "article":
-            $article = articles_get($link, $_GET['id']);
+            $article = articles_get($_GET['id']);
+            //статья прочтена
+            set_article_visited($_GET['id']);
             include(dirname(__FILE__) . "/views/article_page.php");
             break;
         case "registration" :
@@ -72,6 +72,8 @@ if (isset($_GET['send'])) {
         
 }
 else {
+    //Сброс кукисов прочитанных статей
+    //setcookie("articles_visited", "", time()-3600);
     include(dirname(__FILE__) . "/views/main_page.php");
 }
 

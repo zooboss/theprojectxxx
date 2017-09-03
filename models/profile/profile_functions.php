@@ -48,7 +48,32 @@ function get_my_replies ($author) {
 }
 
 
-
+function get_not_visited_articles ($articles_visited){
+    $search_not_visited = new ARTICLES();
+    
+    $stmt = $search_not_visited->runQuery("SELECT * FROM articles ");   
+    $stmt->execute();
+    $stmt = $stmt->fetchAll();
+    
+    $all_IDs = array();
+    foreach ($stmt as $article){
+        array_push($all_IDs, $article['id']);
+    }
+    
+    $uniq_IDs = array_diff($all_IDs, $articles_visited);
+    asort($uniq_IDs);
+    
+    $not_visited_articles = array();
+    
+    foreach ($uniq_IDs as $ID) {
+        $stmt = $search_not_visited->runQuery("SELECT * FROM articles WHERE id= ?");   
+        $stmt->execute([$ID]);
+        $stmt = $stmt->fetchAll();
+        array_push($not_visited_articles, $stmt);
+    }
+    
+    return $not_visited_articles;
+}
 
 
 

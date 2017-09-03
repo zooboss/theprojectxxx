@@ -13,7 +13,7 @@ if (isset($_GET['send'])) {
 				}  			
             break;
         case "article":
-            $article = articles_get($link, $_GET['id']);
+          $article = articles_get($_GET['id']);
             echo $article['title'];	
             break;
         case "registration" :

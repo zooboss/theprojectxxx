@@ -1,35 +1,50 @@
 <?php
 
-function articles_all($link){
-    $query = "SELECT * FROM articles ORDER BY id DESC";
-    $result = $link->query($query, MYSQLI_STORE_RESULT);
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/dbconfig.php"); 
+
+class ARTICLES {	
+
     
-    if(!$result)
-        die(mysqli_error($link));
-    
-    $articles = array();
-    while ($row = $result->fetch_array(MYSQLI_BOTH))
-    {
-        $articles[] = $row;
+	private $conn; 
+	
+	public function __construct()
+	{
+		$database = new Database();
+		$db = $database->dbConnection();
+		$this->conn = $db;
     }
-    
-    return $articles;
+	
+	public function runQuery($sql)
+	{
+		$stmt = $this->conn->prepare($sql);
+		return $stmt;
+	}
+	
+	
 }
 
-function articles_get($link, $id_article)
+function articles_all(){
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT * FROM articles ORDER BY id DESC");   
+    $stmt->execute();
+    $stmt = $stmt->fetchAll();
+        
+    return $stmt;
+}
+
+function articles_get($id_article)
 {
-    $query = sprintf("SELECT * FROM articles WHERE id=%d", (int)$id_article);
-    $result = $link->query($query, MYSQLI_STORE_RESULT);
+    $articles = new ARTICLES();
     
-    if (!$result)
-        die(mysqli_error($link));
-    
-    $article = $result->fetch_array(MYSQLI_BOTH);
-    
-    return $article;
+    $stmt = $articles->runQuery("SELECT * FROM articles WHERE id= ?");   
+    $stmt->execute([$id_article]);
+    $stmt = $stmt->fetchAll();
+        
+    return $stmt[0];
 }
 
-function articles_new($link, $title, $date, $content){
+/*function articles_new($title, $date, $content){
     $title = trim($title);
     $content = trim($content);
     
@@ -72,6 +87,7 @@ function articles_delete($link, $id){
         die(mysqli_error($link));
     return true;
 } 
+*/
 
 function articles_intro($text, $len = 100)
 {
@@ -80,6 +96,45 @@ function articles_intro($text, $len = 100)
 
 
 
+function get_articles_visited (){
+    if ( isset($_COOKIE['articles_visited']) and !empty($_COOKIE['articles_visited']) ){
+        $articles_visited = $_COOKIE['articles_visited'];
+        $articles_visited = stripslashes($articles_visited);
+        $articles_visited = json_decode($articles_visited, true);
+    }
+    else {
+        $articles_visited = array();
+    }
+    
+    $articles_visited = array_unique($articles_visited);
+    return $articles_visited;
+    
+}
+
+function set_article_visited ($article_id) {
+    
+    if ( isset($_COOKIE['articles_visited']) and !empty($_COOKIE['articles_visited']) ){
+        //get COOKIE
+        $articles_visited = get_articles_visited();
+        
+        
+        //set new COOKIE
+        if (array_search($article_id, $articles_visited) == false){
+            array_push($articles_visited, $article_id);
+            $articles_visited = json_encode($articles_visited, true);
+            setcookie('articles_visited', $articles_visited);
+        }
+        
+        
+    }
+    else{
+        $articles_visited = array();
+        array_push($articles_visited, $article_id);
+        $articles_visited = json_encode($articles_visited, true);
+        setcookie('articles_visited', $articles_visited);
+    }
+    
+}
 
 
 
