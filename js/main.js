@@ -1,3 +1,5 @@
+var windowPreviousScrollPos = 0;
+
 $( document ).ready(function() {
    
 //Скрывает категориальные меню не на основной странице    
@@ -48,8 +50,36 @@ $( document ).ready(function() {
                
     });
  
+// Скрипт высплывающего хедера
     
+    function scroll_direction(){
+        var windowCurrentScrollPos = $(window).scrollTop();
+                
+        if( windowCurrentScrollPos >  windowPreviousScrollPos ) {
+            return "bottom_direction";
+        }
+        else {
+            return "top_direction"
+        }
+              
+    }
     
+    $(document).on( 'scroll', function(e){
+        scrollDirection = scroll_direction();
+        
+        switch ( scrollDirection ) {
+            case "bottom_direction":
+                $(".total-header").addClass("header-move-top");
+            break;
+            
+            case "top_direction":
+                $(".total-header").removeClass("header-move-top");
+            break;    
+        }
+        
+        windowPreviousScrollPos = $(window).scrollTop();
+        
+    });
     
     
     

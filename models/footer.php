@@ -2,7 +2,7 @@
     <div class = "container">
         <div class = "col-md-2 col-sm-2 col-xs-6">
             <ul>
-                <li>Название сайта</li>
+                <li>РТБ</li>
                 <li><a href = "#0">Главная</a></li>
                 <li><a href = "#0">О проекте</a></li>
                 <li><a href = "#0">Контакты</a></li>
@@ -12,10 +12,10 @@
         <div class = "col-md-2 col-sm-2 col-xs-6">
             <ul>
                 <li>Рубрики</li>
-                <li><a href = "#0">Политика</a></li>
-                <li><a href = "#0">Экономика</a></li>
-                <li><a href = "#0">История России</a></li>
-                <li><a href = "#0">Всемирная история</a></li>
+                <li><a href = "#" cathegory-type = "main" class = "footer-menu-item">Общее</a></li>
+                <li><a href = "#" cathegory-type = "actual" class = "footer-menu-item">События</a></li>
+                <li><a href = "#" cathegory-type = "future" class = "footer-menu-item">Тренды</a></li>
+                <li><a href = "#" cathegory-type = "past" class = "footer-menu-item">История</a></li>
             </ul>
         </div>
         
@@ -56,7 +56,8 @@
    <div class = "container">
                    
         <div class = "copyright text-right">
-            SiteName done by SiteName Studio &copy; 2016. Все права защищены.
+           <img src = "/theprojectxxx/img/logotype.png" class = " footer-logo">
+            Сайт Russian-tribune.ru создан организацией "Российская трибуна" &copy; 2017. Все права защищены.
         </div>
         
     </div>

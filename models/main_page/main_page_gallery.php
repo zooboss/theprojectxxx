@@ -17,8 +17,9 @@ ob_start();
 
 switch ($request_type){
     case "cathegory_request":
-        
-        ?>
+                
+            ?>
+           
             <div class = "columns" id = "block-<?php echo $block_number ?>" max-block-number = "<?php echo $max_block_number ?>">  
                                                             <?php
                                                             $minor_key = 0;

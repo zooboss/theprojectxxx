@@ -118,6 +118,18 @@ $( document ).ready(function() {
         
     });
     
+// Смена категории от триггера в футере
+    
+    $(document).on('click', ".footer-menu-item", function(e){
+        elem = $(this);
+        renderArticles(e, false, elem);
+        var localCathegoryType = elem.attr("cathegory-type");
+                
+        $("#everywhere-top-navigation-menu li").removeClass("selected");
+        $("#everywhere-top-navigation-menu").find( "[cathegory-type=" + localCathegoryType + "]" ).parent().addClass("selected");
+        
+    });    
+    
     
 //Скролл
     

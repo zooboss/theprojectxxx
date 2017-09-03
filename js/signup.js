@@ -256,7 +256,7 @@ $(function(){
     
     $("#email").inputmask("email");
     $("#email_restore").inputmask("email");        
-            
+    $("#date").inputmask("99/99/9999",{ "placeholder": "dd/mm/yyyy" });        
               
 });
     
