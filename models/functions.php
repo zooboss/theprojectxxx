@@ -1,6 +1,7 @@
 <?php
 
 require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/dbconfig.php"); 
+require_once ( $_SERVER['DOCUMENT_ROOT'] . "/theprojectxxx/models/search/core.php");
 
 class ARTICLES {	
 
@@ -44,52 +45,7 @@ function articles_get($id_article)
     return $stmt[0];
 }
 
-/*function articles_new($title, $date, $content){
-    $title = trim($title);
-    $content = trim($content);
-    
-    if ($title == '') return false;
-    
-    $query = "INSERT INTO articles (title, date, content) VALUES ('%s', '%s', '%s')";
-    $query = sprintf($query, $title, mysqli_real_escape_string($link, $date), mysqli_real_escape_string($link, $content));
-    
-    $result = mysqli_query($link, $query);
-    
-    if (!$result) 
-        die(mysqli_error($link));
-    
-    return true;
-}
-
-function articles_edit($link, $id, $title, $date, $content){
-    $title = trim($title);
-    $content = trim($content);
-    
-    if ($title == '') return false;
-    
-    $query = "UPDATE articles SET title = '%s', date = '%s', content = '%s' WHERE id = '%d'";
-    $query = sprintf($query, $title, mysqli_real_escape_string($link, $date), mysqli_real_escape_string($link, $content), $id);
-    
-    $result = mysqli_query($link, $query);
-    
-    if (!$result) 
-        die(mysqli_error($link));
-    
-    return true;
-}
-
-function articles_delete($link, $id){
-    $query = "DELETE FROM articles WHERE id = %d";
-    $query = sprintf($query, (int)$id);
-    $result = mysqli_query($link, $query);
-    
-    if (!$result) 
-        die(mysqli_error($link));
-    return true;
-} 
-*/
-
-function articles_intro($text, $len = 100)
+function articles_intro($text, $len = 500)
 {
     return mb_substr($text, 0, $len);   
 }
@@ -135,6 +91,172 @@ function set_article_visited ($article_id) {
     }
     
 }
+
+function get_author_by_article ($article_id) {
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT author_id FROM articles WHERE id= ?");   
+    $stmt->execute([$article_id]);
+    $stmt = $stmt->fetchAll();
+        
+    $author_id = $stmt[0]['author_id'];
+    
+    $stmt = $articles->runQuery("SELECT * FROM users WHERE userID= ?");
+    $stmt->execute([$author_id]);
+    $stmt = $stmt->fetchAll();
+    
+    
+    return $stmt[0];
+}
+
+function get_comments_number ($article_id) {
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT id FROM comments WHERE article_id= ?");
+    $stmt->execute([$article_id]);
+    $stmt = $stmt->fetchAll();
+    
+    return count($stmt);
+}
+
+function get_articles_by_cathegory ($cathegory){
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT id FROM articles WHERE tag= ?");
+    $stmt->execute([$cathegory]);
+    $stmt = $stmt->fetchAll();
+    
+    $article_ids = [];
+    foreach($stmt as $s) {
+        array_push($article_ids, $s['id']);
+    }
+    
+    return $article_ids;
+}
+
+function get_all_ids () {
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT id FROM articles");
+    $stmt->execute();
+    $stmt = $stmt->fetchAll();
+    
+    $article_ids = [];
+    foreach($stmt as $s) {
+        array_push($article_ids, $s['id']);
+    }
+    
+    return $article_ids;
+}
+
+/* Search functions */
+
+function SITE_INDEX () {
+    // Индексация всех статей на сайте //
+    // Заготовка в меню рейтинг личного кабинета //
+    
+    $SEARCH = new SEARCH();
+    $ARTICLES = new ARTICLES();
+    
+    $stmt = $ARTICLES->runQuery("SELECT id, title, content, keywords FROM articles");
+    $stmt->execute();
+    $stmt = $stmt->fetchAll();
+    
+    foreach ($stmt as $s) {
+        $author = get_author_by_article( $s[ 'id' ] )[ 'PublicUserName' ];
+        $title = $s[ 'title'];
+        $content = $s[ 'content' ];
+        $keywords = $s [ 'keywords' ];
+        
+        $article_index = $SEARCH->integrated_index( $author, $title, $content, $keywords );
+        $article_index = json_encode( $article_index );
+        //var_dump ($article_index);
+        
+        try {
+            $statement = $ARTICLES->runQuery("UPDATE articles SET article_index = :aindex WHERE id = :aid");
+            $statement->bindparam( ":aindex", $article_index );
+            $statement->bindparam( ":aid", $s[ 'id' ] );
+            $statement->execute();
+            
+        }
+        catch(PDOException $ex)
+		{
+			echo $ex->getMessage();
+		}
+        
+    }
+
+}
+
+function SITE_SEARCH ( $search_phrase ) {
+    $SEARCH = new SEARCH();
+    $ARTICLES = new ARTICLES();
+    $result = [];
+    $result_ids = [];
+    $result_articles = [];
+    
+    $stmt = $ARTICLES->runQuery("SELECT * FROM articles");
+    $stmt->execute();
+    $articles = $stmt->fetchAll();
+    
+    $search_phrase = $SEARCH->make_index( $search_phrase );
+    
+    foreach ( $articles as $article ){
+        $article_index = json_decode( $article[ "article_index" ] );
+                
+        $range = $SEARCH->integrated_search( $search_phrase, $article_index);
+        
+        if ( $range > 0 ) $result[ $article['id'] ] = $range;
+    }
+    
+    if ( isset( $result ) ) {
+        arsort( $result );
+    
+    
+        //Получаем чистые отсортированные айди
+        foreach ( $result as $key => $value ){
+           if ( !empty ($value) ) array_push( $result_ids, $key );
+        }
+
+        //Поиск статей с нужными айди c сохранением порядка
+        foreach ( $result_ids as $result_id){
+            
+            foreach ( $articles as $article ) {
+                if ( $article[ 'id' ] == $result_id ) array_push( $result_articles, $article);
+            }
+        }
+    
+    }
+    
+    return $result_articles;
+}
+
+/*
+function get_articles_by_search_result ( $ids ){
+    $articles = new ARTICLES();
+    
+    $stmt = $articles->runQuery("SELECT id FROM articles WHERE tag= ?");
+    $stmt->execute([$cathegory]);
+    $stmt = $stmt->fetchAll();
+    
+    $article_ids = [];
+    foreach($stmt as $s) {
+        array_push($article_ids, $s['id']);
+    }
+    
+    return $article_ids;
+}
+*/
+
+
+
+
+
+
+
+
+
+
 
 
 

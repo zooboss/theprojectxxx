@@ -94,15 +94,17 @@
           ?>   
             <div class = "personal-body">
                 <div class = "row">
-                    <div class = "personal-avatar offset-md-4 col-md-4 offset-sm-3 col-sm-6 col-xs-12 text-center">
+                    <div class = "personal-avatar offset-md-4 col-md-4 offset-sm-0 col-sm-6 offset-xs-0 col-xs-12 text-center">
                         <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "personal-avatar">
-                        <h1><?php echo $row['userName'] ?></h1>
-                        
+                        <h1><?php echo $row['PublicUserName'] ?></h1>
+                        <div id = "profile-avatar-change">
+                            <a href = "" id = "profile-avatar-change-link" >Изменить</a>                            
+                        </div>
                     </div>
                 </div>
                 <div class = "divider"></div>
                 <div class = "row">
-                    <div class = "offset-md-2 col-md-4 offset-sm-2 col-sm-4 col-xs-12">
+                    <div class = "offset-md-2 col-md-4 offset-sm-0 col-sm-5 offset-xs-0 col-xs-12">
                         <div class = "panel panel-info personal-panel">
                             <div class = "panel-heading text-center">
                                 Персональные данные
@@ -110,6 +112,7 @@
                             <div class = "panel-body personal-info">
 
                                    <h4>Логин: <?php echo $row['userName'] ?></h4>
+                                   <h4>Никнейм: <?php echo $row['PublicUserName'] ?></h4>
                                    <h4>E-mail: <?php echo $row['userEmail'] ?></h4>
                                    <h4>Фамилия: <?php echo $row['Surname'] ?></h4>
                                    <h4>Имя: <?php echo $row['Name'] ?></h4>
@@ -117,17 +120,17 @@
                                    <h4>Дата рождения: <?php echo $row['birthday'] ?></h4>
                                    <h4>Пол: <?php echo $row['sex'] ?></h4>
                                    <h4>Телефон:   <?php echo $row['phone'] ?></h4>
-                                    
+                                <!--    
                                     <div class = "text-right">
                                         <button class = "btn btn-success">
                                             Изменить данные
                                         </button>
                                     </div>
-                                    
+                                 -->    
                             </div>
                         </div>
                     </div>
-                    <div class = "col-md-4  col-sm-4  col-xs-12">
+                    <div class = "col-md-4  col-sm-5  col-xs-12">
                         <div class = "panel panel-info personal-panel">
                             <div class = "panel-heading text-center">
                                 Активность
@@ -143,13 +146,14 @@
                             </div>
                         </div>
                     </div>
+                   
                                         
                     
                 </div>
             </div>
             <div class = "offset-md-2 col-md-8 offset-sm-2 col-sm-8 col-xs-12 personal-output"
                  id = "personal-data"
-                 username = "<?php echo $row['userName'] ?>"
+                 username = "<?php echo $row['PublicUserName'] ?>"
                
                
                >
@@ -175,7 +179,78 @@
                 $statement = $pdo->prepare('SELECT * FROM users WHERE userID = ?');
                 $statement->execute([$_GET['userID']]);
                 $statement = $statement->fetchAll();
+                $line = $statement[0];
+            ?>  
+            <div class = "personal-body">
+                <div class = "row">
+                    <div class = "personal-avatar offset-md-4 col-md-4 offset-sm-0 col-sm-6 offset-xs-0 col-xs-12 text-center">
+                        <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "personal-avatar">
+                        <h1><?php echo $line['PublicUserName'] ?></h1>
+                                                
+                    </div>
+                </div>
+                <div class = "divider"></div>
+                <div class = "row">
+                    <div class = "offset-md-2 col-md-4 offset-sm-0 col-sm-5 offset-xs-0 col-xs-12">
+                        <div class = "panel panel-info personal-panel-user">
+                            <div class = "panel-heading text-center">
+                                Данные
+                            </div>
+                            <div class = "panel-body personal-info">
+
+                                   
+                                   <h4>Фамилия: <?php echo $row['Surname'] ?></h4>
+                                   <h4>Имя: <?php echo $row['Name'] ?></h4>
+                                   <h4>Отчество: <?php echo $row['Patronymic'] ?>
+                                   <h4>Дата рождения: <?php echo $line['birthday'] ?></h4>
+                                   <h4>Пол: <?php echo $line['sex'] ?></h4>
+                                    <!--
+                                    <div class = "text-right">
+                                        <button class = "btn btn-success">
+                                            Изменить данные
+                                        </button>
+                                    </div>
+                                    -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-md-4  col-sm-5  col-xs-12">
+                        <div class = "panel panel-info personal-panel-user">
+                            <div class = "panel-heading text-center">
+                                Активность
+                            </div>
+                            <div class = "panel-body personal-info">
+
+                                <a href = #0 id = "type_message"> <h4>Написать сообщение</h4></a>
+                                <a href = #0 id = "user_comments"><h4>Комментарии</h4></a>
+                                <a href = #0 id = "user_articles"><h4>Статьи</h4></a>
+                                <a href = #0 id = "user_raiting" ><h4>Рейтинг</h4></a>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                   
+                                        
+                    
+                </div>
+            </div>  
+            <div class = "offset-md-2 col-md-8 offset-sm-2 col-sm-8 col-xs-12 personal-output"
+                 id = "personal-data"
+                 username = "<?php echo $row['PublicUserName'] ?>"
+               
+               
+               >
+                
+            </div>  
               
+              
+              
+              
+              
+              
+            <?php  
+            /*  
             foreach ($statement as $line)
             { ?>
                <h1><?php echo $line['userName'] ?></h1>
@@ -187,6 +262,7 @@
                <h4>Пол: <?php echo $line['sex'] ?></h4>
             <?php
             }
+            */
         }
     }
     ?>

@@ -13,14 +13,14 @@ switch ($personal_request_type):
     case "my_comments" :
     
     $my_comments = get_my_comments($author);
-
+    
     ?>
 
     <div class = "  personal-output "
          id = "personal-data"
          username = "<?php echo $author ?>"
          >
-        <table class = "table table-striped table-hover">
+         <table class = "table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Комментарий</th>
@@ -92,6 +92,7 @@ switch ($personal_request_type):
     case "articles_not_visited":
         $articles_visited = get_articles_visited();
         $articles_not_visited = get_not_visited_articles($articles_visited);
+        
         ?>
         <div class = "  personal-output "
               id = "personal-data"
@@ -118,11 +119,12 @@ switch ($personal_request_type):
                     <tbody>
                     <?php 
                         foreach ($articles_not_visited as $article) {
+                            $not_visited_article_author = get_author_by_article( $article[0][ 'id' ] )[ 'PublicUserName' ];
                             ?>
                             <tr class = "clickable-row" data-href = '<?php echo '/theprojectxxx/index.php?send=article&id=' . $article[0]['id'] ?>'>
 
                                 <td><?php echo $article[0]['title']  ?> </td>
-                                <td><?php echo $article[0]['author']  ?> </td>
+                                <td><?php echo $not_visited_article_author  ?> </td>
                                 <td><?php echo $article[0]['date']   ?> </td>
                                 <td><?php echo articles_intro($article[0]['content'])  ?> </td>
 
@@ -162,10 +164,65 @@ switch ($personal_request_type):
               username = "<?php echo $author ?>"
          >
             <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+            
+            <?php  ?>
         </div>
     <?php
     break;
 
+
+
+// Обработка запросов в профиле другого пользователя //
+
+
+    
+    case "type_message":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+    case "user_comments":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+    case "user_articles":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
+
+    case "user_raiting":
+
+    ?>
+        <div class = "  personal-output "
+              id = "personal-data"
+              username = "<?php echo $author ?>"
+         >
+            <div class = "text-center"><h2><?php echo "В разработке"; ?></h2></div>
+        </div>
+    <?php
+    break;
 
 
 

@@ -2,21 +2,59 @@
 <meta content='' itemprop='name'/>    <!-- Придумать название это тег для микроразметки и поисковиков -->
 </div>
 
+<!-- Cookie initiation -->
+<?php
+
+    // Проверка дано ли согласие на куки, вызывается аяксом из мейн.жс //
+    if ( !isset( $_COOKIE[ 'cookie_accept' ] ) ) {
+        ?>
+        <div id = "cookie-initial" class = "container-fluid">
+            <div class = "container">  
+               <div class = "col-xs-10 ">
+                 <p>
+                     Администрация сайта просит вашего разрешения на использования cookie-файлов при навигации по сайту <span style="white-space: nowrap;" >russian-tribune.ru</span>
+                     Это делается в целях улучшения работы сайта и повышения его комфортабельности. 
+                 </p>
+               </div>
+               <div class = "col-xs-2">
+                   <button id = "cookie-accept" class = "btn btn-warning"> ОК </button>
+               </div>
+            </div>
+        </div>
+    <?php
+    }
+?>
+
+
 <header class='top-navigation container-fluid total-header'>
+
+ 
   <?php if (!isset($_COOKIE['_SS']))
   { ?>
-   <div class = 'navlist col-md-3 hidden-sm hidden-xs'>
-       <a href="/theprojectxxx/index.php"><img src = "/theprojectxxx/img/logotype.png" class = "logo"></a>
+   <div class = 'navlist col-md-3 hidden-sm hidden-xs logo-item-wrap'>
+       <a href="/theprojectxxx/index.php" class = "logo-wrap-link">
+          
+           <img src = "/theprojectxxx/img/logotype.png" class = "logo ">
+           <div class = "logo-text-wrap">
+               <div class = ""><strong class = "logo-text">РОССИЙСКАЯ ТРИБУНА</strong></div>
+               <div class = ""><strong class = "logo-text logo-text-sup">
+                   <span class = "logo-word1">Анализ. </span>
+                   <span class = "logo-word2">Диалог. </span>
+                   <span class = "logo-word3">Вердикт.</span>
+                   </strong>
+                </div>
+           </div>
+           </a>
    </div>
   <?php } ?>    
     <div class='navlist col-md-6 hidden-sm hidden-xs'>
        
-        <ul>
+        <ul id = "everywhere-top-navigation-menu">
             
-            <li class='selected'><a href='#0'>Актуальное</a></li>
-            <li><a href='#0'>Аналитика</a></li>
-            <li><a href='#0'>Будущее</a></li>
-            <li><a href='#0'>Прошлое</a></li>
+            <li class='selected'><a href='' cathegory-type = "main" class = "header-menu-item">Главная</a></li>
+            <li><a href='' cathegory-type = "actual" class = "header-menu-item">События</a></li>
+            <li><a href='' cathegory-type = "future" class = "header-menu-item">Тренды</a></li>
+            <li><a href='' cathegory-type = "past" class = "header-menu-item">История</a></li>
         </ul>
                         
     </div>
@@ -45,9 +83,9 @@
                 ?>
                          <a href = "<?php echo 'user-'.$row['userID'].'.html'?>" class = "dropdown-item btn">
                              <img class = "login-icon" src = "/theprojectxxx/img/icons/login_icon.svg">
-                             Профиль
+                             Кабинет
                          </a>
-                         <div class="dropdown-divider"></div>
+                         <!--<div class="dropdown-divider"></div>-->
                          <a href = "/theprojectxxx/models/registration/logout.php" class = "dropdown-item btn">
                              <img class = "login-icon" src = "/theprojectxxx/img/icons/logout_icon.svg">
                              Выйти
@@ -95,11 +133,10 @@
         </div>
 
         <div id="mySidenav" class="sidenav">
-          <a href="/theprojectxxx/index.php">Главная</a>
-          <a href="#">Актуальное</a>
-          <a href="#">Аналитика</a>
-          <a href="#">Будущее</a>
-          <a href="#">Прошлое</a>
+          <a href="#" cathegory-type = "main" class = "mobile-menu-item">Главная</a>
+          <a href="#" cathegory-type = "actual" class = "mobile-menu-item">События</a>          
+          <a href="#" cathegory-type = "future" class = "mobile-menu-item">Тренды</a>
+          <a href="#" cathegory-type = "past" class = "mobile-menu-item">История</a>
         </div>
 </header>
 

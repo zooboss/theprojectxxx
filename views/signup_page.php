@@ -76,6 +76,16 @@ else {
                 <div class="warning warning_disabled" id="password2_warning">Пароли не совпадают</div>
 		    </div> 
 		    
+		    <div class="icon">
+		        <ul class="cd-form-list">
+					<li>
+						<input type="checkbox" id='cookie' checked required> 
+						<label for="cookie">Разрешаю использование cookie-файлов для улучшения навигации по сайту russian-tribune.ru (обязательное поле)</label>
+						<div class="warning warning_disabled" id="cookie_warning">Куки необходимы для регистрации</div>
+					</li>					
+				</ul>
+            </div> 
+		    
 		</fieldset>
 
 		<fieldset>
