@@ -95,12 +95,86 @@
             <div class = "personal-body">
                 <div class = "row">
                     <div class = "personal-avatar offset-md-4 col-md-4 offset-sm-0 col-sm-6 offset-xs-0 col-xs-12 text-center">
-                        <img src = "/theprojectxxx/img/icons/full_user.jpg" class = "personal-avatar">
+					<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+					<?php if ($row['avatar']!=="") {?>
+					 <img id="previewing" src="/theprojectxxx/img/avatars/user-<?php echo $row['userID']?>.<?php echo $row['avatar'] ?>" />
+					<?php } 
+					else {?>
+					 <img id="previewing" src="/theprojectxxx/img/avatars/noimage.jpg" />
+					 <?php } ?>
                         <h1><?php echo $row['PublicUserName'] ?></h1>
+					
+						
                         <div id = "profile-avatar-change">
-                            <a href = "" id = "profile-avatar-change-link" >Изменить</a>                            
+                     <input type="file" name="file" id="file" class="inputfile"  enctype="multipart/form-data" />
+                     <label for="file"><span>Изменить</span></label> 
+                  				 
                         </div>
+						</form>
                     </div>
+					
+
+			
+   
+<div id="message"></div>
+
+<script>
+$(document).ready(function (e) {
+$("#uploadimage").on('submit',(function(e) {
+e.preventDefault();
+$("#message").empty();
+$('#loading').show();
+$.ajax({
+url: "/theprojectxxx/models/functions.php", // Url to which the request is send
+type: "POST",             
+data: new FormData(this), 
+contentType: false,       
+cache: false,             
+processData:false,        
+success: function(data)   
+{
+$("#message").html(data);
+$('.button_submit').remove();
+
+}
+});
+}));
+
+
+// Предпросмотр после валидации
+$(function() {
+$("#file").change(function() {
+$("#message").empty(); // Удалить сообщение об ошибке
+var file = this.files[0];
+var imagefile = file.type;
+var match= ["image/jpeg","image/png","image/jpg"];
+if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+{
+$('#previewing').attr('src','noimage.png');
+$("#message").html("<p id='error'>Не удалось изменить фото профиля!</p>"+"<h4>Внимание!Допустимы следующие форматы изображения:</h4>"+"<span id='error_message'> jpeg, jpg и png </span>");
+return false;
+}
+else
+{
+var reader = new FileReader();
+reader.onload = imageIsLoaded;
+reader.readAsDataURL(this.files[0]);
+}
+});
+});
+function imageIsLoaded(e) {
+$( "label" ).replaceWith( '<input type="submit" value="Сохранить" class="button_submit"/><input type="hidden" name="User_id" value="<?php echo $row["userID"]?>" />	  ' );	
+$('#image_preview').css("display", "block");
+$('#previewing').attr('src', e.target.result);
+$('#previewing').attr('width', '160px');
+$('#previewing').attr('height', '160px');
+};
+});
+</script>		
+
+
+
+			
                 </div>
                 <div class = "divider"></div>
                 <div class = "row">

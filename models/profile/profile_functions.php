@@ -1,5 +1,6 @@
 <?php
 
+
 function get_my_comments ($author) {
     $author_comments = new COMMENTS();
 
@@ -75,11 +76,6 @@ function get_not_visited_articles ($articles_visited){
     
     return $not_visited_articles;
 }
-
-
-
-
-
 
 
 

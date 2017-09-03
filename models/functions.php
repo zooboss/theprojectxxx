@@ -249,15 +249,79 @@ function get_articles_by_search_result ( $ids ){
 */
 
 
+if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) and isset ($_POST['User_id']))
+{
+change_avatar ();	
+}
+function change_avatar () {
+if(isset($_FILES["file"]["type"]))
+{
+$validextensions = array("jpeg", "jpg", "png");
+$temporary = explode(".", $_FILES["file"]["name"]);
+$file_extension = end($temporary);
+if ((($_FILES["file"]["type"] == "image/png") || ($_FILES["file"]["type"] == "image/jpg") || ($_FILES["file"]["type"] == "image/jpeg")	
+ ) && ($_FILES["file"]["size"] < 5000000)//5 МБ.
+&& in_array($file_extension, $validextensions)) {
+if ($_FILES["file"]["error"] > 0)
+{
+echo "Оштбка: " . $_FILES["file"]["error"] . "<br/><br/>";
+}
+else
+{
+switch ($_FILES["file"]["type"]) {
+    case "image/png":
+        $imgExt = "png"; //получаем формат изображения
+        break;
+    case "image/jpg":
+        $imgExt = "jpg";
+        break;
+    case "image/jpeg":
+        $imgExt = "jpeg";
+        break;
+}
+$UserID = $_POST['User_id']; //получаем id
+	
+if (file_exists("C:/xampp/htdocs/theprojectxxx/img/avatars/user-".$UserID.".".$imgExt)) {
+unlink("C:/xampp/htdocs/theprojectxxx/img/avatars/user-".$UserID.".".$imgExt);
 
+$sourcePath = $_FILES['file']['tmp_name']; //Храним временный путь к фаулу. 
+$targetPath = "C:/xampp/htdocs/theprojectxxx/img/avatars/user-".$UserID.".".$imgExt; // Директория хранения
+move_uploaded_file($sourcePath,$targetPath) ; // перемещаем
+echo "<h1 id='success'>Аватар успешно изменен</h1><br>";
+   
+  $articles = new ARTICLES();
+  $stmt = $articles->runQuery("UPDATE users SET avatar = :avatar WHERE userID= :user_ID");
+  $stmt->bindParam(':avatar', $imgExt); 
+  $stmt->bindParam(':user_ID', $UserID); 
+  $stmt->execute();
+	
+}
+else
+{
+$sourcePath = $_FILES['file']['tmp_name']; //Храним временный путь к фаулу. 
+$targetPath = "C:/xampp/htdocs/theprojectxxx/img/avatars/user-".$UserID.".".$imgExt; // Директория хранения
+move_uploaded_file($sourcePath,$targetPath) ; // перемещаем
+echo "<h1 id='success'>Аватар успешно изменен</h1><br>";
 
-
-
-
-
-
+    $articles = new ARTICLES();
+    
+  $stmt = $articles->runQuery("UPDATE users SET avatar = :avatar WHERE userID= :user_ID");
+  $stmt->bindParam(':avatar', $imgExt); 
+  $stmt->bindParam(':user_ID', $UserID); 
+  $stmt->execute();
+	
+}
+}
+}
+else
+{
+echo "Ошибка загрузки";
+}
+}
+}
 
 
 
 
 ?>
+
